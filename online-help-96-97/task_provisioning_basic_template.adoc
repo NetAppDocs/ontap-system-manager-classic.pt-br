@@ -1,0 +1,40 @@
+---
+permalink: online-help-96-97/task_provisioning_basic_template.html 
+sidebar: sidebar 
+keywords: sap, hana, provisioning, basic, template, online, help, system, manager 
+summary: Você pode usar o System Manager para provisionar rapidamente modelos básicos para SAP HANA. 
+---
+= Provisione um modelo básico com o System Manager - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para provisionar rapidamente modelos básicos para SAP HANA.
+
+.Sobre esta tarefa
+Como administrador de cluster, você pode provisionar aplicativos configurando um modelo básico. O exemplo descreve como configurar o *SAP HANA Server*.
+
+.Passos
+. Clique em *aplicativos e camadas* > *aplicativos*
+. Na guia *Básico*, selecione o modelo *SAP HANA Server*.
+. Na seção **Database Details**, especifique o seguinte:
++
+** Nome do banco de dados
+** Tamanho do banco de dados
+** Tamanho do registo
+** Tamanho tempdb
+** Número de núcleos de servidor
+** Notas do controlador HA do Span
+
+
+. Clique em *provision Storage*
+
+
+.Resultados
+O aplicativo SAP HANA Server é provisionado.
+
+*Informações relacionadas*
+
+link:reference_application_provisioning_settings.html["Consulte Configurações de provisionamento de aplicativos para obter descrições de campo"]

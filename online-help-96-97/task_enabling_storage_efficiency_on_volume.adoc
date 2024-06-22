@@ -1,0 +1,73 @@
+---
+permalink: online-help-96-97/task_enabling_storage_efficiency_on_volume.html 
+sidebar: sidebar 
+keywords: system, manager, enable, storage, efficiency, volume, deduplication, online, help 
+summary: Você pode usar o System Manager para habilitar a eficiência de storage e configurar a deduplicação e a compactação de dados, ou apenas a deduplicação em um volume para economizar espaço de storage. Se você não tiver ativado a eficiência de storage ao criar o volume, poderá fazê-lo posteriormente editando o volume. 
+---
+= Habilite a eficiência de storage em um volume com o System Manager - ONTAP 9.7 e versões anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para habilitar a eficiência de storage e configurar a deduplicação e a compactação de dados ou apenas a deduplicação em um volume para economizar espaço de storage. Se você não tiver ativado a eficiência de storage ao criar o volume, poderá fazê-lo posteriormente editando o volume.
+
+.Antes de começar
+* O volume deve estar online.
+* Se você quiser usar um cronograma de deduplicação baseado em política, crie uma política de eficiência.
+
+
+.Sobre esta tarefa
+* Você pode habilitar a compactação em segundo plano somente se tiver ativado a deduplicação em segundo plano.
+* Você pode habilitar a compactação in-line e a deduplicação in-line com ou sem habilitar a compactação em segundo plano e a deduplicação em segundo plano, respetivamente.
+* Você pode ativar a deduplicação in-line apenas em volumes que estão contidos por um agregado com personalidade otimizada All Flash e em volumes que são contidos por um agregado de Flash Pool.
+* A partir do System Manager 9,6, a edição da eficiência de storage é compatível com volumes FlexGroup DP.
+
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. No menu suspenso no campo *SVM*, selecione *All SVMs*.
+. Selecione o volume para o qual deseja ativar a eficiência de armazenamento e clique em *Editar*.
+. Na caixa de diálogo *Editar volume*, clique em *eficiência de armazenamento*.
+. Marque a caixa de seleção *desduplicação em segundo plano*.
+. Selecione um dos seguintes métodos para executar a deduplicação:
++
+|===
+| Se você quiser executar a deduplicação... | Então... 
+
+
+ a| 
+Com base em uma política de eficiência de storage
+ a| 
+.. Certifique-se de que a opção *Policy Based* está selecionada.
+.. Clique em *escolha* e selecione uma política de eficiência de storage.
+.. Clique em *OK*.
+
+
+
+
+ a| 
+Quando necessário
+ a| 
+Selecione a opção *sob demanda*.
+
+|===
+. Marque a caixa de seleção *compressão de fundo* para ativar a compressão de fundo.
++
+Não é possível ativar a compactação em segundo plano para um volume contido por um agregado com personalidade otimizada para All Flash.
+
+. Marque a caixa de seleção *compressão em linha* para compactar dados enquanto eles estão sendo gravados no volume.
++
+Por padrão, a compactação in-line é habilitada em volumes contidos por um agregado com personalidade otimizada para All Flash.
+
+. Marque a caixa de seleção *deduplicação in-line* para executar a deduplicação antes que os dados sejam gravados no disco.
++
+Por padrão, a deduplicação in-line é habilitada em volumes que são contidos por um agregado com personalidade otimizada do All Flash.
+
+. Clique em *Salvar e fechar*.
+
+
+*Informações relacionadas*
+
+xref:reference_volumes_window.adoc[Janela volumes]

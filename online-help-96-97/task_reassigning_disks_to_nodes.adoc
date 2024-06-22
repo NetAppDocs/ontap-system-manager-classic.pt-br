@@ -1,0 +1,56 @@
+---
+permalink: online-help-96-97/task_reassigning_disks_to_nodes.html 
+sidebar: sidebar 
+keywords: system, manager, reassign, disks, node, online, help, node, aggregate, storage, pool 
+summary: Você pode usar o System Manager para reatribuir a propriedade de discos sobressalentes de um nó para outro nó para aumentar a capacidade de um pool de storage ou agregado. 
+---
+= Reatribua discos a nós com o Gerenciador de sistema - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para reatribuir a propriedade de discos sobressalentes de um nó para outro, a fim de aumentar a capacidade de um agregado ou pool de storage.
+
+.Sobre esta tarefa
+* Você pode reatribuir discos se as seguintes condições forem verdadeiras:
++
+** O tipo de contentor dos discos selecionados deve ser "pare" ou "hared".
+** Os discos devem ser conectados a nós em uma configuração de HA.
+** Os discos devem estar visíveis para o nó.
+
+
+* Você _não pode_ reatribuir um disco se as seguintes condições forem verdadeiras:
++
+** O tipo de contentor do disco selecionado é "Vermelho", e a partição de dados não é sobressalente.
+** O disco está associado a um pool de armazenamento.
+
+
+* Não é possível reatribuir a partição de dados de discos compartilhados se o failover de storage não estiver habilitado nos nós associados aos discos compartilhados.
+* Para discos de partição, você pode reatribuir apenas a partição de dados dos discos.
+* Para configurações do MetroCluster, não é possível usar o Gerenciador do sistema para reatribuir discos.
++
+Você deve usar a interface de linha de comando para reatribuir discos para configurações do MetroCluster.
+
+
+
+[NOTE]
+====
+Em versões posteriores do ONTAP, você usa a CLI do ONTAP para remover a propriedade do disco e, em seguida, atribuir um novo proprietário.
+
+====
+.Passos
+. Clique em *Storage* > *Aggregates & Disks* > *Disks*.
+. Na janela *Disks*, selecione a guia *Inventory*.
+. Selecione os discos que você deseja reatribuir e clique em *Assign*.
+. Na caixa de diálogo *Aviso*, clique em *continuar*.
+. Na caixa de diálogo *Assign Disks* (atribuir discos), selecione o nó ao qual deseja reatribuir os discos.
+. Clique em *Assign*.
+
+
+.Informações relacionadas
+* link:https://docs.netapp.com/us-en/ontap/disks-aggregates/remove-ownership-disk-task.html["Remova a propriedade do disco usando a CLI do ONTAP (ONTAP 9.3 e posterior)"]
+* link:https://docs.netapp.com/us-en/ontap/disks-aggregates/disk-autoassignment-policy-concept.html["Atribuir discos automaticamente usando a CLI do ONTAP (ONTAP 9.3 e posterior)"]
+* link:https://docs.netapp.com/us-en/ontap/disks-aggregates/manual-assign-disks-ownership-manage-task.html["Atribua discos manualmente usando a CLI do ONTAP (ONTAP 9.3 e posterior)"]
+

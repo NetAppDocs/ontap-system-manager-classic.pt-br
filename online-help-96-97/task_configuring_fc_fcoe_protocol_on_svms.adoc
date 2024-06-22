@@ -1,0 +1,60 @@
+---
+permalink: online-help-96-97/task_configuring_fc_fcoe_protocol_on_svms.html 
+sidebar: sidebar 
+keywords: online, help, configure, fc, protocol, fcoe, svm, online, help, system, manager 
+summary: 'Você pode configurar o protocolo FC e o protocolo FCoE na máquina virtual de storage (SVM) para hosts SAN. Os LIFs são criados nos adaptadores mais adequados e são atribuídos a portsets para garantir a redundância do caminho dos dados. Com base nos seus requisitos, você pode configurar o protocolo FC ou os protocolos FCoE ou ambos os protocolos usando o System Manager.' 
+---
+= Configure o protocolo FC e o protocolo FCoE em SVMs com o System Manager - ONTAP 9.7 e versões anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para configurar o protocolo FC e o protocolo FCoE na máquina virtual de storage (SVM) para hosts SAN. Os LIFs são criados nos adaptadores mais adequados e são atribuídos a portsets para garantir a redundância do caminho dos dados. Com base nos seus requisitos, você pode configurar o protocolo FC ou os protocolos FCoE ou ambos os protocolos usando o System Manager.
+
+.Antes de começar
+* A licença FCP deve estar ativada no cluster.
+* Todos os nós no cluster precisam estar íntegros.
+* Cada nó deve ter pelo menos duas portas configuradas corretamente para cada protocolo (FC e FCoE).
+
+
+.Sobre esta tarefa
+* Você pode configurar o protocolo FC e o protocolo FCoE enquanto cria o SVM ou pode configurar os protocolos posteriormente.
++
+Se os protocolos não forem permitidos no SVM, você poderá usar a janela Editar Máquina Virtual de Storage para ativar os protocolos para o SVM.
+
+* Agregados SnapLock não são considerados para criar volumes automaticamente.
+
+
+.Passos
+. Se você não tiver configurado os protocolos durante a criação do SVM, clique na guia *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Protocolos*, clique em *FC/FCoE*.
+. Na seção *Configuração da interface de dados*, selecione a opção correspondente para configurar LIFs de dados para o protocolo FC e o protocolo FCoE.
+. Especifique o número de LIFs de dados por nó para cada protocolo.
++
+O número mínimo de LIFs por nó é um. O número máximo é o mínimo de todas as portas no `up` estado entre os nós. Se o valor máximo for um número ímpar, o número par anterior é considerado como o valor máximo. Você pode escolher qualquer número par no intervalo de valores mínimo e máximo.
+
++
+Um cluster de quatro nós tem node1, node2 e node3 com seis portas cada no estado e node4 com sete portas `up` no estado `up`. O valor máximo efetivo para o cluster é seis.
+
++
+Se o número de LIFs que você deseja atribuir ao nó for superior a dois, você deve atribuir pelo menos um portset a cada LIF.
+
+. Se pretender verificar ou modificar a configuração LIFs gerada automaticamente, selecione *Rever ou Editar a Associação de interfaces*.
++
+Você pode modificar apenas o nome LIF e a porta inicial. Você deve garantir que não especifique entradas duplicadas.
+
+. *Opcional:* provisione um LUN para o armazenamento FC ou armazenamento FCoE ao configurar o protocolo fornecendo o tamanho do LUN, o tipo de SO para o LUN e os detalhes do iniciador do host.
+. Clique em *Enviar e continuar*.
+
+
+.Resultados
+Os LIFs e os portsets de dados são criados com a configuração especificada. Os LIFs são distribuídos em conformidade entre os portsets. O serviço FCP é iniciado se todas as LIFs forem criadas com êxito para pelo menos um protocolo.
+
+Se a criação de LIF falhar, você poderá criar os LIFs e iniciar o serviço FCP a partir da janela FC/FCoE.
+
+*Informações relacionadas*
+
+https://docs.netapp.com/ontap-9/index.jsp["Centro de Documentação do ONTAP 9"]

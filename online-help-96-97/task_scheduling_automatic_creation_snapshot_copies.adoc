@@ -1,0 +1,31 @@
+---
+permalink: online-help-96-97/task_scheduling_automatic_creation_snapshot_copies.html 
+sidebar: sidebar 
+keywords: schedule, automatic, creation, snapshot, copy, online, help 
+summary: Você pode usar o System Manager para configurar um agendamento para a criação automática de cópias Snapshot automáticas de um volume. Você pode especificar a hora e a frequência da criação das cópias. Você também pode especificar o número de cópias Snapshot salvas. 
+---
+= Agende a criação automática de cópias Snapshot com o System Manager - ONTAP 9.7 e versões anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para configurar um agendamento para a criação automática de cópias Snapshot de um volume. Você pode especificar a hora e a frequência da criação das cópias. Você também pode especificar o número de cópias Snapshot salvas.
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. No menu suspenso no campo *SVM*, selecione *All SVMs*.
+. Selecione o volume pretendido na lista de volumes.
+. Clique em *mais ações* > *Gerenciar capturas instantâneas* > *Configurações de configuração*.
+. Na caixa de diálogo *Configurar cópias Snapshot de volume*, selecione *Ativar cópias Snapshot programadas*.
+. Selecione uma política de instantâneos.
++
+Você pode agendar a criação apenas de cópias Snapshot baseadas em políticas.
+
+. Clique em *OK* para salvar as alterações e iniciar o agendamento de cópias instantâneas.
+
+
+*Informações relacionadas*
+
+xref:reference_volumes_window.adoc[Janela volumes]

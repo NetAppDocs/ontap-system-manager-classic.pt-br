@@ -1,0 +1,35 @@
+---
+permalink: online-help-96-97/task_viewing_flexgroup_volume_information.html 
+sidebar: sidebar 
+keywords: flexgroup, volume, graphical, online, help, system, manager 
+summary: Você pode usar o Gerenciador do sistema para exibir informações sobre um volume FlexGroup. Você pode exibir uma representação gráfica do espaço alocado, o status de proteção e o desempenho de um volume FlexGroup. 
+---
+= Veja as informações de volume do FlexGroup com o Gerenciador do sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para exibir informações sobre um volume FlexGroup. Você pode exibir uma representação gráfica do espaço alocado, o status de proteção e o desempenho de um volume FlexGroup.
+
+.Sobre esta tarefa
+Você também pode visualizar as cópias Snapshot disponíveis para o volume FlexGroup, as relações de proteção de dados do volume FlexGroup e as métricas de performance média, ler métricas de performance e gravar métricas de performance do volume FlexGroup com base na latência, IOPS e taxa de transferência.
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. No menu suspenso no campo *SVM*, selecione *All SVMs*.
+. Na lista exibida de volumes FlexGroup, selecione o volume FlexGroup sobre o qual deseja exibir informações.
++
+São apresentadas as informações sobre o volume FlexGroup, o espaço atribuído ao volume FlexGroup, o estado de proteçãoão do volume FlexGroup e as informações de desempenho sobre o volume FlexGroup.
+
+. Clique no link *Mostrar mais detalhes* para ver mais informações sobre o volume FlexGroup.
+. Clique na guia *cópias Snapshot* para exibir as cópias Snapshot do volume FlexGroup.
+. Clique na guia *proteção de dados* para exibir as relações de proteção de dados do volume FlexGroup.
+. Clique na guia *eficiência de armazenamento* para exibir as configurações de eficiência de armazenamento.
+. Clique na guia *desempenho* para exibir as métricas médias de desempenho, ler métricas de desempenho e escrever métricas de desempenho do volume FlexGroup com base na latência, IOPS e taxa de transferência.
+
+
+*Informações relacionadas*
+
+xref:reference_volumes_window.adoc[Janela volumes]

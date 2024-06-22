@@ -1,0 +1,42 @@
+---
+permalink: online-help-96-97/task_deleting_application.html 
+sidebar: sidebar 
+keywords: delete, application, provisioned 
+summary: Você pode excluir um aplicativo provisionado quando ele não for mais necessário. 
+---
+= Exclua um aplicativo com o Gerenciador do sistema - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para excluir um aplicativo provisionado quando ele não for mais necessário.
+
+.Sobre esta tarefa
+Como administrador do cluster, depois de provisionar um aplicativo, você pode excluí-lo quando não precisar mais dele. O procedimento de exemplo a seguir descreve como excluir um aplicativo *nas container*.
+
+.Passos
+. Clique em *aplicativos e camadas* > *aplicativos*
+. Clique no nome da aplicação de contentor nas.
++
+[NOTE]
+====
+Se alguém adicionar novos aplicativos usando a CLI ou a API REST enquanto estiver exibindo a lista de aplicativos, não será possível exibir esses novos aplicativos ao rolar a lista.
+
+====
++
+A guia *Visão geral* da janela Detalhes do aplicativo: nas exibe as configurações do aplicativo.
+
+. Clique em *Excluir*.
++
+Uma caixa de diálogo exibe uma mensagem de aviso que pergunta se você tem certeza de que deseja excluir esse aplicativo.
+
+. Clique em *Excluir*.
++
+[NOTE]
+====
+Qualquer volume excluído usando a operação de exclusão do aplicativo não é colocado na fila de recuperação. O volume é eliminado imediatamente.
+
+====
+

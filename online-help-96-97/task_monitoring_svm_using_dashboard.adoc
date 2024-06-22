@@ -1,0 +1,20 @@
+---
+permalink: online-help-96-97/task_monitoring_svm_using_dashboard.html 
+sidebar: sidebar 
+keywords: system, manager, health, performance, monitor, svms, online, help 
+summary: 'Com o dashboard do System Manager, você monitora a integridade e a performance de uma máquina virtual de storage (SVM).' 
+---
+= Monitore SVMs com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O dashboard do ONTAP System Manager classic (disponível no ONTAP 9.7 e versões anteriores) permite monitorar a integridade e a performance de uma máquina virtual de storage (SVM).
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o nome do SVM que você deseja monitorar.
+. Veja os detalhes nos painéis do painel de instrumentos.
+

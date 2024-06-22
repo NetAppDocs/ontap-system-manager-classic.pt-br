@@ -1,0 +1,80 @@
+---
+permalink: online-help-96-97/concept_high_availability.html 
+sidebar: sidebar 
+keywords: high, availability, system, manager, hardware, redundancy, nondisruptive, operations, fault, tolerance 
+summary: 'Você pode usar o System Manager para criar pares de alta disponibilidade (HA) que fornecem redundância de hardware necessária para operações ininterruptas e tolerância de falhas.' 
+---
+= Crie pares de alta disponibilidade com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para criar pares de alta disponibilidade (HA) que fornecem redundância de hardware necessária para operações ininterruptas e tolerância de falhas.
+
+
+
+== Janela de alta disponibilidade
+
+A janela alta disponibilidade fornece uma representação pictórica do estado de alta disponibilidade (HA), do status da interconexão e do status de aquisição ou de giveback de todos os pares de HA no ONTAP. Você também pode iniciar manualmente uma operação de aquisição ou operação de giveback usando a janela alta disponibilidade.
+
+Você pode exibir detalhes como o status de aquisição ou giveback e o status da interconexão clicando na imagem de par de HA.
+
+A cor indica o status do par HA:
+
+* Verde: Indica que o par de HA e a interconexão estão configurados e disponíveis de forma otimizada para aquisição ou giveback.
++
+Verde também indica a tomada em estado de progresso, giveback em estado de progresso, e espera para o estado de giveback.
+
+* Vermelho: Indica um estado rebaixado, como uma falha de aquisição.
+* Amarelo: Indica que o status da interconexão está inativo.
+
+
+Quando vários pares de HA em um cluster estão envolvidos simultaneamente em operações de failover de storage, o status do cluster exibido é baseado no status e na gravidade do par de HA. A seguinte ordem de gravidade é considerada durante a exibição do status do cluster: Aquisição em andamento, giveback em andamento, aguardando a giveback.
+
+
+
+=== Ações
+
+É possível executar tarefas como takeover ou giveback com base no status dos nós no par de HA.
+
+* Takeover `node_name`
++
+Permite executar uma operação de takeover quando a manutenção é necessária no nó do parceiro.
+
+* Giveback `node_name`
++
+Permite executar uma operação de giveback quando o nó do parceiro que foi assumido está aguardando a giveback ou está em um estado parcial de giveback.
+
+* Ativar ou desativar a giveback automática
++
+Ativa ou desativa a operação automática de giveback.
+
++
+[NOTE]
+====
+A giveback automática está ativada por predefinição.
+
+====
+
+
+
+
+=== Botões de comando
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
++
+[NOTE]
+====
+As informações exibidas na janela alta disponibilidade são atualizadas automaticamente a cada 60 segundos.
+
+====
+
+
+*Informações relacionadas*
+
+xref:task_monitoring_ha_pairs.adoc[Monitorar pares de HA]

@@ -1,0 +1,114 @@
+---
+permalink: online-help-96-97/reference_protection_window.html 
+sidebar: sidebar 
+keywords: command, buttons, protection, window, relationship, vault, mirror, online, help, ls 
+summary: 'Você pode usar a janela proteção para criar e gerenciar relacionamentos de espelho, relacionamentos de cofre e relacionamentos de espelho e cofre e exibir detalhes sobre esses relacionamentos. A janela proteção não exibe relações de compartilhamento de carga (LS) e relações de proteção de dados de transição (TDP).' 
+---
+= Janela de proteção com o Gerenciador do sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a janela de proteção com o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para criar e gerenciar relacionamentos de espelho, relacionamentos de cofre e relacionamentos de espelho e cofre e exibir detalhes sobre esses relacionamentos. A janela proteção não exibe relações de compartilhamento de carga (LS) e relações de proteção de dados de transição (TDP).
+
+
+
+== Botões de comando
+
+* *Criar*
++
+Abre a caixa de diálogo criar relação de proteção, que pode ser usada para criar uma relação de espelho, relação de cofre ou relação de espelho e cofre a partir de um volume de destino.
+
++
+O System Manager não exibe nenhuma máquina virtual de storage (SVM) configurada para recuperação de desastres (DR) na caixa de diálogo criar relacionamento de proteção.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar relação de proteção, que pode ser usada para editar a programação e a política de um relacionamento.
+
++
+Para uma relação de Vault, relação de espelhamento e Vault ou relação de espelho flexível de versão, é possível modificar o tipo de relacionamento modificando o tipo de diretiva.
+
+* *Excluir*
++
+Abre a caixa de diálogo Excluir relação de proteção, que você pode usar para excluir um relacionamento.
+
+* *Operações*
++
+Exibe as operações que podem ser executadas em uma relação de proteção.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+== Lista de relacionamentos de proteção
+
+* *Source Storage Virtual Machine*
++
+Exibe o SVM que contém o volume a partir do qual os dados são espelhados ou abobadados em uma relação.
+
+* *Volume da fonte*
++
+Exibe o volume a partir do qual os dados são espelhados ou abobadados em uma relação.
+
+* *Volume de destino*
++
+Exibe o volume para o qual os dados são espelhados ou abobadados em uma relação.
+
+* *É saudável*
++
+Mostra se o relacionamento é saudável ou não.
+
+* *Tipo de objeto*
++
+Exibe o tipo de objeto da relação, como volume, FlexGroup ou SVM.
+
+* *Estado do relacionamento*
++
+Exibe o estado da relação, como Snapmirrored, Uninitialized, ou Broken Off.
+
+* *Status da transferência*
++
+Exibe o status da relação.
+
+* *Tipo de relacionamento*
++
+Exibe o tipo de relacionamento, como espelho, cofre ou espelho e cofre.
+
+* *Tempo de atraso*
++
+O tempo de atraso é a diferença entre a hora atual e o carimbo de data/hora da última cópia Snapshot que foi transferida com sucesso para o sistema de destino. O tempo de atraso será sempre pelo menos tanto quanto a duração da última transferência bem-sucedida, a menos que os relógios nos sistemas de origem e destino não sejam sincronizados. A diferença de fuso horário é calculada automaticamente para o tempo de atraso.
+
+* *Nome da política*
++
+Exibe o nome da política atribuída à relação.
+
+* *Tipo de política*
++
+Exibe o tipo de política atribuído ao relacionamento. O tipo de política pode ser StrictSync, Sync, Asynchronous Mirror, Asynchronous Vault ou Asynchronous Mirror Vault.
+
+
+
+
+
+== Área de detalhes
+
+* *Separador Detalhes*
++
+Exibe informações gerais sobre a relação selecionada, como cluster de origem e cluster de destino, taxa de transferência de dados, estado da relação, detalhes sobre a taxa de compressão de rede, status de transferência de dados, tipo de transferência de dados atual, tipo de última transferência de dados, cópia Snapshot mais recente e carimbo de data/hora da cópia Snapshot mais recente.
+
+* *Separador Detalhes da política*
++
+Exibe detalhes sobre a política atribuída à relação de proteção selecionada. Essa guia também exibe o rótulo SnapMirror e as programações de cópia Snapshot no volume de origem que correspondem ao rótulo especificado.
+
+* *Guia cópias Snapshot*
++
+Exibe a contagem de cópias Snapshot com o atributo SnapMirror label para a relação de proteção selecionada e o carimbo de data/hora da cópia Snapshot mais recente.
+
+

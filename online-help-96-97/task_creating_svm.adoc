@@ -1,0 +1,112 @@
+---
+permalink: online-help-96-97/task_creating_svm.html 
+sidebar: sidebar 
+keywords: svm, create, storage, virtual, machine, online, help 
+summary: 'Você pode usar a janela Storage Virtual Machine (SVM) para criar SVMs totalmente configuradas. As SVMs servem dados após a criação de objetos de storage nesses SVMs.' 
+---
+= Crie um SVM com o System Manager - ONTAP 9.7 e versões anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+No ONTAP System Manager classic (disponível no ONTAP 9.7 e versões anteriores), você pode usar a janela Máquina Virtual de Storage (SVM) para criar SVMs totalmente configuradas. As SVMs servem dados após a criação de objetos de storage nesses SVMs.
+
+.Antes de começar
+* Você deve ter criado um agregado e o agregado deve estar on-line.
+* Você precisa ter certeza de que o agregado tenha espaço suficiente para o volume raiz do SVM.
+
+
+.Passos
+. Insira um nome para o SVM.
+. Selecione protocolos de dados para o SVM:
++
+|===
+| Se você quiser... | Então... 
+
+
+ a| 
+Ative o protocolo CIFS configurando o servidor CIFS usando um ative Directory
+ a| 
+.. Selecione a caixa *ative Directory*.
+.. Introduza o nome de administrador do ative Directory.
+.. Introduza a palavra-passe de administrador do ative Directory.
+.. Introduza um nome para o servidor CIFS.
+.. Introduza um nome para o domínio do ative Directory.
+.. Dependendo dos seus requisitos, selecione a caixa *um data LIF neste SVM* ou *um data LIF por nó nesta SVM*.
+.. Forneça detalhes de LIF de dados, como endereço IP, máscara de rede, gateway e porta.
+.. Forneça detalhes de DNS.
+
+
+
+
+ a| 
+Ative o protocolo CIFS configurando o servidor CIFS usando um grupo de trabalho
+ a| 
+.. Selecione a caixa *Workgroup*.
+.. Introduza um nome para o grupo de trabalho.
+.. Introduza um nome para o servidor CIFS.
+.. Dependendo dos seus requisitos, marque a caixa de seleção *um data LIF neste SVM* ou *um data LIF por nó neste SVM*.
+.. Forneça detalhes de LIF de dados, como endereço IP, máscara de rede, gateway e porta.
+
+
+
+
+ a| 
+Ativar o protocolo NFS
+ a| 
+.. Selecione a caixa *NFS*.
+.. Dependendo dos seus requisitos, marque a caixa de seleção *um data LIF neste SVM* ou *um data LIF por nó neste SVM*.
+.. Forneça detalhes de LIF de dados, como endereço IP, máscara de rede, gateway e porta.
+
+
+
+
+ a| 
+Ativar protocolo iSCSI
+ a| 
+.. Selecione a caixa *iSCSI*.
+.. Forneça detalhes de LIF de dados, como endereço IP, máscara de rede, gateway e porta.
+
+
+
+
+ a| 
+Ativar o protocolo FC/FCoE
+ a| 
+.. Selecione a caixa *FC/FCoE*.
+.. Selecione as portas FC/FCoE para protocolos FC ou FCoE.
++
+[NOTE]
+====
+Cada nó deve ter pelo menos uma porta configurada corretamente para cada protocolo (FC e FCoE).
+
+====
+
+
+
+
+ a| 
+Ativar o protocolo NVMe
+ a| 
+.. Selecione a caixa *NVMe*.
+.. Selecione as portas NVMe para protocolos NVMe.
++
+[NOTE]
+====
+Pelo menos um adaptador capaz de NVMe precisa estar disponível em um dos nós para configurar o NVMe. Além disso, a partir do ONTAP 9.5, é necessário configurar pelo menos um LIF NVMe para cada nó de um par de HA associado ao SVM. Você pode criar um máximo de duas LIFs NVMe para cada nó no par.
+
+====
+
+
+|===
+. *Opcional:* clique no ícone *Opções avançadas* e forneça detalhes para configurar opções avançadas, como idioma padrão, estilo de segurança, detalhes do servidor CIFS e detalhes do NFS.
+. Clique em *Enviar e continuar* para criar o SVM.
+
+
+
+
+== O que fazer a seguir
+
+Se você clicou em *Enviar e continuar*, verifique os detalhes fornecidos na janela Resumo e clique em *Gerenciar seu cluster* para iniciar o System Manager, ou clique em *provisionar um aplicativo* para provisionar aplicativos de armazenamento ou em *Exportar configuração* para fazer o download do arquivo de configuração.

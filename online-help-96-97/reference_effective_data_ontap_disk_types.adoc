@@ -1,0 +1,73 @@
+---
+permalink: online-help-96-97/reference_effective_data_ontap_disk_types.html 
+sidebar: sidebar 
+keywords: ontap, disk, type, online, help 
+summary: A partir do Data ONTAP 8.1, certos tipos de disco ONTAP são considerados equivalentes para criar e adicionar agregados e gerenciar peças sobressalentes. O ONTAP atribui um tipo de disco efetivo para cada tipo de disco. Você pode misturar HDDs que têm o mesmo tipo de disco eficaz. 
+---
+= Use o tipo de disco ONTAP eficaz para misturar HDDs com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do Data ONTAP 8.1, certos tipos de disco ONTAP são considerados equivalentes para criar e adicionar agregados e gerenciar peças sobressalentes. O ONTAP atribui um tipo de disco efetivo para cada tipo de disco. Você pode usar o ONTAP System Manager classic (disponível em 9,7 e versões anteriores) para misturar HDDs com o mesmo tipo de disco efetivo.
+
+Quando a `raid.disktype.enable` opção estiver definida como `off`, você poderá misturar certos tipos de HDDs dentro do mesmo agregado. Quando a `raid.disktype.enable` opção está definida como `on`, o tipo de disco efetivo é o mesmo que o tipo de disco ONTAP. Os agregados podem ser criados usando apenas um tipo de disco. O valor padrão para a `raid.disktype.enable` opção é `off`.
+
+A partir do Data ONTAP 8.2, a opção `raid.mix.hdd.disktype.capacity` deve ser definida como `on` para misturar discos do tipo BSAS, FSAS e ATA. A opção `raid.mix.hdd.disktype.performance` deve ser definida como `on` para misturar discos do tipo FCAL e SAS.
+
+A tabela a seguir mostra como os tipos de disco são mapeados para o tipo de disco efetivo:
+
+|===
+| Tipo de disco ONTAP | Tipo de disco efetivo 
+
+
+ a| 
+FCAL
+ a| 
+SAS
+
+
+
+ a| 
+SAS
+ a| 
+SAS
+
+
+
+ a| 
+ATA
+ a| 
+FSAS
+
+
+
+ a| 
+BSAS
+ a| 
+FSAS
+
+
+
+ a| 
+FCAL e SAS
+ a| 
+SAS
+
+
+
+ a| 
+MSATA
+ a| 
+MSATA
+
+
+
+ a| 
+FSAS
+ a| 
+FSAS
+
+|===

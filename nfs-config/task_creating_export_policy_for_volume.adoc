@@ -1,0 +1,54 @@
+---
+permalink: nfs-config/task_creating_export_policy_for_volume.html 
+sidebar: sidebar 
+keywords: nfs, client, access, volume, create, export, policy, create an export policy for the volume 
+summary: Antes que qualquer cliente NFS possa acessar um volume, você deve criar uma política de exportação para o volume, adicionar uma regra que permita o acesso por um host de administração e aplicar a nova política de exportação ao volume. 
+---
+= Crie uma política de exportação para o volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes que qualquer cliente NFS possa acessar um volume, você deve criar uma política de exportação para o volume, adicionar uma regra que permita o acesso por um host de administração e aplicar a nova política de exportação ao volume.
+
+.Passos
+. Navegue até a janela *SVMs*.
+. Clique na guia *Configurações da SVM*.
+. Criar uma nova política de exportação:
++
+.. No painel *Policies*, clique em *Export Policies* e, em seguida, clique em *Create*.
+.. Na janela *Create Export Policy* (criar política de exportação), especifique um nome de política.
+.. Em *regras de exportação*, clique em *Adicionar* para adicionar uma regra à nova política.
+
+
++
+image::../media/export_policy_create_nfs.gif[Esta captura de tela é descrita pelo texto anterior.]
+
+. Na caixa de diálogo *Create Export Rule* (criar regra de exportação), crie uma regra que permita a um administrador ter acesso total à exportação através de todos os protocolos:
++
+.. Especifique o endereço IP ou o nome do cliente, como admin_host, a partir do qual o volume exportado será administrado.
+.. Selecione *NFSv3*.
+.. Certifique-se de que todos os detalhes de acesso *Read/Write* estão selecionados, bem como *Allow superuser access*.
++
+image::../media/export_rule_for_admin_manual_multi_nfs.gif[Esta captura de tela é descrita pelo texto anterior.]
+
+.. Clique em *OK* e, em seguida, clique em *criar*.
+
+
++
+A nova política de exportação é criada, juntamente com sua nova regra.
+
+. Aplique a nova política de exportação ao novo volume para que o host administrador possa acessar o volume:
++
+.. Navegue até a janela *namespace*.
+.. Selecione o volume e clique em *alterar política de exportação*.
+.. Selecione a nova política e clique em *alterar*.
+
+
+
+
+*Informações relacionadas*
+
+xref:task_verifying_nfs_access_from_unix_administration_host.adoc[Verificando o acesso NFS a partir de um host de administração UNIX]

@@ -1,0 +1,46 @@
+---
+permalink: fc-config-esxi/task_verifying_that_iscsi_fc_configuration_is_supported.html 
+sidebar: sidebar 
+keywords: reliable, operation, verify, entire, fc, configuration, support, verify that the fc configuration is supported 
+summary: Para uma operação confiável, você deve verificar se toda a configuração FC é compatível. 
+---
+= Verifique se a configuração FC é compatível
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para uma operação confiável, você deve verificar se toda a configuração FC é compatível.
+
+.Passos
+. Vá para a Matriz de interoperabilidade para verificar se você tem uma combinação suportada dos seguintes componentes:
++
+** Software ONTAP
+** Arquitetura da CPU do computador host (para servidores de rack padrão)
+** Modelo de blade de processador específico (para servidores blade)
+** Modelo e versões de driver, firmware e BIOS do adaptador de barramento de host FC (HBA)
+** Protocolo de storage (FC)
+** Versão do sistema operacional ESXi
+** Tipo e versão do sistema operativo convidado
+** Virtual Storage Console (VSC) para o software VMware vSphere
+** Versão do Windows Server para executar o VSC
+
+
+. Clique no nome da configuração selecionada.
++
+Os detalhes dessa configuração são exibidos na janela Detalhes da configuração.
+
+. Revise as informações nas guias a seguir:
++
+** Notas
++
+Lista alertas importantes e informações específicas à sua configuração.
+
+** Políticas e Diretrizes
++
+Fornece diretrizes gerais para todas as configurações de SAN.
+
+
+
+

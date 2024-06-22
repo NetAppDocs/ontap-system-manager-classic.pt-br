@@ -1,0 +1,111 @@
+---
+permalink: online-help-96-97/task_updating_single_node_clusters.html 
+sidebar: sidebar 
+keywords: update, singe, node, cluster, system, manager, online, help 
+summary: Você pode usar o System Manager para atualizar clusters de nó único. 
+---
+= Atualize clusters de nó único com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para atualizar clusters de nó único.
+
+.Antes de começar
+* Os clusters precisam estar executando o ONTAP 9.4 ou posterior.
+* Você deve ter copiado a imagem do software do site de suporte da NetApp para um servidor HTTP em sua rede, para um servidor FTP em sua rede ou para seu sistema local para que os nós possam acessar a imagem.
++
+link:task_obtaining_ontap_software_images.html["Obtenção de imagens de software ONTAP"]
+
+
+
+.Sobre esta tarefa
+* A partir do System Manager 9,5, é possível atualizar clusters de nó único em configurações de MetroCluster de dois pacotes.
++
+Você deve executar esta operação em ambos os sites.
+
+* A atualização de clusters de nó único nas configurações do MetroCluster não causa interrupções.
++
+A interface do utilizador do System Manager não está disponível enquanto o cluster está a reiniciar.
+
+* No System Manager 9,4 e posterior, é possível atualizar clusters de nó único em configurações que não sejam da MetroCluster.
++
+A atualização de clusters de nó único em configurações sem MetroCluster causa interrupções. Os dados do cliente não estão disponíveis enquanto a atualização estiver em andamento.
+
+* Se você tentar executar outras tarefas durante a atualização do nó que hospeda o LIF de gerenciamento de cluster, uma mensagem de erro pode ser exibida.
++
+Você deve esperar que a atualização seja concluída antes de executar qualquer operação.
+
+* Se o protocolo NVMe estiver configurado no System Manager 9,4 e você executar uma atualização do System Manager 9,4 para o System Manager 9,5, o protocolo NVMe estará disponível por um período de carência de 90 dias sem licença.
++
+Esse recurso não está disponível nas configurações do MetroCluster.
+
+* Se o protocolo NVMe não estiver configurado no System Manager 9,5 e você executar uma atualização do System Manager 9,5 para o System Manager 9,6, o período de carência não será fornecido e você precisará instalar a licença NVMe para usar o protocolo NVMe.
++
+Esse recurso não está disponível nas configurações do MetroCluster.
+
+
+
+.Passos
+. Clique em *Configuração* > *Cluster* > *Atualizar*.
+. Na guia *Atualização de cluster*, adicione uma nova imagem de software ou selecione uma imagem de software disponível.
++
+|===
+| Se você quiser... | Então... 
+
+
+ a| 
+Adicione uma nova imagem de software do cliente local
+ a| 
+.. Clique em *Add from local Client*.
+.. Procure a imagem do software e, em seguida, clique em *Open*.
+
+
+
+
+ a| 
+Adicione uma nova imagem de software a partir do site de suporte da NetApp
+ a| 
+.. Clique em *Adicionar do servidor*.
+.. Na caixa de diálogo Adicionar uma nova imagem de software, insira o URL do servidor HTTP ou servidor FTP no qual você salvou a imagem que foi baixada do site de suporte da NetApp.
++
+Para FTP anônimo, você deve especificar a URL no `+ftp://anonymous@ftpserver+` formato.
+
+.. Clique em *Add*.
+
+
+
+
+ a| 
+Selecione uma imagem disponível
+ a| 
+Escolha uma das imagens listadas.
+
+|===
+. Clique em *Validar* para executar as verificações de validação de pré-atualização para verificar se o cluster está pronto para uma atualização.
++
+A operação de validação verifica os componentes do cluster para validar que a atualização pode ser concluída e, em seguida, exibe quaisquer erros ou avisos. A operação de validação também exibe qualquer ação corretiva necessária que você deve executar antes de atualizar o software.
+
++
+[NOTE]
+====
+Você deve executar todas as ações corretivas necessárias para os erros antes de prosseguir com a atualização. Embora você possa ignorar as ações corretivas para os avisos, a melhor prática é executar todas as ações corretivas antes de prosseguir com a atualização.
+
+====
+. Clique em *seguinte*.
+. Clique em *Atualizar*.
++
+A validação é executada novamente.
+
++
+** Quando a validação estiver concluída, uma tabela exibe todos os erros e avisos, juntamente com todas as ações corretivas necessárias a serem tomadas antes de prosseguir.
+** Se a validação for concluída com avisos, você pode selecionar a caixa de seleção *Continue update with warnings* e, em seguida, clique em *Continue*. Quando a validação estiver concluída e a atualização estiver em andamento, a atualização pode ser pausada por causa de erros. Você pode clicar na mensagem de erro para exibir os detalhes e, em seguida, executar as ações corretivas antes de retomar a atualização.
+
+
++
+Depois que a atualização for concluída com êxito, o nó será reinicializado e você será redirecionado para a página de login do System Manager. Se o nó demorar muito tempo para reiniciar, você deve atualizar seu navegador.
+
+. Inicie sessão no System Manager e verifique se o cluster foi atualizado com sucesso para a versão selecionada clicando em *Configuration* > *Cluster* > *Update* > *Update* > *Update History* e, em seguida, visualizando os detalhes.
+

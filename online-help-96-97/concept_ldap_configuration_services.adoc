@@ -1,0 +1,94 @@
+---
+permalink: online-help-96-97/concept_ldap_configuration_services.html 
+sidebar: sidebar 
+keywords: ldap, configuration, service, system, manager, online, help, storage, virtual, machine, ldap, client, window 
+summary: Você pode usar o System Manager para gerenciar configurações LDAP. 
+---
+= Gerencie configurações LDAP com o System Manager - ONTAP 9.7 e versões anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para gerenciar configurações LDAP.
+
+
+
+== Editar clientes LDAP ativos
+
+Você pode usar o System Manager para associar um cliente LDAP ativo a uma máquina virtual de armazenamento (SVM), que permite usar LDAP como um serviço de nomes ou para mapeamento de nomes.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Serviços*, clique em *Configuração LDAP*.
+. Na janela *Configuração LDAP*, clique em *Editar*.
+. Na caixa de diálogo *Cliente LDAP ativo*, selecione o cliente LDAP que deseja editar e execute as seguintes ações:
++
+** Modifique os servidores de domínio do ative Directory.
+** Modifique os servidores preferenciais do ative Directory.
+
+
+. Clique em *OK*.
+. Verifique se as alterações feitas estão atualizadas na janela *Configuração LDAP*.
+
+
+
+
+== Eliminar clientes LDAP ativos
+
+Você pode usar o System Manager para excluir um cliente LDAP ativo quando não quiser que uma máquina virtual de storage (SVM) seja associada a ele.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. Clique na guia *Configurações da SVM*.
+. No painel *Serviços*, clique em *Configuração LDAP*.
+. Clique em *Excluir*.
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
+
+
+
+
+== Janela Configuração LDAP
+
+Você pode usar a janela Configuração LDAP para editar ou excluir clientes LDAP ativos no nível de máquina virtual de armazenamento (SVM).
+
+
+
+=== Botões de comando
+
+* *Editar*
++
+Abre a caixa de diálogo Cliente LDAP ativo, que permite editar as propriedades do cliente LDAP ativo, como servidores de domínio ative Directory e servidores ative Directory preferenciais.
+
+* *Excluir*
++
+Abre a caixa de diálogo Eliminar cliente LDAP ativo, que permite eliminar o cliente LDAP ativo.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Área de Configuração LDAP
+
+Exibe os detalhes sobre o cliente LDAP ativo.
+
+* *Nome do cliente LDAP*
++
+Exibe o nome do cliente LDAP ativo.
+
+* *Servidores de domínio ative Directory*
++
+Exibe o domínio do ative Directory para o cliente LDAP ativo.
+
+* *Servidores ative Directory preferenciais*
++
+Exibe o servidor do ative Directory preferido para o cliente LDAP ativo.
+
+

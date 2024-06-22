@@ -1,0 +1,36 @@
+---
+permalink: fc-config-windows/task_installing_hba_utility_from_hba_vendor.html 
+sidebar: sidebar 
+keywords: hba, utility, view, worldwide, port, name, wwpn, fc, port, troubleshoot, fc, issue, install the hba utility from the hba vendor 
+summary: 'O utilitário HBA permite visualizar o nome da porta mundial (WWPN) de cada porta FC. O utilitário também é útil para solucionar problemas de FC.' 
+---
+= Instale o utilitário HBA a partir do fornecedor HBA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O utilitário HBA permite visualizar o nome da porta mundial (WWPN) de cada porta FC. O utilitário também é útil para solucionar problemas de FC.
+
+.Sobre esta tarefa
+Cada fornecedor de HBA oferece um utilitário HBA para seus HBAs FC. Você deve baixar a versão correta para o seu sistema operacional host e CPU.
+
+A seguir está uma lista parcial de utilitários HBA:
+
+* Emulex HBA Manager, anteriormente conhecido como OneCommand Manager, para HBAs Emulex
+* QLogic QConvergeConsole para HBAs QLogic
+
+
+.Passos
+. Baixe o utilitário apropriado do site do seu fornecedor HBA.
+. Execute o programa de instalação e siga as instruções para concluir a instalação.
+
+
+*Informações relacionadas*
+
+https://www.broadcom.com/support/download-search?tab=search["Documentos e downloads de suporte Broadcom (Emulex)"]
+
+https://www.broadcom.com/products/storage/fibre-channel-host-bus-adapters/emulex-hba-manager["Emulex HBA Manager"]
+
+http://driverdownloads.qlogic.com/QLogicDriverDownloads_UI/OEM_Product_List.aspx?oemid=372["QLogic: Downloads de NetApp"]

@@ -1,0 +1,88 @@
+---
+permalink: online-help-96-97/concept_dns_ddns_services.html 
+sidebar: sidebar 
+keywords: dns, ddns, service, system, manager, manage, online, help, edit, settings, command, button 
+summary: Você pode usar o System Manager para gerenciar serviços DNS/DDNS. 
+---
+= Gerencie serviços DNS/DDNS com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para gerenciar serviços DNS/DDNS.
+
+
+
+== Ativar ou desativar o DDNS
+
+Você pode usar o System Manager para ativar ou desativar o DDNS em um sistema de armazenamento.
+
+.Sobre esta tarefa
+* O DNS está ativado por predefinição.
+* O DDNS está desativado por padrão.
+* O System Manager não efetua verificações de validação para as definições DNS e DDNS.
+
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Serviços*, clique em *DNS/DDNS*.
+. Na janela *Serviços DNS/DDNS*, clique em *Editar*.
+. Na caixa de diálogo *Edit DNS/DDNS Settings* (Editar definições de DNS/DDNS), ative o DDNS selecionando a caixa de verificação *DDNS Service*.
++
+Você pode desativar o DDNS desmarcando a caixa de seleção *serviço DDNS*.
+
+. Clique em *OK*.
+
+
+
+
+== Edite as configurações DNS e DDNS
+
+Você pode manter as informações do host centralmente usando o DNS. Você pode usar o System Manager para adicionar ou modificar o nome de domínio DNS do seu sistema de armazenamento. Também pode ativar o DDNS no seu sistema de armazenamento para atualizar o servidor de nomes automaticamente no servidor DNS.
+
+.Antes de começar
+Você deve ter configurado um servidor CIFS ou uma conta do ative Directory para que a máquina virtual de armazenamento (SVM) funcione de forma segura.
+
+.Sobre esta tarefa
+O System Manager não efetua verificações de validação para as definições DNS e DDNS.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Serviços*, clique em *DNS/DDNS*.
+. Clique em *Editar*.
+. Na área *domínios DNS e servidores de nomes*, adicione ou modifique os nomes de domínio DNS e os endereços IP.
+. Marque a caixa de seleção *serviço DDNS* para ativar o DDNS.
++
+.. Marque a caixa de seleção *Enable Secure DDNS* (Ativar DDNS seguro) para ativar o DDNS seguro.
+.. Especifique o nome de domínio totalmente qualificado (FQDN) e o valor de tempo para o serviço DDNS.
++
+Por padrão, o tempo para viver é definido como 24 horas e o FQDN é definido como `SVM name. domain name`.
+
+
+
+. Clique em *OK* para salvar as alterações feitas.
+
+
+
+
+== Janela Serviços DNS/DDNS
+
+A janela Serviços DNS/DDNS permite visualizar e editar as definições de DNS e DDNS atuais do seu sistema.
+
+
+
+=== Botões de comando
+
+* *Editar*
++
+Abre a caixa de diálogo Editar definições de DNS/DDNS, que pode utilizar para adicionar ou modificar detalhes de DNS ou DDNS. Você também pode ativar ou desativar o DDNS.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+

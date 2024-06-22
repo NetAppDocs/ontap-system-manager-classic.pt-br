@@ -1,0 +1,30 @@
+---
+permalink: volume-move/task_updating_ndmp_backup_after_moving_volume.html 
+sidebar: sidebar 
+keywords: volume, move, tape, ndmp, configuration, moving, baseline, migrate, backup, lif, contain, update ndmp backup after moving a volume 
+summary: 'Se o volume que você moveu tiver sido previamente feito backup em fita usando NDMP em uma configuração específica, depois de mover o volume, você poderá executar uma das seguintes ações para garantir que o volume continue sendo feito backup com êxito: Crie uma linha de base ou migre o LIF de backup para o nó que contém o volume movido.' 
+---
+= Atualize o backup NDMP depois de mover um volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se o volume que você moveu tiver sido previamente feito backup em fita usando NDMP em uma configuração específica, depois de mover o volume, você poderá executar uma das seguintes ações para garantir que o volume continue sendo feito backup com êxito: Crie uma linha de base ou migre o LIF de backup para o nó que contém o volume movido.
+
+.Sobre esta tarefa
+* Este procedimento só é necessário se o aplicativo de backup não suportar a extensão de backup com reconhecimento de cluster (CAB) e o processo de backup usar NDMP com escopo de nó.
++
+Se o aplicativo de backup suportar CAB e estiver configurado para usar o modo NDMP com escopo SVM, você poderá ignorar este procedimento.
+
+* Você deve executar apenas uma dessas ações, não ambas.
+
+
+
+
+== Procedimento
+
+* A partir do aplicativo de backup, crie uma nova linha de base.
+* Identifique o LIF configurado para o processo de backup e, em seguida, migre o LIF para o nó onde o volume reside.
+

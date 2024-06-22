@@ -1,0 +1,48 @@
+---
+permalink: expansion/index.html 
+sidebar: sidebar 
+keywords: nondisruptive, expand, exist, cluster, ha, pair, expansion, overview 
+summary: É possível expandir um cluster existente com rapidez e sem interrupções adicionando um par de HA. Um cluster maior aumenta o desempenho e a capacidade de storage disponíveis no cluster. 
+---
+= Visão geral da expansão do cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+É possível expandir um cluster existente com rapidez e sem interrupções adicionando um par de HA. Um cluster maior aumenta o desempenho e a capacidade de storage disponíveis no cluster.
+
+Você deve usar este procedimento somente se o seguinte for verdadeiro:
+
+* O cluster existente atende aos seguintes requisitos:
++
+** Ele está executando o ONTAP 9.
+** Ele contém pelo menos dois nós.
++
+Embora os exemplos neste procedimento usem um cluster de dois nós, ele também se aplica a clusters com mais de dois nós.
+
++
+Se você quiser adicionar um nó a um cluster de nó único, siga um procedimento diferente.
+
++
+https://docs.netapp.com/platstor/topic/com.netapp.doc.hw-controller-add/home.html["Adição de um segundo controlador para criar um par de HA"]
+
+** Ele não usa endereçamento IPv6 nem criptografia de armazenamento.
+** Não é uma configuração MetroCluster.
+
+
+* Os módulos do controlador que pretende adicionar cumprem os seguintes requisitos:
++
+** Se não forem novos, eles foram limpos, não fazem mais parte de um cluster e estão prontos para serem adicionados ao novo cluster.
+** Eles suportam ONTAP 9.
+** Eles estão executando uma versão da família de lançamento do ONTAP 9.
+
+
+* Ao concluir as tarefas de configuração do ONTAP com o Gerenciador de sistema, você deseja usar a IU do Gerenciador de sistema _Classic_ para ONTAP 9.7 e versões anteriores, não a UI do Gerenciador de sistema do ONTAP para ONTAP 9.7 e posteriores.
++
+https://docs.netapp.com/us-en/ontap/["Documentação do ONTAP System Manager"]
+
+* Você quer usar as práticas recomendadas, não explorar todas as opções disponíveis.
+* Você não quer ler um monte de fundo conceitual.
+

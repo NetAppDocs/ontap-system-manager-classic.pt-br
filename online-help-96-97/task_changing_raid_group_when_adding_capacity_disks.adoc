@@ -1,0 +1,46 @@
+---
+permalink: online-help-96-97/task_changing_raid_group_when_adding_capacity_disks.html 
+sidebar: sidebar 
+keywords: change, raid, group, add, capacity, disk, online, help, hdd 
+summary: 'Ao adicionar discos de capacidade (HDDs) a um agregado, você pode alterar o grupo RAID ao qual deseja adicionar os discos usando o System Manager.' 
+---
+= Altere o grupo RAID ao adicionar discos de capacidade com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ao adicionar discos de capacidade (HDDs) a um agregado, você pode usar o Gerenciador de sistema do ONTAP clássico (disponível no ONTAP 9.7 e anterior) para alterar o grupo RAID ao qual deseja adicionar os discos.
+
+.Sobre esta tarefa
+* Se o tipo RAID for RAID-DP e se você estiver adicionando o tipo FSAS ou MSATA de discos que sejam iguais ou maiores que 10 TB de tamanho, você poderá adicioná-los somente ao `Specific RAID group`, e não `New RAID group` ao ou `All RAID groups`.
++
+Os discos são adicionados após o downsizing do tamanho do disco para o tamanho dos agregados existentes.
+
+* Se o grupo RAID for RAID-TEC e se você estiver adicionando tipos de discos FSAS ou MSATA iguais ou maiores que 10 TB de tamanho, você poderá adicioná-los ao `All RAID groups`, `New RAID group` e `Specific RAID group`.
++
+Os discos são adicionados após o downsizing do tamanho do disco para o tamanho dos agregados existentes.
+
+
+
+.Passos
+. Escolha um dos seguintes métodos:
++
+** Clique em *aplicativos e camadas* > *camadas de armazenamento*.
+** Clique em *Storage* > *Aggregates & Disks* > *Aggregates*.
+
+
+. Na janela *camadas de armazenamento*, selecione o agregado ao qual deseja adicionar discos de capacidade e clique em menu:mais ações[Adicionar capacidade].
+. Na caixa de diálogo *Adicionar capacidade*, execute as seguintes etapas:
++
+.. Clique em *alterar*.
+.. Na caixa de diálogo *alterar configuração RAID*, especifique o grupo RAID ao qual deseja adicionar os discos de capacidade.
++
+Pode alterar o valor predefinido `All RAID groups` para `Specific RAID group` ou `New RAID group`.
+
+.. Clique em *Salvar*.
+
+
+

@@ -1,0 +1,69 @@
+---
+permalink: expansion/task_gathering_required_information.html 
+sidebar: sidebar 
+keywords: expand, cluster, network, information, require, configure, node-management, lif, service, ip, adress, node, gather the required network information 
+summary: Antes de expandir um cluster, você deve obter as informações de rede necessárias para configurar posteriormente as LIFs de gerenciamento de nós e os endereços IP do processador de serviço para ambos os nós. 
+---
+= Reúna as informações de rede necessárias
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de expandir um cluster, você deve obter as informações de rede necessárias para configurar posteriormente as LIFs de gerenciamento de nós e os endereços IP do processador de serviço para ambos os nós.
+
+.Passos
+. Obtenha os detalhes a seguir para configurar duas LIFs de gerenciamento de nós - uma para cada um dos nós que você planeja adicionar ao cluster:
++
+** Endereço IP
+** Máscara de rede
+** Gateway
+** Porta
+
+
+. Se o seu site normalmente tiver entradas de DNS para LIFs de gerenciamento de nó, verifique se as entradas de DNS são criadas para os novos nós.
+. Determine se o cluster usa configuração de rede automática ou manual para o SP usando o `system service-processor network auto-configuration show` comando.
++
+Se um nome de sub-rede for exibido na `SP IPv4 Subnet Name` coluna ou `SP IPv6 Subnet Name`, o cluster usará a rede SP automática. Se ambas as colunas estiverem em branco, o cluster está usando a rede SP manual.
+
++
+Na saída a seguir, a sub-rede SUB1 indica que o cluster1 SP usa a configuração automática de rede:
+
++
+[listing]
+----
+cluster1::> system service-processor network auto-configuration show
+Cluster Name         SP IPv4 Subnet Name          SP IPv6 Subnet Name
+-------------------- ---------------------------- -------------------
+cluster1             sub1                            -
+----
++
+Na saída a seguir, os campos de sub-rede em branco indicam que o cluster1 SP usa configuração manual de rede:
+
++
+[listing]
+----
+cluster1::> system service-processor network auto-configuration show
+Cluster Name         SP IPv4 Subnet Name          SP IPv6 Subnet Name
+-------------------- ---------------------------- -------------------
+cluster1             -                            -
+----
+. Dependendo da configuração da rede SP, execute uma das seguintes ações:
++
+** Se o SP usar a configuração manual de rede, obtenha dois endereços IP que você usará mais tarde ao configurar o SP nos novos nós.
+** Se o SP usar a configuração automática de rede, verifique se a sub-rede usada pelo SP tem endereços IP disponíveis para os dois novos nós usando o `network subnet show` comando. Na saída a seguir, a sub-rede SUB1 tem 2 endereços disponíveis:
+
+
++
+[listing]
+----
+cluster1::>  network subnet show
+IPspace: Default
+Subnet                     Broadcast                   Avail/
+Name      Subnet           Domain    Gateway           Total   Ranges
+--------- ---------------- --------- --------------- --------- ---------------
+sub1      10.53.33.1/18    Default   10.53.0.1          2/4    10.53.33.3-10.53.33.6
+...
+----
+

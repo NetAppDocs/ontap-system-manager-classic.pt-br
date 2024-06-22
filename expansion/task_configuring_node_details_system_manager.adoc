@@ -1,0 +1,45 @@
+---
+permalink: expansion/task_configuring_node_details_system_manager.html 
+sidebar: sidebar 
+keywords: system, manager, configure, node, management, lif, service, processor, setting, add, configure the node details in system manager 
+summary: Você pode usar o System Manager para configurar as configurações de LIF de gerenciamento de nós e processador de serviço para os nós recém-adicionados. 
+---
+= Configure os detalhes do nó no System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o System Manager para configurar as configurações de LIF de gerenciamento de nós e processador de serviço para os nós recém-adicionados.
+
+.Antes de começar
+* Número suficiente de portas deve estar presente no espaço IPspace padrão para a criação de LIF.
+* Todas as portas devem estar em funcionamento.
+
+
+.Passos
+. Configurar o gerenciamento de nós:
++
+.. Introduza o endereço IP no campo *Endereço IP*.
+.. Selecione a porta para gerenciamento de nós no campo *Port*.
+.. Introduza os detalhes da máscara de rede e do gateway.
+
+
+. Configurar as definições do processador de serviço:
++
+.. Marque a caixa de seleção *Substituir padrões* para substituir os valores padrão.
+.. Introduza o endereço IP, a máscara de rede e os detalhes do gateway.
+
+
+. Clique em *Enviar e continuar* para concluir a configuração de rede dos nós.
+. Verifique os detalhes dos nós na página *Summary*.
+
+
+
+
+== O que fazer a seguir
+
+* Se o cluster estiver protegido, você deverá criar o número necessário de LIFs entre clusters nos nós recém-adicionados para evitar peering parcial e proteção pouco saudável.
+* Se os protocolos de dados SAN estiverem ativados no cluster, você deverá criar o número necessário de LIFs de dados SAN para fornecimento de dados.
+

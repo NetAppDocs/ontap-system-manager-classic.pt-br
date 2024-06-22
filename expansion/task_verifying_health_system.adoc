@@ -1,0 +1,66 @@
+---
+permalink: expansion/task_verifying_health_system.html 
+sidebar: sidebar 
+keywords: expand, cluster, verify, component, healthy, config, advisor, tool, run, ontap, cli, command, verify the health of the system 
+summary: Antes de expandir um cluster, verifique se todos os componentes do cluster estão íntegros executando a ferramenta Config Advisor e executando vários comandos de CLI do ONTAP. 
+---
+= Verifique a integridade do sistema
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de expandir um cluster, verifique se todos os componentes do cluster estão íntegros executando a ferramenta Config Advisor e executando vários comandos de CLI do ONTAP.
+
+.Passos
+. Verifique se você tem a versão mais recente do Config Advisor:
++
+** Se você não tem Config Advisor em seu laptop, baixe-o.
++
+https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor["NetApp Downloads: Config Advisor"]
+
+** Se você tiver o Config Advisor, inicie-o, clique em *Ajuda* > *verificar atualizações* e siga as instruções para atualizá-lo, se necessário.
++
+[NOTE]
+====
+Não desinstale a versão anterior da ferramenta nem elimine a pasta de dados durante a atualização. A ferramenta desinstala a versão anterior e a substitui pela versão mais recente. Ele renomeia a pasta de dados como a pasta mais recente e retém todo o conteúdo da pasta.
+
+====
+
+
+. Verifique o cabeamento e a configuração executando o Config Advisor:
++
+.. Conete seu laptop à rede de gerenciamento do cluster.
+.. Clique em *Collect Data*.
++
+O Config Advisor exibe quaisquer problemas encontrados.
+
+.. Se forem encontrados problemas, corrija-os e execute a ferramenta novamente.
+
+
+. Verifique a integridade do sistema com os seguintes comandos:
++
+.. Verifique se o cluster está em um estado saudável usando o `system health status show` comando e verificando se o Status é `ok`.
++
+[listing]
+----
+cluster1::> system health status show
+Status
+---------------
+ok
+----
+.. Verifique se todos os nós do cluster estão em um estado de integridade usando o `cluster show` comando e verificando se a integridade de cada nó é `true`.
++
+[listing]
+----
+cluster1::> cluster show
+Node                  Health  Eligibility
+--------------------- ------- ------------
+cluster1-1            true    true
+cluster1-2            true    true
+2 entries were displayed.
+----
+
+
+

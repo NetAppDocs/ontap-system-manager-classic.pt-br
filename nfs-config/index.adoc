@@ -1,0 +1,44 @@
+---
+permalink: nfs-config/index.html 
+sidebar: sidebar 
+keywords: nfs, access, volume, exist, storage, virtual, machine, svm, system manager classic 
+summary: 'Você pode configurar rapidamente o acesso NFS a um novo volume em uma máquina virtual de storage (SVM) nova ou existente usando a interface clássica do ONTAP System Manager (ONTAP 9.7 e anterior).' 
+---
+= Visão geral da configuração NFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode configurar rapidamente o acesso NFS a um novo volume em uma máquina virtual de storage (SVM) nova ou existente usando a interface clássica do ONTAP System Manager (ONTAP 9.7 e anterior).
+
+Utilize este procedimento se pretender configurar o acesso a um volume da seguinte forma:
+
+* O acesso NFS será por meio do NFSv3, não do NFSv4 ou do NFSv4,1.
+* Você quer usar as práticas recomendadas, não explorar todas as opções disponíveis.
+* Sua rede de dados usa o IPspace padrão, o domínio de broadcast padrão e o grupo de failover padrão.
++
+Se sua rede de dados for plana, usar esses objetos padrão garante que LIFs falharão corretamente em caso de falha de link. Se você não estiver usando os objetos padrão, https://docs.netapp.com/us-en/ontap/networking/index.html["Documentação de gerenciamento de rede"^] consulte para obter informações sobre como configurar o failover de caminho LIF.
+
+* As permissões de arquivo UNIX serão usadas para proteger o novo volume.
+* LDAP, se usado, é fornecido pelo ative Directory.
+
+
+Se quiser obter detalhes sobre a gama de capacidades do protocolo NFS da ONTAP, consulte o link:https://docs.netapp.com/us-en/ontap/nfs-admin/index.html["Visão geral de referência de NFS"^].
+
+
+
+== Outras maneiras de fazer isso em ONTAP
+
+|===
+
+
+| Para executar estas tarefas com... | Consulte... 
+
+
+| O Gerenciador de sistema redesenhado (disponível com o ONTAP 9.7 e posterior) | link:https://docs.netapp.com/us-en/ontap/task_nas_provision_linux_nfs.html["Provisione storage nas para servidores Linux usando NFS"^] 
+
+
+| A interface da linha de comando ONTAP | link:https://docs.netapp.com/us-en/ontap/nfs-config/index.html["Visão geral da configuração de NFS com a CLI"^] 
+|===

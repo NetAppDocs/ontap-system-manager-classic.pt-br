@@ -1,0 +1,39 @@
+---
+permalink: iscsi-config-rhel/task_installing_linux_unified_host_utilities_optimizing_i_o_performance.html 
+sidebar: sidebar 
+keywords: linux, unified, host, utilities, sanlun, utility, netapp, lun, report, tool, display, information, storage, cluster, node, enable, netapp, install linux unified host utilities and optimizing i/o performance 
+summary: O software de utilitários de host unificado do Linux inclui o utilitário sanlun, uma ferramenta de relatório de LUN do NetApp que você pode usar para exibir informações sobre nós de cluster de storage. 
+---
+= Instale os utilitários do host unificado do Linux e otimize o desempenho de e/S.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O software de utilitários de host unificado do Linux inclui o `sanlun` utilitário, uma ferramenta de relatório de LUN do NetApp que você pode usar para exibir informações sobre nós de cluster de storage. Você também deve habilitar o perfil de servidor correto no host Linux para otimizar o desempenho de armazenamento do NetApp.
+
+.Antes de começar
+Você deve ter identificado a versão suportada dos utilitários de host unificado Linux para sua configuração usando a Matriz de interoperabilidade. Você também deve ter o `tuned` pacote, que faz parte da distribuição do sistema operacional Linux e contém o `tuned-adm` comando, que você usa para definir o perfil do servidor no host.
+
+.Passos
+. Faça download da versão suportada dos Utilitários unificados de host do Linux a partir do site de suporte da NetApp.
++
+http://mysupport.netapp.com/NOW/cgi-bin/software["Downloads de NetApp: Software"]
+
+. Instale o software Linux Unified Host Utilities seguindo as instruções na documentação de instalação.
+. Se o `tuned` pacote não estiver instalado, digite o seguinte comando:
++
+`yum install tuned`
+
+. Para um host físico, verifique se você definiu o `enterprise-storage` perfil:
++
+`tuned-adm profile enterprise-storage`
+
+. Para um host virtual, verifique se você definiu o `virtual-guest` perfil:
++
+`tuned-adm profile virtual-guest`
+
+
+
+*Informações relacionadas* https://docs.netapp.com/us-en/ontap-sanhost/hu_luhu_71.html["Linux Unified Host Utilities 7,1 Instalação"]

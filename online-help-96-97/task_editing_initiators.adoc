@@ -1,0 +1,27 @@
+---
+permalink: online-help-96-97/task_editing_initiators.html 
+sidebar: sidebar 
+keywords: edit, initiator, online, help, group, dialog, system, manager 
+summary: Você pode usar a caixa de diálogo Editar grupo de iniciadores no System Manager para alterar o nome de um iniciador existente em um grupo de iniciadores. 
+---
+= Edite iniciadores com o Gerenciador do sistema - ONTAP 9 .7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a caixa de diálogo *Editar grupo de iniciadores* no ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para alterar o nome de um iniciador existente em um grupo de iniciadores.
+
+.Passos
+. Clique em *armazenamento* > *LUNs*.
+. Na guia *grupos de iniciadores*, selecione o grupo de iniciadores ao qual o iniciador pertence e clique em *Editar*.
+. Na caixa de diálogo *Edit Initiator Group*, clique em *Initiators*.
+. Selecione o iniciador que deseja editar e clique em *Editar*.
+. Altere o nome e clique em *OK*.
+. Clique em *Salvar e fechar*.
+
+
+*Informações relacionadas*
+
+xref:reference_luns_window.adoc[Janela LUNs]

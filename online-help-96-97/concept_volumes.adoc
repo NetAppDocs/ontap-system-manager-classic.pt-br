@@ -1,0 +1,27 @@
+---
+permalink: online-help-96-97/concept_volumes.html 
+sidebar: sidebar 
+keywords: system, manager, create, edit, delete, volume, tab, cif, nfs, online, help 
+summary: Você pode usar o System Manager para criar, editar e excluir volumes. 
+---
+= Gerencie volumes com o System Manager - ONTAP 9.7 e versões anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível em 9,7 e anterior) para criar, editar e excluir volumes.
+
+É possível acessar todos os volumes no cluster usando a guia volumes ou acessar os volumes específicos de um SVM usando *SVMs* > *volumes*.
+
+[NOTE]
+====
+A guia volumes é exibida somente se você tiver ativado as licenças CIFS e NFS.
+
+====
+*Informações relacionadas*
+
+https://docs.netapp.com/us-en/ontap/concepts/index.html["Conceitos de ONTAP"^]
+
+https://docs.netapp.com/us-en/ontap/volumes/index.html["Gerenciamento de storage lógico"^]

@@ -1,0 +1,50 @@
+---
+permalink: online-help-96-97/task_deleting_snapshot_copies.html 
+sidebar: sidebar 
+keywords: delete, snapshot, copy, online, help, system, manager 
+summary: Você pode excluir uma cópia Snapshot para economizar espaço em disco ou liberar espaço em disco usando o System Manager. Você também pode excluir uma cópia Snapshot se a cópia Snapshot não for mais necessária. 
+---
+= Excluir cópias Snapshot com o Gerenciador do sistema - ONTAP 9.7 e versões anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode excluir uma cópia Snapshot para economizar espaço em disco ou liberar espaço em disco usando o Gerenciador de sistema do ONTAP Classic (disponível no ONTAP 9.7 e versões anteriores). Você também pode excluir uma cópia Snapshot se a cópia Snapshot não for mais necessária.
+
+.Antes de começar
+Se quiser excluir uma cópia Snapshot ocupada ou bloqueada, você deve ter liberado a cópia Snapshot do aplicativo que estava usando a cópia Snapshot.
+
+.Sobre esta tarefa
+* Não é possível excluir a cópia Snapshot base em um volume pai se um volume FlexClone estiver usando essa cópia Snapshot.
++
+A cópia Snapshot de base é a cópia Snapshot usada para criar um volume FlexClone. A cópia Snapshot de base sempre exibe o status `busy` e a dependência do aplicativo como `busy,vclone` no volume pai.
+
+* Não é possível excluir uma cópia Snapshot bloqueada usada em uma relação do SnapMirror.
++
+A cópia Snapshot está bloqueada e é necessária para a próxima atualização.
+
+* Não é possível excluir uma cópia Snapshot de um volume SnapLock DP usado em um relacionamento SnapVault antes do tempo de expiração da cópia Snapshot.
+* Não é possível excluir as cópias Snapshot não expiradas (que estão comprometidas com o estado WORM) de um volume SnapLock DP em um relacionamento com o SnapVault.
+
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. No menu suspenso no campo *SVM*, selecione *All SVMs*.
+. Expanda o volume necessário.
+. Clique no link *Mostrar mais detalhes* para ver mais informações sobre o volume.
+. Clique na guia *cópias Snapshot*.
++
+A lista de cópias Snapshot disponíveis para o volume selecionado é exibida.
+
+. Selecione a cópia Snapshot que deseja excluir.
+. Clique em *Excluir*.
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
+
+
+*Informações relacionadas*
+
+xref:reference_volumes_window.adoc[Janela volumes]
+
+https://docs.netapp.com/ontap-9/index.jsp["Centro de Documentação do ONTAP 9"]

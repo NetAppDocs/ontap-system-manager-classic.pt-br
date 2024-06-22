@@ -1,0 +1,41 @@
+---
+permalink: online-help-96-97/task_configuring_nvme_protocol_on_svms.html 
+sidebar: sidebar 
+keywords: configure, nvme, protocol, svm, system, manager, namespaces, online, help 
+summary: 'Você pode configurar o protocolo NVMe em uma máquina virtual de storage (SVM) usando o System Manager. Em seguida, você pode criar namespaces e atribuí-los a um subsistema e host NVMe.' 
+---
+= Configure o protocolo NVMe em SVMs com o System Manager - ONTAP 9.7 e versões anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para configurar o protocolo NVMe em uma máquina virtual de storage (SVM). Em seguida, você pode criar namespaces e atribuí-los a um subsistema e host NVMe.
+
+.Sobre esta tarefa
+O SVM com NVMe não deve ter nenhum outro protocolo. Se você selecionar NVMe, os demais protocolos serão desativados. Você também pode configurar o NVMe enquanto cria o SVM.
+
+.Passos
+. Se você não configurou o protocolo NVMe ao criar o SVM, clique em *Storage* > *SVMs*
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Protocolos*, clique em *NVMe*.
+. Clique na ligação para configurar o protocolo, conforme necessário.
++
+[NOTE]
+====
+Se houver outros protocolos ativados, desmarque-os para tornar o NVMe disponível para selecionar. O NVMe não pode ser combinado a nenhum outro protocolo.
+
+====
+. No painel *Editar Máquina Virtual de armazenamento*, clique em *Alocação de recursos*.
+. Na guia *Alocação de recursos*, você pode optar por não delegar a criação de volume ou selecionar um agregado para provisionar os volumes automaticamente.
+. Clique na guia *Serviços* para configurar os detalhes do Name Service Switch.
+. Clique em *Salvar e fechar*
++
+O protocolo NVMe é configurado no SVM. Depois que o protocolo tiver sido configurado, você pode iniciar ou parar o serviço usando *Configurações SVM*
+
+
+
+*Informações relacionadas*
+
+xref:concept_setting_up_nvme.adoc[Configuração do NVMe]

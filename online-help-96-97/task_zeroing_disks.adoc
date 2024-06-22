@@ -1,0 +1,30 @@
+---
+permalink: online-help-96-97/task_zeroing_disks.html 
+sidebar: sidebar 
+keywords: zero, spare, disks, system, manager, erase, data, online, help 
+summary: Você pode usar o Gerenciador de sistema para apagar todos os dados e formatar os discos sobressalentes gravando zeros no disco. Esses discos podem então ser usados em novos agregados. 
+---
+= Zero discos sobressalentes com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para apagar todos os dados e formatar os discos sobressalentes gravando zeros no disco. Esses discos podem então ser usados em novos agregados.
+
+.Sobre esta tarefa
+Quando você zero os discos sobressalentes, todas as peças sobressalentes no cluster, incluindo LUNs de storage, são zeradas. Você pode zero os discos sobressalentes para um nó específico ou para todo o cluster.
+
+.Passos
+. Clique em *Storage* > *Aggregates & Disks* > *Disks*.
+. Na janela *Disks*, selecione a guia *Inventory*.
+. Clique em *Zero Spares*.
+. Na caixa de diálogo *Zero Spares*, selecione um nó ou "'todos nós'" do qual você deseja zerar os discos.
+. Marque a caixa de seleção *Zero All non-zeroed spares* para confirmar a operação de restauração.
+. Clique em *Zero Spares*.
+
+
+*Informações relacionadas*
+
+xref:concept_storage_recommendations_for_creating_aggregates.adoc[Recomendações de storage para criação de agregados]

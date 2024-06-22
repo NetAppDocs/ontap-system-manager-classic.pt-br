@@ -1,0 +1,16 @@
+---
+permalink: nfs-config/concept_cifs_nfs_configuration_workflow.html 
+sidebar: sidebar 
+keywords: configuring, configure, creating, create, aggregate, workflow, goal-creating, nfs-enabled, svm, access, exist, volume, access, nfs configuration workflow 
+summary: 'A configuração do NFS envolve, como opção, a criação de um agregado e a escolha de um fluxo de trabalho específico à sua meta: Criar um novo SVM habilitado para NFS, configurar o acesso NFS a um SVM existente ou simplesmente adicionar um volume NFS a um SVM existente que já esteja totalmente configurado para acesso a NFS.' 
+---
+= Fluxo de trabalho de configuração NFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A configuração do NFS envolve, como opção, a criação de um agregado e a escolha de um fluxo de trabalho específico à sua meta: Criar um novo SVM habilitado para NFS, configurar o acesso NFS a uma SVM existente ou simplesmente adicionar um volume NFS a uma SVM existente que já esteja totalmente configurada para acesso ao NFS.
+
+image::../media/nfs_config.gif[Fornece uma visão geral do processo de configuração NFS,including the steps that occur before NFS setup begins,and the steps that can be optionally performed afterwards.]

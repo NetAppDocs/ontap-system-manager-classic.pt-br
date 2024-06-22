@@ -1,0 +1,57 @@
+---
+permalink: iscsi-config-windows/task_configuring_iscsi_fc_creating_lun_on_existing_svm.html 
+sidebar: sidebar 
+keywords: configure, iscsi, exist, storage, virtual, machine, svm, create, lun, contain, volume, wizard, protocol, configure iscsi on an existing svm 
+summary: 'Você pode configurar iSCSI em uma máquina virtual de armazenamento (SVM) existente e criar um LUN e seu volume contendo com um único assistente. O protocolo iSCSI já deve estar ativado, mas não configurado no SVM. Esta informação destina-se a SVMs para as quais está a configurar vários protocolos, mas ainda não configurou iSCSI.' 
+---
+= Configurar iSCSI em uma SVM existente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode configurar iSCSI em uma máquina virtual de armazenamento (SVM) existente e criar um LUN e seu volume contendo com um único assistente. O protocolo iSCSI já deve estar ativado, mas não configurado no SVM. Esta informação destina-se a SVMs para as quais está a configurar vários protocolos, mas ainda não configurou iSCSI.
+
+.Antes de começar
+Você deve ter endereços de rede suficientes disponíveis para criar duas LIFs para cada nó.
+
+.Sobre esta tarefa
+Os LUNs são mapeados para um subconjunto dos iniciadores no igrop para limitar o número de caminhos do host para o LUN.
+
+* O ONTAP usa o SLM (Selective LUN Map) para tornar o LUN acessível somente por meio de caminhos no nó proprietário do LUN e de seu parceiro de HA.
+* Você ainda deve configurar todas as LIFs iSCSI em cada nó para mobilidade de LUN, caso o LUN seja movido para outro nó no cluster.
+* Você deve modificar a lista de nós de relatórios SLM antes de mover um volume ou um LUN.
+
+
+.Passos
+. Navegue até a janela *SVMs*.
+. Selecione o SVM que você deseja configurar.
+. No painel SVM**Details** (Detalhes), verifique se *iSCSI* é exibido com um fundo cinza, o que indica que o protocolo está ativado, mas não está totalmente configurado.
++
+Se *iSCSI* for exibido com um fundo verde, o SVM já estará configurado.
+
++
+image::../media/existing_svm_protocols_iscsi_windows.gif[A imagem mostra a página de detalhes com todos os quatro protocolos com fundos cinzentos.]
+
+. Clique no link do protocolo *iSCSI* com o fundo cinza.
++
+É apresentada a janela Configurar protocolo iSCSI.
+
+. Configure o serviço iSCSI e LIFs na página *Configurar protocolo iSCSI*:
++
+.. Introduza um nome de alias de destino.
+.. Digite `*2*` o campo *LIFs por nó*.
++
+São necessárias duas LIFs para cada nó para garantir disponibilidade e mobilidade de dados.
+
+.. Atribua endereços IP para os LIFs com uma sub-rede ou sem uma sub-rede.
+.. Na área *provisione um LUN para armazenamento iSCSI*, insira o tamanho desejado do LUN, o tipo de host e o nome do iniciador iSCSI do host.
+.. Clique em *Submit & Close* (Enviar e fechar).
+
+
++
+image::../media/sm_wizard_iscsi_details_windows.gif[Configurar o protocolo iSCSI para Windows]
+
+. Reveja a página *Summary*, registe as informações de LIF e, em seguida, clique em *OK*.
+

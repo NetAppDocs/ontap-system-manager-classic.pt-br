@@ -1,0 +1,38 @@
+---
+permalink: online-help-96-97/task_mirroring_aggregates.html 
+sidebar: sidebar 
+keywords: mirror, aggregate, system, manager, data, lun, array, online, help 
+summary: Você pode usar o System Manager para proteger dados e fornecer mais resiliência, espelhando dados em tempo real em um único agregado. O espelhamento de agregados remove pontos únicos de falha na conexão a discos e LUNs de array. 
+---
+= Espelhar agregados com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e versões anteriores) para proteger dados e fornecer mais resiliência espelhando dados em tempo real, em um único agregado. O espelhamento de agregados remove pontos únicos de falha na conexão a discos e LUNs de array.
+
+.Antes de começar
+Deve haver discos livres suficientes no outro pool para espelhar o agregado.
+
+.Sobre esta tarefa
+Não é possível espelhar um agregado do Flash Pool quando a origem do cache é um pool de armazenamento.
+
+.Passos
+. Escolha um dos seguintes métodos:
++
+** Clique em *aplicativos e camadas* > *camadas de armazenamento*.
+** Clique em *Storage* > *Aggregates & Disks* > *Aggregates*.
+
+
+. Selecione o agregado que você deseja espelhar e clique em menu:mais ações[espelho].
++
+[NOTE]
+====
+O SyncMirror não é compatível com agregados habilitados para FabricPool.
+
+====
+. Na caixa de diálogo *Espelhar este agregado*, clique em *Espelhar* para iniciar o espelhamento.
+

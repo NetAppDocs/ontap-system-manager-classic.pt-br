@@ -1,0 +1,73 @@
+---
+permalink: peering/task_creating_intercluster_interfaces_on_all_nodes.html 
+sidebar: sidebar 
+keywords: cluster, communicate, logical, interface, lif, intercluster, create, ipspace, peer, relationship, create intercluster interfaces on all nodes, ontap 9.2 or earlier 
+summary: 'Usando a interface "classic" do Gerenciador de sistema do ONTAP com o ONTAP 9.2 ou uma versão anterior do ONTAP 9, você pode criar LIFs entre clusters que serão usados para peering.' 
+---
+= Criar interfaces entre clusters em todos os nós (ONTAP 9.2 ou anterior)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Usando a interface _classic_ do Gerenciador de sistema do ONTAP com o ONTAP 9.2 ou uma versão anterior do ONTAP 9, você pode criar LIFs entre clusters que serão usados para peering.
+
+Os clusters se comunicam entre si por meio de interfaces lógicas (LIFs) dedicadas à comunicação entre clusters. Você deve criar um LIF entre clusters dentro de cada IPspace que será usado para peering. As LIFs devem ser criadas em cada nó em cada cluster para o qual você deseja criar um relacionamento de pares.
+
+.Antes de começar
+Você deve ter identificado a sub-rede e as portas e, opcionalmente, os endereços IP que você planeja usar para os LIFs entre clusters.
+
+.Sobre esta tarefa
+Você deve executar esse procedimento em ambos os clusters para os quais você deseja criar um relacionamento de pares. Por exemplo, se você tiver um cluster de quatro nós que deseja fazer peer com o cluster X sobre o IPspace A e peer com o cluster Y sobre o IPspace Y, precisará de um total de oito LIFs entre clusters; quatro em IPspace A (um por nó) e quatro em IPspace Y (um por nó).
+
+.Passos
+. [[step1-entre-lif]]Crie um LIF entre clusters em um nó do cluster de origem:
++
+.. Navegue até a janela *interfaces de rede*.
+.. Clique em *criar*.
++
+A caixa de diálogo criar interface de rede é exibida.
+
+.. Introduza um nome para o LIF entre clusters.
++
+Você pode usar "'icl01'" para o LIF entre clusters no primeiro nó e "'icl02" para o LIF entre clusters no segundo nó.
+
+.. Selecione *Intercluster Connectivity* como a função de interface.
+.. Selecione o espaço IPspace.
+.. Na caixa de diálogo *Adicionar detalhes*, selecione *usando uma sub-rede* na lista suspensa *atribuir endereço IP* e selecione a sub-rede que deseja usar para comunicação entre clusters.
++
+Por padrão, o endereço IP é selecionado automaticamente na sub-rede depois de clicar em *criar*. Se não pretender utilizar o endereço IP selecionado automaticamente, tem de especificar manualmente o endereço IP que o nó utiliza para a comunicação entre clusters.
+
+.. Se você quiser especificar manualmente o endereço IP que o nó usa para comunicação entre clusters, selecione *Use this IP Address* e digite o endereço IP.
++
+Você deve garantir que o endereço IP que deseja usar já esteja disponível na sub-rede ou que possa ser adicionado à sub-rede posteriormente.
+
+.. Na área *Ports*, clique no nó que você está configurando e selecione a porta que você deseja usar para esse nó.
+.. Se você decidiu não compartilhar portas para comunicação entre clusters com comunicação de dados, confirme se a porta selecionada exibe "'0"" na coluna *contagem de interface hospedada*.
++
+image::../media/lif_creation_intercluster.gif[A caixa de diálogo criar interface de rede]
+
+.. Clique em *criar*.
+
+
+. Repita <<step1-intercluster-lif,Passo 1>> para cada nó no cluster.
++
+Cada nó no cluster tem um LIF entre clusters.
+
+. Anote os endereços IP dos LIFs entre clusters para que você possa usá-los mais tarde quando criar relacionamentos entre pares com outros clusters:
++
+.. Na janela *interfaces de rede*, na coluna *função*, clique image:../media/icon_columnfilter_sm_peering.gif["Ícone do filtro de coluna"]em , desmarque a caixa de seleção *todos* e selecione *Intercluster*.
++
+A janela interfaces de rede exibe apenas LIFs entre clusters.
+
+.. Anote os endereços IP listados na coluna *endereços IP/WWPN* ou deixe a janela *interfaces de rede* aberta para que você possa recuperar os endereços IP mais tarde.
++
+Você pode clicar no ícone de exibição de coluna (image:../media/icon_columnshowhide_sm_onc_peering.gif["Ícone para mostrar ou ocultar coluna"]) para ocultar as colunas que não deseja exibir.
+
+
+
+
+
+.Resultados
+Todos os nós em cada cluster têm LIFs entre clusters que podem se comunicar entre si.

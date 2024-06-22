@@ -1,0 +1,25 @@
+---
+permalink: online-help-96-97/task_aborting_mirror_vault_relationships.html 
+sidebar: sidebar 
+keywords: abort, mirror, vault, relationship, online, help, data, transfer 
+summary: Pode cancelar uma operação de replicação de volume se pretender parar a transferência de dados. Pode cancelar uma atualização agendada, uma atualização manual ou uma transferência de dados inicial. 
+---
+= Abortar relações de espelhos e cofre com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para abortar uma operação de replicação de volume se desejar interromper a transferência de dados. Pode cancelar uma atualização agendada, uma atualização manual ou uma transferência de dados inicial.
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação de espelhamento e cofre para a qual você deseja interromper a transferência de dados e clique em *operações* > *Cancelar*.
+. Marque a caixa de seleção *Sim, quero cancelar a transferência* para confirmar a operação.
+. *Opcional:* Selecione a caixa de seleção *manter dados parcialmente transferidos* para reter os dados que já foram transferidos para o volume de destino.
+. Clique em *Cancelar*.
+
+
+.Resultados
+O estado da transferência é apresentado como ""Aborting"" até a operação estar concluída e ser apresentado como ""Idle""" após a conclusão da operação.

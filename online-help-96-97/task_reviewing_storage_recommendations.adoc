@@ -1,0 +1,34 @@
+---
+permalink: online-help-96-97/task_reviewing_storage_recommendations.html 
+sidebar: sidebar 
+keywords: review, storage, recommendation, window, online, help, create, aggregate 
+summary: Usando a janela Storage, você pode consultar as recomendações de storage fornecidas para a criação de agregados. 
+---
+= Analise as recomendações de storage com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode analisar as recomendações de storage fornecidas para a criação de agregados usando a janela de storage no ONTAP System Manager classic (disponível no ONTAP 9.7 e versões anteriores).
+
+.Antes de começar
+Você deve ter configurado o cluster, a rede e os detalhes de suporte.
+
+.Sobre esta tarefa
+Você pode criar agregados de dados de acordo com as recomendações de storage ou ignorar essa etapa e criar agregados de dados posteriormente usando o System Manager.
+
+
+
+== Procedimento
+
+* Para criar agregados de dados de acordo com as recomendações de storage, clique em *Enviar e continuar*.
+* Para criar agregados de dados posteriormente usando o System Manager, clique em *Ignorar esta etapa*.
+
+
+
+
+== O que fazer a seguir
+
+Se você optar por criar agregados de acordo com as recomendações de storage, precisará criar uma máquina virtual de storage (SVM) para continuar com a configuração do cluster.

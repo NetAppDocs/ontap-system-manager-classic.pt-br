@@ -1,0 +1,106 @@
+---
+permalink: online-help-96-97/task_setting_up_cluster_using_template_file.html 
+sidebar: sidebar 
+keywords: set, up, cluster, template, file, system, manager, online, help, autosupport 
+summary: 'Você pode usar o arquivo de modelo fornecido no System Manager para configurar um cluster criando um cluster, configurando as redes de gerenciamento de nós e de cluster e configurando notificações de eventos. (A partir do Gerenciador de sistemas ONTAP 9,6, o AutoSupport não é suportado.) Você pode baixar o arquivo de modelo no formato .xlsx ou .csv.' 
+---
+= Configure um cluster usando o arquivo de modelo no Gerenciador de sistema - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o arquivo de modelo fornecido no ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para configurar um cluster criando um cluster, configurando as redes de gerenciamento de nós e de gerenciamento de cluster e configurando notificações de eventos. (A partir do Gerenciador de sistemas ONTAP 9,6, o AutoSupport não é suportado.) Pode transferir o ficheiro de modelo em `.xlsx` formato ou `.csv` formato.
+
+.Sobre esta tarefa
+* Se o cluster oferecer suporte ao ONTAP 9.1 ou posterior, você poderá adicionar apenas sistemas de storage que estejam executando o ONTAP 9.1 ou posterior.
+* Todos os campos não são preenchidos automaticamente quando você carrega o arquivo.
++
+Você deve inserir manualmente o valor de alguns campos, como senha e porta de gerenciamento de cluster.
+
+
+
+.Passos
+. Abra o navegador da Web e, em seguida, insira o endereço IP de gerenciamento de nós que você configurou: `+https://node-management-IP+`
++
+** Se você tiver configurado as credenciais para o cluster, a página Login será exibida.
++
+Tem de introduzir as credenciais para iniciar sessão.
+
+** Se não tiver configurado as credenciais para o cluster, é apresentada a janela Configuração Guiada.
+
+
+. Transfira o `.xlsx` ficheiro de modelo ou o `.csv` ficheiro de modelo.
+. Forneça todos os valores necessários no arquivo de modelo e salve o arquivo.
++
+[NOTE]
+====
+** Não edite nenhuma outra coluna no modelo que não seja o valor.
+** Não altere a versão do ficheiro de modelo.
+
+
+====
+. Clique em *Procurar* e selecione o ficheiro de modelo atualizado.
++
+** Pode carregar o ficheiro de modelo apenas no `.csv` formato. Se você tiver baixado o arquivo de modelo em `.xlsx` formato, você deve salvar o arquivo como um `.csv` arquivo e, em seguida, fazer o upload do arquivo.
+** Tem de garantir que a codificação utilizada para este ficheiro é `UTF8`. Caso contrário, os valores não serão lidos.
+
+
+. Clique em *Upload*.
++
+Os detalhes fornecidos no ficheiro de modelo são utilizados para concluir o processo de configuração do cluster.
+
+. Clique no ícone *Configuração Guiada* para visualizar os detalhes do cluster.
+. Verifique os detalhes na janela *Cluster* e, em seguida, clique em *Enviar e continuar*.
++
+Pode editar os detalhes do cluster, se necessário.
+
++
+Se você fizer login na janela Cluster pela segunda vez, o campo *licenças de recurso* estará habilitado por padrão. Você pode adicionar novas chaves de licença de recurso ou manter as chaves de licença pré-preenchidas.
+
+. Verifique os detalhes na janela *rede* e clique em *Enviar e continuar*.
++
+Pode editar os detalhes da rede, se necessário.
+
+. Verifique os detalhes na janela *suporte* e clique em *Enviar e continuar*.
++
+Você pode editar os detalhes do suporte, se necessário.
+
+. Verifique os detalhes na janela *Storage* e, em seguida, crie agregados ou saia da configuração do cluster:
++
+|===
+| Se você quiser... | Então... 
+
+
+ a| 
+Saia da configuração do cluster sem provisionar o storage e criar um SVM
+ a| 
+Clique em *Ignorar esta etapa*.
+
+
+
+ a| 
+Provisionar storage usando agregados e criar uma SVM
+ a| 
+Clique em *Enviar e continuar*.
+
+|===
++
+Você pode editar os detalhes do suporte, se necessário.
+
+. Verifique os detalhes na janela *Create Storage Virtual Machine (SVM)* e clique em *Submit and continue*.
++
+Você pode editar o nome do SVM, selecionar um protocolo de dados diferente e modificar a interface de rede e os detalhes do adaptador, se necessário.
+
+. Se você clicou em *Skip this step* na janela *Storage*, visualize os detalhes na janela *Summary* e clique em *Manage Your Cluster* para iniciar o System Manager.
+. Se você clicou em *Enviar e continuar* na janela *Storage*, verifique os detalhes na janela SVM e clique em *Enviar e continuar*.
++
+Você pode editar os detalhes do SVM, se necessário.
+
+. Verifique todos os detalhes na janela *Summary* e clique em *provisione um aplicativo* para provisionar o armazenamento de aplicativos, ou clique em *Manage Your Cluster* para concluir o processo de configuração do cluster e iniciar o System Manager, ou clique em *Export Configuration* para baixar o arquivo de configuração.
+
+
+*Informações relacionadas*
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/System_Manager_Cluster_Guided_Setup_Templates["Modelos de configuração guiada por cluster do System Manager"]

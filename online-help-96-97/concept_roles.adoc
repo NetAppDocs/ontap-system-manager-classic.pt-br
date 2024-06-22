@@ -1,0 +1,99 @@
+---
+permalink: online-help-96-97/concept_roles.html 
+sidebar: sidebar 
+keywords: system, manager, role, create, user, access, control, online, help 
+summary: Você pode usar o System Manager para criar funções de usuário controladas por acesso. 
+---
+= Gerencie funções com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para criar funções de usuário controladas por acesso.
+
+
+
+== Adicione funções
+
+Você pode usar o System Manager para adicionar uma função de controle de acesso e especificar o diretório de comando ou comando que os usuários da função podem acessar. Você também pode controlar o nível de acesso que a função tem ao diretório de comando ou comando, e você pode especificar uma consulta que se aplica ao diretório de comando ou comando.
+
+.Passos
+. Clique em *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. No painel *Management*, clique em *Roles*.
+. Na janela *Roles*, clique em *Add*.
+. Na caixa de diálogo *Adicionar função*, digite o nome da função e adicione os atributos da função.
+. Clique em *Add*.
+
+
+
+
+== Editar funções
+
+Você pode usar o System Manager para modificar o acesso de uma função de controle de acesso a um diretório de comando ou comando e restringir o acesso de um usuário a apenas um conjunto especificado de comandos. Você também pode remover o acesso de uma função ao diretório de comando padrão.
+
+.Passos
+. Clique em *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. No painel *Management*, clique em *Roles*.
+. Na janela *Roles*, selecione a função que deseja modificar e clique em *Edit*.
+. Na caixa de diálogo *Editar função*, modifique os atributos da função e clique em *Modificar*.
+. Verifique as alterações feitas na janela *Roles*.
+
+
+
+
+== Funções e permissões
+
+O administrador do cluster pode restringir o acesso de um usuário a apenas um conjunto especificado de comandos criando uma função de controle de acesso restrito e atribuindo a função a um usuário.
+
+Você pode gerenciar funções de controle de acesso das seguintes maneiras:
+
+* Criando uma função de controle de acesso e especificando o diretório de comando ou comando que os usuários da função podem acessar.
+* Controlando o nível de acesso que a função tem para o diretório de comando ou comando e, em seguida, especificando uma consulta que se aplica ao diretório de comando ou comando.
+* Ao modificar o acesso de uma função de controle de acesso a um diretório de comando ou comando.
+* Exibindo informações sobre funções de controle de acesso, como o nome da função, o diretório de comando ou comando que uma função pode acessar, o nível de acesso e a consulta.
+* Excluindo uma função de controle de acesso.
+* Restringindo o acesso de um usuário a apenas um conjunto especificado de comandos.
+* Exibindo APIs do ONTAP e seus comandos de interface de linha de comando (CLI) correspondentes.
+
+
+
+
+== Janela funções
+
+Você pode usar a janela funções para gerenciar as funções associadas a contas de usuário.
+
+
+
+=== Botões de comando
+
+* *Adicionar*
++
+Abre a caixa de diálogo Adicionar função, que permite criar uma função de controle de acesso e especificar o diretório de comando ou comando que os usuários da função podem acessar.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar função, que permite adicionar ou modificar atributos de função.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de funções
+
+A lista de funções fornece uma lista de funções que estão disponíveis para serem atribuídas aos usuários.
+
+
+
+=== Área de atributos de função
+
+A área de detalhes exibe os atributos da função, como o diretório de comando ou comando que a função selecionada pode acessar, o nível de acesso e a consulta que se aplica ao diretório de comando ou comando.
+
+*Informações relacionadas*
+
+https://docs.netapp.com/us-en/ontap/authentication/index.html["Autenticação de administrador e RBAC"^]

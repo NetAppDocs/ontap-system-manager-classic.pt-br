@@ -1,0 +1,59 @@
+---
+permalink: online-help-96-97/concept_metrocluster_switchover_switchback_workflow.html 
+sidebar: sidebar 
+keywords: metrocluster, switchover, switchback, workflow, online, help, offline, maintenance 
+summary: 'A partir do System Manager 9,6, você pode usar as operações de comutação MetroCluster e switchback após um desastre que torna todos os nós no cluster de origem inacessíveis e desligados. Você também pode usar o fluxo de trabalho switchover para um switchover negociado (planejado) em casos como teste de recuperação de desastres ou um local que fique offline para manutenção.' 
+---
+= Sobre o switchover e o switchback do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do Gerenciador de sistemas ONTAP 9,6, você pode usar as operações de comutação MetroCluster e switchback após um desastre que torna todos os nós no cluster de origem inacessíveis e desligados. Você também pode usar o fluxo de trabalho switchover para um switchover negociado (planejado) em casos como teste de recuperação de desastres ou um local que fique offline para manutenção.
+
+
+
+== Sobre o switchover e o switchback do MetroCluster
+
+A partir do System Manager 9,6, você pode usar as operações de comutação e switchback do MetroCluster para permitir que um local de cluster assuma as tarefas de outro local de cluster. Essa funcionalidade permite facilitar a manutenção ou a recuperação de desastres.
+
+Uma operação de comutação permite que um cluster (local A) assuma as tarefas que outro cluster (local B) normalmente executa. Após o switchover, o cluster que foi assumido (local B) pode ser reduzido para manutenção e reparos. Depois que a manutenção for concluída, o local B pode surgir e as tarefas de recuperação são concluídas, então você pode iniciar uma operação de switchback que permite que o cluster reparado (local B) retome as tarefas que geralmente executa.
+
+O System Manager dá suporte a dois tipos de operações de switchover, com base no status do local de cluster remoto:
+
+* Um switchover negociado (planejado): Você inicia essa operação quando precisa fazer manutenção planejada em um cluster ou testar seus procedimentos de recuperação de desastres.
+* Um switchover não planejado: Você inicia essa operação quando um desastre ocorreu em um cluster (local B) e deseja que outro local ou cluster (local A) assuma as tarefas do cluster afetado pelo desastre (local B) enquanto você executa reparos e manutenção.
+
+
+Você executa as mesmas etapas no System Manager para ambas as operações de switchover. Quando você inicia um switchover, o System Manager determina se a operação é viável e alinha a carga de trabalho de acordo.
+
+
+
+== Comutação MetroCluster e fluxo de trabalho de switchback
+
+O processo geral para o fluxo de trabalho de comutação e switchback inclui as seguintes três fases:
+
+. *Switchover*: O processo de switchover permite que você transfira o controle do armazenamento e do acesso do cliente de um local de cluster de origem (local B) para outro local de cluster (local A). Essa operação ajuda a fornecer operações ininterruptas durante o teste e a manutenção. Além disso, esse processo também permite que você se recupere de uma falha do site. Para testes de recuperação de desastre ou manutenção planejada no local, você pode executar um switchover do MetroCluster para transferir o controle para um local de recuperação de desastres (DR) (local A). Antes de iniciar o processo, pelo menos um dos nós do local sobreviventes deve estar ativo e em execução antes de executar o switchover. Se uma operação de switchover falhar anteriormente em certos nós no local de DR, a operação poderá ser tentada novamente em todos esses nós.
+. *Operações do local B*: Após a conclusão do switchover, o gerente do sistema conclui o processo de recuperação para a configuração IP do MetroCluster. A recuperação é um evento planejado, que oferece controle total de cada etapa para minimizar o tempo de inatividade. A recuperação é um processo de duas fases que ocorre nos componentes do storage e do controlador para preparar os nós no local reparado para o processo de switchback. Durante a primeira fase, o processo cura os agregados ressincronizando os plexos espelhados e, em seguida, cura os agregados raiz, alternando-os de volta para o local de desastre.
++
+Na segunda fase, o local está pronto para o processo de switchback.
+
+. *Switchback*: Após a manutenção e reparos serem realizados no local B, você inicia a operação de switchback para retornar o controle do armazenamento e do acesso do cliente do local A ao local B. para um switchback bem-sucedido, as seguintes condições devem existir:
++
+** Os nós iniciais e as gavetas de storage devem ser ativados e acessíveis por nós no local A..
+** O System Manager deve ter concluído com êxito a fase de recuperação antes de poder iniciar a operação de switchback.
+** Todos os agregados no local A devem estar no estado espelhado e não podem estar no estado degradado ou ressincronizado.
+** Todas as alterações de configuração anteriores devem ser concluídas antes de executar uma operação de switchback. Isso impede que essas alterações concorram com a operação de comutação ou switchback negociada.
+
+
+
+
+
+
+== Fluxograma de trabalho de comutação MetroCluster e switchback
+
+O fluxograma a seguir ilustra as fases e os processos que ocorrem quando você inicia operações de comutação e switchback.
+
+image::../media/switchover_switchback_workflow.jpg[fluxo de trabalho comutativo de comutação]

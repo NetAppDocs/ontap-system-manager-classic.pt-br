@@ -1,0 +1,219 @@
+---
+permalink: online-help-96-97/reference_svm_window.html 
+sidebar: sidebar 
+keywords: storage, virtual, machine, window, svm, online, help, command, button, peer 
+summary: 'Você pode usar a janela máquinas virtuais de armazenamento para gerenciar suas máquinas virtuais de armazenamento (SVMs) e exibir informações sobre elas.' 
+---
+= Janela de armazenamento de máquinas virtuais no Gerenciador de sistemas - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a janela máquinas virtuais de armazenamento no ONTAP System Manager Classic (disponível no ONTAP 9.7 e anterior) para gerenciar suas máquinas virtuais de armazenamento (SVMs) e exibir informações sobre elas.
+
+Não é possível gerenciar (criar, excluir, iniciar ou parar) e SVM configurado para recuperação de desastres (DR) usando o System Manager. Além disso, você não pode exibir os objetos de storage associados ao SVM configurado para recuperação de desastres na interface do aplicativo.
+
+
+
+== Botões de comando
+
+* *Criar*
++
+Abre o assistente de configuração de Storage Virtual Machine (SVM), que permite criar um novo SVM.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar Máquina Virtual de armazenamento, que permite modificar as propriedades, como a central de serviços de nomes, a central de mapeamento de nomes e a lista de agregados, de uma SVM selecionada.
+
+* *Excluir*
++
+Exclui os SVMs selecionados.
+
+* * Iniciar*
++
+Inicia o SVM selecionado.
+
+* *Paragem*
++
+Pára o SVM selecionado.
+
+* *Configurações SVM*
++
+Gerencia o storage, as políticas e a configuração do SVM selecionado.
+
+* *Operações de proteção*
++
+Fornece as seguintes opções:
+
++
+** *Inicializar*
++
+Permite inicializar a relação SVM para executar uma transferência de linha de base do SVM de origem para o SVM de destino.
+
+** *Atualização*
++
+Permite atualizar dados da SVM de origem para o SVM de destino.
+
+** *Ative o SVM de destino*
++
+Permite ativar o SVM de destino.
+
+** *Resync da fonte SVM*
++
+Permite que você inicie a ressincronização do relacionamento quebrado.
+
+** *Resync from Destination SVM (Reverse Resync)*
++
+Permite ressincronizar a relação do SVM de destino para o SVM de origem.
+
+** *Reativar o SVM de origem*
++
+Permite reativar o SVM de origem.
+
+
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+* *Trace File Access*
++
+Permite rastrear a acessibilidade de um arquivo ou compartilhamento no SVM selecionado para um nome de usuário especificado.
+
+
+
+
+
+== Lista SVM
+
+A lista SVM exibe o nome de cada SVM e os protocolos permitidos nela.
+
+Você pode exibir somente SVMs de dados usando o System Manager.
+
+* *Nome*
++
+Exibe o nome do SVM.
+
+* *Estado*
++
+Exibe o estado SVM, como execução, partida, parada ou parada.
+
+* *Subtipo*
++
+Exibe o subtipo do SVM, que pode ser um dos seguintes:
+
++
+** padrão
++
+Especifica que o SVM é um SVM de fornecimento de dados.
+
+** dp-destino
++
+Especifica que o SVM está configurado para recuperação de desastres.
+
+** fonte de sincronização
++
+Especifica que o SVM está no local principal de uma configuração do MetroCluster.
+
+** destino de sincronização
++
+Especifica que o SVM está no local sobrevivente de uma configuração do MetroCluster.
+
+
+
+* *Protocolos permitidos*
++
+Exibe os protocolos permitidos, como CIFS e NFS, em cada SVM.
+
+* *IPspace*
++
+Exibe o espaço de IPspace da SVM associada.
+
+* *Tipo de volume*
++
+Exibe o tipo de volume permitido, como FlexVol volume, em cada SVM.
+
+* *Protegido*
++
+Exibe se o SVM está protegido ou não.
+
+* *Estado de configuração*
++
+Exibe se o estado de configuração do SVM está bloqueado ou desbloqueado.
+
+
+
+
+
+== Área de detalhes
+
+A área abaixo da lista SVM exibe informações detalhadas, como o tipo de volumes permitidos, o idioma e a política Snapshot, sobre o SVM selecionado.
+
+Você também pode configurar os protocolos permitidos neste SVM. Se não tiver configurado os protocolos durante a criação do SVM, pode clicar no link do protocolo para configurar o protocolo.
+
+Você não pode configurar protocolos para o SVM configurado para recuperação de desastres usando o System Manager.
+
+[NOTE]
+====
+Se o serviço FCP já estiver iniciado para o SVM, clicar no link FC/FCoE abre a janela interfaces de rede.
+
+====
+A cor indica o estado da configuração do protocolo:
+
+|===
+| Estado | Descrição 
+
+
+ a| 
+Verde
+ a| 
+LIFs existem e o protocolo está configurado. Pode clicar na ligação para ver os detalhes da configuração.
+
+[NOTE]
+====
+A configuração pode estar parcialmente concluída. No entanto, o serviço está em execução. Você pode criar os LIFs e concluir a configuração a partir da janela interfaces de rede.
+
+====
+
+
+ a| 
+Amarelo
+ a| 
+Indica um dos seguintes:
+
+* Existem LIFs. O serviço foi criado, mas não está em execução.
+* Existem LIFs. O serviço não foi criado.
+* O serviço foi criado. LIFs não existem.
+
+
+
+
+ a| 
+Cinzento
+ a| 
+O protocolo não está configurado. Pode clicar na ligação de protocolo para configurar o protocolo.
+
+
+
+ a| 
+Borda cinzenta
+ a| 
+A licença do protocolo expirou ou está em falta. Pode clicar na ligação de protocolo para adicionar as licenças na página licenças.
+
+|===
+Você também pode adicionar a interface de gerenciamento e exibir detalhes, como relacionamentos de proteção, política de proteção, domínio NIS e assim por diante.
+
+A área *Detalhes* também inclui um link para visualizar o certificado SSL público para um SVM. Ao clicar neste link, você pode executar as seguintes tarefas:
+
+* Veja os detalhes do certificado, o número de série, a data de início e a data de expiração.
+* Copie o certificado para a área de transferência.
+* Envie os detalhes do certificado por e-mail.
+
+
+
+
+== Área de máquinas virtuais de armazenamento de pares
+
+Exibe uma lista das SVMs que são colocadas em Contato com o SVM selecionado, juntamente com detalhes das aplicações que estão usando o relacionamento de pares.

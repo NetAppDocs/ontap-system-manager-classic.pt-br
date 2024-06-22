@@ -1,0 +1,277 @@
+---
+permalink: online-help-96-97/concept_shares.html 
+sidebar: sidebar 
+keywords: online, help, share, system, manager, qtress, cifs, create, edit, manage, share, access, stop, home, directory, configure, smb 
+summary: Você pode usar o System Manager para criar, editar e gerenciar compartilhamentos. 
+---
+= Gerencie compartilhamentos com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+
+
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para criar, editar e gerenciar compartilhamentos.
+
+
+
+== Crie um compartilhamento CIFS
+
+Você pode usar o System Manager para criar um compartilhamento CIFS que permite especificar a pasta, qtree ou volume que os usuários CIFS podem acessar.
+
+.Antes de começar
+Você deve ter instalado a licença CIFS antes de configurar e iniciar o CIFS.
+
+.Passos
+. Clique em *armazenamento* > *compartilhamentos*.
+. No menu suspenso no campo *SVM*, selecione o SVM no qual você deseja criar um compartilhamento CIFS.
+. Clique em *criar compartilhamento*.
+. Na janela *criar compartilhamento*, clique em *Procurar* e selecione a pasta, qtree ou volume que deve ser compartilhado.
+. Especifique um nome para o novo compartilhamento CIFS.
+. *Opcional:* Selecione a caixa de seleção *Ativar disponibilidade contínua para Hyper-V e SQL* para permitir que clientes que suportam SMB 3,0 e posteriores abram arquivos persistentemente durante operações ininterruptas.
++
+Os arquivos que são abertos usando essa opção são protegidos contra eventos disruptivos, como failover, giveback e migração de LIF.
+
++
+A partir do System Manager 9,6, a disponibilidade contínua é suportada para volumes FlexGroup.
+
+. Marque a caixa de seleção *criptografar dados ao acessar esse compartilhamento* para ativar a criptografia SMB 3,0.
+. Forneça uma descrição ou comentário para o compartilhamento e clique em *criar*.
+
+
+.Resultados
+O compartilhamento CIFS é criado com as permissões de acesso definidas como ""Controle completo para todos"" no grupo.
+
+
+
+== Parar o acesso ao compartilhamento
+
+Você pode usar o System Manager para parar um compartilhamento quando quiser remover o acesso de rede compartilhada a uma pasta, qtree ou volume.
+
+.Antes de começar
+Você deve ter instalado a licença CIFS.
+
+.Passos
+. Clique em *armazenamento* > *compartilhamentos*.
+. No menu suspenso no campo *SVM*, selecione o SVM no qual reside o compartilhamento CIFS que você deseja parar.
+. Na lista de compartilhamentos, selecione o compartilhamento que deseja interromper o compartilhamento e clique em *Parar compartilhamento*.
+. Marque a caixa de seleção de confirmação e clique em *Parar*.
+. Verifique se o compartilhamento não está mais listado na janela *compartilhamentos*.
+
+
+
+
+== Criar compartilhamentos de diretório base
+
+Você pode usar o System Manager para criar um compartilhamento de diretório base e gerenciar caminhos de pesquisa de diretório base.
+
+.Antes de começar
+O CIFS deve ser configurado e iniciado.
+
+.Passos
+. Clique em *armazenamento* > *compartilhamentos*.
+. Clique em *Create Home Directory* e, em seguida, forneça as informações de padrão que determinam como um usuário é mapeado para um diretório.
+. Clique em *criar*.
+. Verifique se o diretório inicial que você criou está listado na janela *compartilhamentos*.
+
+
+
+
+== Editar definições de partilha
+
+Você pode usar o Gerenciador do sistema para modificar as configurações de um compartilhamento, como as configurações de link simbólico, permissões de acesso de compartilhamento de usuários ou grupos e o tipo de acesso ao compartilhamento. Você também pode ativar ou desativar a disponibilidade contínua de um compartilhamento em Hyper-V e ativar ou desativar a enumeração baseada em acesso (ABE). A partir do System Manager 9,6, a disponibilidade contínua é suportada para volumes FlexGroup.
+
+.Passos
+. Clique em *armazenamento* > *compartilhamentos*.
+. Selecione o compartilhamento que deseja modificar na lista de compartilhamentos e clique em *Editar*.
+. Na caixa de diálogo *Editar configurações de compartilhamento*, modifique as configurações de compartilhamento conforme necessário:
++
+.. Na guia *Geral*, ative a disponibilidade contínua de um compartilhamento sobre o Hyper-V.
++
+A ativação da disponibilidade contínua permite que o SMB 3,0 e os clientes que oferecem suporte ao SMB 3,0 abram arquivos persistentemente durante operações ininterruptas. Os arquivos que são abertos persistentemente são protegidos contra eventos disruptivos, como failover, giveback e migração de LIF.
+
+.. Na guia *permissões*, adicione usuários ou grupos e atribua permissões para especificar o tipo de acesso.
+.. Na guia *Opções*, selecione as opções necessárias.
+
+
+. Clique em *Salvar e fechar*.
+. Verifique as alterações feitas na partilha selecionada na janela *partilhar*.
+
+
+
+
+== Como o ONTAP ativa diretórios base dinâmicos
+
+Os diretórios iniciais do ONTAP permitem configurar um compartilhamento SMB que mapeia para diferentes diretórios com base no usuário que se coneta a ele e um conjunto de variáveis. Em vez de criar compartilhamentos separados para cada usuário, você pode configurar um compartilhamento com alguns parâmetros do diretório inicial para definir a relação de um usuário entre um ponto de entrada (o compartilhamento) e o diretório inicial (um diretório no SVM).
+
+Um usuário que está conetado como um usuário convidado não tem um diretório home e não pode acessar os diretórios home de outros usuários. Existem quatro variáveis que determinam como um usuário é mapeado para um diretório:
+
+* *Nome da partilha*
++
+Este é o nome do compartilhamento que você cria ao qual o usuário se coneta. Você deve definir a propriedade do diretório base para esse compartilhamento.
+
++
+O nome do compartilhamento pode usar os seguintes nomes dinâmicos:
+
++
+** `%w` (O nome de utilizador do Windows do utilizador)
+** `%d` (O nome de domínio do Windows do utilizador)
+** `%u` (O nome de usuário UNIX mapeado do usuário)
+
+
++
+Para tornar o nome do compartilhamento único em todos os diretórios iniciais, o nome do compartilhamento deve conter a/`%w` variável ou `%u`. O nome do compartilhamento pode conter tanto a `%d` e a/`%w` variável (por exemplo, `%d`/`%w` ), ou o nome do compartilhamento pode conter uma porção estática e uma porção variável (por exemplo, Home_/`%w`).
+
+* *Caminho de compartilhamento*
++
+Este é o caminho relativo, que é definido pelo compartilhamento e, portanto, está associado a um dos nomes de compartilhamento, que é anexado a cada caminho de pesquisa para gerar o caminho do diretório home inteiro do usuário a partir da raiz do SVM. Pode ser estático (por exemplo, `home` ), dinâmico (por exemplo, `%w`) ou uma combinação dos dois (por exemplo, `eng/%w`).
+
+* *Pesquisar caminhos*
++
+Esse é o conjunto de caminhos absolutos da raiz do SVM que você especifica que direciona a busca do ONTAP por diretórios base. Você pode especificar um ou mais caminhos de pesquisa usando o `vserver cifs home-directory search-path add` comando. Se você especificar vários caminhos de pesquisa, o ONTAP os tentará na ordem especificada até encontrar um caminho válido.
+
+* *Diretório*
++
+Este é o diretório home do usuário que você cria para o usuário. O nome do diretório é geralmente o nome do usuário. Você deve criar o diretório home em um dos diretórios que são definidos pelos caminhos de pesquisa.
+
+
+
+Como exemplo, considere a seguinte configuração:
+
+* Usuário: John Smith
+* Domínio de usuário: acme
+* Nome de usuário: jsmith
+* Nome do SVM: VS1
+* Nome de compartilhamento de diretório base nº 1: Home_ `%w` - caminho de compartilhamento: `%w`
+* Nome de compartilhamento do diretório base nº 2: `%w` - Caminho de compartilhamento: `%d/%w`
+* Caminho de pesquisa nº 1: `/vol0home/home`
+* Caminho de pesquisa nº 2: `/vol1home/home`
+* Caminho de pesquisa nº 3: `/vol2home/home`
+* Diretório base: `/vol1home/home/jsmith`
+
+
+Cenário 1: O usuário se coneta `\\vs1\home_jsmith` ao . Isso corresponde ao primeiro nome de compartilhamento do diretório inicial e gera o caminho `jsmith`relativo . O ONTAP procura agora um diretório nomeado `jsmith` verificando cada caminho de pesquisa em ordem:
+
+* `/vol0home/home/jsmith` não existe; passando para o caminho de pesquisa nº 2.
+* `/vol1home/home/jsmith` existe; portanto, o caminho de pesquisa nº 3 não está marcado; o usuário agora está conetado ao seu diretório inicial.
+
+
+Cenário 2: O usuário se coneta `\\vs1\jsmith` ao . Isso corresponde ao segundo nome de compartilhamento do diretório inicial e gera o caminho `acme/jsmith`relativo . O ONTAP procura agora um diretório nomeado `acme/jsmith` verificando cada caminho de pesquisa em ordem:
+
+* `/vol0home/home/acme/jsmith` não existe; passando para o caminho de pesquisa nº 2.
+* `/vol1home/home/acme/jsmith` não existe; passando para o caminho de pesquisa nº 3.
+* `/vol2home/home/acme/jsmith` não existe; o diretório home não existe; portanto, a conexão falha.
+
+
+
+
+== Janela compartilhamentos
+
+Você pode usar a janela compartilhamentos para gerenciar seus compartilhamentos e visualizar informações sobre os compartilhamentos.
+
+
+
+=== Botões de comando
+
+* *Criar compartilhamento*
++
+Abre a caixa de diálogo criar compartilhamento, que permite criar um compartilhamento.
+
+* * Criar diretório Home*
++
+Abre a caixa de diálogo criar compartilhamento do diretório base, que permite criar um novo compartilhamento do diretório base.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar configurações, que permite modificar as propriedades de um compartilhamento selecionado.
+
+* *Pare de compartilhar*
++
+Impede que o objeto selecionado seja compartilhado.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de compartilhamentos
+
+A lista de compartilhamentos exibe o nome e o caminho de cada compartilhamento.
+
+* *Nome da partilha*
++
+Exibe o nome do compartilhamento.
+
+* *Caminho*
++
+Exibe o nome do caminho completo de uma pasta, qtree ou volume existente que é compartilhado. Os separadores de caminho podem ser barras para trás ou barras para frente, embora o ONTAP exiba todos os separadores de caminho como barras para frente.
+
+* *Home Directory*
++
+Exibe o nome do compartilhamento do diretório base.
+
+* *Comentário*
++
+Exibe descrições adicionais do compartilhamento, se houver.
+
+* *Partilha continuamente disponível*
++
+Exibe se o compartilhamento está ativado para disponibilidade contínua. A partir do System Manager 9,6, a disponibilidade contínua é suportada para volumes FlexGroup.
+
+
+
+
+
+=== Área de detalhes
+
+A área abaixo da lista de compartilhamentos exibe as propriedades de compartilhamento e os direitos de acesso para cada compartilhamento.
+
+* *Propriedades*
++
+** Nome
++
+Exibe o nome do compartilhamento.
+
+** Estado dos calços
++
+Especifica se o compartilhamento usa bloqueios oportunistas (oplocks).
+
+** Navegável
++
+Especifica se o compartilhamento pode ser pesquisado por clientes Windows.
+
+** Mostrar instantâneo
++
+Especifica se as cópias Snapshot podem ser visualizadas pelos clientes.
+
+** Compartilhamento continuamente disponível
++
+Especifica se o compartilhamento está ativado ou desativado para disponibilidade contínua. A partir do System Manager 9,6, a disponibilidade contínua é suportada para volumes FlexGroup.
+
+** Enumeração baseada em acesso
++
+Especifica se a enumeração baseada em acesso (ABE) está ativada ou desativada no compartilhamento.
+
+** BranchCache
++
+Especifica se o BranchCache está ativado ou desativado no compartilhamento.
+
+** Encriptação SMB
++
+Especifica se a criptografia de dados usando SMB 3,0 está habilitada no nível de máquina virtual de storage (SVM) ou no nível de compartilhamento. Se a criptografia SMB estiver habilitada no nível SVM, a criptografia SMB será aplicada a todos os compartilhamentos e o valor será exibido como habilitado (no nível SVM).
+
+** Versões anteriores
++
+Especifica se as versões anteriores podem ser visualizadas e restauradas a partir do cliente.
+
+
+
+* * Compartilhar controle de acesso*
++
+Exibe os direitos de acesso dos usuários de domínio, grupos de domínio, usuários locais e grupos locais para o compartilhamento.
+
+
+
+*Informações relacionadas*
+
+xref:task_setting_up_cifs.adoc[Configurar o CIFS]

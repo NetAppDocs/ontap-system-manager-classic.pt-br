@@ -1,0 +1,177 @@
+---
+permalink: online-help-96-97/concept_cluster_user_accounts.html 
+sidebar: sidebar 
+keywords: user, system, manager, add, edit, manage, account, login, online, help, cluster, administration, online, help, modify, lock, delete, unlock, create 
+summary: Você pode usar o System Manager para adicionar, editar e gerenciar uma conta de usuário de cluster e especificar um método de usuário de login para acessar o sistema de armazenamento. 
+---
+= Gerencie contas de usuários com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para adicionar, editar e gerenciar uma conta de usuário de cluster e especificar um método de usuário de login para acessar o sistema de armazenamento.
+
+
+
+== Adicione uma conta de usuário de cluster
+
+Você pode usar o System Manager para adicionar uma conta de usuário de cluster e especificar um método de login de usuário para acessar o sistema de armazenamento.
+
+.Sobre esta tarefa
+Em clusters nos quais a autenticação SAML está ativada, para um aplicativo específico, você pode adicionar autenticação SAML ou autenticação baseada em senha ou adicionar ambos os tipos de autenticação.
+
+.Passos
+. Clique em *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. No painel *Gerenciamento*, clique em *usuários*.
+. Clique em *Add*.
+. Digite um nome de usuário para o novo usuário.
+. Digite uma senha para que o usuário se conete ao sistema de armazenamento e confirme a senha.
+. Adicione um ou mais métodos de login de usuário e clique em *Adicionar*.
+
+
+
+
+== Editar uma conta de usuário de cluster
+
+Você pode usar o System Manager para editar uma conta de usuário de cluster modificando os métodos de login de usuário para acessar o sistema de armazenamento.
+
+.Passos
+. Clique em *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. No painel *Gerenciamento*, clique em *usuários*.
+. Na janela *usuários*, selecione a conta de usuário que deseja modificar e clique em *Editar*.
+. Na caixa de diálogo *Modificar usuário*, modifique os métodos de login do usuário e clique em *Modificar*.
+
+
+
+
+== Alterar senhas para contas de usuário de cluster
+
+Pode utilizar o System Manager para repor a palavra-passe de uma conta de utilizador de cluster.
+
+.Passos
+. Clique em *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. No painel *Gerenciamento*, clique em *usuários*.
+. Selecione a conta de usuário para a qual deseja modificar a senha e clique em *alterar senha*.
+. Na caixa de diálogo *alterar senha*, digite a nova senha, confirme a nova senha e clique em *alterar*.
+
+
+
+
+== Bloquear ou desbloquear contas de usuários do cluster
+
+Você pode usar o System Manager para bloquear ou desbloquear contas de usuários de cluster.
+
+.Passos
+. Clique em *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. No painel *Gerenciamento*, clique em *usuários*.
+. Selecione a conta de usuário para a qual deseja modificar o status e clique em *Bloquear* ou *desbloquear*.
+
+
+
+
+== Contas de usuário (somente administradores de cluster)
+
+Você pode criar, modificar, bloquear, desbloquear ou excluir uma conta de usuário de cluster, redefinir a senha de um usuário ou exibir informações sobre todas as contas de usuário.
+
+Você pode gerenciar contas de usuários de cluster das seguintes maneiras:
+
+* Criar um método de login para um usuário especificando o nome da conta do usuário, o método de acesso, o método de autenticação e, opcionalmente, a função de controle de acesso atribuída ao usuário
+* Exibição das informações de login dos usuários, como nome da conta, método de acesso permitido, método de autenticação, função de controle de acesso e status da conta
+* Modificação da função de controle de acesso associada ao método de login de um usuário
++
+[NOTE]
+====
+É melhor usar uma única função para todos os métodos de acesso e autenticação de uma conta de usuário.
+
+====
+* Eliminar o método de início de sessão de um utilizador, como o método de acesso ou o método de autenticação
+* Alterar a palavra-passe de uma conta de utilizador
+* Bloquear uma conta de utilizador para impedir que o utilizador aceda ao sistema
+* Desbloquear uma conta de utilizador previamente bloqueada para permitir que o utilizador aceda novamente ao sistema
+
+
+
+
+== Janela usuários
+
+Você pode usar a janela usuários para gerenciar contas de usuário, redefinir a senha de um usuário e exibir informações sobre todas as contas de usuário.
+
+
+
+=== Botões de comando
+
+* *Adicionar*
++
+Abre a caixa de diálogo Adicionar usuário, que permite adicionar contas de usuário.
+
+* *Editar*
++
+Abre a caixa de diálogo Modificar usuário, que permite modificar métodos de login do usuário.
+
++
+[NOTE]
+====
+É uma prática recomendada usar uma única função para todos os métodos de acesso e autenticação de uma conta de usuário.
+
+====
+* *Excluir*
++
+Permite eliminar uma conta de utilizador selecionada.
+
+* *Alterar senha*
++
+Abre a caixa de diálogo alterar palavra-passe, que permite repor a palavra-passe de um utilizador selecionado.
+
+* *Bloqueio*
++
+Bloqueia a conta de utilizador.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de utilizadores
+
+A área abaixo da lista de usuários exibe informações detalhadas sobre o usuário selecionado.
+
+* *Usuário*
++
+Exibe o nome da conta de usuário.
+
+* *Conta bloqueada*
++
+Exibe se a conta de usuário está bloqueada.
+
+
+
+
+
+=== Área métodos de login do usuário
+
+* * Aplicação*
++
+Exibe o método de acesso que um usuário pode usar para acessar o sistema de armazenamento. Os métodos de acesso suportados incluem o seguinte:
+
++
+** Consola do sistema (consola)
+** HTTP(S) (http)
+** API do ONTAP (ontapi)
+** Processador de serviço (processador de serviço)
+** SSH (ssh)
+
+
+* *Autenticação*
++
+Exibe o método de autenticação padrão suportado, que é "senha".
+
+* *Função*
++
+Exibe a função de um usuário selecionado.
+
+

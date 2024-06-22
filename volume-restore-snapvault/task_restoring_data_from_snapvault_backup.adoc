@@ -1,0 +1,73 @@
+---
+permalink: volume-restore-snapvault/task_restoring_data_from_snapvault_backup.html 
+sidebar: sidebar 
+keywords: snapvault, backup, destination, volume, perform, restore, operation, backed-up, data, corrupt, lost, restore data from a snapvault backup 
+summary: Depois de selecionar o volume de destino do backup do SnapVault, você deve executar a operação de restauração em um novo volume para testar os dados de backup ou em um volume existente para restaurar os dados perdidos ou corrompidos. 
+---
+= Restaurar dados de um backup do SnapVault
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depois de selecionar o volume de destino do backup do SnapVault, você deve executar a operação de restauração em um novo volume para testar os dados de backup ou em um volume existente para restaurar os dados perdidos ou corrompidos.
+
+.Sobre esta tarefa
+Você deve executar esta tarefa a partir do cluster *Destination*.
+
+.Passos
+. Dependendo da versão do System Manager que você está executando, execute uma das seguintes etapas:
++
+** ONTAP 9.4 ou anterior: Clique em *proteção* > *relacionamentos*.
+** Começando com ONTAP 9.5: Clique em *proteção* > *relacionamentos de volume*.
+
+
+. Selecione o SVM que contém o volume de destino do backup do SnapVault e clique em *operações* > *Restaurar*.
+. Na caixa de diálogo *Restore* (Restaurar), restaure os dados para o volume de origem original ou para um novo volume:
++
+|===
+| Se você quiser restaurar para... | Então... 
+
+
+ a| 
+O volume de origem original
+ a| 
+Selecione *volume da fonte*.
+
+
+
+ a| 
+Um novo volume
+ a| 
+.. Selecione *outro volume*.
+.. Selecione o cluster com peered e o SVM com peered para o volume.
+.. Selecione uma SVM com peered na lista.
+.. Se o SVM não for peered, crie o relacionamento entre pares SVM:
++
+... Selecione o SVM.
+... Clique em *Authenticate*.
+... Insira as credenciais do administrador do cluster do cluster com permissões e clique em *criar*.
+
+
+.. Selecione *novo volume*.
+.. Se você quiser alterar o nome padrão, exibido no formato `destination_SVM_name_destination_volume_name_restore`, especifique um novo nome e selecione o agregado que contém para o volume.
+.. Marque a caixa de seleção *Ativar deduplicação*.
+
+
+|===
++
+image:../media/restore_to.gif["Selecionar o volume a restaurar"]
+
+. Selecione a cópia Snapshot mais recente ou selecione uma cópia Snapshot específica que você deseja restaurar.
+. Marque a caixa de seleção *OK para restaurar o volume na cópia Snapshot*.
+. Marque a caixa de seleção *Ativar compressão de rede* para compactar os dados que estão sendo transferidos durante a operação de restauração.
+. Clique em *Restaurar*.
++
+Durante o processo de restauração, o volume que está sendo restaurado é alterado para somente leitura. Após a conclusão da operação de restauração, a relação temporária é removida e o volume restaurado é alterado para leitura/gravação.
+
++
+image::../media/restore_configuration.gif[Resultado da operação de restauração do volume]
+
+. Clique em *OK* na caixa de mensagem.
+

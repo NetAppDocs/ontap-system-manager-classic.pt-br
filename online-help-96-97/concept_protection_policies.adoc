@@ -1,0 +1,99 @@
+---
+permalink: online-help-96-97/concept_protection_policies.html 
+sidebar: sidebar 
+keywords: online, help, protection, policy, system, manager, create, edit, delete 
+summary: Você pode usar o System Manager para criar, editar e excluir políticas de proteção. 
+---
+= Gerencie políticas de proteção com o System Manager - ONTAP 9.7 e versões anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para criar, editar e excluir políticas de proteção.
+
+
+
+== Criar políticas de proteção
+
+Você pode usar o System Manager para criar políticas de espelhamento assíncrono no cluster, políticas de Vault ou políticas de espelhamento e cofre, e aplicar essas políticas a um relacionamento de proteção de dados no nível do cluster.
+
+.Passos
+. Clique em *proteção* > *políticas de proteção*.
+. Clique em *criar*.
+. Na caixa de diálogo *criar política*, selecione o tipo de política que deseja criar.
+. Especifique o nome da política e a prioridade de transferência.
++
+Baixo indica que a transferência tem a prioridade mais baixa. As transferências de baixa prioridade são normalmente agendadas após as transferências de prioridade normal. Por padrão, a prioridade de transferência é definida como normal.
+
+. *Opcional:* Selecione a caixa de seleção *Ativar compressão de rede* para compactar os dados que estão sendo transferidos durante uma transferência de dados.
+. *Opcional:* para uma política de espelhamento assíncrono, marque a caixa de seleção *Transferir todas as cópias snapshot de origem* para incluir a regra "'all_source_snapshots" na política de espelhamento, que faz backup de todas as cópias Snapshot do volume de origem.
+. *Opcional:* clique em *Adicionar comentários* para adicionar comentários adicionais para a política.
+. Para uma política de Vault ou uma política de cofre espelhado, especifique um rótulo SnapMirror e uma contagem de retenção de destino.
+. Clique em *criar*.
+
+
+
+
+== Janela políticas de proteção
+
+Você pode usar a janela políticas de proteção para criar, gerenciar e exibir informações sobre políticas de espelhamento, cofre e cofre.
+
+
+
+=== Botões de comando
+
+* *Criar*
++
+Abre a caixa de diálogo criar política, que permite criar uma política de cofre de espelho, cofre ou espelho.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar política, que permite editar uma política.
+
+* *Excluir*
++
+Abre a caixa de diálogo Excluir política, que permite excluir uma política.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de políticas de proteção
+
+* *Nome*
++
+Exibe o nome da política de proteção.
+
+* *Tipo*
++
+Exibe o tipo de política, que pode ser Vault, Mirror Vault ou Asynchronous Mirror.
+
+* *Comentário*
++
+Exibe a descrição especificada para a política.
+
+* *Prioridade de transferência*
++
+Exibe a prioridade de transferência de dados, como normal ou baixa.
+
+
+
+
+
+=== Área de detalhes
+
+* *Separador Detalhes da política*
++
+Exibe detalhes da política de proteção, como o usuário que criou a política, o número de regras, a contagem de retenção e o status da compressão de rede.
+
+* *Guia regras de política*
++
+Exibe detalhes das regras que são aplicadas à política. A guia regras de política é exibida somente se a política selecionada contiver regras.
+
+

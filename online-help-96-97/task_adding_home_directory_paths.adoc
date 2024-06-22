@@ -1,0 +1,38 @@
+---
+permalink: online-help-96-97/task_adding_home_directory_paths.html 
+sidebar: sidebar 
+keywords: cifs, system, manager, online, help, storage, add , delete, home, directory 
+summary: Você pode usar o System Manager para especificar um ou mais caminhos que podem ser usados pelo sistema de armazenamento para resolver o local dos diretórios base CIFS de usuários. 
+---
+= Gerenciar caminhos de diretório base - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para especificar um ou mais caminhos que podem ser usados pelo sistema de storage para resolver o local dos diretórios base do CIFS de usuários.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. Na área *Home Directories* da guia *Configuration*, clique em *Manage*.
+. Na caixa de diálogo *Manage Home Directories* (Gerenciar diretórios iniciais), especifique os caminhos que devem ser usados pelo sistema de armazenamento para procurar os diretórios base CIFS dos usuários.
+. Clique em *Adicionar* e, em seguida, clique em *Salvar e fechar*.
+
+
+
+
+== Eliminar caminhos do diretório base
+
+Você pode usar o System Manager para excluir um caminho de diretório inicial quando não quiser que o sistema de armazenamento use o caminho para resolver o local dos diretórios base CIFS de usuários.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. Na área *Home Directories* da guia *Configuration*, clique em *Manage*.
+. Na caixa de diálogo *Manage Home Directories* (gerir diretórios iniciais), selecione o caminho do diretório inicial que pretende eliminar e, em seguida, clique em *Delete* (Eliminar).
+. Clique em *Salvar e fechar*.
+
+
+*Informações relacionadas*

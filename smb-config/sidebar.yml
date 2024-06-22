@@ -1,0 +1,46 @@
+---
+section: smb-config
+title: Configuração SMB/CIFS
+entries:
+- title: Visão geral
+  url: "/smb-config/index.html"
+- title: Fluxo de trabalho de configuração SMB/CIFS
+  url: "/smb-config/concept_cifs_nfs_configuration_workflow.html"
+  entries:
+  - title: Crie um agregado
+    url: "/smb-config/task_creating_aggregate.html"
+  - title: Decidir onde provisionar o novo volume
+    url: "/smb-config/task_deciding_where_to_provision_new_volume.html"
+- title: Criar um novo SVM habilitado para CIFS
+  url: "/smb-config/task_creating_protocol_enabled_svm.html"
+  entries:
+  - title: Criar um novo SVM com volume CIFS e compartilhamento
+    url: "/smb-config/task_creating_new_svm.html"
+  - title: Mapeie o servidor SMB no servidor DNS
+    url: "/smb-config/task_mapping_smb_server_dns_server.html"
+  - title: Verifique o acesso do cliente SMB
+    url: "/smb-config/task_verifying_smb_client_access.html"
+  - title: Configurar e verificar o acesso do cliente CIFS
+    url: "/smb-config/task_configuring_verifying_client_access.html"
+- title: Configurar o acesso SMB/CIFS a uma SVM existente
+  url: "/smb-config/task_configuring_access_to_existing_svm.html"
+  entries:
+  - title: Adicionar acesso CIFS a uma SVM existente
+    url: "/smb-config/concept_adding_nas_access_to_existing_svm.html"
+  - title: Mapeie o servidor SMB no servidor DNS
+    url: "/smb-config/task_mapping_smb_server_dns_server.html"
+  - title: Verifique o acesso do cliente SMB
+    url: "/smb-config/task_verifying_smb_client_access.html"
+  - title: Configurar e verificar o acesso do cliente CIFS
+    url: "/smb-config/task_configuring_verifying_client_access.html"
+- title: Adicionar um volume CIFS a uma SVM habilitada para CIFS
+  url: "/smb-config/concept_adding_protocol_volume_to_protocol_enabled_svm.html"
+  entries:
+  - title: Criar e configurar um volume
+    url: "/smb-config/task_creating_configuring_volume.html"
+  - title: Crie um compartilhamento e defina suas permissões
+    url: "/smb-config/task_creating_share_setting_its_permissions.html"
+  - title: Verifique o acesso do cliente SMB
+    url: "/smb-config/task_verifying_smb_client_access.html"
+  - title: Configurar e verificar o acesso do cliente CIFS
+    url: "/smb-config/task_configuring_verifying_client_access.html"

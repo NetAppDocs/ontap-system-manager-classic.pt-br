@@ -1,0 +1,35 @@
+---
+permalink: nfs-config-esxi/task_provisioning_datastore_creating_its_containing_lun_volume.html 
+sidebar: sidebar 
+keywords: datastore, virtual, machine, vmdk, esxi, host, provision, storage, cluster, provision a datastore and create its containing volume 
+summary: Um datastore contém máquinas virtuais e seus VMDKs no host ESXi. O armazenamento de dados no host ESXi é provisionado em um volume no cluster de armazenamento. 
+---
+= Provisione um datastore e crie seu volume contendo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Um datastore contém máquinas virtuais e seus VMDKs no host ESXi. O armazenamento de dados no host ESXi é provisionado em um volume no cluster de armazenamento.
+
+.Antes de começar
+O Virtual Storage Console para VMware vSphere for (VSC) deve ser instalado e registrado no vCenter Server que gerencia o host ESXi.
+
+O VSC precisa ter cluster ou credenciais suficientes para criar o volume no SVM especificado.
+
+.Sobre esta tarefa
+O VSC automatiza o provisionamento do armazenamento de dados, inclusive a criação de um volume na SVM especificada.
+
+.Passos
+. Na página vSphere Web Client *Home*, clique em *hosts and clusters*.
+. No painel de navegação, expanda o datacenter onde você deseja provisionar o datastore.
+. Clique com o botão direito do Mouse no host ESXi e selecione *NetApp VSC* > *armazenamento de dados de provisionamento*.
++
+Como alternativa, você pode clicar com o botão direito do Mouse no cluster ao provisionar para tornar o datastore disponível para todos os hosts no cluster.
+
+. Forneça as informações necessárias no assistente:
++
+image::../media/vsc_datastore_provisioning_wizard_nfs.gif[A imagem mostra a primeira página do Assistente de provisionamento de datastore do VSC.]
+
+

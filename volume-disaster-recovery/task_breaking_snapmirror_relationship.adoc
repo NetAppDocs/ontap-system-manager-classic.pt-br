@@ -1,0 +1,46 @@
+---
+permalink: volume-disaster-recovery/task_breaking_snapmirror_relationship.html 
+sidebar: sidebar 
+keywords: quiesce, break, snapmirror, relationship, activate, destination, volume, snapmirror, quiescing, transfer, disable, break the snapmirror relationship 
+summary: Você deve silenciar e quebrar a relação SnapMirror para ativar o volume de destino. Após a quiescência, as futuras transferências de dados do SnapMirror são desativadas. 
+---
+= Quebre a relação SnapMirror
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve silenciar e quebrar a relação SnapMirror para ativar o volume de destino. Após a quiescência, as futuras transferências de dados do SnapMirror são desativadas.
+
+.Antes de começar
+O volume de destino deve ser montado no namespace SVM de destino.
+
+.Sobre esta tarefa
+Você deve executar esta tarefa a partir do cluster *Destination*.
+
+.Passos
+. Dependendo da versão do System Manager que você está executando, execute uma das seguintes etapas:
++
+** ONTAP 9.4 ou anterior: Clique em *proteção* > *relacionamentos*.
+** Começando com ONTAP 9.5: Clique em *proteção* > *relacionamentos de volume*.
+
+
+. Selecione a relação SnapMirror entre os volumes de origem e destino.
+. Clique em *operações* > *quiesce* para desativar futuras transferências de dados.
+. Marque a caixa de seleção de confirmação e clique em *quiesce*.
++
+A operação quiesce pode demorar algum tempo; você não deve executar qualquer outra operação na relação SnapMirror até que o status da transferência seja exibido como `Quiesced`.
+
+. Clique em *operações* > *Break*.
+. Marque a caixa de seleção de confirmação e clique em *Break*.
++
+image::../media/break.gif[Ecrã SnapMirror Break (quebra de ecrã)]
+
++
+A relação SnapMirror está `Broken Off` no estado.
+
++
+image::../media/break_verify.gif[Relação de SnapMirror em estado de rutura]
+
+

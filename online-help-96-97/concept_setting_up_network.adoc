@@ -1,0 +1,69 @@
+---
+permalink: online-help-96-97/concept_setting_up_network.html 
+sidebar: sidebar 
+keywords: online, help, set, up, network, ipspace, broadcast, domain, subnet, system, manager, cluster, range 
+summary: A configuração da rede consiste em criar IPspaces, um domínio de broadcast e sub-redes. 
+---
+= Configure a rede com o Gerenciador de sistema - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para configurar a rede. A configuração da rede consiste em criar IPspaces, um domínio de broadcast e sub-redes.
+
+
+
+== Crie IPspaces
+
+Você pode criar um espaço IPspace usando o Gerenciador de sistema para configurar um único cluster ONTAP para acesso de cliente a partir de mais de um domínio de rede administrativamente separado, mesmo quando os clientes usam o mesmo intervalo de sub-rede de endereço IP. Isso permite que você separe o tráfego do cliente para privacidade e segurança.
+
+.Sobre esta tarefa
+Todos os nomes de IPspace devem ser exclusivos dentro de um cluster e não devem consistir em nomes reservados pelo sistema, como "local" ou "localhost".
+
+.Passos
+. Clique na guia *rede*.
+. Na guia *IPspaces*, clique em *Create*.
+. Na caixa de diálogo *Create IPspaces*, especifique um nome para o IPspace que deseja criar.
+. Clique em *criar*.
+
+
+
+
+== Criar domínios de broadcast
+
+Você pode criar um domínio de broadcast usando o System Manager para fornecer uma divisão lógica de uma rede de computador. Em um domínio de broadcast, todos os nós associados podem ser alcançados através de broadcast na camada de datalink
+
+.Passos
+. Clique na guia *rede*.
+. Na guia *Broadcast Domains*, clique em *Create*.
+. Na caixa de diálogo *criar domínio de transmissão*, especifique o nome, tamanho da MTU, espaço IPspace e portas para o domínio de difusão que deseja criar.
+. Clique em *criar*.
+
+
+
+
+== Crie sub-redes
+
+Você pode criar uma sub-rede usando o System Manager para fornecer uma subdivisão lógica de uma rede IP para pré-alocar os endereços IP. Uma sub-rede permite criar interfaces mais facilmente especificando uma sub-rede em vez de um endereço IP e valores de máscara de rede para cada nova interface.
+
+.Antes de começar
+Você deve ter criado o domínio de broadcast no qual a sub-rede é usada.
+
+.Sobre esta tarefa
+Se você especificar um gateway ao criar uma sub-rede, uma rota padrão para o gateway será adicionada automaticamente ao SVM quando um LIF for criado usando essa sub-rede.
+
+.Passos
+. Clique na guia *rede*.
+. Na guia *sub-redes*, clique em *criar*.
+. Na caixa de diálogo *criar sub-rede*, especifique os detalhes da sub-rede, como nome, endereço IP da sub-rede ou máscara de sub-rede, intervalo de endereços IP, endereço de gateway e domínio de difusão.
++
+Você pode especificar os endereços IP como um intervalo, como vários endereços separados por vírgulas ou como uma combinação de ambos.
+
+. Clique em *criar*.
+
+
+*Informações relacionadas*
+
+xref:reference_network_window.adoc[Janela de rede]

@@ -1,0 +1,125 @@
+---
+permalink: online-help-96-97/concept_namespace.html 
+sidebar: sidebar 
+keywords: junction, path, window, system, manager, mount, unmount, flexvol, volume, svm, namespace, online, help, policies, export 
+summary: Você pode usar a janela caminho de junção no Gerenciador do sistema para montar ou desmontar volumes FlexVol em uma junção no namespace SVM. 
+---
+= Janela caminho de junção no Gerenciador do sistema - ONTAP 9 F.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a janela caminho de junção no ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para montar ou desmontar volumes FlexVol para uma junção no namespace SVM.
+
+
+
+== Monte volumes
+
+Você pode usar o System Manager para montar volumes em uma junção no namespace Storage Virtual Machine (SVM).
+
+.Sobre esta tarefa
+* Se você montar um volume em um caminho de junção com uma configuração de idioma diferente da do volume pai imediato no caminho, os clientes NFSv3 não poderão acessar alguns dos arquivos porque alguns carateres podem não ser decodificados corretamente.
++
+Este problema não ocorre se o diretório pai imediato for o volume raiz.
+
+* É possível montar um volume SnapLock somente sob a raiz do SVM.
+* Não é possível montar um volume regular sob um volume SnapLock.
+
+
+.Passos
+. Clique em *Storage* > *Junction Path*.
+. No menu suspenso no campo *SVM*, selecione o SVM no qual você deseja montar um volume.
+. Clique em *montar* e, em seguida, selecione o volume a ser montado.
+. *Opcional:* se você quiser alterar o nome da junção padrão, especifique um novo nome.
+. Clique em *Browse* e, em seguida, selecione o caminho de junção para o qual deseja montar o volume.
+. Clique em *OK* e, em seguida, clique em *montar*.
+. Verifique o novo caminho de junção na guia *Detalhes*.
+
+
+
+
+== Desmontar volumes FlexVol
+
+Você pode usar a opção caminho de junção do painel de armazenamento no Gerenciador do sistema para desmontar volumes FlexVol de uma junção no namespace de máquina virtual de storage (SVM).
+
+.Passos
+. Clique em *Storage* > *Junction Path*.
+. No menu suspenso no campo *SVM*, selecione o SVM a partir do qual deseja desmontar um volume.
+. Selecione os volumes que têm de ser desmontados e, em seguida, clique em *Desmontar*.
+. Marque a caixa de seleção de confirmação e clique em *Desmontar*.
+
+
+
+
+== Alterar políticas de exportação
+
+Quando um volume é criado, o volume herda automaticamente a política de exportação padrão do volume raiz da máquina virtual de storage (SVM). Você pode usar o System Manager para alterar a política de exportação padrão associada ao volume para redefinir o acesso do cliente aos dados.
+
+.Passos
+. Clique em *Storage* > *Junction Path*.
+. No menu suspenso no campo *SVM*, selecione o SVM no qual reside o volume que você deseja modificar.
+. Selecione o volume e clique em *alterar política de exportação*.
+. Selecione a política de exportação e clique em *alterar*.
+. Verifique se a coluna *Export Policy* na janela *Junction Path* exibe a política de exportação aplicada ao volume.
+
+
+.Resultados
+A política de exportação padrão é substituída pela política de exportação selecionada.
+
+
+
+== Janela caminho de junção
+
+Você pode usar o menu caminho de junção para gerenciar o namespace nas de máquinas virtuais de armazenamento (SVMs).
+
+
+
+=== Botões de comando
+
+* *Monte*
++
+Abre a caixa de diálogo montar volume, que permite montar um volume na junção em um namespace SVM.
+
+* *Desmontar*
++
+Abre a caixa de diálogo Desmontar volume, que permite desmontar um volume do volume pai.
+
+* *Alterar política de exportação*
++
+Abre a caixa de diálogo alterar política de exportação, que permite alterar a política de exportação existente associada ao volume.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista caminho junção
+
+* *Caminho*
++
+Especifica o caminho de junção do volume montado. Você pode clicar no caminho de junção para visualizar os volumes e qtrees relacionados.
+
+* *Objeto de armazenamento*
++
+Especifica o nome do volume montado no caminho de junção. Você também pode visualizar os qtrees que o volume contém.
+
+* *Política de exportação*
++
+Especifica a política de exportação do volume montado.
+
+* *Estilo de segurança*
++
+Especifica o estilo de segurança do volume. Os valores possíveis incluem UNIX (para bits de modo UNIX), NTFS (para ACLs CIFS) e Mixed (para permissões NFS e CIFS mistas).
+
+
+
+
+
+=== Separador Detalhes
+
+Exibe informações gerais sobre o volume ou qtree selecionado, como nome, tipo de objeto de armazenamento, caminho de junção do objeto montado e política de exportação. Se o objeto selecionado for uma qtree, serão exibidos detalhes sobre o limite de espaço físico, o limite de espaço e o uso do espaço.

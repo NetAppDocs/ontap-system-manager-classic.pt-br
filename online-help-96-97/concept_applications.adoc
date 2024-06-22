@@ -1,0 +1,46 @@
+---
+permalink: online-help-96-97/concept_applications.html 
+sidebar: sidebar 
+keywords: application, predefined, template, system, manager, configuration, provision 
+summary: Você pode usar modelos de aplicativo predefinidos no System Manager para criar novas configurações baseadas em modelos de aplicativo existentes. Em seguida, você pode provisionar instâncias do aplicativo no ONTAP. 
+---
+= Configure aplicativos com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar modelos de aplicativo predefinidos no ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para criar novas configurações baseadas em modelos de aplicativo existentes. Em seguida, você pode provisionar instâncias do aplicativo no ONTAP.
+
+Você configura aplicativos clicando em *aplicativos &tiers* > *aplicativos*.
+
+[NOTE]
+====
+Se alguém adicionar novos aplicativos usando a CLI ou a API REST enquanto estiver exibindo a lista de aplicativos, não será possível exibir esses novos aplicativos ao rolar a lista.
+
+====
+Os seguintes aplicativos podem ser configurados no System Manager:
+
+* Aplicações gerais*
+
+* Contêiner nas (o volume é exportado para clientes NFS ou CIFS)
+* Aplicação SAN geral (conjunto de LUNs exportados para o servidor de aplicações)
+
+
+*Bancos de dados*
+
+* MongoDB (sobre SAN)
+* Oracle (em NFS ou SAN)
+* Oracle (cluster de aplicações reais em NFS ou SAN)
+* Microsoft SQL Server (em SAN ou SMB )
+
+
+*Infraestrutura virtual*
+
+* Servidores virtuais (com VMware, Hyper-V ou XEN)
+
+
+*Informações relacionadas*
+
+https://docs.netapp.com/us-en/ontap/concepts/index.html["Conceitos de ONTAP"]

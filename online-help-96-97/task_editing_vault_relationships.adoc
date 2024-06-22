@@ -1,0 +1,285 @@
+---
+permalink: online-help-96-97/task_editing_vault_relationships.html 
+sidebar: sidebar 
+keywords: edit, vault, relationships, system, manager, online, help, cluster, schedule 
+summary: Você pode usar o System Manager para editar uma relação de Vault selecionando uma política ou programação existente no cluster ou criando uma nova política ou programação. No entanto, não é possível editar os parâmetros de uma política ou programação existente. 
+---
+= Gerencie relacionamentos de Vault com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para atualizar, retomar, quiesce, inicializar e excluir relações de Vault, além de criar relações de Vault a partir de um SVM de destino.
+
+
+
+== Editar relacionamentos
+
+Você pode usar o System Manager para editar uma relação de Vault selecionando uma política ou programação existente no cluster ou criando uma nova política ou programação. No entanto, não é possível editar os parâmetros de uma política ou programação existente.
+
+.Antes de começar
+Os clusters de origem e destino devem estar em um relacionamento de pares saudável.
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação do Vault para a qual você deseja modificar a política ou programação e clique em *Editar*.
+. Na caixa de diálogo *Editar relacionamento*, selecione a ação apropriada:
++
+|===
+| Se você quiser... | Faça o seguinte... 
+
+
+ a| 
+Selecione uma política existente
+ a| 
+Clique em *Procurar* e selecione uma política existente. Você pode selecionar uma política que tenha o número máximo de rótulos correspondentes com a política Snapshot anexada ao volume de origem.
+
+
+
+ a| 
+Crie uma nova política
+ a| 
+.. Clique em *criar política*.
+.. Especifique um nome para a política.
+.. Defina a prioridade para transferências agendadas.
++
+Baixa indica que a transferência tem a menor prioridade e geralmente é agendada após transferências de prioridade normal. Por padrão, a prioridade é definida como normal.
+
+.. Marque a caixa de seleção *Ativar compressão de rede* para compactar os dados que estão sendo transferidos.
+.. Especifique um rótulo SnapMirror e uma contagem de retenção de destino para a política de Vault.
++
+Você deve garantir que uma cópia Snapshot com o mesmo rótulo seja criada no volume de origem para que a nova etiqueta SnapMirror seja efetiva.
+
+.. Clique em *criar*.
+
+
+|===
+. Especifique uma agenda para a relação:
++
+|===
+| Se... | Faça o seguinte... 
+
+
+ a| 
+Você deseja atribuir uma programação existente
+ a| 
+Selecione uma agenda existente na lista.
+
+
+
+ a| 
+Você deseja criar uma nova agenda
+ a| 
+.. Clique em *Create Schedule*.
+.. Especifique um nome para a programação.
+.. Selecione uma das seguintes opções:
++
+*** *Básico*
++
+Pode selecionar esta opção para especificar apenas o dia da semana, a hora e o intervalo de transferência.
+
+*** *Avançado*
++
+Você pode selecionar essa opção para especificar um cronograma de estilo cron.
+
+
+
+.. Clique em *criar*.
+
+
+
+
+ a| 
+Não pretende atribuir uma agenda
+ a| 
+Selecione *nenhum*.
+
+|===
+. Clique em *OK*.
+
+
+*Informações relacionadas*
+
+xref:reference_protection_window.adoc[Janela de proteção]
+
+
+
+== Inicialize relacionamentos
+
+Você pode usar o System Manager para inicializar um relacionamento de Vault se ainda não tiver inicializado ao criar o relacionamento. É iniciada uma transferência de dados da linha de base do FlexVol volume de origem para o FlexVol volume de destino.
+
+.Antes de começar
+Os clusters de origem e destino devem estar em um relacionamento de pares saudável.
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação que deseja inicializar e clique em *operações* > *Inicializar*.
+. Na janela *Inicializar*, clique em *Inicializar*.
+
+
+.Resultados
+Uma cópia Snapshot é criada e transferida para o destino.
+
+Essa cópia Snapshot é usada como linha de base para cópias Snapshot incrementais subsequentes.
+
+*Informações relacionadas*
+
+xref:reference_protection_window.adoc[Janela de proteção]
+
+
+
+== Crie relacionamentos a partir de um SVM de destino
+
+Você pode usar o System Manager para criar uma relação de cofre a partir da máquina virtual de armazenamento de destino (SVM) e para atribuir uma política de cofre para criar um cofre de backup. Em caso de perda ou corrupção de dados em um sistema, os dados de backup podem ser restaurados a partir do destino do cofre de backup.
+
+.Antes de começar
+* O cluster de origem deve estar executando o ONTAP 8.2.2 ou posterior.
+* A licença SnapVault ou a licença SnapMirror devem estar ativadas no cluster de origem e no cluster de destino.
++
+[NOTE]
+====
+Para algumas plataformas, não é obrigatório que o cluster de origem tenha a licença SnapVault ou a licença SnapMirror ativada se o cluster de destino tiver a licença SnapVault ou a licença SnapMirror e a licença DPO ativada.
+
+====
+* O cluster de origem e o cluster de destino devem estar em um relacionamento de pares saudável.
+* O SVM de destino deve ter espaço disponível.
+* O agregado de origem e o agregado de destino devem ser agregados de 64 bits.
+* Um volume de origem do tipo leitura/gravação (RW) deve existir.
+* Uma política de Vault (XDP) deve existir.
++
+Se uma política de Vault não existir, você deve criar uma política de Vault ou aceitar a política de Vault padrão (XDPDefault) que é atribuída automaticamente.
+
+* O FlexVol volumes deve estar on-line e ler/gravar.
+* O tipo de agregado SnapLock deve ser o mesmo.
+* Se você estiver se conetando de um cluster que executa o ONTAP 9.2 ou anterior a um cluster remoto no qual a autenticação SAML está ativada, a autenticação baseada em senha deve ser habilitada no cluster remoto.
+
+
+.Sobre esta tarefa
+* O System Manager não oferece suporte a um relacionamento em cascata.
++
+Por exemplo, um volume de destino em uma relação não pode ser o volume de origem em outra relação.
+
+* Você não pode criar uma relação de cofre entre uma fonte de sincronização SVM e um SVM de destino de sincronização em uma configuração do MetroCluster.
+* Você pode criar uma relação de Vault entre SVMs de origem sincronizada em uma configuração do MetroCluster.
+* Você pode criar uma relação de cofre a partir de um volume em uma SVM de origem sincronizada a um volume em uma SVM de fornecimento de dados.
+* Você pode criar uma relação de cofre de um volume em uma SVM de fornecimento de dados a um volume de proteção de dados (DP) em uma fonte sincronizada SVM.
+* Você pode criar uma relação de Vault apenas entre um volume que não seja SnapLock (primário) e um volume de destino SnapLock (secundário).
+* Um máximo de 25 volumes pode ser protegido em uma seleção.
+
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Na janela *relacionamentos*, clique em *criar*.
+. Na caixa de diálogo *Procurar SVM*, selecione um SVM para o volume de destino.
+. Na caixa de diálogo *criar relação de proteção*, selecione *Vault* na lista suspensa *tipo de relação*.
+. Especifique o cluster, o SVM e o volume de origem.
++
+Se o cluster especificado estiver executando uma versão do software ONTAP anterior ao ONTAP 9.3, então somente SVMs peered serão listadas. Se o cluster especificado estiver executando o ONTAP 9.3 ou posterior, os SVMs peered e os SVMs permitidos serão listados.
+
+. Introduza um sufixo do nome do volume.
++
+O sufixo do nome do volume é anexado aos nomes do volume de origem para gerar os nomes do volume de destino.
+
+. Se você estiver criando um volume SnapLock, especifique o período de retenção padrão.
++
+O período de retenção padrão pode ser definido para qualquer valor entre 1 dia a 70 anos ou Infinito.
+
+. *Opcional:* clique em *Procurar* e, em seguida, altere a política do Vault.
+. Selecione uma agenda para a relação na lista de programações existentes.
+. *Opcional:* Selecione *Initialize Relationship* para inicializar a relação do Vault.
+. Habilite agregados SnapLock e selecione um agregado SnapLock Compliance ou um agregado SnapLock Enterprise.
+. Habilite agregados habilitados para FabricPool e selecione uma política de disposição em camadas apropriada.
+. Clique em *Validar* para verificar se os volumes selecionados têm rótulos correspondentes.
+. Clique em *criar*.
+
+
+.Resultados
+Se você optar por criar um volume de destino, um volume do tipo _dp_ será criado com as seguintes configurações padrão:
+
+* O crescimento automático está ativado.
+* A deduplicação é ativada ou desativada de acordo com a preferência do usuário ou a configuração de deduplicação de volume de origem.
+* A compressão está desativada.
+* O atributo de idioma é definido para corresponder ao atributo de idioma do volume de origem.
+
+
+É criada uma relação de Vault entre o volume de destino e o volume de origem. A cópia Snapshot base é transferida para o volume de destino se você optou por inicializar o relacionamento.
+
+
+
+== Atualizar relacionamentos
+
+Você pode usar o System Manager para iniciar manualmente uma atualização incremental não programada. Você pode precisar de uma atualização manual para evitar a perda de dados devido a uma próxima interrupção de energia, manutenção programada ou migração de dados.
+
+.Antes de começar
+A relação do Vault deve ser inicializada.
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação para a qual deseja atualizar os dados e clique em *operações* > *Atualização*.
+. Escolha uma das seguintes opções:
++
+** Selecione *de acordo com a política* para realizar uma transferência incremental da cópia Snapshot comum recente entre os volumes de origem e destino.
+** Selecione *Selecionar cópia Snapshot* e especifique a cópia Snapshot que deseja transferir.
+
+
+. *Opcional:* Selecione *Limit transfer bandwidth to* para limitar a largura de banda da rede usada para transferências e especificar a velocidade máxima de transferência.
+. Clique em *Atualizar*.
+. Verifique o status da transferência na guia *Detalhes*.
+
+
+
+
+== Eliminar relações
+
+Você pode usar o System Manager para encerrar uma relação de cofre entre um volume de origem e destino e liberar as cópias Snapshot da origem.
+
+.Sobre esta tarefa
+A liberação da relação remove permanentemente as cópias Snapshot básicas usadas pela relação do Vault no volume de origem. Para recriar a relação do Vault, você deve executar a operação de ressincronização a partir do volume de origem usando a interface de linha de comando (CLI).
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione o volume para o qual deseja excluir a relação do Vault e clique em *Excluir*.
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
++
+Você também pode selecionar a caixa de seleção cópias Snapshot da base de liberação para excluir as cópias Snapshot da base usadas pela relação do Vault no volume de origem.
+
++
+Se a relação não for lançada, você deverá usar a CLI para executar a operação de liberação no cluster de origem para excluir as cópias Snapshot base criadas para a relação de Vault do volume de origem.
+
+
+
+
+
+== Retomar relacionamentos
+
+Você pode retomar um relacionamento de Vault tranquilo usando o System Manager. Quando você retoma a relação, a transferência de dados normal para o FlexVol volume de destino é retomada e todas as atividades do Vault são reiniciadas.
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação para a qual deseja retomar a transferência de dados e clique em *operações* > *Resume*.
+. Na janela *Resume*, clique em *Resume*.
+
+
+.Resultados
+As transferências de dados normais são retomadas. Se houver uma transferência agendada para o relacionamento, a transferência será iniciada a partir do próximo horário.
+
+
+
+== Quiesce relacionamentos
+
+Você pode usar o Gerenciador do sistema para desativar as transferências de dados para o FlexVol volume de destino, silenciando a relação do Vault.
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação para a qual deseja interromper as transferências de dados agendadas e clique em *operações* > *quiesce*.
+. Na janela *quiesce*, clique em *quiesce*.
+
+
+.Resultados
+Se não houver transferência em andamento, o status da transferência será exibido como Quiesced. Se uma transferência estiver em andamento, a transferência não será afetada e o status da transferência será exibido como Quiescente até que a transferência esteja concluída.
+
+*Informações relacionadas*
+
+xref:reference_protection_window.adoc[Janela de proteção]

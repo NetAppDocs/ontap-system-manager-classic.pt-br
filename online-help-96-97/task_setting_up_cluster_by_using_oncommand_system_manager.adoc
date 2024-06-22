@@ -1,0 +1,34 @@
+---
+permalink: online-help-96-97/task_setting_up_cluster_by_using_oncommand_system_manager.html 
+sidebar: sidebar 
+keywords: set, up, cluster, ontap, system, manager, online, help, management, network 
+summary: A partir do ONTAP 9.1, você pode usar o Gerenciador de sistema do ONTAP para configurar um cluster criando um cluster, configurando a rede de gerenciamento de nós e a rede de gerenciamento de cluster e, em seguida, configurando notificações de eventos. 
+---
+= Configure o cluster com o Gerenciador de sistema do ONTAP - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para configurar um cluster criando um cluster, configurando a rede de gerenciamento de nós e a rede de gerenciamento de cluster e, em seguida, configurando notificações de eventos.
+
+.Antes de começar
+* Você deve ter configurado os endereços IP de gerenciamento de nós para pelo menos um nó.
+* Os nós devem estar no modo padrão de HA.
+* Os nós precisam estar executando o ONTAP 9.1 ou posterior.
+* Os nós devem ter a mesma versão.
+* Todos os nós precisam estar íntegros e o cabeamento dos nós precisa estar configurado.
+* O cabeamento e a conectividade devem estar implementados para a configuração do cluster.
+* Você deve ter gerenciamento de cluster suficiente, gerenciamento de nós, endereços IP do processador de serviço e detalhes de gateway e máscara de rede.
+* Se a interface do cluster estiver presente em uma porta, essa porta deve estar presente no IPspace do cluster.
+
+
+.Sobre esta tarefa
+Para criar um cluster, você precisa fazer login pelo console e configurar o endereço IP de gerenciamento de nó em qualquer nó da rede do cluster. Depois de configurar o endereço IP de gerenciamento de nós em um nó, você pode adicionar outros nós e criar um cluster usando o Gerenciador de sistema do ONTAP.
+
+A operação de configuração do cluster não é suportada nas configurações do MetroCluster para o software ONTAP.
+
+Pode configurar o cluster utilizando um ficheiro de modelo ou introduzindo manualmente os valores no assistente de configuração do cluster.
+
+image::../media/cluster_setup_workflow.gif[fluxo de trabalho de configuração do cluster]

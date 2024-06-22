@@ -1,0 +1,168 @@
+---
+permalink: online-help-96-97/concept_kerberos_realm_services.html 
+sidebar: sidebar 
+keywords: online, help, kerberos, realm, service, system, manager, svm, edit, security, strong, nfs, authentication, microsoft, ntlm, ntlm v2, client 
+summary: Você pode usar o System Manager para criar e gerenciar serviços Kerberos Realm. 
+---
+= Gerencie os serviços do Realm Kerberos com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para criar e gerenciar os serviços do Kerberos Realm.
+
+
+
+== Crie uma configuração de realm Kerberos
+
+Se você quiser usar a autenticação Kerberos para acesso de cliente, configure a máquina virtual de armazenamento (SVM) para usar um realm Kerberos existente. Você pode usar o System Manager para criar uma configuração de realm Kerberos, que permite que SVMs usem serviços de segurança Kerberos para NFS.
+
+.Antes de começar
+* A licença CIFS deve ser instalada se forem usados compartilhamentos CIFS e a licença NFS deve ser instalada se um servidor LDAP for usado.
+* O ative Directory (Windows 2003 ou Windows 2008) com recurso de criptografia DES MD5 deve estar disponível.
+* Você deve ter definido o fuso horário e sincronizado a hora em todo o cluster configurando o NTP.
++
+Isso evita erros de autenticação e garante que os carimbos de data/hora nos arquivos de log sejam consistentes em todo o cluster.
+
+
+
+.Sobre esta tarefa
+Ao criar um realm Kerberos, você deve definir os seguintes atributos no assistente criar realm Kerberos:
+
+* Reino Kerberos
+* Endereço IP KDC e número da porta
++
+O número da porta padrão é 88.
+
+* Fornecedor do Centro de distribuição de chaves Kerberos (KDC)
+* Endereço IP do servidor administrativo se o fornecedor do KDC não for Microsoft
+* Endereço IP do servidor de senha
+* Nome do servidor do ative Directory e endereço IP se o fornecedor do KDC for Microsoft
+
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Serviços*, clique em *Reino Kerberos*.
+. Na janela *Kerberos Realm*, clique em *Create*.
+. Digite ou selecione informações conforme solicitado pelo assistente.
+. Confirme os detalhes e clique em *Finish* para concluir o assistente.
+
+
+
+
+== Edite uma configuração de realm Kerberos
+
+Você pode usar o System Manager para editar uma configuração de realm Kerberos no nível de máquina virtual de armazenamento (SVM).
+
+.Sobre esta tarefa
+Você pode modificar os seguintes atributos usando o assistente de edição de realm Kerberos:
+
+* O endereço IP do KDC e o número da porta
+* O endereço IP do servidor administrativo se o fornecedor do KDC não for Microsoft
+* O endereço IP do servidor de senhas
+* O nome do servidor do ative Directory e o endereço IP se o fornecedor do KDC for Microsoft
+
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Serviços*, clique em *Reino Kerberos*.
+. Na janela *Kerberos Realm*, selecione a configuração do Kerberos Realm que deseja modificar e clique em *Edit*.
+. Digite ou selecione informações conforme solicitado pelo assistente.
+. Confirme os detalhes e clique em *Finish* para concluir o assistente.
+
+
+
+
+== Excluir configurações de realm Kerberos
+
+Você pode usar o System Manager para excluir uma configuração de realm Kerberos.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Serviços*, clique em *Reino Kerberos*.
+. Na janela *Realm Kerberos*, selecione uma ou mais configurações de realm Kerberos que deseja excluir e clique em *Excluir*.
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
+
+
+
+
+== Use Kerberos com NFS para segurança forte
+
+Você pode usar o Kerberos para fornecer autenticação forte entre SVMs e clientes NFS para fornecer comunicação NFS segura. A configuração do NFS com Kerberos aumenta a integridade e a segurança das comunicações do cliente NFS com o sistema de armazenamento.
+
+
+
+== Autenticação Kerberos para CIFS
+
+Com a autenticação Kerberos, após a conexão com o servidor CIFS, o cliente negocia o mais alto nível de segurança possível. No entanto, se o cliente não puder usar a autenticação Kerberos, o Microsoft NTLM ou o NTLM V2 será usado para autenticar com o servidor CIFS.
+
+
+
+== Janela realm Kerberos
+
+Você pode usar a janela realm do Kerberos para fornecer autenticação entre máquinas virtuais de armazenamento (SVMs) e clientes NFS para garantir uma comunicação NFS segura.
+
+
+
+=== Botões de comando
+
+* *Criar*
++
+Abre o assistente de criação de realm Kerberos, que permite configurar um realm Kerberos para recuperar informações do usuário.
+
+* *Editar*
++
+Abre o assistente de edição de realm Kerberos, que permite editar uma configuração de realm Kerberos com base no requisito de autenticação e autorização SVM.
+
+* *Excluir*
++
+Abre a caixa de diálogo Excluir realm(s) do Kerberos, que permite excluir a configuração de realm do Kerberos.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de realm Kerberos
+
+Fornece detalhes sobre os reinos Kerberos, em formato tabular.
+
+* *Reino*
++
+Especifica o nome do realm Kerberos.
+
+* *Fornecedor KDC*
++
+Especifica o nome do fornecedor do Centro de distribuição Kerberos (KDC).
+
+* *Endereço IP KDC*
++
+Especifica o endereço IP KDC usado pela configuração.
+
+
+
+
+
+=== Área de detalhes
+
+A área de detalhes exibe informações como o endereço IP KDC e o número da porta, o fornecedor KDC, o endereço IP do servidor administrativo e o número da porta, o servidor do ative Directory e o endereço IP do servidor da configuração do Reino Kerberos selecionada.
+
+*Informações relacionadas*
+
+xref:task_setting_time_zone_for_cluster.adoc[Definir o fuso horário para um cluster]
+
+link:https://www.netapp.com/pdf.html?item=/media/10720-tr-4067.pdf["Relatório técnico da NetApp 4067: NFS em NetApp ONTAP"^]
+
+link:https://www.netapp.com/pdf.html?item=/media/19384-tr-4616.pdf["Relatório técnico do NetApp 4616: Kerberos NFS no ONTAP com o Microsoft ative Directory"^]
+
+link:https://www.netapp.com/pdf.html?item=/media/19423-tr-4835.pdf["Relatório técnico do NetApp 4835: Como configurar o LDAP no ONTAP"^]
+
+https://docs.netapp.com/us-en/ontap/nfs-admin/index.html["Gerenciamento de NFS"^]

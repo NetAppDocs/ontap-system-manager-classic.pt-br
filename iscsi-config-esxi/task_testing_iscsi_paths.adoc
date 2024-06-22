@@ -1,0 +1,40 @@
+---
+permalink: iscsi-config-esxi/task_testing_iscsi_paths.html 
+sidebar: sidebar 
+keywords: storage, failover, data, mobility, path, host, node, cluster, advertise, iscsi, ping, host, test, test iscsi paths from the host to the storage cluster 
+summary: Para garantir o failover de storage e a mobilidade de dados bem-sucedidos, você precisa garantir que você tenha dois caminhos do host para cada nó no cluster de storage. Como o número de caminhos anunciados pelo destino iSCSI é limitado, você precisa fazer ping nas portas do cluster de armazenamento a partir do host. 
+---
+= Testar caminhos iSCSI do host para o cluster de armazenamento
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para garantir o failover de storage e a mobilidade de dados bem-sucedidos, você precisa garantir que você tenha dois caminhos do host para cada nó no cluster de storage. Como o número de caminhos anunciados pelo destino iSCSI é limitado, você precisa fazer ping nas portas do cluster de armazenamento a partir do host.
+
+.Antes de começar
+Você deve saber o endereço IP ou o nome do host de todas as interfaces lógicas (LIFs) a serem usadas para caminhos iSCSI.
+
+.Sobre esta tarefa
+Os LUNs são mapeados para um subconjunto dos iniciadores no igrop para limitar o número de caminhos do host para o LUN.
+
+* Por padrão, somente caminhos do host para o nó que contém a máquina virtual de storage (SVM) em que o LUN foi criado e caminhos para o parceiro de HA desse nó ficam visíveis para o host.
+* Você ainda precisa criar e testar caminhos do host para cada nó no cluster, mas o host pode acessar apenas esses caminhos no nó proprietário e no parceiro de HA.
+* Você deve usar o comportamento padrão de mapeamento LUN.
++
+Adicione somente nós em outros pares de HA ao mapa LUN em preparação para mover o LUN para um nó diferente.
+
+
+
+.Passos
+. A partir do host ESXi, use o `ping` comando para verificar o caminho para o primeiro LIF.
++
+O `ping` comando está disponível no console de serviço ESXi.
+
+. Repita o `ping` comando para verificar a conetividade a cada iSCSI LIF em cada nó no cluster.
+
+
+*Informações relacionadas*
+
+http://kb.vmware.com/kb/1003486["Artigo 1003486 da VMware KB: Testando a conetividade de rede com o comando ping"]

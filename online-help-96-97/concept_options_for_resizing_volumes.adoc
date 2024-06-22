@@ -1,0 +1,44 @@
+---
+permalink: online-help-96-97/concept_options_for_resizing_volumes.html 
+sidebar: sidebar 
+keywords: option, resize, volume, wizard, snapshot, reserve, snapshot, copy, results, view, online, help 
+summary: Você pode usar o assistente Redimensionar volume para alterar o tamanho do volume, ajustar a reserva Snapshot, excluir cópias Snapshot e visualizar dinamicamente os resultados das alterações. 
+---
+= Opções para redimensionar volumes com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o assistente de redimensionamento de volume no ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para alterar o tamanho do volume, ajustar a reserva de instantâneo, excluir cópias snapshot e visualizar dinamicamente os resultados das alterações.
+
+O assistente Redimensionar volume exibe um gráfico de barras que exibe as alocações de espaço atuais dentro do volume, incluindo a quantidade de espaço usado e livre. Quando você faz alterações no tamanho ou na reserva Snapshot do volume, esse gráfico é atualizado dinamicamente para refletir as alterações.
+
+Você também pode usar o botão *calcular espaço* para determinar a quantidade de espaço liberada excluindo cópias Snapshot selecionadas.
+
+Você pode usar o assistente Redimensionar volume para fazer as seguintes alterações no volume:
+
+* *Altere o tamanho do volume*
++
+Você pode alterar o tamanho total do volume para aumentar ou diminuir o espaço de armazenamento.
+
+* *Ajuste a reserva de instantâneos*
++
+Você pode ajustar a quantidade de espaço reservado para cópias Snapshot a fim de aumentar ou diminuir o espaço de storage.
+
+* *Excluir cópias Snapshot*
++
+É possível excluir cópias Snapshot para recuperar espaço no volume.
+
++
+[NOTE]
+====
+As cópias snapshot que estão em uso não podem ser excluídas.
+
+====
+* *Autowore*
++
+Você pode especificar o limite para o qual o volume pode ser aumentado automaticamente, se necessário.
+
+

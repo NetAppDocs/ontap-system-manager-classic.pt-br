@@ -1,0 +1,46 @@
+---
+permalink: fc-config-windows/index.html 
+sidebar: sidebar 
+keywords: describe, fc, service, storage virtual machine, svm, provision, lun, hba, windows, host 
+summary: Você pode configurar rapidamente o serviço FC em uma máquina virtual de armazenamento, provisionar um LUN e disponibilizar o LUN usando um HBA FC em um computador host Windows. 
+---
+= Visão geral da configuração FC para Windows
+:hardbreaks:
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode configurar rapidamente o serviço FC em uma máquina virtual de storage (SVM), provisionar um LUN e disponibilizar o LUN usando um HBA FC em um computador host Windows com a interface clássica do ONTAP System Manager (ONTAP 9.7 e anterior).
+
+Use este procedimento para configurar o serviço FC em uma SVM se:
+
+* Você está usando HBAs e switches FC tradicionais.
+
+
+Este procedimento não abrange situações em que:
+
+* Você tem pelo menos duas portas de destino FC disponíveis em cada nó do cluster. Portas integradas FC e UTA2 (também chamadas `CNA`), bem como alguns adaptadores são configuráveis. A configuração dessas portas é feita na CLI do ONTAP e não é abordada neste procedimento.
+* Você não está configurando a inicialização FC SAN.
+* Você não está usando o canal de fibra virtual (VFC) com convidados Hyper-V ou ESX.
+
+
+
+
+== Outras maneiras de fazer isso em ONTAP
+
+|===
+
+
+| Para executar estas tarefas com... | Consulte... 
+
+
+| O Gerenciador de sistema redesenhado (disponível com o ONTAP 9.7 e posterior) | link:https://docs.netapp.com/us-en/ontap/task_san_provision_windows.html["Provisione storage SAN para servidores Windows"^] 
+
+
+| A interface de linha de comando (CLI) do ONTAP | link:https://docs.netapp.com/us-en/ontap/san-admin/lun-setup-workflow-concept.html["Fluxo de trabalho de configuração LUN com a CLI"^] 
+|===
+.Recursos adicionais
+* https://docs.netapp.com/us-en/ontap-sanhost/index.html["Documentação do NetApp: Utilitários do host"^]
+

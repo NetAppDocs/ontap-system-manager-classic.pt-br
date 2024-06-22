@@ -1,0 +1,41 @@
+---
+permalink: online-help-96-97/task_specifying_advanced_options_for_flexgroup_volume.html 
+sidebar: sidebar 
+keywords: flexclone, volume, specify, advanced, create, options, online, help 
+summary: Ao criar um volume FlexGroup, você pode especificar as opções que deseja associar ao volume FlexGroup. 
+---
+= Especifique opções avançadas para um volume FlexGroup com o Gerenciador do sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando você cria um volume FlexGroup, você pode usar o Gerenciador de sistema ONTAP clássico (disponível no ONTAP 9.7 e anterior) para especificar opções que deseja associar ao volume FlexGroup.
+
+.Passos
+. *Opcional:* na janela *Create FlexGroup*, clique image:../media/advanced_options.gif[""] para especificar as opções avançadas.
++
+A janela Opções avançadas é exibida. Ele contém seções (os títulos na coluna esquerda), nas quais você pode especificar várias opções.
+
+. Na seção *Detalhes gerais*, selecione a reserva de espaço e o estilo de segurança e, em seguida, defina a permissão UNIX para o volume.
++
+Você deve observar as seguintes limitações:
+
++
+** A opção reserva de espaço não está disponível para agregados FabricPool.
+** Quando o provisionamento de thin está ativado, o espaço é alocado ao volume do agregado somente quando os dados são gravados no volume.
+** Para sistemas de storage otimizados para all-flash, o thin Provisioning é habilitado por padrão e, para outros sistemas de storage, o provisionamento thick é habilitado por padrão.
+
+
+. Na seção *agregados*, você pode habilitar o botão *Selecionar agregados* para substituir os padrões de práticas recomendadas e selecionar suas opções em uma lista de agregados FabricPool.
+. Na seção *Otimize Space*, você pode ativar a deduplicação no volume.
++
+O System Manager usa o cronograma de deduplicação padrão. Se o tamanho do volume especificado exceder o limite necessário para executar a deduplicação, o volume será criado e a deduplicação não será ativada.
+
++
+Para sistemas com personalidade otimizada All Flash, a compactação in-line e o `auto` cronograma de deduplicação são habilitados por padrão.
+
+. Na seção *QoS* (qualidade do serviço), especifique o grupo de políticas para controlar o desempenho de entrada/saída (e/S) do volume FlexGroup.
+. Clique em *Apply* para atualizar as alterações.
+

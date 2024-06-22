@@ -1,0 +1,49 @@
+---
+permalink: online-help-96-97/task_deleting_volumes.html 
+sidebar: sidebar 
+keywords: online, help, delete, volumes, system, manager, flexvol, volume 
+summary: Você pode usar o Gerenciador do sistema para excluir um FlexVol volume quando não precisar mais dos dados contidos em um volume ou se tiver copiado os dados contidos em um volume para outro local. Quando você exclui um volume, todos os dados do volume são destruídos e não é possível recuperar esses dados. 
+---
+= Exclua volumes com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para excluir um FlexVol volume quando não precisar mais dos dados contidos em um volume ou se tiver copiado os dados contidos em um volume para outro local. Quando você exclui um volume, todos os dados do volume são destruídos e não é possível recuperar esses dados.
+
+.Antes de começar
+As seguintes condições devem existir antes de eliminar um FlexVol volume:
+
+* O volume tem de ser desmontado e tem de estar no estado offline.
+* Os volumes FlexClone devem ser divididos do volume pai ou destruídos se o FlexVol volume for clonado.
+* As relações SnapMirror devem ser excluídas se o volume estiver em uma ou mais relações SnapMirror.
+
+
+.Sobre esta tarefa
+Você deve estar ciente das seguintes limitações ao excluir um FlexVol volume:
+
+* Pode eliminar um volume SnapLock Enterprise completo ou um ficheiro num volume SnapLock Enterprise; no entanto, não pode eliminar apenas os dados num ficheiro num volume SnapLock Enterprise.
+* Não é possível excluir um volume SnapLock Compliance se os dados estiverem comprometidos com o volume.
+* Se o FlexVol contiver qtrees e volumes, o qtrees aparecerá como diretórios. Você deve ter cuidado para não excluir o qtrees acidentalmente ao excluir volumes.
+* Se você associou volumes FlexCache a um volume de origem, exclua os volumes FlexCache antes de excluir o volume de origem.
+
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. No menu suspenso no campo *SVM*, selecione a máquina virtual de armazenamento (SVM) na qual reside o volume que você deseja excluir.
+. Selecione os volumes que pretende eliminar.
++
+[NOTE]
+====
+Verifique se selecionou os volumes corretos que pretende eliminar. Quando você exclui um volume, todos os dados do volume são destruídos e não é possível recuperar esses dados.
+
+====
+. Clique em *Excluir*.
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
+
+
+*Informações relacionadas*
+
+xref:reference_volumes_window.adoc[Janela volumes]

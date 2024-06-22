@@ -1,0 +1,26 @@
+---
+permalink: online-help-96-97/task_editing_initiator_groups.html 
+sidebar: sidebar 
+keywords: edit, initiator, group, system, manager, online, help, port, set, dialog, box 
+summary: Você pode usar a caixa de diálogo Editar grupo de iniciadores no System Manager para alterar o nome de um grupo de iniciadores existente e seu sistema operacional. Você pode adicionar iniciadores ou remover iniciadores do grupo de iniciadores. Também pode alterar o portset associado ao grupo de iniciadores. 
+---
+= Edite grupos de iniciadores com o Gerenciador do sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a caixa de diálogo *Editar grupo de iniciadores* no ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para alterar o nome de um grupo de iniciadores existente e seu sistema operacional. Você pode adicionar iniciadores ou remover iniciadores do grupo de iniciadores. Também pode alterar o portset associado ao grupo de iniciadores.
+
+.Passos
+. Clique em *armazenamento* > *LUNs*.
+. Na guia *grupos de iniciadores*, selecione o grupo de iniciadores que deseja modificar e clique em *Editar*.
+. Faça as alterações necessárias.
+. Clique em *Salvar e fechar*.
+. Verifique as alterações feitas no grupo de iniciadores na guia *grupos de iniciadores*.
+
+
+*Informações relacionadas*
+
+xref:reference_luns_window.adoc[Janela LUNs]

@@ -1,0 +1,47 @@
+---
+permalink: iscsi-config-rhel/task_verifying_that_iscsi_fc_configuration_is_supported.html 
+sidebar: sidebar 
+keywords: reliable, operation, verify, iscsi, configuration, support, verify that the iscsi configuration is supported 
+summary: Para uma operação confiável, você deve verificar se toda a configuração iSCSI é suportada. 
+---
+= Verifique se a configuração iSCSI é suportada
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para uma operação confiável, você deve verificar se toda a configuração iSCSI é suportada.
+
+.Passos
+. Vá para a https://mysupport.netapp.com/matrix["Ferramenta de Matriz de interoperabilidade do NetApp"] para verificar se você tem uma combinação suportada dos seguintes componentes:
++
+** Software ONTAP
+** Arquitetura da CPU do computador host (para servidores de rack padrão)
+** Modelo de blade de processador específico (para servidores blade)
+** Protocolo de armazenamento (iSCSI)
+** Versão do sistema operacional Linux
+** Pacote DM-Multipath
+** Utilitários de host unificado Linux
+
+
+. Clique no nome da configuração selecionada.
++
+Os detalhes dessa configuração são exibidos na janela Detalhes da configuração.
+
+. Revise as informações nas guias a seguir:
++
+** Notas
++
+Lista alertas importantes e informações específicas à sua configuração.
+
++
+Reveja os alertas para identificar os pacotes necessários para o seu sistema operativo.
+
+** Políticas e Diretrizes
++
+Fornece diretrizes gerais para todas as configurações de SAN.
+
+
+
+

@@ -1,0 +1,40 @@
+---
+permalink: volume-move/task_updating_lun_reporting_nodes_after_moving_volume.html 
+sidebar: sidebar 
+keywords: volume, move, lun, ha, pair, remote, node, lun, map, slm, reporting-node, partner, lun reporting nodes 
+summary: 'Se o volume movido continha LUNs e o volume agora estiver em um par de HA diferente, você deverá remover todos os nós remotos da lista de nós de relatório mapa de LUN seletivo (SLM). Em seguida, o mapa LUN contém apenas o nó proprietário e o seu parceiro de HA, o que garante que apenas os caminhos de LUN otimizados sejam usados.' 
+---
+= Atualize os nós de relatórios LUN depois de mover um volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se o volume movido continha LUNs e o volume agora estiver em um par de HA diferente, você deverá remover todos os nós remotos da lista de nós de relatório mapa de LUN seletivo (SLM). Em seguida, o mapa LUN contém apenas o nó proprietário e o seu parceiro de HA, o que garante que apenas os caminhos de LUN otimizados sejam usados.
+
+.Sobre esta tarefa
+Esse procedimento só será necessário se você tiver movido o volume do par de HA para outro par de HA. Se o volume estiver em um nó diferente do mesmo par de HA, você poderá ignorar este procedimento.
+
+.Passos
+. Remova todos os nós remotos da lista de nós de relatório usando o `lun mapping remove-reporting-nodes` comando com o `-remote-nodes` parâmetro.
++
+[listing]
+----
+cluster1::> lun mapping remove-reporting-nodes -vserver SVM1 -volume vol1 -igroup ig1 -remote-nodes true
+----
+. Verifique se o mapa LUN contém apenas o nó proprietário e seu parceiro usando o `lun mapping show` comando com o `-fields reporting-nodes` parâmetro.
++
+[listing]
+----
+cluster1::> lun mapping show -vserver SVM1 -volume vol1 -fields reporting-nodes
+vserver  path        igroup   reporting-nodes
+-------- ----------- -------- ---------------------------------------------
+SVM1     /vol/vol1   ig1      cluster1-3,cluster1-4
+----
+. Remova entradas de dispositivo obsoletas para o sistema operacional host.
+. Redigitalizar a partir do host para atualizar os caminhos disponíveis do host.
++
+Consulte a documentação do seu host para ver as etapas específicas para verificar novamente seus hosts.
+
+

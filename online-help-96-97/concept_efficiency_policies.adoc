@@ -1,0 +1,206 @@
+---
+permalink: online-help-96-97/concept_efficiency_policies.html 
+sidebar: sidebar 
+keywords: efficiency, policy, system, manager, create, edit, delete, online, help, flexvol, window 
+summary: Você pode usar o System Manager para criar, editar e excluir políticas de eficiência. 
+---
+= Gerencie políticas de eficiência com o System Manager - ONTAP 9.7 e versões anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para criar, editar e excluir políticas de eficiência.
+
+
+
+== Adicione políticas de eficiência
+
+Você pode usar o System Manager para adicionar políticas de eficiência para executar a operação de deduplicação em um volume em um cronograma especificado ou quando a alteração nos dados de volume atingir um valor de limite especificado.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *políticas*, clique em *políticas de eficiência*.
+. Clique em *Add* e especifique o nome da política.
+. Especifique como a política de eficiência de storage deve ser executada:
++
+** Selecione *Agendar* e especifique o nome da programação e os detalhes da programação.
++
+Você pode especificar a duração máxima do tempo de execução da política de eficiência, se necessário.
+
+** Selecione *changelog Threshold* e especifique o valor de limite (em porcentagem) para a alteração nos dados de volume.
+
+
+. *Opcional:* Selecione a caixa de seleção *Definir política de QoS para segundo plano* para reduzir o impactos no desempenho nas operações do cliente.
+. Clique em *Add*.
+
+
+
+
+== Editar políticas de eficiência
+
+Você pode usar o System Manager para modificar os atributos de uma política de eficiência, como o nome da política, o nome da programação e o tempo de execução máximo.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *políticas*, clique em *políticas de eficiência*.
+. Na janela *políticas de eficiência*, selecione a política que deseja editar e clique em *Editar*.
+. Na caixa de diálogo *Editar Política de eficiência*, faça as alterações necessárias.
+. Clique em *Salvar*.
+
+
+
+
+== Eliminar políticas de eficiência
+
+Você pode usar System Managerto excluir uma política de eficiência que não é mais necessária.
+
+.Antes de começar
+A política de eficiência deve ser desativada.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *políticas*, clique em *políticas de eficiência*.
+. Selecione a política de eficiência que deseja excluir e clique em *Excluir*.
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
+
+
+
+
+== Ativar ou desativar políticas de eficiência
+
+Você pode usar o System Manager para ativar ou desativar uma política de eficiência.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *políticas*, clique em *políticas de eficiência*.
+. Selecione uma ou mais políticas de eficiência que você deseja ativar ou desativar.
+. Clique em *Status* > *Enable* ou *Status* > *Disable*, conforme necessário.
+. Se você estiver desabilitando uma política de eficiência, marque a caixa de seleção de confirmação e clique em *OK*.
+
+
+
+
+== O que é uma política de eficiência
+
+Uma política de eficiência é um cronograma de trabalho para uma operação de deduplicação em um FlexVol volume.
+
+É possível executar a deduplicação em um FlexVol volume agendando as operações para iniciar em um momento específico ou especificando que as operações são acionadas se uma porcentagem de limite for excedida. Você pode agendar uma operação de deduplicação criando agendas de tarefas incluídas nas políticas de eficiência. As políticas de eficiência de volume suportam apenas cronogramas de trabalho que são do tipo cron. Como alternativa, você pode especificar uma porcentagem de limite. Quando novos dados excedem a porcentagem especificada, a operação de deduplicação é iniciada.
+
+
+
+== Compreender as políticas de eficiência predefinidas
+
+Você pode configurar um volume com políticas de eficiência para obter economia de espaço adicional. Você pode configurar um volume para executar a compactação in-line sem uma operação de eficiência em segundo plano programada ou iniciada manualmente configurada no volume.
+
+Ao criar um SVM, as seguintes políticas de eficiência são criadas automaticamente e não podem ser excluídas:
+
+* Padrão
++
+Você pode configurar um volume com a política de eficiência para executar as operações de deduplicação programadas no volume.
+
+* Somente inline
++
+Você pode configurar um volume com a política de eficiência somente inline e permitir que a compactação in-line execute a compactação in-line no volume sem operações de eficiência em segundo plano programadas ou iniciadas manualmente.
+
+
+
+Para obter mais informações sobre as políticas de eficiência padrão e somente inline, consulte as páginas de manual.
+
+
+
+== Janela políticas de eficiência
+
+Você pode usar a janela políticas de eficiência para criar, exibir e gerenciar informações sobre políticas de eficiência.
+
+
+
+=== Botões de comando
+
+* *Adicionar*
++
+Abre a caixa de diálogo Adicionar política de eficiência, que permite executar uma operação de deduplicação em um volume por uma duração especificada (baseada em programação) ou quando a alteração nos dados de volume atinge um valor de limite especificado (baseado em limiar).
+
+* *Editar*
++
+Abre a caixa de diálogo Editar Política de eficiência, que permite modificar o cronograma, o valor do limite, o tipo de QoS e o tempo máximo de execução para uma operação de deduplicação.
+
+* *Excluir*
++
+Abre a caixa de diálogo Excluir Política de eficiência, que permite excluir a política de eficiência selecionada.
+
+* *Status*
++
+Abra um menu suspenso, que fornece opções para ativar ou desativar a política de eficiência selecionada.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de políticas de eficiência
+
+* *Auto*
++
+Especifica que a deduplicação é executada continuamente em segundo plano. Essa política é definida para todos os volumes recém-criados e para todos os volumes atualizados que não foram configurados manualmente para deduplicação em segundo plano. Se você alterar a política para "falha" ou qualquer outra política, a política "automática" será desativada.
+
++
+Se um volume se mover de um sistema que não seja AFF para um sistema AFF, a política "'auto'" será ativada por padrão no nó de destino. Se um volume passar de um nó AFF para um nó não AFF, a política "'auto'" no nó de destino será substituída pela política "'inline-only'" por padrão.
+
+* *Política*
++
+Especifica o nome de uma política de eficiência.
+
+* *Status*
++
+Especifica o status de uma política de eficiência. O status pode ser um dos seguintes:
+
++
+** Ativado
++
+Especifica que a política de eficiência pode ser atribuída a uma operação de deduplicação.
+
+** Desativado
++
+Especifica que a política de eficiência está desativada. Você pode ativar a política usando o menu suspenso status e atribuí-la posteriormente a uma operação de deduplicação.
+
+
+
+* *Corra por*
++
+Especifica se a política de eficiência de storage é executada com base em uma programação ou em um valor de limite (alterar limite de log).
+
+* *Política de QoS*
++
+Especifica o tipo de QoS para a política de eficiência de storage. O tipo de QoS pode ser um dos seguintes:
+
++
+** Fundo
++
+Especifica que a política de QoS está sendo executada em segundo plano, o que reduz o potencial impactos no desempenho nas operações do cliente.
+
+** Melhor esforço
++
+Especifica que a política de QoS está sendo executada com o melhor esforço, o que permite maximizar a utilização de recursos do sistema.
+
+
+
+* *Tempo de execução máximo*
++
+Especifica a duração máxima do tempo de execução de uma política de eficiência. Se esse valor não for especificado, a política de eficiência será executada até que a operação esteja concluída.
+
+
+
+
+
+=== Área de detalhes
+
+A área abaixo da lista de políticas de eficiência exibe informações adicionais sobre a política de eficiência selecionada, incluindo o nome da programação e os detalhes da programação de uma política baseada em programação e o valor limite para uma política baseada em limites.

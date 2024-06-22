@@ -1,0 +1,21 @@
+---
+permalink: online-help-96-97/task_viewing_cifs_domain_information.html 
+sidebar: sidebar 
+keywords: system, manager, view, cifs, domain, information, online, help 
+summary: Você pode usar o System Manager para exibir informações sobre os controladores de domínio e servidores conetados ao sistema de storage. 
+---
+= Veja informações de domínio CIFS com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para exibir informações sobre os controladores de domínio e servidores conetados ao sistema de storage.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. Clique na guia *domínio*.
+. Reveja as informações sobre os controladores e servidores de domínio ligados.
+

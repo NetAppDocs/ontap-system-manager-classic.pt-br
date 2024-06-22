@@ -1,0 +1,35 @@
+---
+permalink: fc-config-windows/task_verifying_that_fc_service_is_running_on_existing_svm.html 
+sidebar: sidebar 
+keywords: exist, storage, virtual, machine, svm, verify, fc, service, ontap, manager, fc, logical, interface, lif, create, verify that the fc service is running on an existing svm 
+summary: 'Se você optar por usar uma máquina virtual de storage (SVM) existente, verifique se o serviço FC está sendo executado no SVM usando o Gerenciador de sistemas do ONTAP. Você também deve verificar se as interfaces lógicas FC (LIFs) já foram criadas.' 
+---
+= Verifique se o serviço FC está em execução em uma SVM existente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você optar por usar uma máquina virtual de storage (SVM) existente, verifique se o serviço FC está sendo executado no SVM usando o Gerenciador de sistemas do ONTAP. Você também deve verificar se as interfaces lógicas FC (LIFs) já foram criadas.
+
+.Antes de começar
+Você precisa ter selecionado uma SVM existente no qual pretende criar um novo LUN.
+
+.Passos
+. Navegue até a janela *SVMs*.
+. Selecione o SVM necessário.
+. Clique na guia *Configurações da SVM*.
+. No painel *Protocolos*, clique em *FC/FCoE*.
+. Verifique se o serviço FC está em execução.
++
+image::../media/vserver_service_fc_fcoe_running_fc_windows.gif[A imagem mostra o painel FC/FCoE no System Manager com o serviço FC em execução e quatro LIFs FC.]
+
++
+Se o serviço FC não estiver em execução, inicie o serviço FC ou crie um novo SVM.
+
+. Verifique se há pelo menos duas LIFs FC listadas para cada nó.
++
+Se houver menos de duas FC LIFs por nó, atualize a configuração de FC no SVM ou crie um novo SVM para FC.
+
+

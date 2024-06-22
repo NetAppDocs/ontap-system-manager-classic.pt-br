@@ -1,0 +1,103 @@
+---
+permalink: online-help-96-97/concept_nodes.html 
+sidebar: sidebar 
+keywords: node, system, manager, view, detail, cluster, online, help 
+summary: Você pode usar o System Manager para exibir os detalhes dos nós no cluster. 
+---
+= Gerencie nós com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para exibir os detalhes dos nós no cluster.
+
+
+
+== Inicialize a hora do ComplianceClock
+
+Você pode usar o Gerenciador do sistema para inicializar o horário do ComplianceClock para a hora atual do cluster. Tem de inicializar a hora de ComplianceClock para criar agregados SnapLock.
+
+.Antes de começar
+A licença SnapLock deve ser instalada.
+
+.Sobre esta tarefa
+Não é possível modificar ou parar a hora ComplianceClock depois de inicializada.
+
+.Passos
+. Clique em *Storage* > *nodes*.
+. Selecione o nó e clique em *Initialize ComplianceClock*.
+. Na caixa de diálogo *Initialize ComplianceClock*, clique em *Yes* para inicializar a hora do ComplianceClock para a hora atual do cluster.
+
+
+
+
+== Janela nós
+
+Você pode usar a janela nós para exibir os detalhes dos nós em um cluster.
+
+
+
+=== Botões de comando
+
+* *Inicializar ComplianceClock*
++
+Inicializa o ComplianceClock do nó selecionado para o valor atual do relógio do sistema.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de nós
+
+* *Nome*
++
+Exibe o nome do nó.
+
+* *Estado*
++
+Exibe o estado do nó (se o nó está para cima ou para baixo).
+
+* *Tempo de ativação*
++
+Exibe a duração para a qual o nó está ativo.
+
+* *Versão ONTAP*
++
+Exibe a versão do ONTAP instalada no nó.
+
+* *Modelo*
++
+Exibe o número do modelo da plataforma do nó.
+
+* *ID do sistema*
++
+Exibe a ID do nó.
+
+* *No de série*
++
+Exibe o número de série do nó.
+
+
+
+
+
+=== Área de detalhes
+
+Exibe informações detalhadas sobre o nó selecionado.
+
+* *Separador Detalhes*
++
+Exibe informações relacionadas ao nó selecionado, como o nome do nó, o estado do nó e a duração para a qual o nó está ativo.
+
+* *Separador desempenho*
++
+Exibe a taxa de transferência, o IOPS e a latência do nó selecionado.
+
++
+Alterar o fuso horário do cliente ou o fuso horário do cluster afeta os gráficos de métricas de desempenho. Você deve atualizar seu navegador para visualizar os gráficos atualizados.
+
+

@@ -1,0 +1,42 @@
+---
+permalink: iscsi-config-esxi/task_verifying_host_can_write_to_read_from_lun.html 
+sidebar: sidebar 
+keywords: lun, verify, host, write, data, verify that the host can write to and read from the lun 
+summary: Antes de usar o LUN, você deve verificar se o host pode gravar dados no LUN e lê-los de volta. 
+---
+= Verifique se o host pode gravar e ler a partir do LUN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de usar o LUN, você deve verificar se o host pode gravar dados no LUN e lê-los de volta.
+
+.Sobre esta tarefa
+Se o nó do cluster no qual o LUN é criado puder ser repassado para o nó do parceiro, você deve verificar a leitura dos dados enquanto o nó é repassado. Este teste pode não ser possível se o cluster estiver em uso em produção.
+
+.Passos
+. Na página vSphere Web Client *Home*, clique em *hosts and clusters*.
+. No painel de navegação, clique na guia *armazenamento*.
+. Expanda o data center e selecione o novo datastore.
+. No painel central, clique em *Manage* > *Files*.
++
+O conteúdo do datastore é exibido.
+
+. Crie uma nova pasta no datastore e carregue um arquivo para a nova pasta.
++
+Talvez seja necessário instalar o plug-in de integração do cliente.
+
+. Verifique se você pode acessar o arquivo que acabou de escrever.
+. *Opcional:* faz failover do nó do cluster que contém o LUN e verifica se ainda é possível gravar e ler um arquivo.
++
+Se algum dos testes falhar, verifique se o serviço iSCSI está em execução no cluster de armazenamento e verifique os caminhos iSCSI para o LUN.
+
+. *Opcional:* se você falhou sobre o nó do cluster, certifique-se de devolver o nó e retornar todos os LIFs para suas portas iniciais.
+. Para um cluster ESXi, exiba o datastore de cada host ESXi no cluster e verifique se o arquivo que você carregou é exibido.
+
+
+*Informações relacionadas*
+
+https://docs.netapp.com/us-en/ontap/high-availability/index.html["Gerenciamento de alta disponibilidade"^]

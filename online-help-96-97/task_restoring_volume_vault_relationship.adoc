@@ -1,0 +1,83 @@
+---
+permalink: online-help-96-97/task_restoring_volume_vault_relationship.html 
+sidebar: sidebar 
+keywords: system, manager, restore, volume, vault, relationship, online, help, snapshot, copy 
+summary: Você pode usar o System Manager para restaurar cópias Snapshot para um volume de origem ou para outros volumes, se os dados de origem estiverem corrompidos e não forem mais utilizáveis. Você pode substituir os dados originais pelas cópias Snapshot no volume de destino. 
+---
+= Restaure um volume em uma relação de cofre com o Gerenciador de sistema - ONTAP 9.7 e anterior
+:allow-uri-read: 
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e versões anteriores) para restaurar cópias Snapshot para um volume de origem ou para outros volumes, se os dados de origem estiverem corrompidos e não forem mais utilizáveis. Você pode substituir os dados originais pelas cópias Snapshot no volume de destino.
+
+.Antes de começar
+* A licença do SnapMirror deve estar habilitada no sistema de storage de origem e no sistema de storage de destino ou nos nós que contêm o volume de origem e o volume de destino.
+* O cluster de origem e o cluster de destino devem estar em um relacionamento de pares saudável.
+* O agregado de origem ou qualquer outro agregado selecionado para a operação de restauração deve ser um agregado de 64 bits.
+* Se você estiver se conetando de um cluster que executa o ONTAP 9.2 ou anterior a um cluster remoto no qual a autenticação SAML está ativada, a autenticação baseada em senha também deve ser habilitada no cluster remoto.
+
+
+.Sobre esta tarefa
+* Você não pode restaurar um volume em uma relação de cofre entre uma máquina virtual de storage de origem (SVM) e um SVM de destino em uma configuração do MetroCluster.
+* Você pode restaurar uma relação de Vault entre SVMs de origem sincronizada em uma configuração do MetroCluster.
+* É possível restaurar uma relação de cofre de um volume em uma SVM de origem sincronizada para uma SVM padrão.
+* É possível restaurar uma relação de cofre de um volume em um SVM padrão para um volume de DP em um SVM de origem sincronizada.
+
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação do Vault e, em seguida, clique em *operações* > *Restaurar*.
+. Na caixa de diálogo *Restore* (Restaurar), restaure os dados para o volume de origem na relação do Vault ou selecione qualquer outro volume:
++
+|===
+| Se você quiser restaurar os dados para... | Faça isso... 
+
+
+ a| 
+O volume de origem
+ a| 
+.. Selecione *volume da fonte*.
+.. Avance para o passo 6.
+
+
+
+
+ a| 
+Qualquer outro volume
+ a| 
+Selecione *outro volume* e selecione o cluster e SVM na lista.
+
+|===
+. Restaure os dados para um novo volume ou selecione qualquer volume existente:
++
+|===
+| Se você quiser restaurar os dados para... | Faça isso... 
+
+
+ a| 
+Um novo volume
+ a| 
+Se você quiser alterar o nome padrão, exibido na restauração de formato `destination_SVM_name_destination_volume_name_`, especifique um novo nome e selecione o agregado contendo para o volume.
+
+
+
+ a| 
+Um volume existente
+ a| 
+Selecione a opção *Select volume*.
+
+Você deve selecionar um volume diferente do volume de origem ou um volume de leitura/gravação com alguns dados nele e com uma cópia Snapshot comum.
+
+Apenas os volumes com o mesmo atributo de idioma que o volume de origem são listados.
+
+|===
+. Selecione a cópia Snapshot mais recente ou a cópia Snapshot específica que você deseja restaurar.
+. Marque a caixa de seleção de confirmação para restaurar o volume da cópia Snapshot.
+. *Opcional:* Selecione a caixa de seleção *Ativar compressão de rede* para compactar os dados que estão sendo transferidos durante a operação de restauração.
+. Clique em *Restaurar*.
+
+
+*Informações relacionadas*
+
+xref:reference_protection_window.adoc[Janela de proteção]

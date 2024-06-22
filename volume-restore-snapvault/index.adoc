@@ -1,0 +1,44 @@
+---
+permalink: volume-restore-snapvault/index.html 
+sidebar: sidebar 
+keywords: content, restore, volume, snapvault, vault, backup, ontap, data, loss, volume restore using snapvault overview 
+summary: Você pode restaurar rapidamente um volume a partir de um backup do SnapVault no ONTAP quando houver perda de dados. 
+---
+= Restauração de volume usando visão geral do SnapVault
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode restaurar rapidamente um volume a partir de um backup do SnapVault no ONTAP quando houver perda de dados.
+
+Use este procedimento se você quiser restaurar a partir do backup do Vault da seguinte maneira:
+
+* Você está trabalhando com clusters que executam o ONTAP 9.
+* Você é um administrador de cluster.
+* Você configurou a relação do Vault seguindo o procedimento descrito em xref:../volume-backup-snapvault/index.html[Backup de volume usando o SnapVault]
+* Não pretende executar um único ficheiro ou uma restauração LUN.
+* Você quer usar as práticas recomendadas, não explorar todas as opções disponíveis.
+* Você não quer ler um monte de fundo conceitual.
+* Você deseja usar a interface clássica do Gerenciador de sistema para o ONTAP 9.7 e versões anteriores, não a interface do Gerenciador de sistema do ONTAP para o ONTAP 9.7 e versões posteriores.
+
+
+Se essas suposições não estiverem corretas para sua situação, ou se você quiser mais informações conceituais, você deverá ver o seguinte recurso:
+
+link:http://www.netapp.com/us/media/tr-4183.pdf["Relatório técnico da NetApp 4183: Melhores práticas da SnapVault"^]
+
+
+
+== Outras maneiras de fazer isso em ONTAP
+
+[cols="2"]
+|===
+| Para executar estas tarefas com... | Veja este conteúdo... 
+
+
+| O Gerenciador de sistema redesenhado (disponível com o ONTAP 9.7 e posterior) | link:https://docs.netapp.com/us-en/ontap/task_dp_restore_from_vault.html["Restaurar um volume a partir de uma cópia Snapshot anterior"^] 
+
+
+| A interface da linha de comando ONTAP | link:https://docs.netapp.com/us-en/ontap/data-protection/restore-volume-snapvault-backup-task.html["Restaure o conteúdo de um volume a partir de um destino SnapMirror"^] 
+|===

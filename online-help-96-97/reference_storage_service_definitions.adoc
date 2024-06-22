@@ -1,0 +1,123 @@
+---
+permalink: online-help-96-97/reference_storage_service_definitions.html 
+sidebar: sidebar 
+keywords: storage, service, definition, online, help, performance, factor 
+summary: O ONTAP inclui serviços de storage predefinidos, mapeados para os fatores mínimos de desempenho correspondentes. 
+---
+= Definições de serviço de armazenamento para o Gestor de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O ONTAP System Manager classic (disponível no ONTAP 9.7 e versões anteriores) inclui serviços de storage predefinidos, mapeados para os fatores de desempenho mínimos correspondentes.
+
+O conjunto real de serviços de storage disponíveis em um cluster ou SVM é determinado pelo tipo de storage que compõe o SVM.
+
+A tabela a seguir mostra como os fatores mínimos de desempenho são mapeados para os serviços de storage predefinidos:
+
+|===
+| Serviço de storage | IOPS esperado (SLA) | IOPS de pico (SLO) | Volume mínimo de IOPS | Latência estimada | As IOPS esperadas são aplicadas? 
+
+
+ a| 
+valor
+ a| 
+128 por TB
+ a| 
+512 por TB
+ a| 
+75
+ a| 
+17ms
+ a| 
+No AFF: Sim
+
+Caso contrário: Não
+
+
+
+ a| 
+desempenho
+ a| 
+2048 por TB
+ a| 
+4096 por TB
+ a| 
+500
+ a| 
+2ms
+ a| 
+Sim
+
+
+
+ a| 
+extremo
+ a| 
+6144 por TB
+ a| 
+12288 por TB
+ a| 
+1000
+ a| 
+1ms
+ a| 
+Sim
+
+|===
+A tabela a seguir define o nível de serviço de storage disponível para cada tipo de Mídia ou nó:
+
+|===
+| Mídia ou nó | Nível de serviço de storage disponível 
+
+
+ a| 
+Disco
+ a| 
+valor
+
+
+
+ a| 
+Disco da máquina virtual
+ a| 
+valor
+
+
+
+ a| 
+LUN de FlexArray
+ a| 
+valor
+
+
+
+ a| 
+Híbrida
+ a| 
+valor
+
+
+
+ a| 
+Flash otimizado para capacidade
+ a| 
+valor
+
+
+
+ a| 
+Unidade de estado sólido (SSD) - não-AFF
+ a| 
+valor
+
+
+
+ a| 
+Flash otimizado para desempenho - SSD (AFF)
+ a| 
+extremo, desempenho, valor
+
+|===

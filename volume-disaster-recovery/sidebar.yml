@@ -1,0 +1,29 @@
+---
+section: volume-disaster-recovery
+title: Recuperação de desastre de volume
+entries:
+- title: Visão geral
+  url: "/volume-disaster-recovery/index.html"
+- title: Fluxo de trabalho de recuperação de desastre de volume
+  url: "/volume-disaster-recovery/concept_volume_disaster_recovery_workflow.html"
+  entries:
+  - title: Ative o volume de destino
+    url: "/volume-disaster-recovery/task_activating_destination_volume.html"
+    entries:
+    - title: Verifique o status do volume de origem
+      url: "/volume-disaster-recovery/task_verifying_source_volume_status.html"
+    - title: Quebre a relação SnapMirror
+      url: "/volume-disaster-recovery/task_breaking_snapmirror_relationship.html"
+    - title: Verifique o status do volume de destino
+      url: "/volume-disaster-recovery/task_verifying_destination_volume_status.html"
+  - title: Configure o volume de destino para acesso aos dados
+    url: "/volume-disaster-recovery/task_configuring_destination_volume_for_data_access.html"
+  - title: Reative o volume da fonte
+    url: "/volume-disaster-recovery/task_reactivating_source_volume.html"
+    entries:
+    - title: Ressincronize o volume de origem
+      url: "/volume-disaster-recovery/task_resynchronizing_source_volume.html"
+    - title: Atualize o volume de origem
+      url: "/volume-disaster-recovery/task_updating_source_volume.html"
+    - title: Reative o volume da fonte
+      url: "/volume-disaster-recovery/task_returning_recovered_volume_to_source_role.html"

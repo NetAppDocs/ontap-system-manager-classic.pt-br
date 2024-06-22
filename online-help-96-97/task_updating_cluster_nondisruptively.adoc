@@ -1,0 +1,113 @@
+---
+permalink: online-help-96-97/task_updating_cluster_nondisruptively.html 
+sidebar: sidebar 
+keywords: nondisruptive, upgrades, NDU, cluster, system, manager, online, help 
+summary: 'Você pode usar o Gerenciador de sistema para atualizar um cluster ou nós individuais em pares de alta disponibilidade (HA) que estejam executando o ONTAP 8.3.1 ou posterior para uma versão específica do software ONTAP sem interromper o acesso aos dados do cliente.' 
+---
+= Atualizar um cluster sem interrupções com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para atualizar um cluster ou nós individuais em pares de alta disponibilidade (HA) que estejam executando o ONTAP 8.3.1 ou posterior para uma versão específica do software ONTAP sem interromper o acesso aos dados do cliente.
+
+.Antes de começar
+* Todos os nós precisam estar em pares de HA.
+* Todos os nós devem estar saudáveis.
+* Você deve ter copiado a imagem do software do site de suporte da NetApp para um servidor HTTP ou FTP em sua rede para que os nós possam acessar a imagem.
++
+link:task_obtaining_ontap_software_images.html["Obtenção de imagens de software ONTAP"]
+
+
+
+.Sobre esta tarefa
+* Se você tentar executar outras tarefas do System Manager durante a atualização do nó que hospeda o LIF de gerenciamento de cluster, uma mensagem de erro pode ser exibida.
++
+Você deve esperar que a atualização seja concluída antes de executar qualquer operação.
+
+* Uma atualização progressiva é realizada para clusters com menos de oito nós e uma atualização em lote é realizada para clusters com mais de oito nós.
++
+Em uma atualização contínua, os nós no cluster são atualizados um de cada vez. Em uma atualização em lote, vários nós são atualizados em paralelo.
+
+* Você pode atualizar o software ONTAP sem interrupções de uma versão de serviço de longo prazo (LTS) para a próxima versão 1.
++
+Por exemplo, se o ONTAP 9.1 e o ONTAP 9.3 forem versões LTS, você poderá atualizar seu cluster de ONTAP 9.1 para ONTAP 9.3 sem interrupções.
+
+* A partir do System Manager 9,6, se o protocolo NVMe estiver configurado no System Manager 9,5 e você executar uma atualização do System Manager 9,5 para o System Manager 9,6, não haverá mais um período de carência de 90 dias para que o protocolo NVMe esteja disponível sem licença. Se o período de carência estiver em vigor quando você atualizar do ONTAP 9.5 para o 9,6, o período de carência deverá ser substituído por uma licença NVMeoF válida para que você possa continuar usando os recursos NVMe.
++
+Esse recurso não está disponível nas configurações do MetroCluster.
+
+* Se o protocolo NVMe não estiver configurado no System Manager 9,5 e você executar uma atualização do System Manager 9,5 para o System Manager 9,6, o período de carência não será fornecido e você precisará instalar a licença NVMe para usar o protocolo NVMe.
++
+Esse recurso não está disponível nas configurações do MetroCluster.
+
+* A partir do ONTAP 9.5, pelo menos um LIF NVMe deve ser configurado para cada nó em um par de HA usando o protocolo NVMe. Você também pode criar um máximo de duas LIFs NVMe por nó. Ao atualizar para o ONTAP 9.5, você deve garantir que um mínimo de um LIF NVMe seja definido para cada nó em um par de HA usando o protocolo NVMe.
+
+
+.Passos
+. Clique em *Configuração* > *Cluster* > *Atualizar*.
+. Na guia *Atualizar*, adicione uma nova imagem ou selecione uma imagem disponível.
++
+|===
+| Se você quiser... | Então... 
+
+
+ a| 
+Adicione uma nova imagem de software do cliente local
+ a| 
+.. Clique em *Add from local Client*.
+.. Procure a imagem do software e, em seguida, clique em *Open*.
+
+
+
+
+ a| 
+Adicione uma nova imagem de software a partir do site de suporte da NetApp
+ a| 
+.. Clique em *Adicionar do servidor*.
+.. Na caixa de diálogo Adicionar uma nova imagem de software, insira o URL do servidor HTTP ou servidor FTP no qual você salvou a imagem que foi baixada do site de suporte da NetApp.
++
+Para FTP anônimo, você deve especificar a URL no `+ftp://anonymous@ftpserver+` formato.
+
+.. Clique em *Add*.
+
+
+
+
+ a| 
+Selecione uma imagem disponível
+ a| 
+Escolha uma das imagens listadas.
+
+|===
+. Clique em *Validar* para executar as verificações de validação de pré-atualização para verificar se o cluster está pronto para uma atualização.
++
+A operação de validação verifica os componentes do cluster para validar que a atualização pode ser concluída sem interrupções e, em seguida, exibe quaisquer erros ou avisos. Ele também exibe qualquer ação corretiva necessária que você deve executar antes de atualizar o software.
+
++
+[NOTE]
+====
+Você deve executar todas as ações corretivas necessárias para os erros antes de prosseguir com a atualização. Embora você possa ignorar as ações corretivas para os avisos, a melhor prática é executar todas as ações corretivas antes de prosseguir com a atualização.
+
+====
+. Clique em *seguinte*.
+. Clique em *Atualizar*.
++
+A validação é executada novamente.
+
++
+** Quando a validação estiver concluída, uma tabela exibe todos os erros e avisos, juntamente com todas as ações corretivas necessárias a serem tomadas antes de prosseguir.
+** Se a validação for concluída com avisos, você pode selecionar a caixa de seleção *Continue update with warnings* e, em seguida, clique em *Continue*. Quando a validação estiver concluída e a atualização estiver em andamento, a atualização pode ser pausada por causa de erros. Você pode clicar na mensagem de erro para exibir os detalhes e, em seguida, executar as ações corretivas antes de retomar a atualização.
+
+
++
+Depois que a atualização for concluída com êxito, o nó será reinicializado e você será redirecionado para a página de login do System Manager. Se o nó demorar muito tempo para reiniciar, você deve atualizar seu navegador.
+
+. Inicie sessão no System Manager e verifique se o cluster foi atualizado com sucesso para a versão selecionada clicando em *Configuration* > *Cluster* > *Update* > *Update* > *Update History* e, em seguida, visualizando os detalhes.
+
+
+*Informações relacionadas*
+
+xref:concept_how_you_update_cluster_nondisruptively.adoc[Como atualizar um cluster sem interrupções]

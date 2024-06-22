@@ -1,0 +1,28 @@
+---
+permalink: volume-restore-snapvault/concept_volume_restore_workflow.html 
+sidebar: sidebar 
+keywords: source, volume, data, corrupt, restore, snapvault, backup, destination, restoring, exist, operation, volume restore workflow 
+summary: Quando o volume de origem não estiver disponível ou os dados estiverem corrompidos, é possível executar uma restauração a partir de um backup do SnapVault. Restaurar um volume de um backup do SnapVault envolve selecionar o volume de destino do SnapVault, restaurar para um novo volume ou volume existente e verificar a operação de restauração. 
+---
+= Fluxo de trabalho de restauração de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando o volume de origem não estiver disponível ou os dados estiverem corrompidos, é possível executar uma restauração a partir de um backup do SnapVault. Restaurar um volume de um backup do SnapVault envolve selecionar o volume de destino do SnapVault, restaurar para um novo volume ou volume existente e verificar a operação de restauração.
+
+image::../media/volume_restore_workflow.gif[Esta ilustração é um fluxograma do fluxo de trabalho de restauração de volume do SnapVault. Os passos no fluxo de trabalho correspondem aos tópicos.">]
+
+Informações adicionais estão disponíveis para ajudá-lo a gerenciar os relacionamentos de backup do SnapVault e a usar outros métodos de proteção de dados para proteger a disponibilidade de seus recursos de dados.
+
+* xref:../volume-disaster-prep/index.html[Preparação para recuperação de desastres em volume]
++
+Descreve como configurar rapidamente um volume de destino em um cluster ONTAP diferente em preparação para a recuperação de desastres.
+
+* xref:../volume-disaster-recovery/index.html[Recuperação de desastre de volume]
++
+Descreve como ativar rapidamente um volume de destino a partir de um cluster ONTAP diferente após um desastre, bem como como como restaurar a relação SnapMirror para o seu estado original reativando o volume de origem após a recuperação.
+
+

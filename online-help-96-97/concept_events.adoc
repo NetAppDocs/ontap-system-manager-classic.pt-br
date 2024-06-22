@@ -1,0 +1,100 @@
+---
+permalink: online-help-96-97/concept_events.html 
+sidebar: sidebar 
+keywords: event, log, notification, system, manager, online, help, view 
+summary: Você pode usar o System Manager para exibir o log de eventos e as notificações de eventos. 
+---
+= Gerencie eventos com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para exibir o log de eventos e as notificações de eventos.
+
+
+
+== Janela de eventos
+
+Você pode usar a janela Eventos para exibir o log de eventos e as notificações de eventos.
+
+
+
+=== Botões de comando
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de eventos
+
+* *Hora*
++
+Exibe a hora em que o evento ocorreu.
+
+* *Nó*
++
+Exibe o nó e o cluster no qual o evento ocorreu.
+
+* *Gravidade*
++
+Exibe a gravidade do evento. Os níveis de gravidade possíveis são:
+
++
+** Emergência
++
+Especifica que a origem do evento parou inesperadamente e o sistema sofreu perda de dados irrecuperável. Você deve tomar medidas corretivas imediatamente para evitar tempo de inatividade prolongado.
+
+** Alerta
++
+Especifica que a origem do evento tem um alerta e a ação deve ser tomada para evitar o tempo de inatividade.
+
+** Crítico
++
+Especifica que a origem do evento é crítica e pode levar a interrupção do serviço se uma ação corretiva não for tomada imediatamente.
+
+** Erro
++
+Especifica que a origem do evento ainda está em execução e uma ação corretiva é necessária para evitar interrupções no serviço.
+
+** Aviso
++
+Especifica que a origem do evento experimentou uma ocorrência que você deve estar ciente. Eventos dessa gravidade podem não causar interrupção do serviço; no entanto, uma ação corretiva pode ser necessária.
+
+** Aviso
++
+Especifica que a origem do evento é normal, mas a gravidade é uma condição significativa que você deve estar ciente.
+
+** Informativo
++
+Especifica que a origem do evento tem uma ocorrência que você deve estar ciente. Nenhuma ação corretiva pode ser necessária.
+
+** Depurar
++
+Especifica que a origem do evento inclui uma mensagem de depuração.
+
+
+
++
+Por padrão, o tipo de gravidade do alerta, o tipo de gravidade de emergência e o tipo de gravidade do erro são exibidos.
+
+* *Fonte*
++
+Exibe a origem do evento.
+
+* *Evento*
++
+Exibe a descrição do evento.
+
+
+
+
+
+=== Área de detalhes
+
+Apresenta os detalhes do evento, incluindo a descrição do evento, o nome da mensagem, o número da sequência, a descrição da mensagem e a ação corretiva para o evento selecionado.

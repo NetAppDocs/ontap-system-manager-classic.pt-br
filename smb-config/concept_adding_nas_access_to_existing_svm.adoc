@@ -1,0 +1,87 @@
+---
+permalink: smb-config/concept_adding_nas_access_to_existing_svm.html 
+sidebar: sidebar 
+keywords: add, cifs, smb, access, exist, svm, involve, creating, create, data, lif, configuring, configure, server, provision, volume, sharing, share, permission, add cifs access to an existing svm 
+summary: A adição de acesso CIFS/SMB a uma SVM existente envolve a criação de um LIF de dados, a configuração de um servidor CIFS, o provisionamento de um volume, o compartilhamento do volume e a configuração das permissões de compartilhamento. 
+---
+= Adicionar acesso CIFS a uma SVM existente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A adição de acesso CIFS/SMB a uma SVM existente envolve a criação de um LIF de dados, a configuração de um servidor CIFS, o provisionamento de um volume, o compartilhamento do volume e a configuração das permissões de compartilhamento.
+
+.Antes de começar
+* Você deve saber quais dos seguintes componentes de rede o SVM usará:
++
+** O nó e a porta específica nesse nó onde a interface lógica de dados (LIF) será criada
+** A sub-rede a partir da qual o endereço IP do LIF de dados será provisionado ou, opcionalmente, o endereço IP específico que você deseja atribuir ao LIF de dados
+** O domínio do ative Directory (AD) que este SVM associará, juntamente com as credenciais necessárias para adicionar o SVM a ele
+
+
+* Quaisquer firewalls externos devem ser adequadamente configurados para permitir o acesso a serviços de rede.
+* O protocolo CIFS deve ser permitido no SVM.
++
+Esse é o caso se você não tiver criado o SVM seguindo o procedimento para configurar um protocolo SAN.
+
+
+
+.Passos
+. Navegue até a área onde você pode configurar os protocolos do SVM:
++
+.. Selecione o SVM que você deseja configurar.
+.. No painel *Detalhes*, ao lado de *Protocolos*, clique em *CIFS*.
++
+image::../media/svm_add_protocol_cifs.gif[Esta imagem é explicada pelo texto circundante.]
+
+
+
+. Na seção *Configuração de LIF de dados* da caixa de diálogo *Configurar protocolo CIFS*, crie um LIF de dados para o SVM:
++
+.. Atribua um endereço IP ao LIF automaticamente a partir de uma sub-rede especificada ou introduza manualmente o endereço.
+.. Clique em *Browse* e selecione um nó e uma porta que serão associados ao LIF.
++
+image::../media/svm_setup_cifs_nfs_page_lif_multi_nas_smb.gif[Este gráfico é descrito pelo texto circundante.]
+
+
+
+. Na seção *Configuração do servidor CIFS*, defina o servidor CIFS e configure-o para acessar o domínio AD:
++
+.. Especifique um nome para o servidor CIFS exclusivo no domínio AD.
+.. Especifique o FQDN do domínio AD que o servidor CIFS pode ingressar.
+.. Se você quiser associar uma unidade organizacional (ou) dentro do domínio do AD que não seja computadores CN, insira a UO.
+.. Especifique o nome e a senha de uma conta administrativa que tenha Privileges suficiente para adicionar o servidor CIFS à UO.
+.. Para evitar o acesso não autorizado a todos os compartilhamentos neste SVM, selecione a opção para criptografar dados usando o SMB 3,0.
+
+
++
+image::../media/svm_setup_cifs_nfs_page_cifs_ad_smb.gif[Este gráfico é descrito pelo texto circundante.]
+
+. Crie um volume para acesso CIFS/SMB e provisione um compartilhamento nele:
++
+.. Nomeie o compartilhamento que os clientes CIFS/SMB usarão para acessar o volume.
++
+O nome introduzido para a partilha também será utilizado como o nome do volume.
+
+.. Especifique um tamanho para o volume.
++
+image::../media/svm_setup_cifs_nfs_page_cifs_share_smb.gif[Captura de tela da área onde você configura o compartilhamento CIFS]
+
+
+
++
+Você não precisa especificar o agregado para o volume porque ele está localizado automaticamente no agregado com o espaço mais disponível.
+
+. *Opcional*: Restrinja o acesso ao compartilhamento modificando a ACL de compartilhamento:
++
+.. No campo *permissão*, clique em *alterar*.
+.. Selecione o grupo todos e clique em *Remover*.
+.. *Opcional*: Clique em *Adicionar* e insira o nome de um grupo de administradores definido no domínio do ative Directory do Windows que inclui o SVM.
+.. Selecione o novo grupo de administradores e, em seguida, selecione *Full Control*.
+.. Clique em *Salvar e fechar*.
+
+
+. Clique em *Submit & Close* e, em seguida, clique em *OK*.
+

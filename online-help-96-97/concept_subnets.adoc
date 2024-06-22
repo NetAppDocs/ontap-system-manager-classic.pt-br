@@ -1,0 +1,64 @@
+---
+permalink: online-help-96-97/concept_subnets.html 
+sidebar: sidebar 
+keywords: system, manager, manage, subnet, online, help, edit, settings, modify, delete, ip, address 
+summary: Você pode usar o System Manager para gerenciar sub-redes. 
+---
+= Gerencie sub-redes com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para gerenciar sub-redes.
+
+
+
+== Editar definições de sub-rede
+
+[role="lead"]
+Você pode usar o System Manager para modificar atributos de sub-rede, como nome, endereço de sub-rede, intervalo de endereços IP e endereço de gateway da sub-rede.
+
+.Sobre esta tarefa
+* Não é possível usar o System Manager para editar sub-redes no IPspace do cluster.
++
+Você deve usar a interface de linha de comando (CLI) em vez disso.
+
+* A modificação do endereço de gateway não atualiza a rota.
++
+Tem de utilizar a CLI para atualizar a rota.
+
+
+
+.Passos
+. Clique em *rede* > *sub-redes*.
+. Selecione a sub-rede que deseja modificar e clique em *Editar*.
++
+Você pode modificar a sub-rede mesmo quando o LIF nessa sub-rede ainda estiver em uso.
+
+. Na caixa de diálogo *Editar sub-rede*, modifique os atributos de sub-rede conforme necessário.
+. Clique em *Salvar e fechar*.
+
+
+
+
+== Eliminar sub-redes
+
+Você pode usar o System Manager para excluir uma sub-rede quando não precisar mais da sub-rede e deseja realocar os endereços IP atribuídos à sub-rede.
+
+.Antes de começar
+A sub-rede que você deseja excluir não deve ter LIFs que estejam usando os endereços IP da sub-rede.
+
+.Sobre esta tarefa
+Não é possível usar o System Manager para excluir sub-redes no Cluster IPspace. Você deve usar a interface de linha de comando (CLI) em vez disso.
+
+.Passos
+. Clique em *rede* > *sub-redes*.
+. Selecione a sub-rede que deseja excluir e clique em *Excluir*.
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
+
+
+*Informações relacionadas*
+
+xref:reference_network_window.adoc[Janela de rede]

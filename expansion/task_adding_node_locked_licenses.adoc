@@ -1,0 +1,43 @@
+---
+permalink: expansion/task_adding_node_locked_licenses.html 
+sidebar: sidebar 
+keywords: cluster, feature, node-locked, license, entitle, functionality, add, add node-locked licenses 
+summary: Se o cluster tiver recursos que usam licenças com bloqueio de nó, você deve garantir que as licenças com bloqueio de nó sejam instaladas para os novos nós. 
+---
+= Adicione licenças com bloqueio de nó
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se o cluster tiver recursos que usam licenças com node-locked (que dão direito apenas a nós específicos para a funcionalidade licenciada), você deve garantir que licenças com node-locked estão instaladas para os novos nós. Você deve adicionar as licenças antes que os nós sejam Unidos ao cluster.
+
+Conclua esta tarefa se você estiver usando a IU do Gerenciador de sistema _Classic_ com o ONTAP 9.7 e versões anteriores. Se você estiver usando a IU do Gerenciador de sistema com o ONTAP 9.7 e posterior, link:https://docs.netapp.com/us-en/ontap/task_admin_enable_new_features.html["Ative novos recursos adicionando chaves de licença"]consulte .
+
+Para obter mais informações sobre como gerenciar licenças, link:https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["Visão geral das licenças de gestão"]consulte .
+
+.Passos
+. Adicione cada chave de licença usando o `system license add` comando.
++
+[listing]
+----
+cluster1::> system license add -license-code AAAAAAAAAAAAAA
+----
+. Veja as licenças existentes usando o `system license show` comando.
++
+[listing]
+----
+cluster1::> system license show
+
+Serial Number: 9-99-999999
+Owner: cluster1
+Package           Type    Description           Expiration
+----------------- ------- --------------------- --------------------
+Base              site    Cluster Base License  -
+NFS               license NFS License           -
+CIFS              license CIFS License          -
+...
+----
+. Revise a saída para garantir que uma licença de nó bloqueado seja exibida para todos os números de série, incluindo números de série para nós novos e existentes.
+

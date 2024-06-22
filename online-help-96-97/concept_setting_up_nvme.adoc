@@ -1,0 +1,20 @@
+---
+permalink: online-help-96-97/concept_setting_up_nvme.html 
+sidebar: sidebar 
+keywords: NVMe, protocol, online, help, svm, system, manager, namespace, host, subsystem 
+summary: É possível configurar o protocolo NVMe para uma SVM usando o System Manager. Quando o protocolo NVMe está habilitado na SVM, você pode provisionar um namespace ou namespaces e atribuí-los a um host e um subsistema. 
+---
+= Configurar o NVMe com o System Manager - ONTAP 9.7 e versões anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e versões anteriores) para configurar o protocolo NVMe para um SVM. Quando o protocolo NVMe está habilitado na SVM, você pode provisionar um namespace ou namespaces e atribuí-los a um host e um subsistema.
+
+A partir do ONTAP 9.5, é necessário configurar pelo menos um LIF NVMe para cada nó em um par de HA que use o protocolo NVMe. Você também pode definir um máximo de duas LIFs NVMe por nó. Você configura os LIFs NVMe ao criar ou editar as configurações SVM usando o System Manager.
+
+A ilustração a seguir mostra o fluxo de trabalho para configurar o NVMe:
+
+image::../media/nvme_setup_workflow.gif[fluxo de trabalho de configuração do nvme]

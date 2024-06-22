@@ -1,0 +1,53 @@
+---
+permalink: online-help-96-97/task_creating_flexcache_volumes.html 
+sidebar: sidebar 
+keywords: online, help, create, flexcache, volume, system, manager 
+summary: A partir do System Manager 9,6, você pode criar um volume FlexCache. 
+---
+= Criar volumes FlexCache
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do System Manager 9,6, você pode criar um volume FlexCache.
+
+.Sobre esta tarefa
+Você precisa ter uma licença de capacidade FlexCache para criar um volume FlexCache.
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. Na janela *volumes*, clique em *criar* > *FlexCache*.
++
+A janela criar volume FlexCache é exibida.
+
+. *Opcional:* os seguintes campos na área *volume de origem* exibem valores para o volume de origem para o qual você deseja criar um volume FlexCache. Você pode modificá-los.
++
+** *Cluster*: Use o menu suspenso para selecionar o cluster associado ao volume de origem.
+** *SVM*: Use o menu suspenso para selecionar o SVM que contém o volume de origem.
++
+Se você escolher um SVM que não seja peered, mas que tenha permissão para fazer peer, o System Manager permite que você faça peer-peer explicitamente.
+
+** *Volume*: Use o menu suspenso para selecionar o nome do volume ou insira o nome no campo.
+
+
+. Os campos a seguir na área *volume FlexCache* exibem valores padrão para o volume FlexCache que você está criando. Você pode modificá-los.
++
+** *SVM*: Use o menu suspenso para selecionar o SVM no qual você deseja criar o volume FlexCache. Se a capacidade da licença FlexCache estiver cheia ou quase cheia, você poderá selecionar *Gerenciar licença FlexCache* para modificar sua licença.
+** *Nome do novo volume*: Insira um nome para o volume FlexCache.
+** *Size*: Especifique o tamanho para o volume FlexCache, incluindo as unidades de medida.
++
+O campo tamanho é inicialmente definido por padrão. O tamanho especificado não pode exceder o tamanho da capacidade licenciada.
+
+
+
+. Clique em *Salvar* para criar o volume FlexCache.
++
+Você pode retornar à janela *volumes* para exibir o volume FlexCache na lista de volumes.
+
+
+
+*Informações relacionadas*
+
+xref:reference_volumes_window.adoc[Janela volumes]

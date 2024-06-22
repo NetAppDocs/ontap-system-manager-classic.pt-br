@@ -1,0 +1,205 @@
+---
+permalink: online-help-96-97/task_updating_cluster_name.html 
+sidebar: sidebar 
+keywords: system, manager, update, cluster, name, online, help 
+summary: Você pode usar o System Manager para modificar o nome de um cluster quando necessário. 
+---
+= Configure o cluster com o Gerenciador de sistema - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager Classic (disponível no ONTAP 9.7 e anterior) para configurar o cluster.
+
+A configuração do cluster envolve a coleta de informações de configuração, a criação de interfaces de gerenciamento de clusters e de nós, a adição de licenças, a configuração do tempo do cluster e o monitoramento de pares de HA.
+
+
+
+== Atualize o nome do cluster
+
+Você pode usar o System Manager para modificar o nome de um cluster quando necessário.
+
+.Passos
+. Clique em *Configuração* > *Cluster* > *atualizações de configuração*.
+. No painel *Detalhes do cluster*, clique em *Atualizar Nome do cluster*.
+. Na caixa de diálogo *Atualizar Nome do cluster*, especifique um novo nome para o cluster e clique em *Enviar*.
+
+
+
+
+== Altere a senha do cluster
+
+Pode utilizar o System Manager para repor a palavra-passe de um cluster.
+
+.Passos
+. Clique em *Configuração* > *Cluster* > *atualizações de configuração*.
+. No painel *Detalhes do cluster*, clique em *alterar senha*.
+. Na caixa de diálogo *alterar senha*, especifique uma nova senha, confirme a nova senha e clique em *alterar*.
+
+
+
+
+== Editar configurações de DNS
+
+Você pode usar o System Manager para adicionar informações de host para gerenciar centralmente as configurações de DNS. Você pode modificar os detalhes do DNS quando quiser alterar os nomes de domínio ou endereços IP.
+
+.Passos
+. Clique em *Configuração* > *Cluster* > *atualizações de configuração*.
+. No painel *Detalhes do cluster*, clique em *Editar Configuração do DNS*.
+. Na área *domínios DNS*, adicione ou modifique os nomes de domínio DNS.
+. Na área *Name Servers*, adicione ou modifique os endereços IP.
+. Clique em *OK*.
+
+
+
+
+== Crie uma interface lógica de gerenciamento de cluster
+
+Você pode usar o System Manager para criar uma interface lógica de gerenciamento de cluster (LIF) para fornecer uma única interface de gerenciamento para um cluster. Você pode usar esse LIF para gerenciar todas as atividades do cluster.
+
+.Passos
+. Clique em *Configuração* > *Cluster* > *atualizações de configuração*.
+. No painel *Detalhes do cluster*, clique em *criar LIF de gerenciamento de cluster*.
+. Na caixa de diálogo *Create Cluster-Management LIF*, especifique um nome para o LIF de gerenciamento de cluster.
+. Atribua um endereço IP ao LIF de gerenciamento de cluster:
++
+|===
+| Se você quiser... | Então... 
+
+
+ a| 
+Especifique o endereço IP usando uma sub-rede
+ a| 
+.. Selecione *usando uma sub-rede*.
+.. Na caixa de diálogo Adicionar detalhes, selecione a sub-rede a partir da qual o endereço IP deve ser atribuído.
++
+Para um LIF entre clusters, apenas as sub-redes associadas ao espaço IPspace selecionado são exibidas.
+
+.. Se quiser atribuir um endereço IP específico ao LIF, selecione *Use um endereço IP específico* e digite o endereço IP.
++
+O endereço IP especificado é adicionado à sub-rede se o endereço IP ainda não estiver presente no intervalo de sub-rede.
+
+.. Clique em *OK*.
+
+
+
+
+ a| 
+Especifique o endereço IP manualmente sem usar uma sub-rede
+ a| 
+.. Selecione *sem uma sub-rede*.
+.. Na caixa de diálogo Adicionar detalhes, execute as seguintes etapas:
++
+... Especifique o endereço IP e a máscara ou prefixo da rede.
+... Opcional: Especifique o gateway.
+... Se não pretender utilizar o valor predefinido para o campo destino, especifique um novo valor de destino.
++
+Se você não especificar um valor, o campo destino será preenchido com o valor padrão baseado na família do endereço IP.
+
+
+
++
+Se uma rota não existir, uma nova rota é criada automaticamente com base no gateway e no destino.
+
+.. Clique em *OK*.
+
+
+|===
+. Selecione as portas necessárias na área *Detalhes da porta*.
+. Clique em *criar*.
+
+
+
+
+== Edite o nome do nó
+
+Você pode usar o System Manager para modificar o nome de um nó quando necessário.
+
+.Passos
+. Clique em *Configuração* > *Cluster* > *atualizações de configuração*.
+. Na guia *nós*, selecione o nó que deseja renomear e clique em *Editar Nome do nó*.
+. Na caixa de diálogo *Editar Nome do nó*, digite o novo nome para o nó e clique em *Enviar*.
+
+
+
+
+== Crie uma interface lógica de gerenciamento de nós
+
+Você pode usar o System Manager para criar uma interface lógica de gerenciamento de nós dedicada (LIF) para gerenciar um nó específico em um cluster. Você pode usar esse LIF para gerenciar as atividades de manutenção do sistema do nó.
+
+.Passos
+. Clique em *Configuração* > *Cluster* > *atualizações de configuração*.
+. Na guia *nós*, selecione o nó para o qual você deseja criar um LIF de gerenciamento de nós e clique em *Create Node-Management LIF*.
+. Na caixa de diálogo *Create Node-Management LIF*, especifique um nome para o LIF de gerenciamento de nós.
+. Atribua o endereço IP ao LIF de gerenciamento do nó:
++
+|===
+| Se você quiser... | Então... 
+
+
+ a| 
+Especifique o endereço IP usando uma sub-rede
+ a| 
+.. Selecione *usando uma sub-rede*.
+.. Na caixa de diálogo Adicionar detalhes, selecione a sub-rede a partir da qual o endereço IP deve ser atribuído.
++
+Para um LIF entre clusters, apenas as sub-redes associadas ao espaço IPspace selecionado são exibidas.
+
+.. Se quiser atribuir um endereço IP específico ao LIF, selecione *Use um endereço IP específico* e digite o endereço IP.
++
+O endereço IP especificado é adicionado à sub-rede se o endereço IP ainda não estiver presente no intervalo de sub-rede.
+
+.. Clique em *OK*.
+
+
+
+
+ a| 
+Especifique o endereço IP manualmente sem usar uma sub-rede
+ a| 
+.. Selecione *sem uma sub-rede*.
+.. Na caixa de diálogo Adicionar detalhes, execute as seguintes etapas:
++
+... Especifique o endereço IP e a máscara ou prefixo da rede.
+... Opcional: Especifique o gateway.
+... Se não pretender utilizar o valor predefinido para o campo destino, especifique um novo valor de destino.
++
+Se você não especificar um valor, o campo destino será preenchido com o valor padrão baseado na família do endereço IP.
+
+
+
++
+Se uma rota não existir, uma nova rota é criada automaticamente com base no gateway e no destino.
+
+.. Clique em *OK*.
+
+
+|===
+. Selecione as portas necessárias na área *Detalhes das portas*.
+. Clique em *criar*.
+
+
+
+
+=== O que fazer a seguir
+
+Se você quiser excluir um LIF de gerenciamento de nó existente, use a interface de linha de comando (CLI).
+
+
+
+== Edite as definições do AutoSupport
+
+Você pode usar o Gerenciador do sistema para modificar suas configurações do AutoSupport para especificar um endereço de e-mail a partir do qual as notificações de e-mail são enviadas e adicionar vários nomes de host de e-mail.
+
+.Passos
+. Clique em *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""] * > *AutoSupport*.
+. Selecione o nó para o qual deseja modificar as configurações do AutoSupport e clique em *Editar*.
+. Na guia *destinatário de e-mail*, digite o endereço de e-mail a partir do qual as notificações de e-mail são enviadas, especifique os destinatários e o conteúdo da mensagem para cada destinatário e, em seguida, adicione os hosts de e-mail.
++
+Você pode adicionar até cinco endereços de e-mail para cada host.
+
+. Na guia *outros*, selecione um protocolo de transporte para entregar as mensagens de e-mail e especifique os detalhes do servidor proxy HTTP ou HTTPS.
+. Clique em *OK*.
+

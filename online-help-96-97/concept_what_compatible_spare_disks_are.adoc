@@ -1,0 +1,24 @@
+---
+permalink: online-help-96-97/concept_what_compatible_spare_disks_are.html 
+sidebar: sidebar 
+keywords: system, manager, compatible, spare, disk, hdd, compacity, raid, online, help 
+summary: 'No System Manager, os discos sobressalentes compatíveis são discos que correspondem às propriedades de outros discos no agregado. Quando você quiser aumentar o tamanho de um agregado existente adicionando HDDs (discos de capacidade) ou alterar o tipo RAID de um agregado de RAID4 para RAID-DP, o agregado precisa conter discos sobressalentes compatíveis suficientes.' 
+---
+= Discos sobressalentes compatíveis no Gerenciador de sistemas - ONTAP 9.7 e versões anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+No ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior), os discos sobressalentes compatíveis são discos que correspondem às propriedades de outros discos no agregado. Quando você quiser aumentar o tamanho de um agregado existente adicionando HDDs (discos de capacidade) ou alterar o tipo RAID de um agregado de RAID4 para RAID-DP, o agregado precisa conter discos sobressalentes compatíveis suficientes.
+
+As propriedades do disco que devem corresponder são o tipo de disco, o tamanho do disco (pode ser um disco de tamanho maior caso o mesmo tamanho de disco não esteja disponível), RPM do disco, checksum, proprietário do nó, pool e propriedades do disco compartilhado. Se você usar discos de tamanho maior, você deve estar ciente de que o downsizing do disco ocorre e o tamanho de todos os discos é reduzido para o menor tamanho de disco. Os discos compartilhados existentes são compatíveis com discos não compartilhados de tamanho maior e os discos não compartilhados são convertidos em discos compartilhados e adicionados como sobressalentes.
+
+Se as opções de mistura RAID, como mistura de tipo de disco e mistura de RPM de disco, estiverem ativadas para o grupo RAID, o tipo de disco e as RPM de disco dos discos existentes do agregado serão compatíveis com o tipo de disco efetivo e as RPM de disco efetivo dos discos sobressalentes para obter peças sobressalentes compatíveis.
+
+*Informações relacionadas*
+
+xref:task_adding_capacity_disks.adoc[Adicionando discos de capacidade]
+
+xref:task_editing_aggregates.adoc[Edição de agregados]

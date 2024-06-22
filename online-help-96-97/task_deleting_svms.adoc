@@ -1,0 +1,52 @@
+---
+permalink: online-help-96-97/task_deleting_svms.html 
+sidebar: sidebar 
+keywords: system, manager, delete, svm, online, help, storage, virtual, machine 
+summary: 'Você pode usar o System Manager para excluir máquinas virtuais de armazenamento (SVMs) que você não precisa mais da configuração do sistema de armazenamento.' 
+---
+= Exclua SVMs com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para excluir máquinas virtuais de storage (SVMs) que não são mais necessárias na configuração do sistema de storage.
+
+.Antes de começar
+Você deve ter concluído as seguintes tarefas:
+
+. Desativado as cópias Snapshot, os espelhos de proteção de dados (DP) e os espelhos de compartilhamento de carga (LS) de todos os volumes
++
+[NOTE]
+====
+Você deve usar a interface de linha de comando (CLI) para desativar os espelhos LS.
+
+====
+. Excluiu todos os grupos que pertencem ao SVM manualmente se você estiver excluindo SVMs
+. Todos os portsets foram excluídos
+. Excluiu todos os volumes do SVM, incluindo o volume raiz
+. Não mapearam os LUNs, os colocaram offline e os excluíram
+. Excluído o servidor CIFS se você estiver excluindo SVMs
+. Excluiu todas as contas de usuário e funções personalizadas associadas ao SVM
+. Excluiu todos os subsistemas NVMe associados ao SVM com a CLI.
+. Parou o SVM
+
+
+.Sobre esta tarefa
+Quando você exclui SVMs, os seguintes objetos associados ao SVM também são excluídos:
+
+* LIFs, grupos de failover de LIF e grupos de roteamento de LIF
+* Políticas de exportação
+* Políticas de eficiência
+
+
+Se você excluir SVMs configuradas para usar Kerberos ou modificar SVMs para usar um SPN (Service Principal Name) diferente, o principal de serviço original da SVM não será excluído ou desativado automaticamente do realm Kerberos. Você deve excluir ou desativar manualmente o principal. Você deve ter o nome de usuário e a senha do administrador do realm Kerberos para excluir ou desativar o principal.
+
+Para mover dados de um SVM para outro SVM antes de excluir o primeiro SVM, você pode usar a tecnologia SnapMirror para fazê-lo.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM que você deseja excluir e clique em *Excluir*.
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
+

@@ -1,0 +1,79 @@
+---
+permalink: online-help-96-97/task_creating_initiator_groups.html 
+sidebar: sidebar 
+keywords: create, initiator, group, system, manager, lun, online, help, manage, delete, edit, add 
+summary: Você pode usar o System Manager para criar um grupo de iniciadores. Os grupos de iniciadores permitem controlar o acesso do host a LUNs específicos. Você pode usar portsets para limitar quais LIFs um iniciador pode acessar. 
+---
+= Gerencie grupos de iniciadores com o Gerenciador do sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para gerenciar um grupo de iniciadores. Os grupos de iniciadores permitem controlar o acesso do host a LUNs específicos. Você pode usar portsets para limitar quais LIFs um iniciador pode acessar.
+
+
+
+== Crie grupos de iniciadores
+
+.Passos
+. Clique em *armazenamento* > *LUNs*.
+. Na guia *grupos de iniciadores*, clique em *criar*.
+. Na guia *Geral* da caixa de diálogo *Create Initiator Group* (criar grupo de iniciadores), especifique o nome do grupo de iniciadores, o sistema operacional, o nome do alias do host, o portset e o protocolo suportado para o grupo.
+. Clique em *criar*.
+
+
+
+
+== Eliminar grupos de iniciadores
+
+Você pode usar a guia grupos de iniciadores no System Manager para excluir grupos de iniciadores.
+
+.Antes de começar
+Todos os LUNs mapeados para o grupo de iniciadores devem ser manualmente não mapeados.
+
+.Passos
+. Clique em *armazenamento* > *LUNs*.
+. Na guia *grupos de iniciadores*, selecione um ou mais grupos de iniciadores que deseja excluir e clique em *Excluir*.
+. Clique em *Excluir*.
+. Verifique se os grupos de iniciadores excluídos não são mais exibidos na guia *grupos de iniciadores*.
+
+
+
+
+== Adicione iniciadores
+
+Você pode usar o System Manager para adicionar iniciadores a um grupo de iniciadores. Um iniciador fornece acesso a um LUN quando o grupo de iniciadores ao qual pertence é mapeado a esse LUN.
+
+.Passos
+. Clique em *armazenamento* > *LUNs*.
+. Na guia *Gerenciamento de LUN*, selecione o grupo de iniciadores ao qual deseja adicionar iniciadores e clique em *Editar*.
+. Na caixa de diálogo *Edit Initiator Group*, clique em *Initiators*.
+. Clique em *Add*.
+. Especifique o nome do iniciador e clique em *OK*.
+. Clique em *Salvar e fechar*.
+
+
+
+
+== Excluir iniciadores de um grupo de iniciadores
+
+Você pode usar a guia grupos de iniciadores no System Manager para excluir um iniciador. Para excluir um iniciador de um grupo de iniciadores, você deve desassociar o iniciador do grupo de iniciadores.
+
+.Antes de começar
+Todos os LUNs mapeados para o grupo de iniciadores que contém o iniciador que você deseja excluir devem ser manualmente não mapeados.
+
+.Passos
+. Clique em *armazenamento* > *LUNs*.
+. Na guia *grupos de iniciadores*, selecione o grupo de iniciadores do qual deseja excluir o iniciador e clique em *Editar*.
+. Na caixa de diálogo *Edit Initiator Group*, clique na guia *Initiators*.
+. Selecione e exclua o iniciador da caixa de texto e clique em *Salvar*.
++
+O iniciador é desassociado do grupo de iniciadores.
+
+
+
+*Informações relacionadas*
+
+xref:reference_luns_window.adoc[Janela LUNs]

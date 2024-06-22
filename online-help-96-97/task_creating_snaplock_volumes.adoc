@@ -1,0 +1,194 @@
+---
+permalink: online-help-96-97/task_creating_snaplock_volumes.html 
+sidebar: sidebar 
+keywords: create, snaplock, volume, online, help, system, manager 
+summary: Você pode usar o Gerenciador do sistema para criar um volume SnapLock Compliance ou um volume SnapLock Enterprise. Ao criar um volume, você também pode definir tempos de retenção e optar por automatizar a configuração do estado WORM nos dados do volume. 
+---
+= Crie volumes do SnapLock com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para criar um volume SnapLock Compliance ou um volume SnapLock Enterprise. Ao criar um volume, você também pode definir tempos de retenção e optar por automatizar a configuração do estado WORM nos dados do volume.
+
+.Antes de começar
+* A licença SnapLock deve ter sido instalada.
+* O agregado SnapLock deve estar online.
+* Para criar um volume criptografado, você deve ter instalado a licença de criptografia de volume usando o System Manager, e você deve ter ativado a ""configuração do gerenciador de chaves"" usando a interface de linha de comando (CLI).
++
+Você deve atualizar seu navegador da Web depois de ativar a configuração do gerenciador de chaves.
+
+
+
+.Sobre esta tarefa
+* Pode eliminar um volume SnapLock Enterprise completo ou um ficheiro num volume SnapLock Enterprise; no entanto, não pode eliminar apenas os dados num ficheiro num volume SnapLock Enterprise.
+* Não é possível excluir um volume SnapLock Compliance se os dados estiverem comprometidos com o volume.
+* Não é possível criptografar um volume no Cloud Volumes ONTAP.
+* Se a encriptação estiver ativada no volume de origem e se o cluster de destino estiver a executar uma versão do software ONTAP anterior à ONTAP 9.3, a encriptação é desativada por predefinição no volume de destino.
+
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. Clique em *Create* > *Create FlexVol*.
+. Navegue e selecione a máquina virtual de storage (SVM) na qual você deseja criar o volume.
+. Na caixa de diálogo *criar volume*, especifique um novo nome se desejar alterar o nome padrão do volume.
++
+Não é possível alterar o nome de um volume SnapLock Compliance depois de criar o volume.
+
+. Selecione o agregado do recipiente para o volume.
++
+Você deve selecionar um agregado SnapLock Compliance ou agregado SnapLock Enterprise para criar um volume SnapLock. O volume herda o tipo SnapLock do agregado e o tipo SnapLock não pode ser alterado após o volume ser criado; portanto, você deve selecionar o agregado correto.
+
+. Selecione a caixa de verificação *encriptação de volume* para ativar a encriptação do volume.
++
+Esta opção só está disponível se tiver ativado a licença de encriptação de volume e se a plataforma correspondente for capaz de suportar encriptação.
+
+. Selecione o tipo de armazenamento para o qual você está criando esse volume.
++
+Se estiver criando um volume de destino SnapMirror, selecione *proteção de dados*. Você recebe acesso somente leitura a este volume.
+
+. Especifique o tamanho do volume e a porcentagem do tamanho total do volume que você deseja reservar para cópias Snapshot.
++
+O espaço padrão reservado para cópias Snapshot é de 0% para volumes SAN e volumes VMware. Para volumes nas, o padrão é 5%.
+
+. *Opcional:* Selecione *thin Provisioning* para habilitar o provisionamento thin para o volume.
++
+Quando o provisionamento de thin está ativado, o espaço é alocado ao volume do agregado somente quando os dados são gravados no volume.
+
+. *Opcional:* Faça as alterações necessárias na guia *eficiência de armazenamento* para habilitar a deduplicação no volume.
++
+O System Manager usa o cronograma de deduplicação padrão. Se o tamanho do volume especificado exceder o limite necessário para executar a deduplicação, o volume será criado e a deduplicação não será ativada.
+
+. Selecione a guia *SnapLock* e execute as seguintes etapas:
++
+.. * Opcional: * Especifique o período de confirmação automática.
++
+O arquivo no volume permanece inalterado pelo período especificado antes que o arquivo seja comprometido com o estado WORM. Para definir arquivos para o estado WORM manualmente, você deve selecionar *não especificado* como a configuração de confirmação automática.
+
++
+Os valores devem estar no intervalo de 5 minutos a 10 anos.
+
+.. Especifique o período de retenção mínimo e o período de retenção máximo.
++
+Os valores devem estar na faixa de 1 dia a 70 anos ou Infinito.
+
+.. Selecione o período de retenção padrão.
++
+O período de retenção padrão deve estar dentro do período de retenção mínimo especificado e do período de retenção máximo.
+
+
+
+. *Opcional:* Selecione a caixa de seleção *Gerenciar qualidade do serviço de armazenamento* na guia *qualidade do serviço* para habilitar a QoS de armazenamento para o FlexVol volume a fim de gerenciar o desempenho da carga de trabalho.
+. Crie um grupo de políticas de QoS de storage ou selecione um grupo de políticas existente para controlar o desempenho de entrada/saída (e/S) do FlexVol volume.
++
+|===
+| Se você quiser... | Faça isso... 
+
+
+ a| 
+Crie um grupo de políticas de QoS de storage
+ a| 
+.. Selecione *novo Grupo de políticas*.
+.. Especifique o nome do grupo de políticas.
+.. Especifique o limite mínimo de taxa de transferência.
++
+*** No System Manager 9,5, você pode definir o limite mínimo de taxa de transferência apenas com uma personalidade otimizada para All Flash baseada em performance. No System Manager 9,6, você também pode definir o limite mínimo de taxa de transferência para sistemas ONTAP Select Premium.
+*** Não é possível definir o limite mínimo de taxa de transferência para volumes em um agregado habilitado para FabricPool.
+*** Se você não especificar o valor mínimo da taxa de transferência ou se o valor mínimo da taxa de transferência estiver definido como 0, o sistema exibirá automaticamente "'nenhum'" como o valor.
++
+Este valor é sensível a maiúsculas e minúsculas.
+
+
+
+.. Especifique o limite máximo de taxa de transferência para garantir que a carga de trabalho dos objetos no grupo de políticas não exceda o limite de taxa de transferência especificado.
++
+*** O limite mínimo de rendimento e o limite máximo de rendimento devem ser do mesmo tipo de unidade.
+*** Se você não especificar o limite mínimo de taxa de transferência, poderá definir o limite máximo de taxa de transferência em IOPS, B/s, KB/s, MB/s e assim por diante.
+*** Se você não especificar o valor máximo da taxa de transferência, o sistema exibirá automaticamente "'Unlimited'" como o valor.
++
+Este valor é sensível a maiúsculas e minúsculas. A unidade especificada não afeta a taxa de transferência máxima.
+
+
+
+
+
+
+
+ a| 
+Selecione um grupo de políticas existente
+ a| 
+.. Selecione *Grupo de políticas existente* e clique em *escolha* para selecionar um grupo de políticas existente na caixa de diálogo Selecionar Grupo de políticas.
+.. Especifique o limite mínimo de taxa de transferência.
++
+*** No System Manager 9,5, você pode definir o limite mínimo de taxa de transferência apenas com uma personalidade otimizada para All Flash baseada em performance. No System Manager 9,6, você também pode definir o limite mínimo de taxa de transferência para sistemas ONTAP Select Premium.
+*** Não é possível definir o limite mínimo de taxa de transferência para volumes em um agregado habilitado para FabricPool.
+*** Se você não especificar o valor mínimo da taxa de transferência ou se o valor mínimo da taxa de transferência estiver definido como 0, o sistema exibirá automaticamente "'nenhum'" como o valor.
++
+Este valor é sensível a maiúsculas e minúsculas.
+
+
+
+.. Especifique o limite máximo de taxa de transferência para garantir que a carga de trabalho dos objetos no grupo de políticas não exceda o limite de taxa de transferência especificado.
++
+*** O limite mínimo de rendimento e o limite máximo de rendimento devem ser do mesmo tipo de unidade.
+*** Se você não especificar o limite mínimo de taxa de transferência, poderá definir o limite máximo de taxa de transferência em IOPS, B/s, KB/s, MB/s e assim por diante.
+*** Se você não especificar o valor máximo da taxa de transferência, o sistema exibirá automaticamente "'Unlimited'" como o valor.
++
+Este valor é sensível a maiúsculas e minúsculas. A unidade especificada não afeta a taxa de transferência máxima.
+
+
+
++
+Se o grupo de políticas for atribuído a mais de um objeto, a taxa de transferência máxima especificada será compartilhada entre os objetos.
+
+
+
+|===
+. Ative *proteção por volume* no separador *proteção* para proteger o volume:
+. Na guia *proteção*, selecione o tipo *replicação*:
++
+|===
+| Se você selecionou o tipo de replicação como... | Faça isso... 
+
+
+ a| 
+Assíncrono
+ a| 
+.. *Opcional:* se você não souber o tipo de replicação e o tipo de relacionamento, clique em *Ajude-me a escolher*, especifique os valores e clique em *aplicar*.
+.. Selecione o tipo de relacionamento.
++
+O tipo de relacionamento pode ser espelho, cofre ou espelho e cofre.
+
+.. Selecione um cluster e um SVM para o volume de destino.
++
+Se o cluster selecionado estiver executando uma versão do software ONTAP anterior ao ONTAP 9.3, então somente SVMs peered serão listadas. Se o cluster selecionado estiver executando o ONTAP 9.3 ou posterior, os SVMs peered e os SVMs permitidos serão listados.
+
+.. Modifique o sufixo do nome do volume, se necessário.
+
+
+
+
+ a| 
+Síncrono
+ a| 
+.. *Opcional:* se você não souber o tipo de replicação e o tipo de relacionamento, clique em *Ajude-me a escolher*, especifique os valores e clique em *aplicar*.
+.. Selecione a política de sincronização.
++
+A política de sincronização pode ser StrictSync ou Sync.
+
+.. Selecione um cluster e um SVM para o volume de destino.
++
+Se o cluster selecionado estiver executando uma versão do software ONTAP anterior ao ONTAP 9.3, então somente SVMs peered serão listadas. Se o cluster selecionado estiver executando o ONTAP 9.3 ou posterior, os SVMs peered e os SVMs permitidos serão listados.
+
+.. Modifique o sufixo do nome do volume, se necessário.
+
+
+|===
+. Clique em *criar*.
+. Verifique se o volume que você criou está incluído na lista de volumes na janela *volume*.
+
+
+.Resultados
+O volume é criado com segurança estilo UNIX e permissões de "execução de gravação" do UNIX 700 para o proprietário.

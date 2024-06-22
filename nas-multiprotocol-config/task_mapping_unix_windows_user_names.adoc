@@ -1,0 +1,89 @@
+---
+permalink: nas-multiprotocol-config/task_mapping_unix_windows_user_names.html 
+sidebar: sidebar 
+keywords: windows, unix, user, acconut, map, user, access, file, permission, ntfs, conversion, rule, default, user, map unix and windows user names 
+summary: Se o seu site tiver contas de usuário do Windows e UNIX, use o mapeamento de nomes para garantir que os usuários do Windows possam acessar arquivos com permissões de arquivo UNIX e garantir que os usuários do UNIX possam acessar arquivos com permissões de arquivo NTFS. O mapeamento de nomes pode envolver qualquer combinação de mapeamento implícito, regras de conversão e usuários padrão. 
+---
+= Mapeie nomes de usuário UNIX e Windows
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se o seu site tiver contas de usuário do Windows e UNIX, use o mapeamento de nomes para garantir que os usuários do Windows possam acessar arquivos com permissões de arquivo UNIX e garantir que os usuários do UNIX possam acessar arquivos com permissões de arquivo NTFS. O mapeamento de nomes pode envolver qualquer combinação de mapeamento implícito, regras de conversão e usuários padrão.
+
+.Sobre esta tarefa
+Você deve usar este procedimento somente se seu site tiver contas de usuário do Windows e UNIX que não mapeem implicitamente, que é quando a versão minúscula de cada nome de usuário do Windows corresponde ao nome de usuário UNIX. Isso pode ser feito usando NIS, LDAP ou usuários locais. Se você tiver dois conjuntos de usuários que não correspondem, você deve configurar o mapeamento de nomes.
+
+.Passos
+. Decida sobre um método de mapeamento de nomes - regras de conversão de mapeamento de nomes, mapeamentos de usuários padrão ou ambos - considerando os seguintes fatores:
++
+** As regras de conversão usam expressões regulares para converter um nome de usuário para outro, o que é útil se você quiser controlar ou rastrear o acesso em um nível individual.
++
+Por exemplo, você pode mapear usuários UNIX para usuários do Windows em um domínio e vice-versa.
+
+** Os usuários padrão permitem que você atribua um nome de usuário a todos os usuários que não são mapeados por mapeamentos implícitos ou regras de conversão de mapeamento de nomes.
++
+Cada SVM tem um usuário UNIX padrão chamado "pcuser", mas não tem um usuário padrão do Windows.
+
+
+
+. Navegue até a janela *SVMs*.
+. Selecione o SVM que você deseja configurar.
+. Clique na guia *Configurações da SVM*.
+. *Opcional*: Crie um mapeamento de nomes que converte contas de usuário UNIX em contas de usuário do Windows e vice-versa:
++
+.. No painel *Host Users and Groups*, clique em *Name Mapping*.
+.. Clique em *Add*, mantenha a direção padrão *Windows to UNIX* e, em seguida, crie uma expressão regular que produz uma credencial UNIX quando um usuário do Windows tenta acessar um arquivo que usa permissões de arquivo UNIX.
++
+Use a seguinte entrada para converter qualquer usuário do Windows no domínio ENG em um usuário UNIX com o mesmo nome. O padrão `ENG\\(.+)` localiza qualquer nome de usuário do Windows com o prefixo `ENG\\`, e a substituição `\1` cria a versão UNIX removendo tudo, exceto o nome de usuário.
+
++
+image::../media/name_mappings_1_windows_to_unix.gif[Captura de tela de uma entrada Windows-to-UNIX]
+
+.. Clique em Adicionar**, selecione a direção *UNIX para Windows* e, em seguida, crie o mapeamento correspondente que produz uma credencial do Windows quando um usuário UNIX tenta acessar um arquivo com permissões de arquivo NTFS.
++
+Use a seguinte entrada para converter cada usuário UNIX em um usuário do Windows com o mesmo nome no domínio ENG. O padrão `(.+)` localiza qualquer nome UNIX e a substituição `ENG\\\1` cria a versão do Windows inserindo `ENG\\` antes do nome de usuário.
+
++
+image::../media/name_mappings_2_unix_to_windows.gif[Captura de tela de uma entrada UNIX para Windows]
+
+.. Como a posição de cada regra determina a ordem em que as regras são aplicadas, você deve revisar o resultado e confirmar se o pedido corresponde às suas expetativa.
++
+image::../media/name_mappings_3_outcome.gif[Este gráfico é explicado pelo texto circundante.]
+
+.. Repita as etapas de 5b a 5D para mapear todos os domínios e nomes no SVM.
+
+
+. *Opcional*: Crie um usuário padrão do Windows:
++
+.. Crie uma conta de usuário do Windows em LDAP, NIS ou usuários locais do SVM.
++
+Se você usar usuários locais, poderá criar uma conta em *Windows* no painel usuários e grupos do host.
+
+.. Defina o usuário padrão do Windows selecionando *NFS* > *Edit* no painel *Protocols* e inserindo o nome de usuário.
+
+
++
+Você pode criar um usuário local do Windows chamado "unixusers" e configurá-lo como o usuário padrão do Windows.
+
+. *Opcional*: Configure o usuário UNIX padrão se você quiser um usuário diferente do valor padrão, que é o usuário "'pcuser'".
++
+.. Crie uma conta de usuário UNIX em LDAP, NIS ou usuários locais do SVM.
++
+Se você usar usuários locais, poderá criar uma conta em *UNIX* no painel usuários e grupos do host.
+
+.. Defina o usuário UNIX padrão selecionando *CIFS* > *Opções* no painel *Protocolos* e inserindo o nome de usuário.
+
+
++
+Você pode criar um usuário UNIX local chamado "winusers" e configurá-lo como o usuário UNIX padrão.
+
+
+
+
+
+== O que fazer a seguir
+
+Se você configurou usuários padrão, ao configurar permissões de arquivo mais tarde no fluxo de trabalho, você deve definir permissões para o usuário padrão do Windows e o usuário padrão do UNIX.

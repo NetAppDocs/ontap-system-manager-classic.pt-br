@@ -1,0 +1,40 @@
+---
+permalink: fc-config-esxi/index.html 
+sidebar: sidebar 
+keywords: fc, service, storage, virtual, machine, svm, provision, lun, fc, hba, esx, host, computer, virtual storage console, vsc 
+summary: 'Usando a interface clássica do ONTAP System Manager (ONTAP 9.7 e anterior), é possível configurar rapidamente o serviço FC em uma máquina virtual de storage (SVM), provisionar um LUN e disponibilizar o LUN como um armazenamento de dados usando um HBA FC em um computador host ESX.' 
+---
+= Configuração FC para ESXi usando visão geral do VSC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Usando a interface clássica do ONTAP System Manager (ONTAP 9.7 e anterior), é possível configurar rapidamente o serviço FC em uma máquina virtual de storage (SVM), provisionar um LUN e disponibilizar o LUN como um armazenamento de dados usando um HBA FC em um computador host ESX.
+
+Use este procedimento se:
+
+* Você está usando uma versão suportada do Virtual Storage Console para VMware vSphere (VSC) para configurar as configurações de armazenamento para o host ESX e para provisionar os datastores.
++
+** A partir do VSC 7,0, o VSC faz parte do https://docs.netapp.com/us-en/ontap-tools-vmware-vsphere/index.html["Ferramentas do ONTAP para VMware vSphere"^] dispositivo virtual, que inclui o VSC, o provedor vStorage APIs for Storage Awareness (VASA) e o Storage Replication Adapter (SRA) para os recursos do VMware vSphere.
+** Certifique-se de que verifica o https://imt.netapp.com/matrix/["Ferramenta de Matriz de interoperabilidade do NetApp"^] para confirmar a compatibilidade entre as versões atuais do ONTAP e do VSC.
+
+
+* Sua rede usa endereçamento IPv4.
+* Você está usando HBAs FC tradicionais no ESXi 5.x e switches FC tradicionais.
++
+Este procedimento não abrange o FCoE.
+
+* Você tem pelo menos duas portas de destino FC disponíveis em cada nó do cluster.
++
+Portas integradas FC e UTA2 (também chamadas de "CNA"), bem como alguns adaptadores são configuráveis. A configuração dessas portas é feita na CLI do ONTAP e não é abordada neste procedimento.
+
+* Você não está configurando a inicialização FC SAN.
+* Você está criando datastores no host.
++
+Esse procedimento não abrange discos de mapeamento de dispositivos brutos (RDM) ou o uso de NPIV (virtualização de ID de porta N) para fornecer FC diretamente às VMs.
+
+
+
+Para obter mais informações, consulte https://docs.netapp.com/us-en/netapp-solutions/virtualization/vsphere_ontap_ontap_for_vsphere.html["TR-4597: VMware vSphere for ONTAP"^] e a documentação da versão do VSC.

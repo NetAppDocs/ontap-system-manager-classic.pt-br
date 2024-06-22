@@ -1,0 +1,131 @@
+---
+permalink: online-help-96-97/concept_ethernet_ports.html 
+sidebar: sidebar 
+keywords: system, manager, manager, ethernet, port, create, online, help, create, interface, group, lacp, vlan, settings, duplex, mode, speed, mtu, size,  port, nodes, fcp, 
+summary: Você pode usar o System Manager para criar e gerenciar portas Ethernet. 
+---
+= Gerencie portas ethernet com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e versões anteriores) para criar e gerenciar portas Ethernet.
+
+
+
+== Crie grupos de interface
+
+Você pode usar o System Manager para criar um grupo de interfaces - monomodo, multimodo estático ou multimodo dinâmico (LACP) - para apresentar uma única interface aos clientes combinando os recursos das portas de rede agregadas.
+
+.Antes de começar
+As portas livres devem estar disponíveis que não pertencem a nenhum domínio de broadcast ou grupo de interfaces, ou que hospedam uma VLAN.
+
+.Passos
+. Clique em *rede* > *portas Ethernet*.
+. Clique em *Create Interface Group*.
+. Na caixa de diálogo *Create Interface Group*, especifique as seguintes configurações:
++
+** Nome do grupo de interfaces
+** Nó
+** Portas que você deseja incluir no grupo de interfaces
+** Modo de uso das portas: Modo único, múltiplo estático ou multimodo dinâmico (LACP)
+** Distribuição de carga de rede: Baseado em IP, baseado em endereço MAC, sequencial ou porta
+** Domínio de difusão para o grupo de interfaces, se necessário
+
+
+. Clique em *criar*.
+
+
+
+
+== Crie interfaces VLAN
+
+Você pode criar uma VLAN para manter domínios de broadcast separados dentro do mesmo domínio de rede usando o System Manager.
+
+.Passos
+. Clique em *rede* > *portas Ethernet*.
+. Clique em *Create VLAN*.
+. Na caixa de diálogo *Create VLAN*, selecione o nó, a interface física e o domínio de broadcast (se necessário).
++
+A lista de interface física inclui apenas portas Ethernet e grupos de interface. A lista não exibe interfaces que estejam em outro grupo de interfaces ou em uma VLAN existente.
+
+. Digite uma tag VLAN e clique em *Add*.
++
+Você deve adicionar tags de VLAN exclusivas.
+
+. Clique em *criar*.
+
+
+
+
+== Editar as definições da porta Ethernet
+
+Você pode editar as configurações de porta Ethernet, como o modo duplex e as configurações de velocidade, usando o System Manager.
+
+.Passos
+. Clique em *rede* > *portas Ethernet*.
+. Selecione a porta física e clique em *Editar*.
+. Na caixa de diálogo *Edit Ethernet Port* (Editar porta Ethernet*), modifique as configurações de modo duplex e velocidade para `manual` ou `automatic`.
+. Clique em *Editar*.
+
+
+
+
+== Editar definições do grupo de interfaces
+
+Você pode usar o System Manager para adicionar portas a um grupo de interfaces, remover portas de um grupo de interfaces e modificar o modo de uso e o padrão de distribuição de carga das portas em um grupo de interfaces.
+
+.Sobre esta tarefa
+Não é possível modificar as configurações de MTU de um grupo de interfaces atribuído a um domínio de broadcast.
+
+.Passos
+. Clique em *rede* > *portas Ethernet*.
+. Selecione um grupo de interfaces e clique em *Editar*.
+. Modifique as configurações do grupo de interfaces conforme necessário e clique em *Salvar e fechar*.
+
+
+
+
+== Modifique o tamanho da MTU de uma VLAN
+
+Se você quiser modificar o tamanho da MTU de uma interface VLAN que não faz parte de um domínio de broadcast, você pode usar o System Manager para alterar o tamanho.
+
+.Sobre esta tarefa
+Você não deve modificar o tamanho da MTU da porta de gerenciamento e0M.
+
+.Passos
+. Clique em *rede* > *portas Ethernet*.
+. Selecione a VLAN que deseja modificar e clique em *Editar*.
+. Na caixa de diálogo *Edit VLAN*, modifique o tamanho da MTU conforme necessário e clique em *Save*.
+
+
+
+
+== Eliminar VLANs
+
+Você pode excluir VLANs configuradas em portas de rede usando o System Manager. Talvez seja necessário excluir uma VLAN antes de remover uma NIC do slot. Quando você exclui uma VLAN, a VLAN é automaticamente removida de todas as regras e grupos de failover que usam a VLAN.
+
+.Antes de começar
+Nenhum LIFs deve estar associado à VLAN.
+
+.Passos
+. Clique em *rede* > *portas Ethernet*.
+. Selecione a VLAN que deseja excluir e clique em *Excluir*.
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
+
+
+
+
+== Portas e adaptadores
+
+As portas são agrupadas em nós e os nós são exibidos com base na categoria de protocolo selecionada. Por exemplo, se os dados forem atendidos usando o protocolo FC, somente os nós com adaptadores FCP serão exibidos. A contagem de interface hospedada ajuda você a escolher uma porta que seja menos carregada.
+
+*Informações relacionadas*
+
+https://docs.netapp.com/us-en/ontap/networking/index.html["Gerenciamento de rede"]
+
+https://docs.netapp.com/us-en/ontap/concepts/index.html["Conceitos de ONTAP"]
+
+xref:reference_network_window.adoc[Janela de rede]

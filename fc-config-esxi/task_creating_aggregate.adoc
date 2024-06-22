@@ -1,0 +1,27 @@
+---
+permalink: fc-config-esxi/task_creating_aggregate.html 
+sidebar: sidebar 
+keywords: exist, aggregate, create, physical, storage, volume, provision, create an aggregate 
+summary: Se você não quiser usar um agregado existente, crie um novo agregado para fornecer armazenamento físico ao volume que você está provisionando. 
+---
+= Crie um agregado
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você não quiser usar um agregado existente, crie um novo agregado para fornecer armazenamento físico ao volume que você está provisionando.
+
+.Passos
+. Insira o URL `+https://IP-address-of-cluster-management-LIF+` em um navegador da Web e faça login no System Manager usando sua credencial de administrador de cluster.
+. Navegue até a janela *Adorments*.
+. Clique em *criar.*
+. Siga as instruções na tela para criar o agregado usando a configuração RAID-DP padrão e clique em *criar*.
++
+image::../media/aggregate_creation_fc_esxi.gif[Criando uma tela agregada no System Manager]
+
+
+
+.Resultados
+O agregado é criado com a configuração especificada e adicionado à lista de agregados na janela agregados.

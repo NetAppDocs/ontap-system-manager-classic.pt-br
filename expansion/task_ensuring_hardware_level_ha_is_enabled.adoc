@@ -1,0 +1,50 @@
+---
+permalink: expansion/task_ensuring_hardware_level_ha_is_enabled.html 
+sidebar: sidebar 
+keywords: install, controller, module, reuse, maintenance, mode, ha, state, hardware-level, enable, ensure hardware-level ha is enabled 
+summary: Se os módulos do controlador recém-instalados forem reutilizados, não novos, você deverá entrar no modo Manutenção e garantir que o estado HA esteja definido como HA. 
+---
+= Certifique-se de que a HA no nível de hardware está ativada
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se os módulos do controlador recém-instalados forem reutilizados--não novos--você deve entrar no modo Manutenção e garantir que seu estado HA esteja definido como HA.
+
+.Sobre esta tarefa
+Se você estiver usando novos módulos do controlador, poderá ignorar este procedimento porque o HA está habilitado por padrão. Caso contrário, você deve executar este procedimento em ambos os nós.
+
+.Passos
+. No primeiro nó, entre no modo Manutenção:
++
+.. Saia do nodeshell entrando `halt`em .
++
+O prompt Loader é exibido.
+
+.. Entre no modo Manutenção entrando `boot_ontap maint`em .
++
+Depois de algumas informações serem exibidas, o prompt do modo de manutenção é exibido.
+
+
+
+. No modo de manutenção, certifique-se de que o módulo do controlador e o chassis estão no estado HA:
++
+.. Apresentar o estado HA do módulo do controlador e do chassis introduzindo `ha-config show`.
+.. Se o estado apresentado do controlador não for `HA` , `ha-config modify controller ha` introduza .
+.. Se o estado apresentado do chassis não for `HA` , `ha-config modify chassis ha` introduza .
+.. Verifique se o HA está ativado no módulo do controlador e no chassis, introduzindo `ha-config show`o .
+
+
+. Retornar para ONTAP:
++
+.. Entre `halt` para sair do modo de manutenção.
+.. Inicie o ONTAP entrando `boot_ontap`
+.. Aguarde enquanto o nó é inicializado e o assistente Configuração de cluster é iniciado automaticamente no console.
+.. Pressione Enter quatro vezes para aceitar as configurações existentes para o LIF de gerenciamento de nós.
+.. Faça login no nó como `admin` usuário, o que não requer uma senha.
+
+
+. Repita este procedimento no outro nó que você está adicionando ao cluster.
+

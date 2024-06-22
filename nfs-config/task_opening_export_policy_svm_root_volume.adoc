@@ -1,0 +1,40 @@
+---
+permalink: nfs-config/task_opening_export_policy_svm_root_volume.html 
+sidebar: sidebar 
+keywords: add, rule, default, export, policy, allow, client, access, storage, virtual, machine, svm, volume, open the export policy of the svm root volume, create a new nfs-enabled svm 
+summary: 'Você deve adicionar uma regra à política de exportação padrão para permitir que todos os clientes acessem através do NFSv3. Sem essa regra, todos os clientes NFS têm acesso negado à máquina virtual de storage (SVM) e seus volumes.' 
+---
+= Abrir a política de exportação do volume raiz da SVM (criar um novo SVM habilitado para NFS)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve adicionar uma regra à política de exportação padrão para permitir que todos os clientes acessem através do NFSv3. Sem essa regra, todos os clientes NFS têm acesso negado à máquina virtual de storage (SVM) e seus volumes.
+
+.Sobre esta tarefa
+Você deve especificar todo o acesso NFS como a política de exportação padrão e, posteriormente, restringir o acesso a volumes individuais criando políticas de exportação personalizadas para volumes individuais.
+
+.Passos
+. Navegue até a janela *SVMs*.
+. Clique na guia *Configurações da SVM*.
+. No painel *políticas*, clique em *políticas de exportação*.
+. Selecione a política de exportação chamada *default*, que é aplicada ao volume raiz SVM.
+. No painel inferior, clique em *Add*.
+. Na caixa de diálogo *criar regra de exportação*, crie uma regra que abra o acesso a todos os clientes para clientes NFS:
++
+.. No campo *especificação do cliente*, insira `0.0.0.0/0` para que a regra se aplique a todos os clientes.
+.. Mantenha o valor padrão como *1* para o índice de regras.
+.. Selecione *NFSv3*.
+.. Desmarque todas as caixas de seleção, exceto *UNIX*, em *somente leitura*.
+.. Clique em *OK*.
+
+
++
+image::../media/export_rule_for_root_volume_nfs.gif[Esta imagem é explicada pelo texto circundante.]
+
+
+
+.Resultados
+Os clientes do NFSv3 agora podem acessar todos os volumes criados no SVM.

@@ -1,0 +1,52 @@
+---
+permalink: snmp-config/index.html 
+sidebar: sidebar 
+keywords: content, configure, snmp, cluster, management, level, add, communities, community, security, user, traphost, communication, snmp configuration overview 
+summary: 'Usando a interface "classic" do Gerenciador de sistema do ONTAP com o ONTAP 9.7 ou anterior, você pode configurar o SNMP no nível de gerenciamento de cluster; adicionar comunidades, usuários de segurança e traphosts; e testar a comunicação SNMP.' 
+---
+= Visão geral da configuração SNMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Usando a interface _classic_ do Gerenciador de sistema do ONTAP com o ONTAP 9.7 ou anterior, você pode configurar o SNMP no nível de gerenciamento de cluster; adicionar comunidades, usuários de segurança e traphosts; e testar a comunicação SNMP.
+
+Você deve usar esses procedimentos se quiser configurar o acesso SNMP a um cluster da seguinte maneira:
+
+* Você está trabalhando com clusters que executam o ONTAP 9.
+* Você quer usar as práticas recomendadas, não explorar todas as opções disponíveis.
++
+[NOTE]
+====
+Existem algumas etapas nesses procedimentos para os quais você deve usar a interface de linha de comando.
+
+====
+
+
+
+
+== Outras maneiras de fazer isso em ONTAP
+
+Você pode configurar o acesso SNMP a um cluster usando para todas as versões do ONTAP 9. Você deve usar o procedimento apropriado para sua versão do ONTAP.
+
+|===
+
+
+| Para executar estas tarefas com... | Consulte... 
+
+
+ a| 
+O Gerenciador de sistema redesenhado (disponível com o ONTAP 9.7 e posterior)
+ a| 
+https://docs.netapp.com/us-en/ontap/networking/manage_snmp_on_the_cluster_@cluster_administrators_only@_overview.html["Gerir SNMP no cluster (apenas administradores de cluster) > Visão geral"^]
+
+
+
+ a| 
+A interface de linha de comando (CLI) do ONTAP
+ a| 
+https://docs.netapp.com/us-en/ontap/networking/commands_for_managing_snmp.html["Comandos para gerenciar SNMP"^]
+
+|===

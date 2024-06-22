@@ -1,0 +1,68 @@
+---
+permalink: online-help-96-97/reference_metrocluster_switchover_switchback_window.html 
+sidebar: sidebar 
+keywords: metrocluster, switchover, switchback, operations, window, command, button, other, action, online, help, status 
+summary: 'A partir do System Manager 9,6, você pode usar o switchover MetroCluster e a janela de operações de Switchback para iniciar um switchover negociado (planejado) ou um switchover não planejado de um local ou cluster (local B) para outro local ou cluster (local A). Depois de realizar manutenção ou reparos no local B, você pode iniciar um switchback do local A para o local B e visualizar o status da operação nesta janela.' 
+---
+= Janela de operações de comutação e comutação do MetroCluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do System Manager 9,6, você pode usar o switchover MetroCluster e a janela de operações de Switchback para iniciar um switchover negociado (planejado) ou um switchover não planejado de um local ou cluster (local B) para outro local ou cluster (local A). Depois de realizar manutenção ou reparos no local B, você pode iniciar um switchback do local A para o local B e visualizar o status da operação nesta janela.
+
+
+
+== Botões de comando
+
+* *Local de transição B para o local A*
++
+Inicia o processo que muda o local B para o local A.
+
+* *Switchback Site A para Site B*
++
+Inicia o processo que muda o local A de volta para o local B.
+
+
+
+
+
+== Outras ações
+
+* *Navegue até o cluster do Site B.*
++
+Introduza o endereço IP de gestão do cluster do local B.
+
+* * Caixa de seleção para switchover não planejado*
++
+Se você quiser iniciar um switchover não planejado, marque a caixa *Continue com switchover não planejado*.
+
+
+
+
+
+== Áreas de estado
+
+À medida que o sistema progride através do processo de comutação ou de volta, o System Manager exibe o status com os seguintes métodos:
+
+* * Gráfico da linha de progresso*
++
+Apresenta fases das operações e indica as fases que foram concluídas. As fases são switchover, operações do local B e Switchback.
+
+* ***Mostrar Detalhes***
++
+Apresenta uma lista de eventos do sistema com marcação de tempo à medida que as operações do MetroCluster progridem.
+
+* *Local: Site A*
++
+Exibe um gráfico da configuração do cluster no local A, incluindo o status do local à medida que ele progride nas fases da operação.
+
+* *Remoto: Local B*
++
+Exibe um gráfico da configuração do cluster no local B, incluindo o status desse local à medida que ele progride nas fases da operação.
+
+
+
+Se você fizer login no local B e visualizar a janela de mudança de MetroCluster e operações de switchback, o status do local A será exibido como ""inativo"" e o status do local B será exibido como ""MODO DE COMUTAÇÃO"".

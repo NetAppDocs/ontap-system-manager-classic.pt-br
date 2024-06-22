@@ -1,0 +1,26 @@
+---
+permalink: online-help-96-97/task_editing_nvme_namespace.html 
+sidebar: sidebar 
+keywords: edit, nvme, namespace, online, help, system, manager 
+summary: Você pode usar o System Manager para editar o namespace alterando o subsistema para o qual o namespace está mapeado. 
+---
+= Edite um namespace NVMe com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+
+
+[role="lead"]
+Você pode usar o Gerenciador de sistema do ONTAP Clássico (disponível no ONTAP 9.7 e anterior) para editar o namespace alterando o subsistema para o qual o namespace está mapeado.
+
+.Sobre esta tarefa
+Você só pode modificar as configurações do subsistema NVMe nessa janela; não é possível editar os outros detalhes do namespace.
+
+.Passos
+. Clique em *NVMe* > *namespaces NVMe*.
+. Na janela *namespaces NVMe*, selecione o namespace que deseja editar.
+. Selecione uma opção de subsistema:
++
+** Nenhum: A escolha desta opção desmapeia apenas o mapeamento do subsistema existente para este namespace. Essa opção é pré-selecionada se nenhum mapeamento de subsistema estiver presente para o namespace selecionado.
+** Usar um subsistema existente: Essa opção é pré-selecionada se o mapeamento subsistema para namespace estiver presente. A escolha de um subsistema diferente mapeia o novo subsistema desmapeando o subsistema anteriormente mapeado.
+
+
+

@@ -1,0 +1,39 @@
+---
+permalink: volume-move/task_verifying_lun_reporting_nodes_after_moving_volume.html 
+sidebar: sidebar 
+keywords: volume, lun, destination, aggregate, high-availability, ha, pair, ontap, selective, reporting-nodes, list, path, verify, verify lun reporting nodes after moving a volume 
+summary: Você pode adicionar nós de relatórios de LUN para ajudar a manter caminhos de LUN otimizados. 
+---
+= Verifique os nós de relatórios de LUN após mover um volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode adicionar nós de relatórios de LUN para ajudar a manter caminhos de LUN otimizados.
+
+Se o volume que você move contiver LUNs e o agregado de destino estiver em outro par de HA (high-availability), o ONTAP adicionará automaticamente um par de HA à lista de nós de relatórios de mapa de LUN seletivo
+
+.Antes de começar
+Duas LIFs devem ser configuradas: Um LIF no nó de destino e o outro LIF no parceiro de HA do nó de destino.
+
+.Sobre esta tarefa
+Esse procedimento só será necessário se você mover um volume de um par de HA para outro par de HA. Se você mover um volume para um nó diferente do mesmo par de HA - por exemplo, se você tiver um cluster de dois nós ou uma configuração do MetroCluster - você poderá ignorar este procedimento.
+
+.Passos
+. Verifique se o nó de destino e o nó de parceiro estão na lista de nós de relatório do volume. Se os nós não estiverem na lista de nós de relatório, adicione o nó de destino e seu nó de parceiro à lista de nós de relatório do volume:
++
+`lun mapping add-reporting-nodes`
+
+. Volte a digitalizar a partir do host para descobrir os caminhos recém-adicionados.
+. Adicione os novos caminhos à configuração do MPIO.
+. Remova o proprietário do LUN anterior e o nó de parceiro da lista de nós de relatórios:
++
+`lun mapping remove-reporting-nodes -remote-nodes -vserver vserver_name -path lun_path -igroup igroup_name`
+
+. Volte a digitalizar o host para verificar a remoção de caminhos antigos.
++
+Consulte a documentação do seu host para ver as etapas específicas para verificar novamente seus hosts.
+
+

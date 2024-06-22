@@ -1,0 +1,270 @@
+---
+permalink: online-help-96-97/reference_luns_window.html 
+sidebar: sidebar 
+keywords: online, help, lun, management, window, command, button, initiator, portset, group, online, help 
+summary: Você pode usar a janela LUNs para criar e gerenciar LUNs e exibir informações sobre LUNs. Você também pode adicionar, editar ou excluir grupos de iniciadores e IDs de iniciadores. 
+---
+= Janela LUNs no Gerenciador do sistema - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a janela LUNs no Gerenciador de sistemas ONTAP Classic (disponível no ONTAP 9.7 e anterior) para criar e gerenciar LUNs e exibir informações sobre LUNs. Você também pode adicionar, editar ou excluir grupos de iniciadores e IDs de iniciadores.
+
+
+
+== Separador Gestão LUN
+
+Esta guia permite criar, clonar, excluir, mover ou editar as configurações de LUNs. Você também pode atribuir LUNs a um grupo de políticas de qualidade do serviço (QoS) de storage.
+
+
+
+== Botões de comando
+
+* *Criar*
++
+Abre o assistente criar LUN, que permite criar LUNs.
+
++
+Em um cluster em uma plataforma AFF que não contenha LUNs existentes, a caixa de diálogo Create FC SAN Optimized LUNs é aberta, o que permite configurar um ou mais LUNs otimizados para SAN FC.
+
+* *Clone*
++
+Abre a caixa de diálogo Clone LUN, que permite clonar os LUNs selecionados.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar LUN, que permite editar as definições do LUN selecionado.
+
+* *Excluir*
++
+Elimina o LUN selecionado.
+
+* *Status*
++
+Permite-lhe alterar o estado do LUN selecionado para Online ou Offline.
+
+* *Mover*
++
+Abre a caixa de diálogo mover LUN, que permite mover o LUN selecionado para um novo volume ou um volume ou qtree existente na mesma máquina virtual de armazenamento (SVM).
+
+* *QoS de armazenamento*
++
+Abre a caixa de diálogo Detalhes de qualidade do serviço, que permite atribuir um ou mais LUNs a um grupo de políticas novo ou existente.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+== Lista de LUNs
+
+* *Nome*
++
+Exibe o nome do LUN.
+
+* *SVM*
++
+Exibe o nome da máquina virtual de storage (SVM) na qual o LUN é criado.
+
+* *Caminho do recipiente*
++
+Exibe o nome do sistema de arquivos (volume ou qtree) que contém o LUN.
+
+* *Reserva de espaço*
++
+Especifica se a reserva de espaço está ativada ou desativada.
+
+* *Tamanho disponível*
++
+Exibe o espaço disponível no LUN.
+
+* * Tamanho total*
++
+Exibe o espaço total no LUN.
+
+* *%usado*
++
+Exibe o espaço total (em porcentagem) que é usado.
+
+* *Tipo*
++
+Especifica o tipo de LUN.
+
+* *Status*
++
+Especifica o status do LUN.
+
+* *Grupo de políticas*
++
+Exibe o nome do grupo de políticas QoS de armazenamento ao qual o LUN é atribuído. Por padrão, essa coluna está oculta.
+
+* * Aplicação*
++
+Exibe o nome do aplicativo atribuído ao LUN.
+
+* *Descrição*
++
+Apresenta a descrição do LUN.
+
+
+
+
+
+== Área de detalhes
+
+A área abaixo da lista LUNs exibe detalhes relacionados ao LUN selecionado.
+
+* *Separador Detalhes*
++
+Exibe detalhes relacionados ao LUN, como o número de série do LUN, se o LUN é um clone, descrição do LUN, o grupo de políticas ao qual o LUN é atribuído, taxa de transferência mínima do grupo de políticas, taxa de transferência máxima do grupo de políticas, detalhes sobre a operação de movimentação de LUN e o aplicativo atribuído ao LUN. Você também pode exibir detalhes sobre os grupos de iniciadores e iniciadores associados ao LUN selecionado.
+
+* *Separador desempenho*
++
+Exibe gráficos de métricas de desempenho dos LUNs, incluindo taxa de dados, IOPS e tempo de resposta.
+
++
+Alterar o fuso horário do cliente ou o fuso horário do cluster afeta os gráficos de métricas de desempenho. Atualize seu navegador para ver os gráficos atualizados.
+
+
+
+
+
+== Separador grupos de iniciadores
+
+Esta guia permite criar, excluir ou editar as configurações de grupos de iniciadores e IDs de iniciadores.
+
+
+
+== Botões de comando
+
+* *Criar*
++
+Abre a caixa de diálogo criar grupo de iniciadores, que permite criar grupos de iniciadores para controlar o acesso do host a LUNs específicos.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar Grupo de iniciadores, que permite editar as configurações do grupo de iniciadores selecionado.
+
+* *Excluir*
++
+Elimina o grupo de iniciadores selecionado.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+== Lista de grupos de iniciadores
+
+* *Nome*
++
+Exibe o nome do grupo de iniciadores.
+
+* *Tipo*
++
+Especifica o tipo de protocolo suportado pelo grupo de iniciadores. Os protocolos compatíveis são iSCSI, FC/FCoE ou Misto (iSCSI e FC/FCoE).
+
+* *Sistema operacional*
++
+Especifica o sistema operacional para o grupo de iniciadores.
+
+* *Portset*
++
+Apresenta o portset associado ao grupo de iniciadores.
+
+* *Número do Iniciador*
++
+Exibe o número de iniciadores adicionados ao grupo de iniciadores.
+
+
+
+
+
+== Área de detalhes
+
+A área abaixo da lista grupos de iniciadores exibe detalhes sobre os iniciadores que são adicionados ao grupo de iniciadores selecionado e os LUNs que são mapeados para o grupo de iniciadores.
+
+
+
+== Separador Portsets (conjuntos de portas)
+
+Esta guia permite criar, excluir ou editar as configurações de portsets.
+
+
+
+== Botões de comando
+
+* *Criar*
++
+Abre a caixa de diálogo criar conjunto de portas, que permite criar conjuntos de portas para limitar o acesso aos LUNs.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar conjunto de portas, que permite selecionar as interfaces de rede que pretende associar ao portset.
+
+* *Excluir*
++
+Elimina o portset selecionado.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+== Lista de conjuntos de portas
+
+* *Nome do Portset*
++
+Apresenta o nome do portset.
+
+* *Tipo*
++
+Especifica o tipo de protocolo suportado pelo portset. Os protocolos compatíveis são iSCSI, FC/FCoE ou Misto (iSCSI e FC/FCoE).
+
+* *Interface Count*
++
+Apresenta o número de interfaces de rede associadas ao portset.
+
+* *Contagem do Grupo Iniciador*
++
+Apresenta o número de grupos de iniciadores associados ao portset.
+
+
+
+
+
+== Área de detalhes
+
+A área abaixo da lista Portsets exibe detalhes sobre as interfaces de rede e os grupos de iniciadores associados ao portset selecionado.
+
+*Informações relacionadas*
+
+xref:task_creating_luns.adoc[Criação de LUNs]
+
+xref:task_deleting_luns.adoc[Eliminar LUNs]
+
+xref:task_creating_initiator_groups.adoc[Criando grupos de iniciadores]
+
+xref:task_editing_luns.adoc[Edição de LUNs]
+
+xref:task_editing_initiator_groups.adoc[Editar grupos de iniciadores]
+
+xref:task_editing_initiators.adoc[Iniciadores de edição]
+
+xref:task_bringing_luns_online.adoc[Colocar os LUNs online]
+
+xref:task_taking_luns_offline.adoc[Colocar LUNs offline]
+
+xref:task_cloning_luns.adoc[Clonagem de LUNs]

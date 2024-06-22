@@ -1,0 +1,109 @@
+---
+permalink: online-help-96-97/concept_ldap.html 
+sidebar: sidebar 
+keywords: ldap, system, manager, configure, server, online, help, user, information 
+summary: Você pode usar o System Manager para configurar um servidor LDAP que mantém centralmente as informações do usuário. 
+---
+= Configure um servidor LDAP com o System Manager - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para configurar um servidor LDAP que mantém centralmente as informações do usuário.
+
+
+
+== Exibir a configuração do cliente LDAP
+
+Você pode usar o System Manager para exibir os clientes LDAP configurados para uma máquina virtual de armazenamento (SVM) em um cluster.
+
+.Passos
+. Clique em *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. No painel *Setup* (Configuração), clique em *LDAP*.
++
+A lista de clientes LDAP é exibida na janela LDAP.
+
+
+
+
+
+== Use os serviços LDAP
+
+Um servidor LDAP permite-lhe manter centralmente as informações do utilizador. Se você armazenar seu banco de dados de usuários em um servidor LDAP em seu ambiente, poderá configurar sua máquina virtual de armazenamento (SVM) para procurar informações de usuário em seu banco de dados LDAP existente.
+
+.Sobre esta tarefa
+O ONTAP oferece suporte a LDAP para autenticação de usuário, autorização de acesso a arquivos e serviços de pesquisa e mapeamento de usuários entre NFS e CIFS.
+
+
+
+== Janela LDAP
+
+Você pode usar a janela LDAP para exibir clientes LDAP para autenticação de usuários, autorização de acesso a arquivos e pesquisa de usuários, e para mapear serviços entre NFS e CIFS no nível do cluster.
+
+
+
+=== Botões de comando
+
+* *Adicionar*
++
+Abre a caixa de diálogo criar cliente LDAP, que permite criar e configurar clientes LDAP.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar cliente LDAP, que permite editar configurações de cliente LDAP. Também pode editar clientes LDAP ativos.
+
+* *Excluir*
++
+Abre a caixa de diálogo Eliminar cliente(s) LDAP, que permite eliminar as configurações de cliente LDAP. Também pode eliminar um cliente LDAP ativo.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de clientes LDAP
+
+Exibe detalhes (em formato tabular) sobre clientes LDAP.
+
+* *Configuração do cliente LDAP*
++
+Exibe o nome da configuração do cliente LDAP especificada.
+
+* *Storage Virtual Machine*
++
+Exibe o nome da máquina virtual de storage (SVM) para cada configuração de cliente LDAP.
+
+* *Esquema*
++
+Exibe o esquema para cada cliente LDAP.
+
+* * Nível mínimo de Bind*
++
+Exibe o nível mínimo de vinculação para cada cliente LDAP.
+
+* *Domínio ative Directory*
++
+Exibe o domínio do ative Directory para cada configuração de cliente LDAP.
+
+* *Servidores LDAP*
++
+Exibe o servidor LDAP para cada configuração de cliente LDAP.
+
+* *Servidores ative Directory preferenciais*
++
+Exibe o servidor do ative Directory preferido para cada configuração de cliente LDAP.
+
+
+
+*Informações relacionadas*
+
+xref:task_adding_ldap_client_configuration.adoc[Adicionando uma configuração de cliente LDAP]
+
+xref:task_deleting_ldap_client_configuration.adoc[Eliminar uma configuração de cliente LDAP]
+
+xref:task_editing_ldap_client_configuration.adoc[Editando uma configuração de cliente LDAP]

@@ -1,0 +1,75 @@
+---
+permalink: online-help-96-97/concept_nis_services.html 
+sidebar: sidebar 
+keywords: online, help, system, manager, nis, services, add, edit, manage, network, information, service, domain, svm, modify, command 
+summary: 'Você pode usar o System Manager para adicionar, editar e gerenciar domínios do Network Information Service (NIS).' 
+---
+= Gerencie os serviços NIS com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para adicionar, editar e gerenciar domínios do Serviço de informações de rede (NIS).
+
+
+
+== Adicione domínios NIS
+
+Você pode manter as informações do host centralmente usando NIS. Você pode usar o System Manager para adicionar o nome de domínio NIS do seu sistema de armazenamento. Apenas um domínio NIS pode estar ativo em uma máquina virtual de armazenamento (SVM) a qualquer momento.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Serviços*, clique em *NIS*.
+. Clique em *criar*.
+. Digite o nome de domínio NIS e, em seguida, adicione um ou mais servidores NIS.
+. Clique em *criar*.
+
+
+
+
+== Editar domínios NIS
+
+Você pode usar o System Manager para modificar domínios NIS com base no requisito de autenticação e autorização de máquina virtual de armazenamento (SVM).
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Serviços*, clique em *NIS*.
+. Selecione o domínio NIS e clique em *Editar*.
+. Faça as alterações necessárias e clique em *Editar*.
+
+
+
+
+== Janela NIS
+
+A janela NIS permite visualizar as definições NIS atuais para o seu sistema de armazenamento.
+
+
+
+=== Botões de comando
+
+* *Criar*
++
+Abre a caixa de diálogo criar domínio NIS, que permite criar domínios NIS.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar domínio NIS, que permite adicionar, excluir ou modificar servidores NIS.
+
+* *Excluir*
++
+Exclui o domínio NIS selecionado.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+*Informações relacionadas*
+
+https://docs.netapp.com/us-en/ontap/nfs-config/index.html["Configuração NFS"^]

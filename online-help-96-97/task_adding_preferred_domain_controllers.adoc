@@ -1,0 +1,58 @@
+---
+permalink: online-help-96-97/task_adding_preferred_domain_controllers.html 
+sidebar: sidebar 
+keywords: system, manager, add, preferred, domain, controller, online, help, dns, edit, modify, delete 
+summary: O System Manager deteta automaticamente controladores de domínio através do DNS. Opcionalmente, você pode adicionar um ou mais controladores de domínio à lista de controladores de domínio preferenciais para um domínio específico. 
+---
+= Gerencie controladores de domínio preferidos com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para gerenciar controladores de domínio preferenciais.
+
+
+
+== Adicione controladores de domínio preferenciais
+
+O System Manager deteta automaticamente controladores de domínio através do DNS. Opcionalmente, você pode adicionar um ou mais controladores de domínio à lista de controladores de domínio preferenciais para um domínio específico.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. Na guia *domínio*, clique em *Adicionar* na área *Controladores de domínio preferenciais*.
+. Insira o nome de domínio totalmente qualificado (FQDN) e os endereços IP dos controladores de domínio que você deseja adicionar.
++
+Você pode adicionar vários controladores de domínio inserindo os endereços IP dos controladores de domínio, separados por vírgulas.
+
+. Clique em *Salvar*.
+. Verifique se o controlador de domínio adicionado é exibido na lista de controladores de domínio preferenciais.
+
+
+
+
+== Editar controladores de domínio preferidos
+
+Você pode usar o System Manager para modificar o endereço IP dos controladores de domínio preferenciais configurados para um domínio específico.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. Na área *Preferred Domain Controllers* da guia *Domain*, clique duas vezes no controlador de domínio que você deseja editar.
+. Modifique os endereços IP do controlador de domínio e clique em *Salvar*.
+
+
+
+
+== Excluir controladores de domínio preferenciais
+
+Você pode usar o System Manager para excluir um controlador de domínio preferido ao qual a conta de computador de máquina virtual de armazenamento (SVM) está associada. Você pode fazer isso quando não quiser mais usar um controlador de domínio específico.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. Na guia *domínio*, selecione o domínio que deseja excluir da área *Controladores de domínio preferenciais* e clique em *Excluir*.
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
+

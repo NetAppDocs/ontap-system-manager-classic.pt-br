@@ -1,0 +1,131 @@
+---
+permalink: online-help-96-97/concept_how_ontap_reports_drive_types.html 
+sidebar: sidebar 
+keywords: ontap, report, disk, type, industry, standards, sas, fc, storage, array, online, help 
+summary: O ONTAP associa um tipo a cada disco. O ONTAP relata alguns tipos de disco de maneira diferente dos padrões do setor; você deve entender como os tipos de disco ONTAP se mapeiam para os padrões do setor para evitar confusão. 
+---
+= Como o ONTAP relata os tipos de disco no Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O ONTAP System Manager Classic (disponível no ONTAP 9.7 e versões anteriores) associa um tipo a cada disco. O ONTAP relata alguns tipos de disco de maneira diferente dos padrões do setor; você deve entender como os tipos de disco ONTAP se mapeiam para os padrões do setor para evitar confusão.
+
+Quando a documentação do ONTAP se refere a um tipo de disco, é o tipo usado pelo ONTAP, a menos que especificado de outra forma. _Tipos de disco RAID_ denotam a função que um disco específico desempenha para RAID. Os tipos de disco RAID não estão relacionados com os tipos de disco ONTAP.
+
+Para uma configuração específica, os tipos de disco compatíveis dependem do modelo do sistema de storage, do tipo de compartimento e dos módulos de e/S instalados no sistema.
+
+As tabelas a seguir mostram como os tipos de disco ONTAP se mapeiam para os tipos de disco padrão do setor para os tipos de conexão de storage SAS e FC e para storage arrays.
+
+
+
+== Storage conectado a SAS
+
+|===
+| Tipo de disco ONTAP | Classe de disco | Tipo de disco padrão do setor | Descrição 
+
+
+ a| 
+BSAS
+ a| 
+Capacidade
+ a| 
+SATA
+ a| 
+Discos SAS-SATA em ponte com hardware adicional para permitir que eles sejam conetados a um compartimento de armazenamento conetado a SAS
+
+
+
+ a| 
+FSAS
+ a| 
+Capacidade
+ a| 
+NL-SAS
+ a| 
+Near Line SAS
+
+
+
+ a| 
+MSATA
+ a| 
+Capacidade
+ a| 
+SATA
+ a| 
+Disco SATA no compartimento de armazenamento de porta-discos múltiplos
+
+
+
+ a| 
+SAS
+ a| 
+Desempenho
+ a| 
+SAS
+ a| 
+SCSI com conexão serial
+
+
+
+ a| 
+SSD
+ a| 
+Desempenho ultra-elevado
+ a| 
+SSD
+ a| 
+Unidades de estado sólido
+
+|===
+
+
+== Storage conectado ao FC
+
+|===
+| Tipo de disco ONTAP | Classe de disco | Tipo de disco padrão do setor 
+
+
+ a| 
+ATA
+ a| 
+Capacidade
+ a| 
+SATA
+
+
+
+ a| 
+FCAL
+ a| 
+Desempenho
+ a| 
+FC
+
+|===
+
+
+== Storage arrays
+
+|===
+| Tipo de disco ONTAP | Classe de disco | Tipo de disco padrão do setor | Descrição 
+
+
+ a| 
+LUN
+ a| 
+N/A.
+ a| 
+LUN
+ a| 
+Dispositivo de armazenamento lógico que é suportado por matrizes de armazenamento e usado pelo ONTAP como um disco, esses LUNs são referidos como _array LUNs_ para distingui-los dos LUNs que o ONTAP serve aos clientes.
+
+|===
+*Informações relacionadas*
+
+https://hwu.netapp.com["NetApp Hardware Universe"^]
+
+http://www.netapp.com/us/media/tr-3437.pdf["Relatório técnico da NetApp 3437: Resiliência do subsistema de storage"^]

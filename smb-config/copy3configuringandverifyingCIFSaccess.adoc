@@ -1,0 +1,33 @@
+---
+permalink: smb-config/copy3configuringandverifyingCIFSaccess.html 
+sidebar: sidebar 
+keywords: client, share, ntfs, file, permission, windows, explorer, modify, share acl, system, manager, test, volume, configure, verify, configure and verify cifs client access 
+summary: Quando estiver pronto, você pode dar aos clientes selecionados acesso ao compartilhamento definindo permissões de arquivo NTFS no Windows Explorer e modificando a ACL de compartilhamento no System Manager. Em seguida, você deve testar se os usuários ou grupos afetados podem acessar o volume. 
+---
+= Configurar e verificar o acesso do cliente CIFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando estiver pronto, você pode dar aos clientes selecionados acesso ao compartilhamento definindo permissões de arquivo NTFS no Windows Explorer e modificando a ACL de compartilhamento no System Manager. Em seguida, você deve testar se os usuários ou grupos afetados podem acessar o volume.
+
+.Passos
+. Decida quais clientes e usuários ou grupos terão acesso ao compartilhamento.
+. Em um cliente Windows, use uma função de administrador para dar aos usuários ou grupos permissões para os arquivos e pastas.
++
+.. Faça login em um cliente Windows como administrador que tenha direitos administrativos suficientes para gerenciar permissões NTFS.
+.. No Windows Explorer, clique com o botão direito do Mouse na unidade e selecione *Propriedades*.
+.. Selecione a guia *Segurança* e ajuste as configurações de segurança para os grupos e usuários, conforme necessário.
+
+
+. No System Manager, modifique a ACL de compartilhamento para dar aos usuários ou grupos do Windows acesso ao compartilhamento.
++
+.. Navegue até a janela *shares*.
+.. Selecione o compartilhamento e clique em *Editar*.
+.. Selecione a guia *permissões* e dê aos usuários ou grupos acesso ao compartilhamento.
+
+
+. Em um cliente Windows, faça login como um dos usuários que agora tem acesso ao compartilhamento e aos arquivos e verifique se você pode acessar o compartilhamento e criar um arquivo.
+

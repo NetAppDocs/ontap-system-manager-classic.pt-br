@@ -1,0 +1,146 @@
+---
+permalink: online-help-96-97/reference_cifs_window.html 
+sidebar: sidebar 
+keywords: cifs, window, configuration, tab, domain, symlink, branchcache, online, help 
+summary: Você pode usar a janela CIFS para configurar o servidor CIFS, gerenciar controladores de domínio, gerenciar mapeamentos UNIX simbólicos e configurar o BranchCache. 
+---
+= Janela CIFS no Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a janela CIFS no Gerenciador de sistemas do ONTAP (disponível no ONTAP 9.7 e anterior) para configurar o servidor CIFS, gerenciar controladores de domínio, gerenciar mapeamentos simbólicos UNIX e configurar o BranchCache.
+
+
+
+== Separador Configuration (Configuração)
+
+A guia Configuração permite criar e gerenciar o servidor CIFS.
+
+* *Servidor*
++
+Especifica o status do servidor CIFS, o nome do servidor, o modo de autenticação, o nome do domínio do diretório ativo e o status do multicanais SMB.
+
+* * Diretórios de casa*
++
+Especifica os caminhos do diretório base e o estilo para determinar como os nomes de usuário do PC são mapeados para entradas do diretório base.
+
+* *Botões de comando*
++
+** Configuração
++
+Abre o assistente de configuração CIFS, que permite configurar o CIFS na sua máquina virtual de armazenamento (SVM).
+
+** Opções
++
+Exibe a caixa de diálogo Opções CIFS, que permite ativar ou desativar a assinatura SMB 3,0, ativar ou desativar a criptografia SMB 3,0 e adicionar servidores WINS (Serviço de nomes de Internet) do Windows.
+
++
+A assinatura SMB impede que o tráfego de rede entre o servidor CIFS e o cliente seja comprometido.
+
+** Eliminar
++
+Permite eliminar o servidor CIFS.
+
+** Atualizar
++
+Atualiza as informações na janela.
+
+
+
+
+
+
+
+== Guia domínio
+
+A guia domínio permite exibir e redefinir seus controladores de domínio CIFS e adicionar ou excluir controladores de domínio preferenciais. Você também pode usar essa guia para gerenciar configurações de diretiva de grupo CIFS.
+
+* *Servidores*
++
+Exibe informações sobre os servidores de autenticação descobertos e seus controladores de domínio preferidos no SVM habilitado para CIFS.
+
++
+Você também pode redefinir as informações sobre os servidores descobertos, adicionar um controlador de domínio preferido, excluir um controlador de domínio ou atualizar a lista de controladores de domínio.
+
+* *Política de Grupo*
++
+Permite visualizar, ativar ou desativar as configurações de política de grupo no servidor CIFS. Você também pode recarregar uma política de grupo se o status da política for alterado.
+
+
+
+
+
+== Separador ligações simbólicas
+
+A guia links simbólicos permite gerenciar os mapeamentos de links simbólicos UNIX para usuários CIFS.
+
+* *Mapeamentos de caminho*
++
+Exibe a lista de mapeamentos de links simbólicos para CIFS.
+
+* *Botões de comando*
++
+** Criar
++
+Abre a caixa de diálogo criar novos mapeamentos de caminhos de link simbólico do UNIX, que permite criar um mapeamento de link simbólico do UNIX.
+
+** Editar
++
+Abre a caixa de diálogo Editar mapeamentos de caminhos de link simbólico, que permite modificar o compartilhamento e o caminho CIFS.
+
+** Eliminar
++
+Permite excluir o mapeamento de links simbólicos.
+
+** Atualizar
++
+Atualiza as informações na janela.
+
+
+
+
+
+
+
+== Separador BranchCache
+
+A guia BranchCache permite que você configure e gerencie as configurações do BranchCache em SVMs habilitados para CIFS.
+
+Você pode exibir o status do serviço BranchCache, o caminho para o armazenamento de hash, o tamanho do armazenamento de hash e o modo operacional, a chave do servidor e a versão do BranchCache.
+
+* *Botões de comando*
++
+** Configuração
++
+Abre a caixa de diálogo Configuração do BranchCache, que permite configurar o BranchCache para o servidor CIFS.
+
+** Editar
++
+Abre a caixa de diálogo Modificar configurações do BranchCache, que permite modificar as propriedades da configuração do BranchCache.
+
+** Eliminar
++
+Permite eliminar a configuração BranchCache.
+
+** Atualizar
++
+Atualiza as informações na janela.
+
+
+
+
+
+*Informações relacionadas*
+
+xref:task_setting_up_cifs.adoc[Configurar o CIFS]
+
+xref:task_editing_cifs_general_properties.adoc[Editando as propriedades gerais para CIFS]
+
+xref:task_adding_home_directory_paths.adoc[Adicionando caminhos do diretório base]
+
+xref:task_deleting_home_directory_paths.adoc[Eliminar caminhos do diretório base]
+
+xref:task_resetting_cifs_domain_controllers.adoc[Redefinir controladores de domínio CIFS]

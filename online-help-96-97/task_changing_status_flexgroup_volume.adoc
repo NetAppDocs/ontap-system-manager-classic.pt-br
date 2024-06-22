@@ -1,0 +1,28 @@
+---
+permalink: online-help-96-97/task_changing_status_flexgroup_volume.html 
+sidebar: sidebar 
+keywords: flexgroup, volume, status, change, online, help 
+summary: Você pode usar o Gerenciador do sistema para alterar o status de um volume do FlexGroup quando quiser colocar um volume do FlexGroup off-line, colocar um volume do FlexGroup de volta on-line ou restringir o acesso a um volume do FlexGroup. 
+---
+= Altere o status de um volume do FlexGroup com o Gerenciador do sistema - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para alterar o status de um volume do FlexGroup quando quiser colocar um volume do FlexGroup off-line, colocar um volume do FlexGroup de volta on-line ou restringir o acesso a um volume do FlexGroup.
+
+.Sobre esta tarefa
+O System Manager não oferece suporte ao gerenciamento de nível constituinte para volumes FlexGroup.
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. No menu suspenso no campo *SVM*, selecione *All SVMs*.
+. Selecione o volume FlexGroup para o qual deseja modificar o status.
+. Clique em *mais ações* > *alterar status para* e, em seguida, atualize o status do volume FlexGroup selecionando o status necessário.
+
+
+*Informações relacionadas*
+
+xref:reference_volumes_window.adoc[Janela volumes]

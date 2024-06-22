@@ -1,0 +1,81 @@
+---
+permalink: fc-config-rhel/task_record_wwpn_for_each_host_fc_port.html 
+sidebar: sidebar 
+keywords: worldwide, port, name, wwpn, require, zone, fc, switch, create, igroup, host, access, lun, record, record the wwpn for each host fc port 
+summary: 'O nome da porta mundial (WWPN) é necessário para zonear os switches FC e criar os grupos que permitem que o host acesse seu LUN.' 
+---
+= Registre o WWPN para cada porta FC do host
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O nome da porta mundial (WWPN) é necessário para zonear os switches FC e criar os grupos que permitem que o host acesse seu LUN.
+
+.Antes de começar
+Você deve ter instalado o utilitário HBA do fornecedor para os HBAs em seu host e os HBAs verificados estão executando versões de driver, firmware e BIOS compatíveis para sua configuração.
+
+.Sobre esta tarefa
+O WWPN é usado para todas as configurações. Você não precisa Registrar o nome do nó mundial (WWNN).
+
+.Passos
+. Execute o utilitário HBA para o seu tipo FC HBA.
+. Selecione o HBA.
+. Registre o WWPN de cada porta.
++
+O exemplo a seguir mostra o Emulex HBA Manager, anteriormente conhecido como OneCommand Manager.
+
++
+image::../media/emulex_hba_fc_fc_rhel.gif[A imagem mostra um HBA de 2 portas exibido no OneCommand Manager com os valores WWPN para cada porta.]
+
++
+Outros utilitários, como QLogic QConvergeConsole, fornecem as informações equivalentes.
+
+. Repita a etapa anterior para cada FC HBA no host.
++
+No Linux, você também pode obter o WWPN executando o `sanlun` utilitário.
+
++
+O exemplo a seguir mostra a saída do `sanlun` comando.
+
++
+[listing]
+----
+# sanlun fcp show adapter -v
+
+adapter name:      host0
+**WWPN:              10000000c9813a14**
+WWNN:              20000000c9813a14
+driver name:       lpfc
+model:             LPe12002-M8
+model description: Emulex LPe12002-M8 8Gb 2-port PCIe Fibre Channel Adapter
+serial number:     VM84364896
+hardware version:  31004549
+driver version:    8.3.7.34.3p; HBAAPI(I) v2.3.b, 07-12-10
+firmware version:  2.01A12 (U3D2.01A12)
+Number of ports:   1
+port type:         Fabric
+port state:        Operational
+supported speed:   2 GBit/sec, 4 GBit/sec, 8 GBit/sec
+negotiated speed:  8 GBit/sec
+OS device name:    /sys/class/scsi_host/host0
+
+adapter name:      host5
+**WWPN:              10000000c9813a15**
+WWNN:              20000000c9813a15
+driver name:       lpfc
+model:             LPe12002-M8
+model description: Emulex LPe12002-M8 8Gb 2-port PCIe Fibre Channel Adapter
+serial number:     VM84364896
+hardware version:  31004549
+driver version:    8.3.7.34.3p; HBAAPI(I) v2.3.b, 07-12-10
+firmware version:  2.01A12 (U3D2.01A12)
+Number of ports:   1
+port type:         Fabric
+port state:        Operational
+supported speed:   2 GBit/sec, 4 GBit/sec, 8 GBit/sec
+negotiated speed:  8 GBit/sec
+OS device name:    /sys/class/scsi_host/host5
+----
+

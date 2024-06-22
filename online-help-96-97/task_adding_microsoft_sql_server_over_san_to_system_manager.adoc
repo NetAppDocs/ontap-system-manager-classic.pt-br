@@ -1,0 +1,55 @@
+---
+permalink: online-help-96-97/task_adding_microsoft_sql_server_over_san_to_system_manager.html 
+sidebar: sidebar 
+keywords: add, microsoft, sql, server, san, system, manager, online, help, enhanced, tab 
+summary: Você pode usar a guia Avançado para adicionar uma instância do Microsoft SQL Server sobre SAN ao System Manager. 
+---
+= Adicione o Microsoft SQL Server sobre SAN ao System Manager - ONTAP 9.7 e versões anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a guia Avançado para adicionar uma instância do Microsoft SQL Server sobre SAN ao ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior).
+
+.Sobre esta tarefa
+O procedimento a seguir descreve como adicionar uma instância *Microsoft SQL Server* por SAN ao System Manager. Você pode escolher SMB como o protocolo de exportação somente se o cluster for licenciado para CIFS, que deve ser configurado na máquina virtual de storage (SVM).
+
+.Passos
+. Clique em *aplicativos e camadas* > *aplicativos*
+. Na guia *Enhanced*, clique em *Add*
+. Selecione *instância do Microsoft SQL Server* no menu.
++
+[NOTE]
+====
+A lista suspensa inclui uma lista de todos os tipos de aplicativos e modelos disponíveis.
+
+====
++
+A janela Adicionar instância do Microsoft SQL Server é exibida.
+
+. Especifique os seguintes detalhes:
++
+** Nome do banco de dados
+** Tamanho do banco de dados e o nível de serviço ONTAP necessário
+** Número de núcleos de servidor
+** Tamanho do log e o nível de serviço ONTAP necessário
+** Provisão para tempdb
++
+Especifique se o servidor deve ser provisionado para tempdb.
+
+** Protocolo de exportação (SMB ou SAN)
++
+Especifique SAN
+
+** Sistema operacional de host
+** Formato de LUN
+** Mapeamento do host
+
+
+. Clique em *Adicionar aplicativo*
+
+
+.Resultados
+A instância do Microsoft SQL Server sobre SAN é adicionada ao System Manager.

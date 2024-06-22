@@ -1,0 +1,96 @@
+---
+permalink: online-help-96-97/task_adding_licenses.html 
+sidebar: sidebar 
+keywords: system, manager, add, license, storage, software, online, help 
+summary: Se o software do sistema de storage tiver sido instalado de fábrica, o System Manager adicionará automaticamente o software à lista de licenças. Se o software não tiver sido instalado de fábrica ou se pretender adicionar licenças de software adicionais, pode adicionar a licença de software utilizando o System Manager. 
+---
+= Adicione licenças com o Gerenciador de sistema - ONTAP 9.7 e versões anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager Classic (disponível no ONTAP 9.7 e anterior) para adicionar a licença de software se o software não tiver sido instalado na fábrica ou se quiser adicionar licenças de software adicionais.
+
+Se o software do sistema de storage tiver sido instalado de fábrica, o System Manager adicionará automaticamente o software à lista de licenças.
+
+.Antes de começar
+O código de licença de software para o serviço ONTAP específico deve estar disponível.
+
+.Sobre esta tarefa
+* A partir do ONTAP 9.10,1, você usa o Gerenciador de sistema para instalar um arquivo de licença do NetApp (NLF) para habilitar vários recursos licenciados de uma só vez. O uso de um arquivo de licença do NetApp simplifica a instalação de licenças porque você não precisa mais adicionar chaves de licença de recursos separadas. Transfira o ficheiro de licença do NetApp a partir do site de suporte da NetApp.
++
+Para obter mais informações, consulte link:https://docs.netapp.com/us-en/ontap/task_admin_enable_new_features.html["Ative novos recursos adicionando chaves de licença"]
+
++
+Para obter informações sobre como gerenciar licenças, consulte link:https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["Visão geral de gerenciamento de licenças (somente administradores de cluster)"^]
+
+* Quando você adiciona uma nova licença em uma configuração do MetroCluster, é uma prática recomendada adicionar a licença no cluster do site sobrevivente também.
+* Não é possível usar o Gerenciador do sistema para adicionar a licença Cloud Volumes ONTAP.
++
+A licença Cloud Volumes ONTAP não está listada na página de licença. O Gerenciador do sistema não emite nenhum alerta sobre o status de risco de direitos da licença do Cloud Volumes ONTAP.
+
+* Você pode carregar somente licenças baseadas em capacidade.
++
+As licenças baseadas em capacidade são do tipo "json".
+
+
+
+.Passos
+. Clique em *Configuração* > *Cluster* > *licenças*.
+. Clique em *Add*.
+. Na caixa de diálogo *Add License* (Adicionar licença), execute as etapas apropriadas:
++
+|===
+| Se você quiser... | Faça isso... 
+
+
+ a| 
+Adicione uma licença para um serviço ONTAP específico
+ a| 
+.. Introduza a chave de licença de software.
++
+Você pode adicionar várias licenças inserindo as chaves de licença de software separadas por vírgulas.
+
+.. Clique em *Add*.
+
+
+
+
+ a| 
+Adicione uma licença baseada em capacidade
+ a| 
+.. Clique em Procurar e, em seguida, selecione o ficheiro de licença com base na capacidade.
+.. Clique em *Add*.
+
+
+
+
+ a| 
+Adicione uma licença para um serviço ONTAP específico e adicione uma licença baseada em capacidade
+ a| 
+.. Introduza a chave de licença de software.
++
+Você pode adicionar várias licenças inserindo as chaves de licença de software separadas por vírgulas.
+
+.. Clique em Procurar e, em seguida, selecione o ficheiro de licença com base na capacidade.
+.. Clique em *Add*.
+
+
+|===
++
+A nova licença é adicionada.
+
++
+A caixa de diálogo Adicionar Status da licença exibe a lista de licenças que foram adicionadas com êxito. A caixa de diálogo também exibe as chaves de licença das licenças que não foram adicionadas e o motivo pelo qual as licenças não foram adicionadas.
+
+. Clique em *Fechar*.
+
+
+.Resultados
+A licença de software é adicionada ao seu sistema de armazenamento e é exibida na lista de licenças na janela licenças.
+
+*Informações relacionadas*
+
+xref:reference_licenses_window.adoc[Janela licenças]

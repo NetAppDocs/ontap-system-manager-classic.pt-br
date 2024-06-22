@@ -1,0 +1,19 @@
+---
+section: volume-move
+title: Gerenciamento de movimentação de volumes
+entries:
+- title: Visão geral
+  url: "/volume-move/index.html"
+- title: Fluxo de trabalho de movimentação de volume
+  url: "/volume-move/concept_volume_move_workflow.html"
+  entries:
+  - title: Planeje o método e o tempo de um movimento de volume
+    url: "/volume-move/task_planning_method_timing_volume_move.html"
+  - title: Mover um volume usando o System Manager
+    url: "/volume-move/task_moving_volume_using_system_manager.html"
+  - title: Verifique os nós de relatórios de LUN após mover um volume
+    url: "/volume-move/task_verifying_lun_reporting_nodes_after_moving_volume.html"
+  - title: Atualize os nós de relatórios LUN depois de mover um volume
+    url: "/volume-move/task_updating_lun_reporting_nodes_after_moving_volume.html"
+  - title: Atualize o backup NDMP depois de mover um volume
+    url: "/volume-move/task_updating_ndmp_backup_after_moving_volume.html"

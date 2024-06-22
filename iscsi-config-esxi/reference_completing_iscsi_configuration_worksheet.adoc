@@ -1,0 +1,219 @@
+---
+permalink: iscsi-config-esxi/reference_completing_iscsi_configuration_worksheet.html 
+sidebar: sidebar 
+keywords: network, address, storage, configuration, information, perform, iscsi, task, complete, complete the iscsi configuration worksheet 
+summary: Você precisa de endereços de rede e informações de configuração de armazenamento para executar tarefas de configuração iSCSI. 
+---
+= Concluir a folha de cálculo de configuração iSCSI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa de endereços de rede e informações de configuração de armazenamento para executar tarefas de configuração iSCSI.
+
+
+
+== Endereços de rede de destino
+
+A máquina virtual de storage (SVM) é o destino iSCSI.
+
+É necessária uma sub-rede com dois endereços IP para LIFs de dados iSCSI para cada nó no cluster. Deve haver duas redes separadas para alta disponibilidade. Os endereços IP específicos são atribuídos pelo ONTAP quando você cria os LIFs como parte da criação do SVM.
+
+Se possível, separe o tráfego iSCSI em redes físicas separadas ou em VLANs.
+
+image::../media/network_fc_or_iscsi_express_iscsi_esxi.gif[A figura mostra quatro nós,two switches,and a host. Each node has two LIFs]
+
+Sub-rede para LIFs:
+
+|===
+| Nó ou LIF com porta para switch | Endereço IP | Máscara de rede | Gateway | ID DA VLAN | Porta inicial 
+
+
+ a| 
+Nó 1 / LIF para switch 1
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nó 2 / LIF para switch 1
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nó 3 / LIF para switch 1
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nó 4 / LIF para switch 1
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nó 1 / LIF para switch 2
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nó 2 / LIF para switch 2
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nó 3 / LIF para switch 2
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+
+
+ a| 
+Nó 4 / LIF para switch 2
+ a| 
+ a| 
+ a| 
+ a| 
+ a| 
+
+|===
+
+
+== Configuração de armazenamento
+
+Se o agregado e o SVM já estiverem criados, Registre seus nomes aqui; caso contrário, você poderá criá-los conforme necessário:
+
+|===
+| Nó para o próprio LUN 
+
+
+ a| 
+Nome agregado
+
+
+
+ a| 
+Nome do SVM
+
+|===
+
+
+== Informações LUN
+
+|===
+| Tamanho da LUN 
+
+
+ a| 
+Nome do LUN (opcional)
+
+
+
+ a| 
+Descrição LUN (opcional)
+
+|===
+
+
+== Informações sobre SVM
+
+Se você não estiver usando uma SVM existente, precisará das seguintes informações para criar uma nova:
+
+[cols="1a,1a"]
+|===
+2+| Nome do SVM 
+
+
+ a| 
+SVM IPspace
+
+
+
+ a| 
+Agregado para volume raiz da SVM
+
+
+
+ a| 
+Nome de usuário do SVM (opcional)
+
+
+
+ a| 
+Senha do SVM (opcional)
+
+
+
+ a| 
+LIF de gerenciamento de SVM (opcional)
+
+
+
+ a| 
+ a| 
+Sub-rede:
+
+
+
+ a| 
+ a| 
+Endereço IP:
+
+
+
+ a| 
+ a| 
+Máscara de rede:
+
+
+
+ a| 
+ a| 
+Gateway:
+
+
+
+ a| 
+ a| 
+Nó inicial:
+
+
+
+ a| 
+ a| 
+Porta inicial:
+
+|===

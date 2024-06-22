@@ -1,0 +1,146 @@
+---
+permalink: online-help-96-97/task_setting_up_network.html 
+sidebar: sidebar 
+keywords: set, up, network, cluster, node, service, processor, dns, ntp, online, help 
+summary: Ao configurar uma rede, você pode gerenciar seu cluster, nós e processadores de serviço. Você também pode configurar os detalhes de DNS e NTP usando a janela de rede. 
+---
+= Configure uma rede com o Gerenciador de sistema - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para gerenciar seu cluster, nós e processadores de serviço configurando uma rede. Você também pode configurar os detalhes de DNS e NTP usando a janela de rede.
+
+.Antes de começar
+Tem de ter configurado o cluster.
+
+.Sobre esta tarefa
+* Apenas os nós que estão ativos e em execução estão listados para criação de cluster.
++
+Você pode criar LIFs para esses nós.
+
+* Você pode desativar o intervalo de endereços IP e inserir endereços IP individuais para redes de gerenciamento de cluster, gerenciamento de nós e processador de serviço.
+
+
+
+
+== Configure uma rede quando um intervalo de endereços IP estiver ativado
+
+Pode configurar uma rede ativando um intervalo de endereços IP. O intervalo de endereços IP permite-lhe introduzir endereços IP que estão no mesmo intervalo de máscara de rede ou no intervalo de máscara de rede diferente.
+
+.Passos
+. Introduza um intervalo de endereços IP no campo *intervalo de endereços IP* e, em seguida, clique em *aplicar*.
++
+|===
+| Opção | Descrição 
+
+
+ a| 
+Você tem um intervalo de endereços IP na mesma máscara de rede
+ a| 
+Introduza o intervalo de endereços IP e, em seguida, clique em *Apply* (aplicar).
+
+Os endereços IP são aplicados sequencialmente às redes de gerenciamento de clusters, de nós e de processador de serviços.
+
+
+
+ a| 
+Você tem um intervalo de endereços IP em diferentes netmasks
+ a| 
+Introduza cada intervalo de endereços IP numa linha separada e, em seguida, clique em *Apply* (aplicar).
+
+O primeiro endereço IP aplicado ao gerenciamento de cluster e outros endereços IP são aplicados sequencialmente às redes de gerenciamento de nós e do Service Processor.
+
+|===
++
+[NOTE]
+====
+Depois de inserir o intervalo de endereços IP para gerenciamento de cluster, gerenciamento de nós e gerenciamento do processador de serviço, você não deve modificar manualmente os valores de endereço IP nesses campos. Você deve garantir que todos os endereços IP sejam endereços IPv4.
+
+====
+. Introduza os detalhes da máscara de rede e do gateway.
+. Selecione a porta para gerenciamento de cluster no campo *Port*.
+. Se o campo *Port* no gerenciamento de nós não estiver preenchido com *e0M*, insira os detalhes da porta.
++
+[NOTE]
+====
+Por padrão, o campo porta exibe e0M.
+
+====
+. Para a gestão do processador de serviço, se estiver a substituir os valores predefinidos, certifique-se de que introduziu os detalhes obrigatórios do gateway.
+. Se tiver ativado o campo *Detalhes do DNS*, introduza os detalhes do servidor DNS.
+. Se tiver ativado o campo *NTP Details* (Detalhes do NTP), introduza os detalhes do servidor NTP.
++
+[NOTE]
+====
+Fornecer detalhes alternativos do servidor NTP é opcional.
+
+====
+. Clique em *Enviar*.
+
+
+
+
+=== O que fazer a seguir
+
+Insira notificações de eventos na página suporte para continuar com a configuração do cluster.
+
+
+
+== Configure uma rede quando um intervalo de endereços IP estiver desativado
+
+Você pode configurar uma rede desativando um intervalo de endereços IP e inserindo endereços IP individuais para gerenciamento de cluster, gerenciamento de nós e redes de provedores de serviços.
+
+.Sobre esta tarefa
+Na página redes, se o *IP Address Range* estiver desativado, insira endereços IP individuais para gerenciamento de cluster, gerenciamento de nós e redes de processadores de serviços.
+
+.Passos
+. Introduza o endereço IP de gestão do cluster no campo *Endereço IP de gestão de clusters*.
+. Introduza os detalhes da máscara de rede para a gestão do cluster.
+. *Opcional:* Digite os detalhes do gateway para gerenciamento de cluster.
+. Selecione a porta para gerenciamento de cluster no campo *Port*.
+. Se você quiser fornecer detalhes de máscara de rede e gateway para gerenciar seus nós, desmarque a caixa de seleção *reter a configuração de máscara de rede e gateway da Gerenciamento de cluster* e insira os detalhes da máscara de rede e do gateway.
+. Insira os endereços IP de gerenciamento de nós no campo *Gerenciamento de nós*.
+. Se o campo *Port* no gerenciamento de nós não estiver preenchido com *e0M*, insira os detalhes da porta.
++
+[NOTE]
+====
+Por padrão, o campo porta exibe e0M.
+
+====
+. Introduza os detalhes da máscara de rede e do gateway de gestão do processador de serviço.
+. Insira os endereços de gerenciamento IP do processador de serviço no campo *Gerenciamento do processador de serviço*.
+. Se tiver ativado o campo *Detalhes do DNS*, introduza os detalhes do servidor DNS.
+. Se tiver ativado o campo *NTP Details* (Detalhes do NTP), introduza os detalhes do servidor NTP.
++
+[NOTE]
+====
+Fornecer detalhes alternativos do servidor NTP é opcional.
+
+====
+. Clique em *Enviar*.
+
+
+
+
+=== O que fazer a seguir
+
+Insira notificações de eventos na página suporte para continuar com a configuração do cluster.
+
+*Informações relacionadas*
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Systems/FAS_Systems/What_is_a_Service_Processor_and_how_do_I_use_it%3F["O que é um processador de serviço e como o utilizo?"]
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/ONTAP_OS/How_to_configure_and_troubleshoot_NTP_on_clustered_Data_ONTAP_8.2_and_later_using_CLI["Como configurar e solucionar problemas de NTP no Clustered Data ONTAP 8.2 e posterior usando CLI"]
+
+https://docs.netapp.com/ontap-9/index.jsp["Centro de Documentação do ONTAP 9"]
+
+xref:reference_network_window.adoc[Janela de rede]
+
+xref:reference_configuration_updates_window.adoc[Janela atualizações de configuração]
+
+xref:reference_date_time_window.adoc[Janela de data e hora]
+
+xref:reference_service_processors_window.adoc[Janela processadores de serviço]

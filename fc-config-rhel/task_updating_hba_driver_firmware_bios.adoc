@@ -1,0 +1,30 @@
+---
+permalink: fc-config-rhel/task_updating_hba_driver_firmware_bios.html 
+sidebar: sidebar 
+keywords: fc, host, bus, adapter, hba, linux, run, support, driver, firmware, bios, version, update, update the hba driver firmware and bios 
+summary: 'Se os adaptadores de barramento de host FC (HBAs) no host Linux não estiverem executando versões de driver, firmware e BIOS com suporte, você deverá atualizá-los.' 
+---
+= Atualize o driver, o firmware e o BIOS do HBA
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se os adaptadores de barramento de host FC (HBAs) no host Linux não estiverem executando versões de driver, firmware e BIOS com suporte, você deverá atualizá-los.
+
+.Antes de começar
+Você deve ter identificado as versões suportadas de driver, firmware e BIOS para sua configuração a partir da ferramenta Matriz de interoperabilidade.
+
+https://mysupport.netapp.com/matrix["Ferramenta de Matriz de interoperabilidade do NetApp"]
+
+.Sobre esta tarefa
+Drivers, firmware, BIOS e utilitários HBA são fornecidos pelos fornecedores HBA.
+
+.Passos
+. Liste as versões de driver, firmware e BIOS HBA instalados usando o utilitário HBA do fornecedor HBA.
+. Baixe e instale o novo driver, firmware e BIOS conforme necessário no site de suporte do fornecedor HBA.
++
+Instruções de instalação e todos os utilitários de instalação necessários estão disponíveis com o download.
+
+

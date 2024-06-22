@@ -1,0 +1,111 @@
+---
+permalink: online-help-96-97/reference_dashboard_window.html 
+sidebar: sidebar 
+keywords: system, manager, dashboard, window, multiple, panel, online, help 
+summary: A janela Painel contém vários painéis que fornecem informações cumulativas sobre o seu sistema e o seu desempenho. 
+---
+= Janela do Painel de instrumentos para o Gestor do sistema - ONTAP 9 F.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A janela Painel no ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) contém vários painéis que fornecem informações cumulativas sobre seu sistema e seu desempenho.
+
+Use a janela do Dashboard para ver informações sobre alertas e notificações importantes, a eficiência e a capacidade de agregados e volumes, os nós disponíveis em um cluster, o status dos nós em um par de alta disponibilidade (HA), as aplicações e objetos mais ativos e as métricas de performance de um cluster ou nó.
+
+* *Alertas e notificações*
++
+Exibe todos os alertas em vermelho, como eventos EMS de emergência, detalhes do nó off-line, detalhes do disco quebrado, direitos de licença que estão em alto risco e detalhes da porta de rede off-line. Exibe todas as notificações em amarelo, como notificações do monitor de integridade que ocorreram nas últimas 24 horas no nível do cluster, direitos de licença de risco médio, detalhes de disco não atribuídos, número de LIFs migrados, operações de movimentação de volume que falharam e operações de movimentação de volume que exigiram intervenção administrativa nas últimas 24 horas.
+
++
+O painel Alertas e notificações exibe até três alertas e notificações além dos quais um link Exibir tudo é exibido. Você pode clicar no link Exibir tudo para ver mais informações sobre os alertas e notificações.
+
++
+O intervalo de atualização para o painel Alertas e notificações é de um minuto.
+
+* *Visão geral do cluster*
++
+Exibe os agregados e volumes que estão próximos da capacidade, a eficiência de storage de um cluster ou nó e os detalhes de proteção dos principais volumes.
+
++
+A guia capacidade exibe os principais agregados on-line que estão se aproximando da capacidade, em ordem decrescente do espaço usado.
+
++
+A guia capacidade fornece um link para o número de volumes com a capacidade mais alta utilizada quando você insere um valor válido no campo volumes que excedem a capacidade usada. Ele também exibe a quantidade de dados inativos (frios) disponíveis no cluster.
+
++
+A guia eficiência exibe a economia de eficiência de storage para um cluster ou nó. Você pode ver o espaço lógico total usado, o espaço físico total usado e a economia geral. Você pode selecionar um cluster ou um nó específico para visualizar a economia de eficiência de storage. Para o System Manager 9,5, o espaço usado para cópias Snapshot _não_ está incluído nos valores do espaço lógico total usado, do espaço físico total usado e da economia geral. No entanto, a partir do System Manager 9,6, o espaço usado para cópias Snapshot está incluído nos valores do espaço lógico total usado, do espaço físico total usado e da economia geral.
+
++
+O intervalo de atualização para o painel Visão geral do cluster é de 15 minutos.
+
++
+A guia proteção exibe informações sobre volumes em todo o cluster que não têm relações de proteção definidas. Somente os volumes FlexVol e os volumes FlexGroup que atendem aos seguintes critérios são exibidos:
+
++
+** Os volumes são volumes RW e estão online.
+** O agregado que contém os volumes está online.
+** Os volumes têm relações de proteção e ainda não são inicializados. Você pode navegar até a janela volumes para exibir os volumes que não têm uma relação de proteção definida.
+
+
++
+A guia proteção também exibe os cinco principais SVMs que têm o maior número de volumes que não têm relações de proteção definidas.
+
+* * Nós*
++
+Exibe uma representação pictórica do número e nomes dos nós que estão disponíveis no cluster e o status dos nós que estão em um par de HA. Você deve posicionar o cursor sobre a representação pictórica dos nós para visualizar o status dos nós em um par de HA.
+
++
+Você pode ver mais informações sobre todos os nós usando o link nós. Você também pode clicar na representação pictórica para visualizar o modelo dos nós e o número de agregados, pools de storage, prateleiras e discos disponíveis nos nós. Você pode gerenciar os nós usando o link Gerenciar nós. Você pode gerenciar os nós em um par de HA usando o link Gerenciar HA.
+
++
+O intervalo de atualização para o painel nós é de 15 minutos.
+
+* *Aplicações e objetos*
++
+Você pode usar o painel aplicativos e objetos para exibir informações sobre aplicativos, clientes e arquivos em um cluster.
+
++
+A guia aplicativos exibe informações sobre os cinco principais aplicativos do cluster. Você pode visualizar as cinco principais aplicações com base em IOPS e latência (do baixo ao alto ou do alto ao baixo) ou capacidade (do baixo ao alto ou do alto ao baixo).
+
++
+Você deve clicar no gráfico de barras específico para exibir mais informações sobre o aplicativo. O espaço total, o espaço usado e o espaço disponível são exibidos para capacidade, os detalhes do IOPS são exibidos para IOPS e os detalhes da latência são exibidos para latência.
+
++
+Você pode clicar em *Exibir detalhes* para abrir a janela aplicativos do aplicativo específico.
+
++
+A guia objetos exibe informações sobre os cinco principais clientes ativos e arquivos no cluster. Você pode visualizar os cinco principais clientes ativos e arquivos com base em IOPS ou taxa de transferência.
+
++
+[NOTE]
+====
+Essas informações são exibidas apenas para os protocolos CIFS e NFS.
+
+====
++
+O intervalo de atualização para o painel aplicativos e objetos é de um minuto.
+
+* *Desempenho*
++
+Exibe as métricas de performance médias, as métricas de performance de leitura e as métricas de performance de gravação do cluster com base na latência, IOPS e taxa de transferência. As métricas de desempenho médias são exibidas por padrão. Você pode clicar em ler ou escrever para visualizar as métricas de desempenho de leitura ou escrever métricas de desempenho, respetivamente. Você pode visualizar as métricas de desempenho do cluster ou de um nó.
+
++
+Se as informações sobre o desempenho do cluster não puderem ser recuperadas do ONTAP, não será possível visualizar o respetivo gráfico. Nesses casos, o System Manager exibe a mensagem de erro específica.
+
++
+O intervalo de atualização para os gráficos no painel desempenho é de 15 segundos.
+
+
+
+
+
+== Monitoramento de um cluster usando o painel
+
+O dashboard do System Manager permite monitorar a integridade e o desempenho de um cluster. Você também pode identificar problemas de hardware e problemas de configuração de storage usando o painel.
+
+.Passos
+. Clique na guia *Dashboard* para exibir os painéis do painel de controle de integridade e desempenho.
+

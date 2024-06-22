@@ -1,0 +1,39 @@
+---
+permalink: online-help-96-97/task_restoring_volume_from_snapshot_copy.html 
+sidebar: sidebar 
+keywords: restore, volume, snapshot, copy, system, manager, online, help 
+summary: Você pode usar o System Manager para restaurar um volume para um estado que é gravado em uma cópia Snapshot criada anteriormente para recuperar informações perdidas. Ao restaurar um volume a partir de uma cópia Snapshot, a operação de restauração substitui a configuração de volume existente. Todas as alterações feitas aos dados no volume após a criação da cópia Snapshot são perdidas. 
+---
+= Restaure um volume a partir de uma cópia Snapshot com o System Manager - ONTAP 9.7 e versões anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para restaurar um volume para um estado que é gravado em uma cópia Snapshot criada anteriormente para recuperar informações perdidas. Ao restaurar um volume a partir de uma cópia Snapshot, a operação de restauração substitui a configuração de volume existente. Todas as alterações feitas aos dados no volume após a criação da cópia Snapshot são perdidas.
+
+.Antes de começar
+* A licença SnapRestore deve ser instalada no seu sistema.
+* Se o FlexVol volume que você deseja restaurar contiver um LUN, o LUN deve ser desmontado ou não mapeado.
+* Deve haver espaço suficiente disponível para o volume restaurado.
+* Os usuários que acessam o volume devem ser notificados de que você reverterá um volume e que os dados da cópia Snapshot selecionada substituirão os dados atuais no volume.
+
+
+.Sobre esta tarefa
+* Se o volume que restaurar contiver pontos de junção para outros volumes, os volumes que estão montados nesses pontos de junção não serão restaurados.
+* Não é possível restaurar cópias Snapshot para SnapLock Compliance volumes.
+
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. No menu suspenso no campo *SVM*, selecione *All SVMs*.
+. Selecione o volume que deseja restaurar a partir de uma cópia Snapshot.
+. Clique em *mais ações* > *Gerenciar capturas instantâneas* > *Restaurar*.
+. Selecione a cópia Snapshot apropriada e clique em *Restore*.
+. Marque a caixa de seleção de confirmação e clique em *Restaurar*.
+
+
+*Informações relacionadas*
+
+xref:reference_volumes_window.adoc[Janela volumes]

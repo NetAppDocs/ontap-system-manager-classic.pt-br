@@ -1,0 +1,94 @@
+---
+permalink: peering/task_preparing_for_cluster_peering.html 
+sidebar: sidebar 
+keywords: create, creating, cluster, peer, relationship, verify, time, synchronized, external, network, procotol, ntp, server, subnet, port, passphrase, prepare, prepare for cluster peering 
+summary: 'Antes de criar uma relação de peering de cluster usando a interface "clássica" do Gerenciador de sistema do ONTAP com o ONTAP 9.7 ou anterior, você deve verificar se a hora em cada cluster é sincronizada com um servidor NTP (Network Time Protocol) externo e determinar as sub-redes, portas e senhas que você deseja usar.' 
+---
+= Prepare-se para peering de cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de criar uma relação de peering de cluster usando a interface _classic_ do Gerenciador de sistema do ONTAP com o ONTAP 9.7 ou anterior, você deve verificar se o tempo em cada cluster é sincronizado com um servidor NTP (Network Time Protocol) externo e determinar as sub-redes, portas e senhas que você deseja usar.
+
+.Passos
+. Se você estiver executando o ONTAP 9.2 ou anterior, determine a senha que deseja usar para cada relacionamento de pares de cluster.
++
+A frase-passe deve incluir pelo menos oito carateres.
+
++
+|===
+
+
+| Para a relação entre... | A frase-passe é... 
+
+
+ a| 
+Cluster A e cluster B
+ a| 
+
+|===
++
+A partir do ONTAP 9.3, você pode gerar a senha do cluster remoto ao criar o relacionamento de peer do cluster.
+
++
+link:task_creating_cluster_peer_relationship_starting_with_ontap_9_3.html["Criando um relacionamento de cluster peer (começando com ONTAP 9.3)"]
+
+. Identifique as sub-redes, endereços IP e portas que você usará para LIFs entre clusters.
++
+Por padrão, o endereço IP é selecionado automaticamente na sub-rede. Se pretender especificar manualmente o endereço IP, tem de garantir que o endereço IP já está disponível na sub-rede ou que pode ser adicionado à sub-rede mais tarde. As informações sobre sub-redes estão disponíveis na guia rede.
+
++
+Crie uma tabela semelhante à tabela a seguir para Registrar informações sobre os clusters. A tabela a seguir pressupõe que cada cluster tem quatro nós. Se um cluster tiver mais de quatro nós, adicione linhas para obter informações adicionais.
+
++
+|===
+
+
+|  | Cluster A | Cluster B 
+
+
+ a| 
+Sub-rede (ONTAP 9 .2 ou anterior)
+ a| 
+ a| 
+
+
+
+ a| 
+Endereço IP (começando com ONTAP 9.3, opcional para ONTAP 9.2 ou anterior)
+ a| 
+ a| 
+
+
+
+ a| 
+Porta do nó 1
+ a| 
+ a| 
+
+
+
+ a| 
+Porta do nó 2
+ a| 
+ a| 
+
+
+
+ a| 
+Porta do nó 3
+ a| 
+ a| 
+
+
+
+ a| 
+Porta do nó 4
+ a| 
+ a| 
+
+|===
+

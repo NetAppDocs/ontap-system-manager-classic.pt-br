@@ -1,0 +1,90 @@
+---
+permalink: iscsi-config-rhel/task_creating_svm.html 
+sidebar: sidebar 
+keywords: storage, virtual, machine, svm, iscsi, target, host, lun, lif, logical, interface, contain, volume, data, administration, function, user, cluster, create, create a new svm 
+summary: 'A máquina virtual de storage (SVM) fornece o destino iSCSI através do qual um host acessa LUNs. Ao criar o SVM, você também cria interfaces lógicas (LIFs) e o LUN e seu volume contendo. É possível criar um SVM para separar os dados e as funções de administração de um usuário das dos outros usuários em um cluster.' 
+---
+= Criar um novo SVM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A máquina virtual de storage (SVM) fornece o destino iSCSI através do qual um host acessa LUNs. Ao criar o SVM, você também cria interfaces lógicas (LIFs) e o LUN e seu volume contendo. É possível criar um SVM para separar os dados e as funções de administração de um usuário das dos outros usuários em um cluster.
+
+.Antes de começar
+* Você deve ter endereços de rede suficientes disponíveis para criar duas LIFs para cada nó.
+
+
+.Sobre esta tarefa
+Os LUNs são mapeados para um subconjunto dos iniciadores no igrop para limitar o número de caminhos do host para o LUN.
+
+* Por padrão, o ONTAP usa o mapa de LUN seletivo (SLM) para tornar o LUN acessível apenas por meio de caminhos no nó proprietário do LUN e de seu parceiro de HA.
+* Você ainda deve configurar todas as LIFs iSCSI em cada nó para mobilidade de LUN, caso o LUN seja movido para outro nó no cluster.
+* Ao mover um volume ou um LUN, você deve modificar a lista SLM-reporting-nonos antes de mover.
+
+
+.Passos
+. Navegue até a janela *SVMs*.
+. Clique em *criar*.
+. Na janela *Storage Virtual Machine (SVM) Setup*, crie o SVM:
++
+image::../media/svm_setup_details_page_unix_selected_iscsi_rhel.gif[A ilustração mostra a criação de um SVM com estilo de segurança UNIX]
+
++
+.. Especifique um nome exclusivo para o SVM.
++
+O nome deve ser um nome de domínio totalmente qualificado (FQDN) ou seguir outra convenção que garanta nomes exclusivos em um cluster.
+
+.. Selecione o IPspace ao qual o SVM pertencerá.
++
+Se o cluster não usar vários IPspaces, o IPspace "'default'" será usado.
+
+.. Mantenha a seleção padrão do tipo de volume.
++
+Somente os volumes FlexVol são compatíveis com protocolos SAN.
+
+.. Selecione todos os protocolos para os quais você tem licenças e que você pode usar no SVM, mesmo que você não queira configurar todos os protocolos imediatamente.
++
+A seleção de NFS e CIFS ao criar o SVM permite que esses dois protocolos compartilhem as mesmas LIFs. Adicionar esses protocolos mais tarde não permite que eles compartilhem LIFs.
+
++
+Se o CIFS for um dos protocolos selecionados, o estilo de segurança será definido como NTFS. Caso contrário, o estilo de segurança é definido como UNIX.
+
+.. Mantenha a configuração de idioma padrão C.UTF-8.
+.. Selecione o agregado raiz desejado para conter o volume raiz SVM.
++
+O agregado para o volume de dados é selecionado separadamente em uma etapa posterior.
+
+.. Clique em *Enviar e continuar*.
+
+
++
+O SVM foi criado, mas os protocolos ainda não estão configurados.
+
+. Se a página *Configurar protocolo CIFS/NFS* aparecer porque você ativou CIFS ou NFS, clique em *Ignorar* e, em seguida, configure CIFS ou NFS mais tarde.
+. Configure o serviço iSCSI e crie LIFs, e o LUN e seu volume contendo a partir da página *Configurar protocolo iSCSI*:
++
+.. *Opcional:* Digite um nome de alias de destino.
+.. Atribua o endereço IP para os LIFs usando uma sub-rede ou sem uma sub-rede.
+.. Digite `*2*` o campo *LIFs por nó*.
++
+São necessárias duas LIFs para cada nó para garantir disponibilidade e mobilidade de dados.
+
+.. Na área *provisione um LUN para armazenamento iSCSI*, insira o tamanho desejado do LUN, o tipo de host e o nome do iniciador iSCSI do host.
+.. Clique em *Enviar e continuar*.
+
+
++
+image::../media/create_new_svm_wizard_iscsi_details_linux.gif[A ilustração mostra a etapa 3 do assistente de configuração SVM: Preenchendo os detalhes do iSCSI.]
+
+. Se a página *Configurar protocolo FC/FCoE* aparecer porque você ativou FC, clique em *Ignorar* e configure FC mais tarde.
+. Quando a *SVM Administration* for exibida, configure ou defenda a configuração de um administrador separado para este SVM:
++
+** Clique em *Skip* e configure um administrador mais tarde, se desejar.
+** Introduza as informações solicitadas e, em seguida, clique em *Submit & Continue* (Enviar e continuar).
+
+
+. Reveja a página *Summary*, registe as informações de LIF e, em seguida, clique em *OK*.
+

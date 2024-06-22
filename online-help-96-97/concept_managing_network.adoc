@@ -1,0 +1,512 @@
+---
+permalink: online-help-96-97/concept_managing_network.html 
+sidebar: sidebar 
+keywords: system, manager, storage, create, manage, ipspace, broadcast, domain, subnet, network, interface, ethernet, port, fc, fcoe, adapter, online, help 
+summary: Você pode usar o System Manager para gerenciar a rede do seu sistema de storage criando e gerenciando espaços IPspaces, domínios de broadcast, sub-redes, interfaces de rede, portas Ethernet e adaptadores FC/FCoE. 
+---
+= Gerencie a rede com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para gerenciar a rede do seu sistema de storage criando e gerenciando espaços IPspaces, domínios de broadcast, sub-redes, interfaces de rede, portas Ethernet e adaptadores FC/FCoE.
+
+
+
+== Janela de rede
+
+[role="lead"]
+Você pode usar a janela rede para exibir a lista de componentes de rede, como sub-redes, interfaces de rede, portas Ethernet, domínios de broadcast, adaptadores FC/FCoE e NVMe e IPspaces, além de criar, editar ou excluir esses componentes em seu sistema de storage.
+
+
+
+=== Separadores
+
+* *Subnet*
++
+Permite exibir uma lista de sub-redes e criar, editar ou excluir sub-redes do seu sistema de armazenamento.
+
+* * Interfaces de rede*
++
+Permite exibir uma lista de interfaces de rede, criar, editar ou excluir interfaces do seu sistema de storage, migrar os LIFs, alterar o status da interface e enviar a interface de volta para a porta inicial.
+
+* *Portas Ethernet*
++
+Permite exibir e editar as portas de um cluster e criar, editar ou excluir grupos de interface e portas VLAN.
+
+* *Domínios de transmissão*
++
+Permite exibir uma lista de domínios de broadcast e criar, editar ou excluir domínios do seu sistema de armazenamento.
+
+* *Adaptadores FC/FCoE e NVMe*
++
+Permite visualizar as portas em um cluster e editar as configurações do adaptador FC/FCoE e NVMe.
+
+* *IPspaces*
++
+Permite exibir uma lista de IPspaces e domínios de broadcast e criar, editar ou excluir um IPspace do seu sistema de armazenamento.
+
+
+
+
+
+=== Separador Subnet
+
+
+
+=== Botões de comando
+
+* *Criar*
++
+Abre a caixa de diálogo criar sub-rede, que permite criar novas sub-redes que contêm informações de configuração para criar uma interface de rede.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar sub-rede, que permite modificar determinados atributos de uma sub-rede, como nome, endereço de sub-rede, intervalo de endereços IP e detalhes do gateway.
+
+* *Excluir*
++
+Elimina a sub-rede selecionada.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de sub-redes
+
+* *Nome*
++
+Especifica o nome da sub-rede.
+
+* *Máscara de sub-rede IP/sub-rede*
++
+Especifica os detalhes do endereço de sub-rede.
+
+* *Gateway*
++
+Especifica o endereço IP do gateway.
+
+* *Disponível*
++
+Especifica o número de endereços IP disponíveis na sub-rede.
+
+* *Usado*
++
+Especifica o número de endereços IP usados na sub-rede.
+
+* *Total Count*
++
+Especifica o número total de endereços IP (disponíveis e usados) na sub-rede.
+
+* *Domínio de transmissão*
++
+Especifica o domínio de broadcast ao qual a sub-rede pertence.
+
+* *IPspace*
++
+Especifica o espaço IPspace ao qual a sub-rede pertence.
+
+
+
+
+
+=== Área de detalhes
+
+A área abaixo da lista de sub-rede exibe informações detalhadas sobre a sub-rede selecionada, incluindo o intervalo de sub-rede e um gráfico mostrando o número disponível, usado e total de endereços IP.
+
+
+
+=== Limitações da guia interfaces de rede
+
+* Para LIFs de cluster, LIFs de gerenciamento de nós, LIFs VIP e LIFs BGP, não é possível usar o System Manager para executar as seguintes ações:
++
+** Crie, edite, exclua, ative ou desative os LIFs
+** Migre os LIFs ou envie os LIFs de volta para a porta inicial
+
+
+* Para LIFs de gerenciamento de cluster, você pode usar o System Manager para migrar os LIFs ou enviar os LIFs de volta para a porta inicial.
++
+No entanto, você não pode criar, editar, excluir, ativar ou desativar os LIFs.
+
+* Para LIFs entre clusters, você pode usar o System Manager para criar, editar, excluir, ativar ou desativar os LIFs.
++
+No entanto, não é possível migrar os LIFs ou enviar os LIFs de volta para a porta inicial.
+
+* Não é possível criar, editar ou excluir interfaces de rede nas seguintes configurações:
++
+** Uma configuração MetroCluster
+** SVMs configuradas para recuperação de desastres (DR).
+
+
+
+
+
+
+=== Botões de comando
+
+* *Criar*
++
+Abre a caixa de diálogo criar interface de rede, que permite criar interfaces de rede e LIFs entre clusters para servir dados e gerenciar SVMs.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar interface de rede, que pode ser usada para ativar o acesso de gerenciamento para um LIF de dados.
+
+* *Excluir*
++
+Elimina a interface de rede selecionada.
+
++
+Este botão só é ativado se o LIF de dados estiver desativado.
+
+* *Status*
++
+Abra o menu suspenso, que fornece a opção de ativar ou desativar a interface de rede selecionada.
+
+* *Migrar*
++
+Permite migrar um LIF de dados ou um LIF de gerenciamento de cluster para uma porta diferente no mesmo nó ou em um nó diferente no cluster.
+
+* *Enviar para Casa*
++
+Permite que você hospede o LIF de volta em sua porta inicial.
+
++
+Este botão de comando só é ativado quando a interface selecionada está hospedada em uma porta não doméstica e quando a porta inicial está disponível.
+
++
+Este botão de comando é desativado quando qualquer nó no cluster está inativo.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de interfaces
+
+Você pode mover o ponteiro sobre o ícone codificado por cores para exibir o status operacional da interface:
+
+* Verde especifica que a interface está ativada.
+* Vermelho especifica que a interface está desativada.
+* *Nome da interface*
++
+Especifica o nome da interface de rede.
+
+* *Storage Virtual Machine*
++
+Especifica o SVM ao qual a interface pertence.
+
+* *Endereço IP/WWPN*
++
+Especifica o endereço IP ou o nome da porta mundial (WWPN) da interface.
+
+* *Porta atual*
++
+Especifica o nome do nó e da porta na qual a interface está hospedada.
+
+* *Acesso ao protocolo de dados*
++
+Especifica o protocolo usado para acessar dados.
+
+* *Acesso de gestão*
++
+Especifica se o acesso de gerenciamento está habilitado na interface.
+
+* *Subnet*
++
+Especifica a sub-rede à qual a interface pertence.
+
+* *Função mx*
++
+Especifica a função operacional da interface, que pode ser gerenciamento de dados, clusters, cluster ou nós.
+
+
+
+
+
+=== Área de detalhes
+
+A área abaixo da lista de interfaces exibe informações detalhadas sobre a interface selecionada: Propriedades de failover, como a porta inicial, porta atual, velocidade das portas, política de failover, grupo de failover e estado de failover, e propriedades gerais, como o status administrativo, função, IPspace, domínio de broadcast, máscara de rede, gateway e status DDNS.
+
+
+
+=== Separador portas Ethernet
+
+
+
+=== Botões de comando
+
+* *Criar grupo de interface*
++
+Abre a caixa de diálogo criar grupo de interface, que permite criar grupos de interface escolhendo as portas e determinando o uso de portas e distribuição de tráfego de rede.
+
+* * Criar VLAN*
++
+Abre a caixa de diálogo criar VLAN, que permite criar uma VLAN escolhendo uma porta Ethernet ou um grupo de interfaces e adicionando tags de VLAN.
+
+* *Editar*
++
+Abre uma das seguintes caixas de diálogo:
+
++
+** Caixa de diálogo Editar porta Ethernet: Permite modificar as configurações da porta Ethernet.
+** Caixa de diálogo Edit VLAN (Editar VLAN): Permite modificar as configurações de VLAN.
+** Caixa de diálogo Edit Interface Group (Editar grupo de interface): Permite modificar grupos de interface.
+
+
++
+Você só pode editar VLANs que não estão associadas a um domínio de broadcast.
+
+* *Excluir*
++
+Abre uma das seguintes caixas de diálogo:
+
++
+** Caixa de diálogo Excluir VLAN: Permite excluir uma VLAN.
+** Caixa de diálogo Excluir Grupo de interfaces: Permite excluir um grupo de interfaces.
+
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista portas
+
+Você pode mover o ponteiro sobre o ícone codificado por cores para exibir o status operacional da porta:
+
+* Verde especifica que a porta está ativada.
+* Vermelho especifica que a porta está desativada.
+* *Porto*
++
+Exibe o nome da porta da porta física, da porta VLAN ou do grupo de interfaces.
+
+* *Nó*
++
+Exibe o nó no qual a interface física está localizada.
+
+* *Domínio de transmissão*
++
+Exibe o domínio de broadcast da porta.
+
+* *IPspace*
++
+Exibe o espaço IPspace ao qual a porta pertence.
+
+* *Tipo*
++
+Exibe o tipo da interface, como grupo de interfaces, interface física, vip ou VLAN.
+
+
+
+
+
+=== Área de detalhes
+
+A área abaixo da lista portas exibe informações detalhadas sobre as propriedades da porta.
+
+* *Separador Detalhes*
++
+Exibe detalhes administrativos e detalhes operacionais.
+
++
+Como parte dos detalhes operacionais, a guia exibe o status de integridade das portas. As portas podem estar saudáveis ou degradadas. Uma porta degradada é uma porta na qual ocorrem flutuações contínuas de rede ou uma porta que não tem conetividade com outras portas no mesmo domínio de broadcast.
+
++
+Além disso, a guia também exibe o nome da interface, detalhes do SVM e detalhes do endereço IP das interfaces de rede hospedadas na porta selecionada. Também indica se a interface está na porta inicial ou não.
+
+* *Separador desempenho*
++
+Exibe gráficos de métricas de desempenho das portas ethernet, incluindo taxa de erro e taxa de transferência.
+
++
+Alterar o fuso horário do cliente ou o fuso horário do cluster afeta os gráficos de métricas de desempenho. Você deve atualizar seu navegador para visualizar os gráficos atualizados.
+
+
+
+
+
+=== Separador domínio de difusão
+
+
+
+=== Botões de comando
+
+* *Criar*
++
+Abre a caixa de diálogo criar domínio de difusão, que permite criar novos domínios de difusão para conter portas.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar domínio de difusão, que permite modificar os atributos de um domínio de difusão, como nome, tamanho da MTU e portas associadas.
+
+* *Excluir*
++
+Exclui o domínio de broadcast selecionado.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de domínio de difusão
+
+* *Domínio de transmissão*
++
+Especifica o nome do domínio de broadcast.
+
+* *MTU*
++
+Especifica o tamanho da MTU.
+
+* *IPspace*
++
+Especifica o espaço IPspace.
+
+* *Status de atualização de porta combinada*
++
+Especifica o status das atualizações de porta quando você cria ou edita um domínio de broadcast. Quaisquer erros nas atualizações de portas são exibidos em uma janela separada, que você pode abrir clicando no link associado.
+
+
+
+
+
+=== Área de detalhes
+
+A área abaixo da lista de domínio de broadcast exibe todas as portas em um domínio de broadcast. Em um IPspace não padrão, se um domínio de broadcast tiver portas com erros de atualização, essas portas não serão exibidas na área de detalhes. Você pode mover o ponteiro sobre o ícone codificado por cores para exibir o status operacional das portas:
+
+* Verde especifica que a porta está ativada.
+* Vermelho especifica que a porta está desativada.
+
+
+
+
+=== Guia adaptadores FC/FCoE e NVMe
+
+
+
+=== Botões de comando
+
+* *Editar*
++
+Abre a caixa de diálogo Editar configurações FC/FCoE e NVMe, que permite modificar a velocidade do adaptador.
+
+* *Status*
++
+Permite-lhe colocar o adaptador online ou offline.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de adaptadores FC/FCoE e NVMe
+
+* * WWNN*
++
+Especifica o identificador exclusivo do adaptador FC/FCoE e NVMe.
+
+* *Nome do nó*
++
+Especifica o nome do nó que está usando o adaptador.
+
+* *Slot*
++
+Especifica o slot que está usando o adaptador.
+
+* * WWPN*
++
+Especifica o nome da porta mundial FC (WWPN) do adaptador.
+
+* *Status*
++
+Especifica se o status do adaptador está on-line ou off-line.
+
+* *Velocidade*
++
+Especifica se as definições de velocidade são automáticas ou manuais.
+
+
+
+
+
+=== Área de detalhes
+
+A área abaixo da lista de adaptadores FC/FCoE e NVMe exibe informações detalhadas sobre os adaptadores selecionados.
+
+* *Separador Detalhes*
++
+Exibe detalhes do adaptador, como o tipo de Mídia, endereço da porta, taxa de enlace de dados, status da conexão, status da operação, status da estrutura e a velocidade do adaptador.
+
+* *Separador desempenho*
++
+Exibe gráficos de métricas de desempenho do adaptador FC/FCoE e NVMe, incluindo IOPS e tempo de resposta.
+
++
+Alterar o fuso horário do cliente ou o fuso horário do cluster afeta os gráficos de métricas de desempenho. Você deve atualizar seu navegador para ver os gráficos atualizados.
+
+
+
+
+
+=== Separador IPspaces
+
+
+
+=== Botões de comando
+
+* *Criar*
++
+Abre a caixa de diálogo criar espaço de IPspace, que permite criar um novo espaço de IPspace.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar espaço de IP, que permite renomear um espaço de IPspace existente.
+
+* *Excluir*
++
+Elimina o espaço IPspace selecionado.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista IPspaces
+
+* *Nome*
++
+Especifica o nome do IPspace.
+
+* *Domínios de transmissão*
++
+Especifica o domínio de broadcast.
+
+
+
+
+
+=== Área de detalhes
+
+A área abaixo da lista IPspaces exibe a lista de máquinas virtuais de armazenamento (SVMs) no espaço IPspaces selecionado.

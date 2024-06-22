@@ -1,0 +1,174 @@
+---
+permalink: online-help-96-97/reference_disks_window.html 
+sidebar: sidebar 
+keywords: command, button, disk, window, inventory, detail, online, help 
+summary: Você pode usar a janela discos para exibir todos os discos no sistema de armazenamento. 
+---
+= Janela discos no Gerenciador de sistema - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a janela discos no ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para exibir todos os discos em seu sistema de armazenamento.
+
+
+
+== Botões de comando
+
+* *Atribuir*
++
+Atribui ou reatribui a propriedade dos discos a um nó.
+
++
+Este botão só é ativado se o tipo de contentor dos discos selecionados for não atribuído, sobresselente ou partilhado.
+
+* * Zero peças*
++
+Apaga todos os dados e formata os discos sobressalentes e LUNs de array.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+== Separadores
+
+
+
+== Resumo
+
+Exibe informações detalhadas sobre os discos no cluster, incluindo o tamanho dos discos sobressalentes e dos discos atribuídos. A guia também exibe graficamente informações sobre discos sobressalentes, agregados e agregados de raiz para HDDs e informações sobre discos sobressalentes, discos em um pool de storage, agregados, agregados Flash Pool e agregados de raiz para discos de cache (SSDs).
+
+O painel HDD não é apresentado para sistemas com personalidade otimizada All Flash.
+
+O painel de detalhes fornece informações adicionais sobre discos sobressalentes particionados e não particionados (tipo de disco, nó, tamanho do disco, RPM, checksum, número de discos disponíveis e capacidade sobressalente), em formato tabular.
+
+
+
+== Inventário
+
+* *Nome*
++
+Exibe o nome do disco.
+
+* * Tipo de contentor*
++
+Exibe a finalidade para a qual o disco é usado. Os valores possíveis são agregado, quebrado, estrangeiro, Manutenção de etiquetas, Manutenção, Partilhado, sobresselente, não atribuído, volume, desconhecido e não suportado.
+
+* * Tipo de partição*
++
+Exibe o tipo de partição do disco.
+
+* *Nome do nó*
++
+Exibe o nome do nó que contém o agregado.
+
++
+Este campo está disponível apenas no nível do cluster.
+
+* *Proprietário da casa*
++
+Exibe o nome do nó inicial ao qual este disco é atribuído.
+
+* *Proprietário atual*
++
+Exibe o nome do nó que atualmente possui este disco.
+
+* *Proprietário de raiz*
++
+Exibe o nome do nó que atualmente possui a partição raiz deste disco.
+
+* *Proprietário de dados*
++
+Exibe o nome do nó que atualmente possui a partição de dados deste disco.
+
+* *Data1 proprietário*
++
+Exibe o nome do nó que atualmente possui a partição data1 do disco.
+
+* *Data2 proprietário*
++
+Exibe o nome do nó que atualmente possui a partição data2 do disco.
+
+* *Piscina de armazenamento*
++
+Exibe o nome do pool de armazenamento ao qual o disco está associado.
+
+* *Tipo*
++
+Exibe o tipo do disco.
+
+* *Versão do firmware*
++
+Apresenta a versão do firmware do disco.
+
+* *Modelo*
++
+Exibe o modelo do disco.
+
+* *RPM*
++
+Exibe a velocidade efetiva da unidade de disco quando a opção `raid.mix.hdd.rpm.capacity` está ativada e exibe a velocidade real da unidade de disco quando a opção `raid.mix.hdd.rpm.capacity` está desativada.
+
++
+Este campo não é aplicável a SSDs.
+
+* * Tamanho efetivo*
++
+Exibe o espaço utilizável disponível no disco.
+
+* *Espaço físico*
++
+Exibe o espaço físico total do disco.
+
+* *Prateleira*
++
+Exibe o compartimento no qual os discos físicos estão localizados.
+
++
+Este campo está oculto por padrão.
+
+* *Baía*
++
+Exibe o compartimento dentro da prateleira para o disco físico.
+
++
+Este campo está oculto por padrão.
+
+* *Piscina*
++
+Exibe o nome do pool ao qual o disco selecionado é atribuído.
+
++
+Este campo está oculto por padrão.
+
+* *Soma de verificação*
++
+Apresenta o tipo de checksum.
+
++
+Este campo está oculto por padrão.
+
+* *ID da transportadora*
++
+Especifica informações sobre os discos que estão localizados dentro da operadora de vários discos especificada. O ID é um valor de 64 bits.
+
++
+Este campo está oculto por padrão.
+
+
+
+
+
+== Área de detalhes do inventário
+
+A área abaixo da guia inventário exibe informações detalhadas sobre o disco selecionado, incluindo informações sobre o agregado ou volume (se aplicável), ID do fornecedor, estado de restauração (em porcentagem), número de série do disco e detalhes de erro no caso de um disco quebrado. Para discos compartilhados, a área Detalhes do inventário exibe os nomes de todos os agregados, incluindo os agregados raiz e não-raiz.
+
+*Informações relacionadas*
+
+xref:task_viewing_disk_information.adoc[Exibindo informações de disco]

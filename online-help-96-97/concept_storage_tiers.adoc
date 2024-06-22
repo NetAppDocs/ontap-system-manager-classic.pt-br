@@ -1,0 +1,18 @@
+---
+permalink: online-help-96-97/concept_storage_tiers.html 
+sidebar: sidebar 
+keywords: system, manager, storage, tiers, aggregates, security, requirements, backup, performance, data, sharing, online, help 
+summary: Você pode usar o System Manager para criar agregados para dar suporte a diferentes requisitos de segurança, requisitos de backup, requisitos de performance e requisitos de compartilhamento de dados de seus usuários. 
+---
+= Camadas de storage
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o System Manager para criar agregados para dar suporte a diferentes requisitos de segurança, requisitos de backup, requisitos de performance e requisitos de compartilhamento de dados de seus usuários.
+
+*Informações relacionadas*
+
+https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["Gerenciamento de disco e agregado"]

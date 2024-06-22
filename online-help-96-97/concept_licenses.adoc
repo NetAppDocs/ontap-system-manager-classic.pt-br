@@ -1,0 +1,268 @@
+---
+permalink: online-help-96-97/concept_licenses.html 
+sidebar: sidebar 
+keywords: system, manager, view, manage, delete, software, licenses, cluster, node, types, entitlement, risk, 
+summary: Você pode usar o System Manager para exibir, gerenciar ou excluir quaisquer licenças de software instaladas em um cluster ou nó. 
+---
+= Gerencie licenças com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para exibir, gerenciar ou excluir quaisquer licenças de software instaladas em um cluster ou nó.
+
+
+
+== Eliminar licenças
+
+Você pode usar a janela licenças no System Manager para excluir qualquer licença de software instalada em um cluster ou nó.
+
+Para obter informações sobre como gerenciar licenças usando o ONTAP 9.8 e posterior, consulte as seguintes informações:
+
+* link:https://docs.netapp.com/us-en/ontap/system-admin/manage-licenses-concept.html["Visão geral de gerenciamento de licenças (somente administradores de cluster)"^]
+* https://docs.netapp.com/us-en/ontap/task_admin_enable_new_features.html["Ative novos recursos adicionando chaves de licença"^]
+
+
+.Antes de começar
+A licença de software que você deseja excluir não deve ser usada por nenhum serviço ou recurso.
+
+.Passos
+. Clique em *Configuração* > *Cluster* > *licenças*.
+. Na janela *Licenses*, execute a ação apropriada:
++
+|===
+| Se você quiser... | Faça isso... 
+
+
+ a| 
+Exclua um pacote de licença específico em um nó ou uma licença mestre
+ a| 
+Clique na guia *Detalhes*.
+
+
+
+ a| 
+Exclua um pacote de licença específico em todos os nós do cluster
+ a| 
+Clique na guia *Pacotes*.
+
+|===
+. Selecione o pacote de licença de software que deseja excluir e clique em *Excluir*.
++
+Você pode excluir apenas um pacote de licença de cada vez.
+
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
+
+
+.Resultados
+A licença de software é excluída do sistema de storage. A licença excluída também é removida da lista de licenças na janela licenças.
+
+
+
+== Tipos de licença e risco de direitos
+
+A compreensão dos vários tipos de licença e do risco de direito associado ajuda a gerenciar o risco associado às licenças em um cluster.
+
+
+
+=== Tipos de licença
+
+Um pacote pode ter um ou mais dos seguintes tipos de licenças instalados no cluster:
+
+* Licença com bloqueio de nó ou licença padrão
++
+Uma licença de nó bloqueado é emitida para um nó com um número de série específico do sistema (também conhecido como _número de série do controlador_). Esta licença é válida apenas para o nó que tem o número de série correspondente.
+
++
+A instalação de uma licença com bloqueio de nó dá direito a um nó à funcionalidade licenciada. Para que o cluster use a funcionalidade licenciada, pelo menos um nó deve ser licenciado para a funcionalidade. Pode estar fora de conformidade usar a funcionalidade licenciada em um nó que não tem direito à funcionalidade.
+
++
+O ONTAP 8,2 e versões posteriores tratam uma licença que foi instalada antes do Data ONTAP 8.2 como uma licença padrão. Portanto, no ONTAP 8,2 e versões posteriores, todos os nós no cluster têm automaticamente a licença padrão para o pacote do qual a funcionalidade licenciada anteriormente faz parte.
+
+* Licença mestre ou local
++
+Uma licença principal ou local não está vinculada a um número de série específico do sistema. Quando você instala uma licença de site, todos os nós no cluster têm direito à funcionalidade licenciada.
+
++
+Se o cluster tiver uma licença mestra e você remover um nó do cluster, o nó não carregará a licença do site com ele e o nó não terá mais direito à funcionalidade licenciada. Se você adicionar um nó a um cluster que tenha uma licença mestre, o nó terá automaticamente direito à funcionalidade que é concedida pela licença do site.
+
+* Demonstração ou licença temporária
++
+Uma licença demo ou temporária expira após um determinado período de tempo. Esta licença permite que você experimente determinadas funcionalidades de software sem comprar um direito. Uma licença temporária é uma licença em todo o cluster e não está vinculada a um número de série específico de um nó.
+
++
+Se o cluster tiver uma licença temporária para um pacote e você remover um nó do cluster, o nó não carregará a licença de avaliação com ele.
+
+* Licença de capacidade (somente ONTAP Select e FabricPool)
++
+Uma instância do ONTAP Select é licenciada de acordo com a quantidade de dados que o usuário deseja gerenciar. Por exemplo, o usuário pode comprar uma licença de capacidade de 10 TB para permitir que o ONTAP Select gerencie até 10 TB de dados. Se houver mais capacidade de storage conetada ao sistema do que a ONTAP Select licenciada para gerenciar, o ONTAP Select não funcionará. Por padrão, a capacidade máxima de armazenamento que pode ser anexada a uma instância do ONTAP Select é de 2 TB até que uma licença de capacidade (por exemplo, uma licença de capacidade de 5 TB, uma licença de capacidade de 10 TB, etc.) seja adquirida e instalada.
+
++
+A partir do ONTAP 9.2, agregados habilitados para FabricPool exigem que uma licença de capacidade seja usada com uma camada de storage de terceiros (por exemplo, AWS). A licença de capacidade do FabricPool define a quantidade de dados que podem ser armazenados no storage da camada de nuvem.
+
+
+
+
+
+=== Risco de direitos
+
+Um risco de direito surge devido à instalação não uniforme de uma licença de nó bloqueado. Se a licença de nó bloqueado for instalada em todos os nós, não haverá risco de direito.
+
+O nível de risco de direito pode ser de alto risco, médio risco, nenhum risco ou risco desconhecido dependendo de determinadas condições:
+
+* Alto risco
++
+** Se houver uso em um nó específico, mas a licença de nó bloqueado não estiver instalada nesse nó
+** Se a licença de demonstração que foi instalada no cluster expirar e houver uso em qualquer nó
+
+
++
+[NOTE]
+====
+Se uma licença de site for instalada em um cluster, o risco de direito nunca será alto.
+
+====
+* Risco médio
++
+Se uma licença de local não estiver instalada e a licença de nó bloqueado não for instalada uniformemente nos nós de um cluster
+
+* Sem risco
++
+Não há risco de direito se uma licença de nó bloqueado for instalada em todos os nós, ou uma licença de local for instalada no cluster, independentemente da utilização.
+
+* Desconhecido
++
+O risco é desconhecido se a API às vezes não conseguir recuperar os dados relacionados ao risco de direito que está associado a um cluster ou aos nós no cluster.
+
+
+
+
+
+== Janela licenças
+
+O sistema de armazenamento chega de fábrica com software pré-instalado. Se pretender adicionar ou remover uma licença de software depois de receber o sistema de armazenamento, pode utilizar a janela licenças.
+
+[NOTE]
+====
+O System Manager não monitora as licenças de avaliação e não fornece nenhum aviso quando uma licença de avaliação está prestes a expirar. Uma licença de avaliação é uma licença temporária que expira após um determinado período de tempo.
+
+====
+
+
+=== Botões de comando
+
+* *Adicionar*
++
+Abre a janela Adicionar licença, que permite adicionar novas licenças de software.
+
+* *Excluir*
++
+Elimina a licença de software selecionada na lista de licenças de software.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Guia Pacotes
+
+Exibe informações sobre os pacotes de licença que estão instalados no seu sistema de armazenamento.
+
+* *Pacote*
++
+Exibe o nome do pacote de licença.
+
+* *Risco de direito*
++
+Indica o nível de risco como resultado de problemas de direitos de licença para um cluster. O nível de risco de direito pode ser de alto risco (image:../media/high_risk_entitlementrisk.gif[""]), médio risco (image:../media/medium_risk_entitlementrisk.gif[""] ), nenhum risco (image:../media/no_risk_entitlementrisk.gif[""] ), desconhecido (image:../media/unknown_risk_entitlementrisk.gif[""]) ou não licenciado (-).
+
+* *Descrição*
++
+Exibe o nível de risco como resultado de problemas de direitos de licença para um cluster.
+
+
+
+
+
+=== Área de detalhes do pacote de licença
+
+A área abaixo da lista de pacotes de licença exibe informações adicionais sobre o pacote de licença selecionado. Esta área inclui informações sobre o cluster ou nó no qual a licença está instalada, o número de série da licença, o uso na semana anterior, se a licença está instalada, a data de expiração da licença e se a licença é antiga.
+
+
+
+=== Separador Detalhes
+
+Exibe informações adicionais sobre os pacotes de licença que estão instalados no seu sistema de armazenamento.
+
+* *Pacote*
++
+Exibe o nome do pacote de licença.
+
+* *Cluster/Node*
++
+Exibe o cluster ou nó no qual o pacote de licença está instalado.
+
+* *Número de série*
++
+Exibe o número de série do pacote de licença instalado no cluster ou nó.
+
+* *Tipo*
++
+Exibe o tipo do pacote de licença, que pode ser o seguinte:
+
++
+** Temporário: Especifica que a licença é uma licença temporária, que é válida apenas durante o período de demonstração.
+** Mestre: Especifica que a licença é uma licença mestre, que é instalada em todos os nós do cluster.
+** Nó bloqueado: Especifica que a licença é uma licença de nó bloqueado, que é instalada em um único nó no cluster.
+** Capacidade:
++
+*** Para o ONTAP Select, especifica que a licença é uma licença de capacidade, que define a quantidade total de capacidade de dados que a instância é licenciada para gerenciar.
+*** Para o FabricPool, especifica que a licença é uma licença de capacidade, que define a quantidade de dados que podem ser gerenciados no storage de terceiros anexado (por exemplo, AWS).
+
+
+
+
+* *Estado*
++
+Exibe o estado do pacote de licença, que pode ser o seguinte:
+
++
+** Avaliação: Especifica que a licença instalada é uma licença de avaliação.
+** Instalado: Especifica que a licença instalada é uma licença adquirida válida.
+** Aviso: Especifica que a licença instalada é uma licença adquirida válida e está se aproximando da capacidade máxima.
+** Aplicação: Especifica que a licença instalada é uma licença adquirida válida e excedeu a data de validade.
+** Aguardando licença: Especifica que a licença ainda não foi instalada.
+
+
+* *Legado*
++
+Exibe se a licença é uma licença herdada.
+
+* * Capacidade máxima*
++
+** No ONTAP Select, exibe a quantidade máxima de storage que pode ser anexada à instância do ONTAP Select.
+** No FabricPool, o exibe a quantidade máxima de storage de armazenamento de objetos de terceiros que pode ser usada como storage de camada de nuvem.
+
+
+* * Capacidade atual*
++
+** No ONTAP Select, exibe a quantidade total de storage que está atualmente anexada à instância do ONTAP Select.
+** No FabricPool, o exibe a quantidade total de storage de armazenamento de objetos de terceiros que atualmente é usada como storage de camada de nuvem.
+
+
+* *Data de validade*
++
+Exibe a data de validade do pacote de licença de software.
+
+
+
+*Informações relacionadas*
+
+https://docs.netapp.com/us-en/ontap/system-admin/index.html["Administração do sistema"]
+
+xref:task_creating_cluster.adoc[Criando um cluster]

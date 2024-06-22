@@ -1,0 +1,89 @@
+---
+permalink: online-help-96-97/task_creating_qos_policy_groups.html 
+sidebar: sidebar 
+keywords: online, help, create, qos, policy, groups, system, manager, quality, service 
+summary: 'Use o System Manager para criar grupos de políticas de qualidade do serviço (QoS) de storage para limitar a taxa de transferência de workloads e monitorar a performance do workload.' 
+---
+= Gerencie grupos de políticas de QoS com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para criar grupos de políticas de qualidade do serviço (QoS) de storage para limitar a taxa de transferência de workloads e monitorar a performance do workload.
+
+
+
+== Criar grupos de política de QoS
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Policies*, clique em *QoS Policy Groups*.
+. Na janela *QoS Policy Groups*, clique em *Create*.
+. Na caixa de diálogo *criar Grupo de políticas*, especifique um nome de grupo para a política.
+. Especifique o limite mínimo de taxa de transferência.
++
+** No System Manager 9,5, você pode definir o limite mínimo de taxa de transferência apenas com uma personalidade otimizada para All Flash baseada em performance. No System Manager 9,6, você também pode definir o limite mínimo de taxa de transferência para sistemas ONTAP Select Premium.
+** Não é possível definir o limite mínimo de taxa de transferência para volumes em um agregado habilitado para FabricPool.
+** Se você não especificar o valor mínimo da taxa de transferência ou se o valor mínimo da taxa de transferência estiver definido como 0, o sistema exibirá automaticamente "'nenhum'" como o valor.
++
+Este valor é sensível a maiúsculas e minúsculas.
+
+
+
+. Especifique o limite máximo de taxa de transferência.
++
+** O limite mínimo de rendimento e o limite máximo de rendimento devem ser do mesmo tipo de unidade.
+** Se você não especificar o limite mínimo de taxa de transferência, poderá definir o limite máximo de taxa de transferência em IOPS e B/s, KB/s, MB/s, etc.
+** Se você não especificar o limite máximo de taxa de transferência, o sistema exibirá automaticamente "'Unlimited'" como o valor.
++
+Este valor é sensível a maiúsculas e minúsculas. A unidade especificada não afeta a taxa de transferência máxima.
+
+
+
+. Clique em *OK*.
+
+
+
+
+== Eliminar grupos de políticas de QoS
+
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para excluir um grupo de políticas de qualidade do serviço (QoS) de storage que não seja mais necessário.
+
+.Antes de começar
+Você deve ter desatribuído todos os objetos de armazenamento atribuídos ao grupo de políticas.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Policies*, clique em *QoS Policy Groups*.
+. Na janela *grupos de políticas de QoS*, selecione o grupo de políticas que deseja excluir e clique em *Excluir*.
+. Na caixa de diálogo de confirmação, clique em *Excluir*.
+
+
+
+
+== Editar grupos de políticas de QoS
+
+Você pode usar a caixa de diálogo Editar grupo de políticas no clássico Gerenciador de sistemas do ONTAP (disponível no ONTAP 9.7 e anterior) para modificar o nome e a taxa de transferência máxima de um grupo de políticas de qualidade do serviço (QoS) de armazenamento existente.
+
+.Sobre esta tarefa
+* No System Manager 9,5, você pode definir o limite mínimo de taxa de transferência apenas com uma personalidade otimizada para All Flash baseada em performance. No System Manager 9,6, você também pode definir o limite mínimo de taxa de transferência para sistemas ONTAP Select Premium.
+* Não é possível definir o limite mínimo de taxa de transferência para volumes em um agregado habilitado para FabricPool.
+
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Policies*, clique em *QoS Policy Groups*.
+. Selecione o grupo de políticas de QoS que deseja editar e clique em *Editar*.
++
+** O limite mínimo de rendimento e o limite máximo de rendimento devem ser do mesmo tipo de unidade.
+** Se você não especificar o limite mínimo de taxa de transferência, poderá definir o limite máximo de taxa de transferência em IOPS e B/s, KB/s, MB/s, etc.
+** Se você não especificar o limite máximo de taxa de transferência, o valor será definido como ilimitado e a unidade que você especificar não afetará a taxa de transferência máxima.
+
+
+. Na caixa de diálogo *Editar grupo de políticas*, edite os detalhes do grupo de políticas de QoS e clique em *Salvar*.
+

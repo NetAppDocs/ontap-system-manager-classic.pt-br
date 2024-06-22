@@ -1,0 +1,405 @@
+---
+permalink: online-help-96-97/reference_application_provisioning_settings.html 
+sidebar: sidebar 
+keywords: application, provisioning, setting, microsoft, sql, database, applications, san, mongodb, oracle, host, access, initiator, sap, hana, smb 
+summary: 'Ao configurar um modelo básico ou aprimorado para um banco de dados, servidor ou desktop virtual, você deve fornecer detalhes ao System Manager. Depois que um aplicativo é provisionado, você pode editar os detalhes e especificar um redimensionamento (somente tamanho aumentado). Esta seção descreve os campos em cada modelo. Somente os campos necessários para provisionar ou editar as configurações do aplicativo específico são exibidos.' 
+---
+= Configurações de provisionamento de aplicativos no Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve fornecer detalhes ao configurar um modelo básico ou aprimorado para um banco de dados, servidor ou desktop virtual no ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior). Depois que um aplicativo é provisionado, você pode editar os detalhes e especificar um redimensionamento (somente tamanho aumentado). Esta seção descreve os campos em cada modelo. Somente os campos necessários para provisionar ou editar as configurações do aplicativo específico são exibidos.
+
+
+
+== Detalhes para aplicativos Microsoft SQL Database sobre SAN
+
+Você insere as seguintes informações para provisionar aplicativos de banco de dados Microsoft SQL por SAN ou editar as configurações:
+
+* *Nome da base de dados*
++
+Obrigatório: O nome do banco de dados que você está configurando; essa cadeia de carateres é usada como um prefixo ao provisionar armazenamento para cada banco de dados.
+
+* *Tamanho do banco de dados*
++
+Obrigatório: O tamanho do banco de dados, em unidades de MB, GB, TB ou PB.
+
+* *Nível de Serviço ONTAP para Banco de dados*
++
+Obrigatório: O nível de serviço da base de dados.
+
+* *Tamanho do registo*
++
+Obrigatório: O tamanho do log do banco de dados em unidades de MB, GB, TB ou PB.
+
+* *Nível de Serviço ONTAP para Log*
++
+Obrigatório: O nível de serviço para o log.
+
+* *Tempdb*
++
+Obrigatório: O tamanho do banco de dados tempdb em unidades de MB, GB, TB ou PB.
+
+* *Protocolo de exportação*
++
+Obrigatório: O protocolo de exportação é SAN
+
+* *Número de núcleos de servidor (no servidor SQL)*
++
+Indica o número de núcleos de CPU no servidor de bancos de dados em incrementos de 2.
+
+* *Span nós de controladora de HA*
++
+Especifica se objetos de storage devem ser criados em um par de nós de alta disponibilidade.
+
+
+
+
+
+== Detalhes para provisionar um banco de dados SAP HANA
+
+* * Nós ativos do SAP HANA*
++
+O número de nós ativos do SAP HANA. O número máximo de nós é 16.
+
+* *Tamanho da memória por nó HANA*
++
+O tamanho da memória de um único nó do SAP HANA.
+
+* *Tamanho do disco de dados por nó HANA*
++
+O tamanho do disco de dados para cada nó.
+
++
+[NOTE]
+====
+Se definido como 0, o campo de tamanho da memória acima é utilizado para calcular o tamanho da área de dados.
+
+====
+
+
+
+
+== Detalhes para aplicativos do Microsoft SQL Database sobre SMB
+
+Você insere as seguintes informações para provisionar aplicativos de banco de dados Microsoft SQL em SMB ou editar as configurações:
+
+* *Nome da base de dados*
++
+Obrigatório: O nome do banco de dados que você está configurando; essa cadeia de carateres é usada como um prefixo ao provisionar armazenamento para cada banco de dados.
+
+* *Tamanho do banco de dados*
++
+Obrigatório: O tamanho do banco de dados, em unidades de MB, GB, TB ou PB.
+
+* *Nível de Serviço de base de dados*
++
+Obrigatório: O nível de serviço da base de dados.
+
+* *Número de núcleos de servidor (no servidor SQL)*
++
+Indica o número de núcleos de CPU no servidor de bancos de dados em incrementos de 2.
+
+* *Tamanho do registo*
++
+Obrigatório: O tamanho do log do banco de dados em unidades de MB, GB, TB ou PB.
+
+* *Nível de serviço de registo*
++
+Obrigatório: O nível de serviço para o log.
+
+* *Provisão para tempdb*
++
+Obrigatório: Indica se tempdb está provisionado.
+
+* *Protocolo de exportação*
++
+Obrigatório: O protocolo de exportação é SMB ou SAN.
+
++
+O SMB só pode ser escolhido quando o cluster é licenciado para CIFS, que foi configurado para o SVM.
+
+* *Conceder acesso ao Usuário*
++
+Obrigatório: O nível de acesso para a aplicação.
+
+* *Permissão*
++
+Obrigatório: O nível de permissão para a aplicação.
+
+
+
+
+
+== Detalhes de uma conta do SQL Server
+
+Você insere as seguintes informações para fornecer acesso total ao controle das contas do servidor SQL:
+
+[NOTE]
+====
+A conta de instalação é concedida `SeSecurityPrivilege`.
+
+====
+* *Conta de serviço do SQL Server*
++
+Obrigatório: Esta é uma conta de domínio existente; especifique como `domain\user`.
+
+* *Conta do serviço de agente do SQL Server*
++
+Opcional: Esta é a conta de domínio se o serviço de agente do servidor SQL estiver configurado, especifique no formato domínio/usuário.
+
+
+
+
+
+== Detalhes para aplicativos Oracle Database
+
+Insira as seguintes informações para provisionar aplicativos de banco de dados Oracle ou editar as configurações:
+
+* *Nome da base de dados*
++
+Obrigatório: O nome do banco de dados que você está configurando; essa cadeia de carateres é usada como um prefixo ao provisionar armazenamento para cada banco de dados.
+
+* *Tamanho do arquivo de dados*
++
+Obrigatório: O tamanho do arquivo de dados, em unidades MB, GB, TB ou PB.
+
+* *Nível de serviço ONTAP para Datafile*
++
+Obrigatório: O nível de serviço para o ficheiro de dados.
+
+* * Refazer tamanho do Grupo de Log*
++
+Obrigatório: O tamanho do grupo refazer log, em unidades de MB, GB, TB ou PB.
+
+* *Nível de Serviço ONTAP para Grupo de Registos Redo*
++
+Obrigatório: O nível de serviço para o grupo refazer log.
+
+* *Tamanho do Registro de arquivo*
++
+Obrigatório: O tamanho do log de arquivo, em unidades de MB, GB, TB ou PB.
+
+* *Nível de Serviço ONTAP para o Registo de Arquivo*
++
+Obrigatório: O nível de serviço para o grupo de arquivo.
+
+* *Protocolo de exportação*
++
+O protocolo de exportação: SAN ou NFS
+
+* *Iniciadores*
++
+Uma lista separada por vírgulas dos iniciadores (WWPN ou IQN) no grupo de iniciadores.
+
+* *Conceder acesso ao anfitrião*
++
+O nome do host ao qual o aplicativo pode acessar.
+
+
+
+
+
+== Detalhes para aplicações MongoDB
+
+Você insere as seguintes informações para provisionar aplicativos MongoDB ou editar as configurações:
+
+* *Nome da base de dados*
++
+Obrigatório: O nome do banco de dados que você está configurando; essa cadeia de carateres é usada como um prefixo ao provisionar armazenamento para cada banco de dados.
+
+* *Tamanho do conjunto de dados*
++
+Obrigatório: O tamanho do arquivo de dados, em unidades MB, GB, TB ou PB.
+
+* *Nível de serviço ONTAP para conjunto de dados*
++
+Obrigatório: O nível de serviço para o ficheiro de dados.
+
+* *Fator de replicação*
++
+Obrigatório: O número de repetições.
+
+* *Mapeamento para Host primário*
++
+Obrigatório: O nome do host principal.
+
+* * Mapeamento para réplica Host 1 *
++
+Obrigatório: O nome da primeira réplica do host.
+
+* * Mapeamento para réplica Host 2 *
++
+Obrigatório: Nome da segunda réplica do host.
+
+
+
+
+
+== Detalhes para aplicativos de desktop virtual
+
+Insira as seguintes informações para provisionar infraestruturas de desktops virtuais (VDI) ou editar as configurações:
+
+* *Tamanho médio do desktop (usado para o desktop virtual SAN)*
++
+Isso é usado para determinar o tamanho thin-provisionado de cada volume em unidades de MB, GB, TB ou PB.
+
+* *Tamanho do desktop*
++
+Isso é usado para determinar o tamanho dos volumes que devem ser provisionados em unidades de MB, GB, TB ou PB.
+
+* *Nível de serviço ONTAP para desktops*
++
+Obrigatório: O nível de serviço para o ficheiro de dados.
+
+* *Número de desktops*
++
+Esse número é usado para determinar o número de volumes criados.
+
++
+[NOTE]
+====
+Isso não é usado para provisionar as máquinas virtuais.
+
+====
+* *Selecione hipervisor*
++
+O hypervisor usado para esses volumes; o hypervisor determina o protocolo correto do datastore. As opções são VMware, Hyper-V ou XenServer/KVM.
+
+* *Persistência Desktop*
++
+Determina se a área de trabalho é persistente ou não persistente. A seleção da persistência do desktop define os valores padrão para o volume, como as programações do Snapshot e as políticas de deduplicação pós-processo. As eficiências inline são habilitadas por padrão para todos os volumes.
+
++
+[NOTE]
+====
+Essas políticas podem ser modificadas manualmente após o provisionamento.
+
+====
+* *Prefixo do datastore*
++
+O valor inserido é usado para gerar os nomes dos datastores e, se aplicável, o nome da política de exportação ou o nome da compartilhamento.
+
+* *Protocolo de exportação*
++
+O protocolo de exportação: SAN ou NFS
+
+* *Iniciadores*
++
+Uma lista separada por vírgulas dos iniciadores (WWPN ou IQN) no grupo de iniciadores.
+
+* *Conceder acesso ao anfitrião*
++
+O nome do host ao qual o aplicativo pode acessar.
+
+
+
+
+
+== Detalhes do iniciador
+
+Introduza as seguintes informações para configurar o iniciador:
+
+* *Grupo Iniciador*
++
+Você pode selecionar um grupo existente ou criar um novo grupo.
+
+* *Nome do Grupo Iniciador*
++
+O nome do novo grupo de iniciadores.
+
+* *Iniciadores*
++
+Uma lista separada por vírgulas dos iniciadores (WWPN ou IQN) no grupo de iniciadores.
+
+
+
+Os campos a seguir se aplicam somente ao provisionamento _SAP HANA_:
+
+* *Tipo de SO do iniciador*
++
+O tipo de sistema operacional do novo grupo de iniciadores.
+
+* *FCP Portset*
++
+O FCP ao qual o grupo de iniciadores está vinculado.
+
+
+
+
+
+== Configuração de acesso ao host
+
+Você insere as seguintes informações para configurar o acesso do host aos volumes:
+
+* *Configuração de exportação de volume*
++
+Selecione a política de exportação a aplicar aos volumes durante a criação. As opções são:
+
++
+** Permitir tudo
++
+Essa opção implica que uma regra de exportação é criada, que permite o acesso de leitura e gravação a qualquer cliente.
+
+** Criar política personalizada
++
+Esta opção permite especificar uma lista de endereços IP do host para receber acesso de leitura e gravação.
+
+
+
++
+[NOTE]
+====
+Você pode modificar a política de exportação de volume posteriormente usando fluxos de trabalho do System Manager.
+
+====
+* *Endereços IP do host*
++
+Esta é uma lista separada por vírgulas de endereços IP.
+
++
+[NOTE]
+====
+Para sistemas baseados em NFS, uma nova política de exportação é criada usando o prefixo do datastore e uma regra é criada nela para dar acesso à lista de IP.
+
+====
+
+
+
+
+== Detalhes da aplicação
+
+Quando o aplicativo é adicionado, você pode exibir as configurações na guia *Visão geral* da janela Detalhes do aplicativo. Outros detalhes, como acesso NFS ou CIFS e permissões, são exibidos dependendo do tipo de aplicativo configurado.
+
+* *Tipo*
++
+Esse é o tipo de aplicativo geral, banco de dados ou infraestrutura virtual que foi criado.
+
+* *SVM*
++
+O nome da máquina virtual do servidor na qual o aplicativo foi criado.
+
+* *Tamanho*
++
+O tamanho total do volume.
+
+* *Disponível*
++
+A quantidade de espaço atualmente disponível no volume.
+
+* *Proteção*
++
+O tipo de proteção de dados configurado.
+
+
+
+Você pode expandir os painéis *Components* e *volumes* para obter detalhes de desempenho sobre o espaço usado, IOPs e latência.
+
+[NOTE]
+====
+O tamanho usado exibido no painel componentes é diferente do tamanho usado exibido na CLI.
+
+====

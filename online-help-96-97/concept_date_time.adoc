@@ -1,0 +1,48 @@
+---
+permalink: online-help-96-97/concept_date_time.html 
+sidebar: sidebar 
+keywords: date, time, settings, cluster, system, manager, online, help 
+summary: Pode utilizar o System Manager para gerir as definições de data e hora de um cluster. 
+---
+= Gerencie as configurações de data e hora de um cluster com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para gerenciar as configurações de data e hora de um cluster.
+
+
+
+== Janela de data e hora
+
+A janela Data e hora permite visualizar as definições atuais de data e hora do seu sistema de armazenamento e modificar as definições quando necessário.
+
+
+
+=== Botões de comando
+
+* *Editar*
++
+Abre a caixa de diálogo Editar data e hora, que permite editar os servidores de hora.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Área de detalhes
+
+A área de detalhes exibe informações sobre a data, a hora, o fuso horário, o serviço NTP e os servidores de hora do seu sistema de armazenamento.
+
+*Informações relacionadas*
+
+xref:task_setting_time_zone_for_cluster.adoc[Definir o fuso horário para um cluster]
+
+xref:task_setting_up_network_when_ip_address_range_is_disabled.adoc[Configurar uma rede quando um intervalo de endereços IP está desativado]
+
+https://docs.netapp.com/us-en/ontap/system-admin/index.html["Administração do sistema"]

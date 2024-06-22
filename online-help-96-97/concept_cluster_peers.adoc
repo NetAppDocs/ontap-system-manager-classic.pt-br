@@ -1,0 +1,306 @@
+---
+permalink: online-help-96-97/concept_cluster_peers.html 
+sidebar: sidebar 
+keywords: cluster, peer, data, replication, snapmirror, snapvault, flexcache, syncmirror, configuration, system, manager, modify, passphrase, lif, configure, remote, change, encryption, status, online, help 
+summary: Os clusters com peered são necessários para replicação de dados com a tecnologia SnapMirror e a tecnologia SnapVault e para replicação de dados com o uso de FlexCache volumes e a tecnologia SyncMirror em configurações MetroCluster. Você pode usar o System Manager para fazer o peer de dois clusters para que os clusters com peering possam coordenar e compartilhar recursos entre eles. 
+---
+= Cluster pares com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para fazer o peer de dois clusters para que os clusters com peering possam coordenar e compartilhar recursos entre eles. Os clusters com peered são necessários para replicação de dados com a tecnologia SnapMirror e a tecnologia SnapVault e para replicação de dados com o uso de FlexCache volumes e a tecnologia SyncMirror em configurações MetroCluster.
+
+
+
+== Gerar uma senha de peering
+
+A partir do System Manager 9,6, você pode gerar uma senha para o IPspace do cluster local e usar a mesma senha no cluster remoto ao criar relacionamentos de peering.
+
+.Passos
+. Clique em *Configuração* > *Cluster Peers*.
+. Clique em *Generate Peering Passphrase*.
++
+A janela de diálogo gerar frase-passe de peering é exibida.
+
+. Preencha os seguintes campos:
++
+** *IPspace*: Selecione o IPspace no menu suspenso.
+** *Passphrase Validity* (validade da frase-passe): Selecione no menu pendente a duração da qual pretende que a frase-passe seja válida.
+** *Permissões SVM*: Selecione uma das seguintes opções:
++
+*** *Todos os SVMs* para indicar que todos os SVMs têm permissão para acessar o cluster.
+*** *SVMs selecionadas* para indicar SVMs específicas que têm permissão para acessar o cluster. Realce os nomes da SVM no campo que você deseja especificar.
+
+
+
+
+. *Opcional:* Selecione a caixa de seleção se a versão efetiva do cluster remoto for anterior ao ONTAP 9.6. Caso contrário, o peering de cluster não consegue gerar.
+. Clique em *Generate* para gerar a frase-passe.
++
+Para uma geração bem-sucedida, é exibida uma mensagem que identifica sua senha.
+
+. Se você quiser enviar por e-mail ou copiar a senha, execute uma das seguintes ações:
++
+** Clique em *Detalhes da senha de e-mail*.
+** Clique em *Copiar frase-passe*.
+
+
+
+
+
+
+== Modifique a frase-passe peer do cluster
+
+Você pode modificar a senha que é fornecida durante a criação de pares de cluster.
+
+.Passos
+. [[step1]]clique em *Configuration* > *Cluster peers*.
+. Selecione o cluster de peered e clique em *Edit*
++
+É apresentado o menu pendente.
+
+. Clique em *local Cluster Passphrase*.
++
+A janela de diálogo Editar frase-passe de cluster local é exibida.
+
+. [[step4]]no campo *introduzir frase-passe*, introduza uma nova frase-passe e, em seguida, clique em *aplicar*.
++
+[NOTE]
+====
+O comprimento mínimo necessário da frase-passe é de oito carateres.
+
+====
++
+A frase-passe é modificada imediatamente. No entanto, pode haver um atraso antes que o status de autenticação correto seja exibido.
+
+. Faça login no cluster remoto e execute as etapas link:#step1["1"] até link:#step4["4"] para modificar a senha no cluster remoto.
++
+O status de autenticação do cluster local é exibido `ok_and_offer` até que você modifique a senha no cluster remoto.
+
+
+
+
+
+== Modifique LIFs configurados para o cluster remoto
+
+Você pode usar o System Manager para modificar o espaço IPspace e as interfaces lógicas entre clusters (LIFs) configuradas para o cluster remoto. Você pode adicionar novos endereços IP entre clusters ou remover endereços IP existentes.
+
+.Antes de começar
+Você deve ter pelo menos um endereço IP entre clusters para criar o relacionamento entre pares de cluster.
+
+.Passos
+. Clique em *Configuração* > *Cluster* > *atualizações de configuração*.
+. Selecione o cluster de peered e clique em *Edit*
++
+É apresentado o menu pendente.
+
+. Clique em *Peer Cluster Network Parameters*.
++
+A janela de diálogo Editar parâmetros de rede de pares é exibida.
+
+. Se necessário, modifique os seguintes campos:
++
+** *IPspace*: Selecione o IPspace no menu suspenso.
+** *Intercluster LIFs*: Adicione ou remova endereços IP entre clusters. Você pode adicionar vários endereços IP separando-os com vírgulas.
+
+
+. Clique em *Modificar*.
+. Verifique as alterações feitas na janela *Cluster Peers*.
+
+
+
+
+== Altere o status de criptografia do peering
+
+Você pode usar o System Manager para alterar o status de criptografia de peering para o cluster selecionado.
+
+.Sobre esta tarefa
+O estado da encriptação pode ser ativado ou desativado. Pode alterar o estado de ativado para desativado ou de desativado para ativado selecionando *alterar encriptação*.
+
+.Passos
+. Clique em *Configuração* > *Cluster Peers*.
+. Selecione o cluster de peered e clique em *Edit*
++
+É apresentado o menu pendente.
+
+. Clique em *alterar encriptação*.
++
+Esta ação não está disponível se o estado da encriptação for "'N/A".
+
++
+É apresentada a janela de diálogo alterar encriptação. O botão de alternância indica o estado atual da encriptação.
+
+. Deslize o botão de alternância para alterar o status de criptografia do peering e prossiga.
++
+** Se o status atual da criptografia for "'nenhum'", você poderá habilitar a criptografia deslizando o botão de alternância para alterar o status para "'tls_psk'".
+** Se o status atual da criptografia for "tls_psk", você poderá desativar a criptografia deslizando o botão de alternância para alterar o status para "'nenhum'".
+
+
+. Depois de ativar ou desativar a encriptação do peering, pode gerar uma nova frase-passe e fornecê-la no cluster com permissões ou pode aplicar uma frase-passe existente que já foi gerada no cluster com permissões.
++
+[NOTE]
+====
+Se a frase-passe utilizada no site local não corresponder à frase-passe utilizada no local remoto, a relação de peering do cluster não funcionará corretamente.
+
+====
++
+Selecione uma das seguintes opções:
+
++
+** *Generate a passphrase*: Avance para link:#step6["passo 6"].
+** *Já tem uma frase-passe*: Avance para link:#step9["passo 9"].
+
+
+. [[step6]]se você escolheu *Generate a passphrase*, preencha os campos necessários:
++
+** *IPspace*: Selecione o IPspace no menu suspenso.
+** *Passphrase Validity* (validade da frase-passe): Selecione no menu pendente a duração da qual pretende que a frase-passe seja válida.
+** *Permissões SVM*: Selecione uma das seguintes opções:
++
+*** *Todos os SVMs* para indicar que todos os SVMs têm permissão para acessar o cluster.
+*** *SVMs selecionadas* para indicar SVMs específicas que têm permissão para acessar o cluster. Realce os nomes da SVM no campo que você deseja especificar.
+
+
+
+
+. *Opcional:* Selecione a caixa de seleção se a versão efetiva do cluster remoto for anterior ao ONTAP 9.6. Caso contrário, a frase-passe não consegue gerar.
+. Clique em *aplicar*.
++
+A frase-passe é gerada para a relação e apresentada. Você pode copiar a senha ou enviá-la por e-mail.
+
++
+O estado de autenticação para o cluster local é apresentado como `ok_and_offer` para o período de validade da frase-passe selecionado até fornecer a frase-passe no cluster remoto.
+
+. [[step9]]se você já gerou uma nova senha no cluster remoto, execute as seguintes etapas:
++
+.. Clique em *já tem uma frase-passe*.
+.. Introduza no campo *Passphrase* a mesma frase-passe que foi gerada no cluster remoto.
+.. Clique em *aplicar*.
+
+
+
+
+
+
+== Eliminar relações de pares de cluster
+
+Você pode usar o System Manager para excluir um relacionamento de pares de cluster se o relacionamento não for mais necessário. Você deve excluir o relacionamento de peering de cluster de cada um dos clusters no relacionamento de pares.
+
+.Passos
+. [[step1]]clique em *Configuration* > *Cluster peers*.
+. Selecione o peer de cluster para o qual você deseja excluir o relacionamento e clique em *Excluir*.
+. [[step3]]Selecione a caixa de seleção de confirmação e clique em *Excluir*.
+. Faça login no cluster remoto e execute as etapas link:#step1["1"] até link:#step3["3"] para excluir a relação entre pares entre o cluster local e o cluster remoto.
++
+O status do relacionamento de pares é exibido como ""não saudável"" até que o relacionamento seja excluído do cluster local e do cluster remoto.
+
+
+
+
+
+== Janela cluster peers (peers de clusters)
+
+Você pode usar a janela colegas de cluster para gerenciar relacionamentos de cluster de pares, o que permite mover dados de um cluster para outro.
+
+
+
+=== Botões de comando
+
+* *Criar*
++
+Abre a caixa de diálogo criar peering de cluster, que permite criar uma relação com um cluster remoto.
+
+* *Editar*
++
+Exibe um menu suspenso com as seguintes opções:
+
++
+** *Frase-passe de cluster local*
++
+Abre a caixa de diálogo Edit local Cluster Passphrase (Editar frase-passe de cluster local), que permite introduzir uma nova frase-passe para validar o cluster local.
+
+** *Parâmetros de rede de cluster de pares*
++
+Abre a caixa de diálogo Edit Peer Cluster Network Parameters (Editar parâmetros de rede de cluster de pares), que permite modificar o espaço IPspace e adicionar ou remover endereços IP de LIF entre clusters.
+
++
+Você pode adicionar vários endereços IP, separados por vírgulas.
+
+** *Alterar encriptação*
++
+Abre a caixa de diálogo alterar encriptação para o cluster de pares selecionado. Enquanto você estiver alterando a criptografia da relação de peering, você pode gerar uma nova senha ou fornecer uma senha que já foi gerada no cluster de acesso remoto.
+
++
+Esta ação não está disponível se o estado da encriptação for "'N/A".
+
+
+
+* *Excluir*
++
+Abre a caixa de diálogo Excluir relacionamento de pares de cluster, que permite excluir a relação de cluster de pares selecionada.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+* *Gerenciar permissões de SVM*
++
+Permite que SVMs aceitem automaticamente solicitações de peering SVM.
+
+* *Gerar frase-passe de peering*
++
+Permite gerar uma senha para o IPspace do cluster local especificando o IPspace, definindo a duração da validade da senha e especificando quais SVMs recebem permissão.
+
++
+Você usa a mesma senha no cluster remoto para peering.
+
+
+
+
+
+=== Lista de cluster de pares
+
+* *Peer Cluster*
++
+Especifica o nome do cluster de pares na relação.
+
+* *Disponibilidade*
++
+Especifica se o cluster de pares está disponível para comunicação.
+
+* *Status da autenticação*
++
+Especifica se o cluster de pares está autenticado ou não.
+
+* *Local Cluster IPspace*
++
+Exibe o IPspace associado ao relacionamento de pares de cluster local.
+
+* *Endereços IP do cluster de pares*
++
+Exibe endereços IP associados ao relacionamento entre clusters.
+
+* *Último tempo atualizado*
++
+Exibe a hora em que o cluster de pares foi modificado pela última vez.
+
+* *Encriptação*
++
+Exibe o status da criptografia da relação de peering.
+
++
+[NOTE]
+====
+A partir do System Manager 9,6, o peering é criptografado por padrão quando você estabelece uma relação de peering entre dois clusters
+
+====
++
+** *N/A*: A criptografia não é aplicável ao relacionamento.
+** *Nenhum*: A relação de peering não é criptografada.
+** *tls_psk*: A relação de peering é criptografada.
+
+
+

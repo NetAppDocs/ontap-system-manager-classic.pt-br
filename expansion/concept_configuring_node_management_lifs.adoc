@@ -1,0 +1,58 @@
+---
+permalink: expansion/concept_configuring_node_management_lifs.html 
+sidebar: sidebar 
+keywords: controller, module, physical, install, power, configure, node-mangement, lif, configure node-management lifs 
+summary: Depois que os módulos do controlador são instalados fisicamente, você pode ligar cada um e configurar seu LIF de gerenciamento de nós. 
+---
+= Configurar LIFs de gerenciamento de nós
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depois que os módulos do controlador são instalados fisicamente, você pode ligar cada um e configurar seu LIF de gerenciamento de nós.
+
+.Sobre esta tarefa
+Você deve executar este procedimento em ambos os nós.
+
+.Passos
+. Acesse o módulo do controlador através do console serial.
+. Ligue o módulo do controlador e aguarde enquanto o nó é inicializado e o assistente Configuração do cluster é iniciado automaticamente no console.
++
+[listing]
+----
+Welcome to the cluster setup wizard.
+
+You can enter the following commands at any time:
+  "help" or "?" - if you want to have a question clarified,
+  "back" - if you want to change previously answered questions, and
+  "exit" or "quit" - if you want to quit the cluster setup wizard.
+   Any changes you made before quitting will be saved.
+
+You can return to cluster setup at any time by typing "cluster setup".
+To accept a default or omit a question, do not enter a value.
+----
+. Siga as instruções no assistente de configuração de cluster baseado na Web para configurar um LIF de gerenciamento de nós usando as informações de rede coletadas anteriormente.
+. A configuração do LIF de gerenciamento de tipo `exit` após nó está concluída para sair do assistente de configuração e concluir as tarefas de administração.
++
+[listing]
+----
+Use your web browser to complete cluster setup by accessing
+https://10.63.11.29
+
+Otherwise, press Enter to complete cluster setup using the command line interface:
+exit
+----
+. Faça login no nó como `admin` usuário, o que não requer uma senha.
++
+[listing]
+----
+Tue Mar 4 23:13:33 UTC 2015
+login: admin
+******************************************************
+* This is a serial console session. Output from this *
+* session is mirrored on the SP console session.     *
+----
+. Repita todo o procedimento para o segundo módulo do controlador recém-instalado.
+

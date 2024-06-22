@@ -1,0 +1,24 @@
+---
+permalink: online-help-96-97/task_deleting_protection_policies.html 
+sidebar: sidebar 
+keywords: delete, protection, policies, online, help, system, manager 
+summary: Você pode usar o System Manager para excluir uma política de proteção se não quiser mais usar a política. 
+---
+= Eliminar políticas de proteção
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o System Manager para excluir uma política de proteção se não quiser mais usar a política.
+
+.Sobre esta tarefa
+As políticas de espelhamento no nível do cluster ou as políticas de Vault não são exibidas.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione a máquina virtual de armazenamento (SVM) e clique em *Configurações SVM*.
+. Na janela *políticas de proteção*, selecione a política que deseja excluir e clique em *Excluir*.
+. Na caixa de diálogo *Excluir política*, clique em *Excluir*.
+

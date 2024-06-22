@@ -1,0 +1,12 @@
+---
+permalink: online-help-96-97/reference_copyright_trademark.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= Direitos autorais, marca registrada e tradução automática
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+

@@ -1,0 +1,184 @@
+---
+permalink: online-help-96-97/concept_array_luns.html 
+sidebar: sidebar 
+keywords: system, manager, array, lun, aggregate, assign, online, help, classic 
+summary: Você pode usar o System Manager para atribuir LUNs de array a um agregado existente e gerenciar LUNs de array. 
+---
+= Gerencie LUNs de array com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para atribuir LUNs de array a um agregado existente e gerenciar LUNs de array.
+
+
+
+== Atribuir LUNs de array
+
+Você pode usar o System Manager para atribuir LUNs de array não atribuídos a um agregado existente para aumentar o tamanho do agregado.
+
+.Sobre esta tarefa
+* Você pode atribuir LUNs de array se as seguintes condições forem verdadeiras:
++
+** O tipo de contentor dos LUNs de array selecionados deve ser ""não atribuído"".
+** Os discos devem ser conectados a nós de um par de HA.
+** Os discos devem estar visíveis para o nó.
+
+
+* Para configurações do MetroCluster, você não pode usar o Gerenciador do sistema para atribuir LUNs de storage como sobressalentes.
++
+Você deve usar a interface de linha de comando em vez disso.
+
+
+
+.Passos
+. Clique em *Storage* > *agregados e discos* > *Array LUNs*.
+. Selecione os LUNs da matriz e, em seguida, clique em *Assign*.
+. Na caixa de diálogo *Assign Array LUNs*, selecione o nó ao qual você deseja atribuir os LUNs da matriz.
+. Clique em *Assign*.
+
+
+
+
+== Reatribuir LUNs de array sobressalente aos nós
+
+Você pode usar o System Manager para reatribuir a propriedade de LUNs de array sobressalente de um nó para outro, a fim de aumentar a capacidade de um agregado.
+
+.Sobre esta tarefa
+* Você pode reatribuir LUNs de array se as seguintes condições forem verdadeiras:
++
+** O tipo de contentor dos LUNs de array selecionados deve ser "spare".
+** Os discos devem ser conectados a nós de um par de HA.
+** Os discos devem estar visíveis para o nó.
+
+
+* Para configurações do MetroCluster, você não pode usar o Gerenciador do sistema para reatribuir LUNs de array como peças sobressalentes.
++
+Você deve usar a interface de linha de comando em vez disso.
+
+
+
+.Passos
+. Clique em *Storage* > *agregados e discos* > *Array LUNs*.
+. Selecione os LUNs da matriz sobressalente que você deseja reatribuir e clique em *Assign*.
+. Na caixa de diálogo *Aviso*, clique em *continuar*.
+. Na caixa de diálogo *Assign Array LUNs*, selecione o nó ao qual deseja reatribuir os LUNs de matriz sobressalentes.
+. Clique em *Assign*.
+
+
+
+
+== Array sobressalente de restauração a zero LUNs
+
+Você pode usar o System Manager para apagar todos os dados e formatar os LUNs de matriz de reserva gravando zeros nos LUNs de matriz. Esses LUNs de array podem ser usados em novos agregados.
+
+.Sobre esta tarefa
+Quando você zero os LUNs de array sobressalente, todas as peças sobressalentes no cluster, incluindo discos, são zeradas. Você pode zero os LUNs de array sobressalente para um nó específico ou para todo o cluster.
+
+.Passos
+. Clique em *Storage* > *agregados e discos* > *Array LUNs*.
+. Clique em *Zero Spares*.
+. Na caixa de diálogo *Zero Spares*, selecione um nó ou "'todos os nós" do qual você deseja zero os LUNs da matriz.
+. Marque a caixa de seleção *Zero All non-zeroed spares* para confirmar a operação de restauração.
+. Clique em *Zero Spares*.
+
+
+
+
+== Sobre discos e LUNs de array
+
+Um disco é a unidade básica de storage para sistemas de storage que usam o software ONTAP para acessar compartimentos de disco nativos. Um LUN de array é a unidade básica de storage que os storage arrays de terceiros fornecem aos sistemas de storage que executam o software ONTAP.
+
+O software ONTAP permite atribuir propriedade aos discos e LUNs de array e adicioná-los a um agregado. O software ONTAP também oferece várias maneiras de gerenciar seus discos, incluindo removê-los, substituí-los e higienizá-los. Como os LUNs de array são fornecidos pelo storage array de terceiros, você usa o storage array de terceiros para todas as outras tarefas de gerenciamento para LUNs de array.
+
+Você pode criar um agregado usando discos ou LUNs de array. Depois de criar o agregado, você o gerencia usando o software ONTAP exatamente da mesma maneira, seja ele criado a partir de discos ou LUNs de array.
+
+
+
+== Array LUNs Window
+
+A janela Array LUNs permite atribuir propriedade aos LUNs do array e adicioná-los a um agregado.
+
+O link Array LUNs no painel de navegação esquerdo é exibido somente se houver LUNs de storage sobressalentes ou se a licença V_StorageAttach estiver instalada.
+
+
+
+=== Botões de comando
+
+* *Atribuir*
++
+Permite atribuir ou reatribuir a propriedade de LUNs de array a um nó.
+
+* * Zero peças*
++
+Apaga todos os dados e formata os LUNs e discos do array sobressalente.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista LUN de array
+
+Exibe informações como nome, estado e fornecedor para cada LUN de matriz.
+
+* *Nome*
++
+Especifica o nome do LUN de array.
+
+* *Estado*
++
+Especifica o estado do LUN de array.
+
+* *Fornecedor*
++
+Especifica o nome do fornecedor.
+
+* *Espaço usado*
++
+Especifica o espaço usado pelo LUN de array.
+
+* * Tamanho total*
++
+Especifica o tamanho do LUN de array.
+
+* * Recipiente*
++
+Especifica o agregado ao qual o LUN de array pertence.
+
+* *Nome do nó*
++
+Especifica o nome do nó ao qual o LUN de array pertence.
+
+* *Proprietário da casa*
++
+Exibe o nome do nó inicial ao qual o LUN de matriz é atribuído.
+
+* *Proprietário atual*
++
+Exibe o nome do nó que atualmente possui o LUN do array.
+
+* *Nome da matriz*
++
+Especifica o nome do array.
+
+* *Piscina*
++
+Exibe o nome do pool ao qual o LUN de array selecionado é atribuído.
+
+
+
+
+
+=== Área de detalhes
+
+A área abaixo da lista Array LUNs exibe informações detalhadas sobre o array LUN selecionado.
+
+*Informações relacionadas*
+
+https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html["Referência e requisitos de instalação da virtualização do FlexArray"]

@@ -1,0 +1,21 @@
+---
+permalink: online-help-96-97/task_changing_tiering_policy_volume_destination_topic_delete.html 
+sidebar: sidebar 
+keywords: change, tiering, policy, system, manager, volume, online, help 
+summary: Você pode usar o System Manager para alterar a política de disposição em categorias padrão de um volume para controlar se os dados do volume são movidos para a categoria de nuvem quando os dados ficam inativos. 
+---
+= Altere a política de disposição em camadas de um volume com o System Manager - ONTAP 9.7 e versões anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para alterar a política de disposição em camadas padrão de um volume e controlar se os dados do volume são movidos para a categoria de nuvem quando os dados ficam inativos.
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. No menu suspenso no campo *SVM*, selecione *All SVMs*.
+. Selecione o volume para o qual você deseja alterar a política de disposição em camadas e clique em *mais ações* > *alterar política de disposição em camadas*.
+. Selecione a política de disposição em camadas necessária na lista *Política de disposição em categorias* e clique em *Salvar*.
+

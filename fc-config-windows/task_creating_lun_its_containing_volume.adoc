@@ -1,0 +1,49 @@
+---
+permalink: fc-config-windows/task_creating_lun_its_containing_volume.html 
+sidebar: sidebar 
+keywords: create, lun, wizard, igroup, map, enable, host, access, create a lun 
+summary: Você usa o assistente criar LUN para criar um LUN. O assistente também cria o grupo e mapeia o LUN para o grupo, o que permite que o host especificado acesse o LUN. 
+---
+= Crie um LUN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você usa o assistente criar LUN para criar um LUN. O assistente também cria o grupo e mapeia o LUN para o grupo, o que permite que o host especificado acesse o LUN.
+
+.Antes de começar
+* Deve haver um agregado com espaço livre suficiente para conter o LUN.
+* Deve haver uma máquina virtual de storage (SVM) com o protocolo FC ativado e as interfaces lógicas (LIFs) apropriadas criadas.
+* Você deve ter registrado os nomes de portas mundiais (WWPNs) das portas FC do host.
+
+
+.Sobre esta tarefa
+Se sua organização tiver uma convenção de nomenclatura, você deve usar nomes para o LUN, volume e assim por diante que se encaixam na convenção. Caso contrário, você deve aceitar os nomes padrão.
+
+.Passos
+. Navegue até a janela *LUNs*.
+. Clique em *criar.*
+. PESQUISE e selecione um SVM no qual você deseja criar os LUNs.
++
+É apresentado o Assistente para criar LUN.
+
+. Na página *Propriedades gerais*, selecione o tipo LUN *Windows 2008 ou posterior* para LUNs usados diretamente pelo host do Windows ou selecione *Hyper-V* para LUNs contendo discos rígidos virtuais (VHDs) para máquinas virtuais Hyper-V.
++
+Deixe a caixa de seleção *Thin provisioned* desmarcada.
+
++
+image::../media/lun_creation_thin_provisioned_windows_fc_windows.gif[A ilustração mostra a caixa de diálogo com a caixa de seleção Thin provisioned desmarcada.]
+
+. Na página *contentor LUN*, selecione um FlexVol volume existente.
++
+Você deve garantir que há espaço suficiente no volume. Se não houver espaço suficiente disponível nos volumes existentes, você poderá criar um novo volume.
+
+. Na página *Mapeamento de iniciadores*, clique em *Adicionar Grupo de iniciadores*, insira as informações necessárias na guia *Geral* e, em seguida, na guia *iniciadores*, insira todas as WWPNs das portas FC do host que você gravou.
+. Confirme os detalhes e clique em *Finish* para concluir o assistente.
+
+
+*Informações relacionadas*
+
+https://docs.netapp.com/us-en/ontap/system-admin/index.html["Administração do sistema"]

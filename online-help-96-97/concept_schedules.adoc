@@ -1,0 +1,177 @@
+---
+permalink: online-help-96-97/concept_schedules.html 
+sidebar: sidebar 
+keywords: online, help, system, manager, manage, schedule, storage 
+summary: Você pode usar o System Manager para criar e gerenciar agendamentos em seu sistema de armazenamento. 
+---
+= Gerencie programações com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e versões anteriores) para criar e gerenciar programações em seu sistema de storage.
+
+
+
+== Criar agendas
+
+Você pode criar programações para executar um trabalho em um momento específico ou em períodos regulares usando o System Manager.
+
+.Sobre esta tarefa
+Quando você cria uma programação em uma configuração do MetroCluster, é uma prática recomendada criar uma programação equivalente no cluster no site sobrevivente também.
+
+.Passos
+. Clique em *proteção* > *horários*.
+. Clique em *criar*.
+. Na caixa de diálogo *criar Agendamento*, especifique o nome da programação.
+. Crie uma agenda com base em seus requisitos:
++
+|===
+| Se você quiser criar... | Faça isso... 
+
+
+ a| 
+Um diário ou um horário específico em determinados dias
+ a| 
+Selecione *Básico* e especifique os detalhes da programação e da recorrência (em horas e minutos).
+
+
+
+ a| 
+Uma programação que é executada em um intervalo específico
+ a| 
+Selecione *intervalo* e especifique os detalhes da programação e recorrência (em dias, horas e minutos).
+
+
+
+ a| 
+Um cronograma que é executado em um período específico
+ a| 
+Selecione *Avançado* e especifique os detalhes da programação e da recorrência (em meses, dias, dias úteis, horas e minutos).
+
+|===
+. Clique em *criar*.
+
+
+
+
+== Editar programações
+
+Você pode fazer alterações em um cronograma do cron criado anteriormente ou em um cronograma de intervalos se ele não atender aos seus requisitos usando o System Manager. Você pode modificar detalhes do cronograma, como dias e horas recorrentes, opções de intervalo e opções avançadas do cron.
+
+.Sobre esta tarefa
+Quando você edita uma programação em uma configuração do MetroCluster, é uma prática recomendada editar a programação equivalente no cluster de sites sobreviventes também.
+
+.Passos
+. Clique em *proteção* > *horários*.
+. Selecione a programação que deseja modificar e clique em *Editar*.
+. Na caixa de diálogo *Editar horário*, modifique a programação executando a ação apropriada:
++
+|===
+| Se você selecionar a opção de agendamento como... | Faça isso.. 
+
+
+ a| 
+Básico
+ a| 
+Especifique os dias recorrentes e os detalhes da programação recorrente.
+
+
+
+ a| 
+Intervalo
+ a| 
+Especifique as opções de intervalo em dias, horas e minutos.
+
+
+
+ a| 
+Avançado
+ a| 
+Especifique as opções avançadas do cron em meses, dias, dias da semana (se aplicável), horas e minutos.
+
+|===
+. Clique em *OK*.
+
+
+
+
+== Eliminar agendas
+
+[role="lead"]
+Você pode usar o System Manager para excluir as programações que executam tarefas específicas de gerenciamento de armazenamento.
+
+.Passos
+. Clique em *proteção* > *horários*.
+. Selecione a agenda que deseja excluir e clique em *Excluir*.
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
+
+
+
+
+== Gerenciar programações
+
+É possível configurar várias tarefas (por exemplo, cópias Snapshot de volume e replicações de espelhamento) para execução em programações especificadas. Os cronogramas que são executados em horários especificados são conhecidos como cronogramas _cron_ por causa de sua semelhança com os cronogramas UNIX `cron`. As programações executadas em intervalos são conhecidas como programações _interval_.
+
+Você pode gerenciar programações das seguintes maneiras:
+
+* Criando um cronograma cron ou um cronograma de intervalos
+* Exibindo informações sobre todos os horários
+* Modificação de um cronograma cron ou de um cronograma de intervalos
+* Excluindo um cronograma cron ou um cronograma de intervalos
++
+Não é possível eliminar uma agenda atualmente em utilização por um trabalho em execução.
+
+
+
+O administrador do cluster pode executar todas as tarefas de gerenciamento de agendamento.
+
+
+
+== Janela de horários
+
+Você pode usar a janela agendas para gerenciar tarefas agendadas, como criar, exibir informações sobre, modificar e excluir programações.
+
+
+
+=== Botões de comando
+
+* *Criar*
++
+Abre a caixa de diálogo criar Agendamento, que permite criar programações baseadas em tempo e intervalos.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar agendamento, que permite editar as agendas selecionadas.
+
+* *Excluir*
++
+Abre a caixa de diálogo Excluir programação, que permite excluir as programações selecionadas.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de horários
+
+* *Nome*
++
+Especifica o nome da programação.
+
+* *Tipo*
++
+Especifica o tipo de programação baseada em tempo ou em intervalo.
+
+
+
+
+
+=== Área de detalhes
+
+A área de detalhes exibe informações sobre quando um agendamento selecionado é executado.

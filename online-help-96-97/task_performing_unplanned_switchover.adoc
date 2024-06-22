@@ -1,0 +1,59 @@
+---
+permalink: online-help-96-97/task_performing_unplanned_switchover.html 
+sidebar: sidebar 
+keywords: perform, unplanned, switchover, system, manager, metrocluster, site, online, help 
+summary: A partir do System Manager 9,6, você pode iniciar um switchover não planejado de um local de MetroCluster. Esta operação é útil após um evento de interrupção ou desastre. 
+---
+= Realizando um switchover não planejado
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do System Manager 9,6, você pode iniciar um switchover não planejado de um local de MetroCluster. Esta operação é útil após um evento de interrupção ou desastre.
+
+.Antes de começar
+Seu MetroCluster está sendo executado em condições operacionais normais; no entanto, os nós no cluster local (local A) estão ativos, mas os nós no cluster remoto (local B) estão inativos.
+
+.Passos
+. [[step1]]Verifique se o local B está realmente inativo.
++
+Um erro de conexão pode fazer com que o local B pareça estar inativo.
+
++
+[NOTE]
+====
+Iniciar o processo de transição com o local B up pode causar resultados desastrosos.
+
+====
+. No Gerenciador do sistema, faça logon no site local do MetroCluster (local A) usando as credenciais de administrador do cluster.
+. Clique em *Configuração* > *MetroCluster*
++
+A janela MetroCluster switchover/Switchback Operations é exibida.
+
+. Clique em *seguinte*.
++
+A janela operações de comutação/comutação MetroCluster exibe o status das operações e o gerente do sistema verifica se um switchover negociado é viável.
+
+. Quando o processo de validação estiver concluído, clique em *mudar o local B para o local A* para iniciar o processo de transição.
++
+Uma mensagem de aviso é exibida, avisando que a operação de comutação alterna o controle do local B para o local A. o status do local B deve ser ""INALCANÇÁVEL"", e todos os nós do local B são mostrados em texto vermelho.
+
++
+[NOTE]
+====
+Como observado na link:#step1["1"]Etapa , o local B deve estar inativo e não apenas desconetado. Além disso, você deve estar ciente de que a operação de switchover pode causar a perda de dados.
+
+====
+. Se você quiser continuar, verifique se a caixa de seleção está marcada e clique em *Sim*.
++
+O processo de transição começa. Os estados do Site A e do Site B são exibidos acima das representações gráficas de suas configurações. Se a operação de comutação falhar, é apresentada uma mensagem de erro. Clique em *Fechar*. Corrija quaisquer erros e inicie novamente no passo link:task_performing_negotiated_planned_switchover.html#step1["1"]
+
+. Realizar todas as atividades de manutenção necessárias para o local B..
+. Certifique-se de que o local B está ativo.
++
+O processo de cura começa. Quando o System Manager mostra que a recuperação está concluída, o local B está operacional e os sistemas se preparam para o processo de switchback. O botão *Switchback do local A para o local B* aparece na parte inferior da janela.
+
+. Avance para para para xref:task_performing_switchback.adoc[Executando um switchback]iniciar a operação de comutação.
+

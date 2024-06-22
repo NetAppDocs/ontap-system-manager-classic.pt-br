@@ -1,0 +1,31 @@
+---
+permalink: expansion/task_adding_or_replacing_switches.html 
+sidebar: sidebar 
+keywords: expand, cluster, ensure, configuration, switch, exist, port, add, replace, add or replace switches 
+summary: Antes de expandir o cluster, certifique-se de que os switches do cluster suportam a configuração expandida. Se o cluster for sem switch, você deve adicionar switches. 
+---
+= Adicione ou substitua os interrutores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de expandir o cluster, certifique-se de que os switches do cluster suportam a configuração expandida. Se o cluster for sem switch, você deve adicionar switches. Se os switches existentes não tiverem portas suficientes disponíveis para suportar a nova configuração, você deverá substituir os switches.
+
+
+
+== Procedimento
+
+* Se o cluster for atualmente um cluster sem switch de dois nós, migre o cluster para um cluster comutado de dois nós usando o tipo de switch que preferir.
++
+https://library.netapp.com/ecm/ecm_download_file/ECMP1140536["Migração para um cluster comutado de dois nós com switches de cluster Cisco"]
+
++
+https://library.netapp.com/ecm/ecm_download_file/ECMP1140535["Migração para um cluster comutado de dois nós com switches de cluster NetApp CN1610"]
+
+* Se os switches existentes não tiverem portas suficientes disponíveis para suportar a configuração futura, substitua os switches usando o procedimento de substituição apropriado.
++
+https://mysupport.netapp.com/documentation/productlibrary/index.html?productID=62371["Documentação do NetApp: Switches de cluster, gerenciamento e armazenamento"]
+
+

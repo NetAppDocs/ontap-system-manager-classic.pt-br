@@ -1,0 +1,30 @@
+---
+permalink: online-help-96-97/task_deleting_flexcache_volumes.html 
+sidebar: sidebar 
+keywords: delete, flexcache, volume, system, manager, online, help 
+summary: A partir do System Manager 9,6, você pode excluir um volume FlexCache quando não precisar mais dele. 
+---
+= Eliminar volumes FlexCache
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do System Manager 9,6, você pode excluir um volume FlexCache quando não precisar mais dele.
+
+.Antes de começar
+* O caminho de junção do volume FlexCache tem de ser desmontado.
+* O volume FlexCache deve estar offline.
+
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. No menu suspenso no campo *SVM*, selecione *All SVMs*.
+. Selecione o volume FlexCache que deseja excluir e clique em *Excluir*.
+. Marque a caixa de seleção de confirmação e clique em *OK*.
+
+
+*Informações relacionadas*
+
+xref:reference_volumes_window.adoc[Janela volumes]

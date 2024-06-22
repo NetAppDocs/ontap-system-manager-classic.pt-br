@@ -1,0 +1,14 @@
+---
+permalink: nfs-config/task_configuring_access_to_existing_svm.html 
+sidebar: sidebar 
+keywords: access, nfs, clients, exist, svm, configuration, export, policy, root, volume, ldap, unix, configure, configure nfs access to an existing svm 
+summary: Adicionar acesso a clientes NFS a um SVM existente envolve a adição de configurações NFS ao SVM, abertura da política de exportação do volume raiz do SVM, configuração opcional de LDAP e verificação do acesso NFS a partir de um host de administração UNIX. Em seguida, você pode configurar o acesso do cliente NFS. 
+---
+= Configurar o acesso NFS a uma SVM existente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Adicionar acesso a clientes NFS a um SVM existente envolve a adição de configurações NFS ao SVM, abertura da política de exportação do volume raiz do SVM, configuração opcional de LDAP e verificação do acesso NFS a partir de um host de administração UNIX. Em seguida, você pode configurar o acesso do cliente NFS.

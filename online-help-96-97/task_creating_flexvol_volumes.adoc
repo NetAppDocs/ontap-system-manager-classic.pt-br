@@ -1,0 +1,233 @@
+---
+permalink: online-help-96-97/task_creating_flexvol_volumes.html 
+sidebar: sidebar 
+keywords: flexvol, create, volume, online, help 
+summary: Você pode criar um FlexVol volume para seus dados usando a caixa de diálogo criar volume no Gerenciador do sistema. Você sempre deve criar um volume separado para seus dados em vez de armazenar dados no volume raiz. 
+---
+= Crie volumes do FlexVol com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode criar um FlexVol volume para seus dados usando a caixa de diálogo criar volume no ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior). Você sempre deve criar um volume separado para seus dados em vez de armazenar dados no volume raiz.
+
+.Antes de começar
+* O cluster deve conter um agregado que não seja raiz e uma máquina virtual de storage (SVM).
+* Para criar volumes de leitura/gravação, você precisa ter configurado os protocolos para o SVM e ter instalado a licença SnapMirror ou a licença SnapVault.
++
+Se você não configurou os protocolos, mas instalou qualquer uma dessas licenças, você pode criar apenas volumes de proteção de dados (DP).
+
+* Para criar um volume criptografado, você deve ter instalado a licença de criptografia de volume usando o System Manager, e você deve ter ativado a ""configuração do gerenciador de chaves"" usando a interface de linha de comando (CLI).
++
+Você deve atualizar seu navegador da Web depois de ativar a configuração do gerenciador de chaves.
+
+
+
+.Sobre esta tarefa
+* Você pode habilitar a qualidade do serviço (QoS) de storage somente para um volume de leitura/gravação (rw).
+* Quando você cria um volume de DP na SVM de origem sincronizada em uma configuração do MetroCluster, o volume não é replicado no SVM de destino sincronizado.
+* Quando você cria um volume DP em uma configuração do MetroCluster, o volume de origem não é replicado (espelhado ou abobadado) no SVM de destino.
+* Em uma configuração do MetroCluster, o Gerenciador de sistema exibe somente os seguintes agregados para a criação de volumes:
++
+** No modo normal, quando você cria volumes em SVMs de origem sincronizada ou SVMs de fornecimento de dados no site primário, apenas os agregados que pertencem ao cluster no site primário são exibidos.
+** No modo de comutação, quando você cria volumes em SVMs de destino sincronizado ou SVMs de fornecimento de dados no site sobrevivente, somente agregados comutados são exibidos.
+
+
+* Não é possível criptografar um volume no Cloud Volumes ONTAP.
+* Se a encriptação estiver ativada no volume de origem e se o cluster de destino estiver a executar uma versão do software ONTAP anterior à ONTAP 9.3, a encriptação é desativada por predefinição no volume de destino.
+
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. Clique em *Create* > *Create FlexVol*.
+. Navegue e selecione o SVM no qual você deseja criar o volume.
++
+A caixa de diálogo criar volume é exibida. A caixa de diálogo inclui as seguintes guias:
+
++
+** Geral
+** Eficiência de storage
+** SnapLock
+** Qualidade do serviço
+** Proteção
+
+
+. Na guia *Geral*, execute as seguintes etapas:
++
+.. Especifique um nome para o FlexVol volume.
+.. Clique no botão *FabricPool* para especificar que o volume é um volume FabricPool.
+.. Clique em *Choose* para selecionar um agregado.
++
+Você pode selecionar apenas agregados habilitados para FabricPool se o volume for um FabricPool FlexVol volume e só poderá selecionar agregados não habilitados para FabricPool se o volume não for um FabricPool FlexVol volume. Se você escolher um agregado criptografado (NAE), o volume que você está criando herdará a criptografia do agregado.
+
+.. Selecione um tipo de armazenamento.
+.. Especifique o tamanho do volume e as unidades de medida.
+.. Indique quanto espaço deve ser reservado para cópias Snapshot.
+.. Selecione uma opção de reserva de espaço no menu suspenso *reserva de espaço*.
+.. Selecione a caixa de verificação *encriptação de volume* para ativar a encriptação do volume. Esta opção só está disponível se tiver ativado a licença de encriptação de volume e se a plataforma correspondente for capaz de suportar encriptação.
+
+
+. Na guia *eficiência de armazenamento*, execute as seguintes etapas:
++
+.. Selecione o tipo de armazenamento para o qual você está criando esse volume.
++
+Você deve selecionar *proteção de dados* se estiver criando um volume de destino SnapMirror. Você recebe acesso somente leitura a este volume.
+
+.. Especifique a política de disposição em camadas para o volume.
+.. Especifique o tamanho do volume e a porcentagem do tamanho total do volume que você deseja reservar para cópias Snapshot.
++
+O espaço padrão reservado para cópias Snapshot é de 0% para volumes SAN e volumes VMware. Para volumes nas, o padrão é 5%.
+
+.. Selecione *default*, *thin Provisioning* ou *thick provisioned* para o volume.
++
+Quando o provisionamento de thin está ativado, o espaço é alocado ao volume do agregado somente quando os dados são gravados no volume.
+
++
+[NOTE]
+====
+*** Para sistemas de storage da AFF, o valor do thin Provisioning é "padrão" e, para outros sistemas de storage, o valor do provisionamento thick é "padrão".
+*** Para agregados habilitados para FabricPool, o valor do thin Provisioning é "padrão".
+
+
+====
+.. Especifique se deseja ativar a deduplicação no volume.
++
+O System Manager usa o cronograma de deduplicação padrão. Se o tamanho do volume especificado exceder o limite necessário para executar a deduplicação, o volume será criado e a deduplicação não será ativada.
+
++
+Para sistemas com personalidade otimizada All Flash, a compactação in-line e o `auto` cronograma de deduplicação são habilitados por padrão.
+
+
+
+. Na guia *qualidade do serviço*, execute as seguintes etapas:
++
+.. Marque a caixa de seleção *Gerenciar qualidade do serviço de armazenamento* se quiser habilitar a QoS de armazenamento para o FlexVol volume para gerenciar a performance do workload.
+.. Crie um novo grupo de políticas de QoS de storage ou selecione um grupo de políticas existente para controlar o desempenho de entrada/saída (e/S) do FlexVol volume:
++
+|===
+| Se você quiser... | Faça isso... 
+
+
+ a| 
+Crie um novo grupo de políticas
+ a| 
+... Selecione *novo Grupo de políticas*.
+... Especifique o nome do grupo de políticas.
+... Especifique o limite mínimo de taxa de transferência.
++
+**** No System Manager 9,5, você pode definir o limite mínimo de taxa de transferência apenas com uma personalidade otimizada para All Flash baseada em performance. No System Manager 9,6, você pode definir o limite mínimo de taxa de transferência para o grupo de políticas.
+**** Não é possível definir o limite mínimo de taxa de transferência para volumes em um agregado habilitado para FabricPool.
+**** Se você não especificar o valor mínimo da taxa de transferência ou se o valor mínimo da taxa de transferência estiver definido como 0, o sistema exibirá automaticamente "'nenhum'" como o valor.
++
+Este valor é sensível a maiúsculas e minúsculas.
+
+
+
+... Especifique o limite máximo de taxa de transferência para garantir que a carga de trabalho dos objetos no grupo de políticas não exceda o limite de taxa de transferência especificado.
++
+**** O limite mínimo de rendimento e o limite máximo de rendimento devem ser do mesmo tipo de unidade.
+**** Se você não especificar o limite mínimo de taxa de transferência, poderá definir o limite máximo de taxa de transferência em IOPS, B/s, KB/s, MB/s e assim por diante.
+**** Se você não especificar o valor máximo da taxa de transferência, o sistema exibirá automaticamente "'Unlimited'" como o valor.
++
+Este valor é sensível a maiúsculas e minúsculas. A unidade especificada não afeta a taxa de transferência máxima.
+
+
+
+
+
+
+
+ a| 
+Selecione um grupo de políticas existente
+ a| 
+... Selecione *Grupo de políticas existente* e clique em *escolha* para selecionar um grupo de políticas existente na caixa de diálogo Selecionar Grupo de políticas.
+... Especifique o limite mínimo de taxa de transferência.
++
+**** No System Manager 9,5, você pode definir o limite mínimo de taxa de transferência apenas com uma personalidade otimizada para All Flash baseada em performance. No System Manager 9,6, você pode definir o limite mínimo de taxa de transferência para o grupo de políticas.
+**** Não é possível definir o limite mínimo de taxa de transferência para volumes em um agregado habilitado para FabricPool.
+**** Se você não especificar o valor mínimo da taxa de transferência ou se o valor mínimo da taxa de transferência estiver definido como 0, o sistema exibirá automaticamente "'nenhum'" como o valor.
++
+Este valor é sensível a maiúsculas e minúsculas.
+
+
+
+... Especifique o limite máximo de taxa de transferência para garantir que a carga de trabalho dos objetos no grupo de políticas não exceda o limite de taxa de transferência especificado.
++
+**** O limite mínimo de rendimento e o limite máximo de rendimento devem ser do mesmo tipo de unidade.
+**** Se você não especificar o limite mínimo de taxa de transferência, poderá definir o limite máximo de taxa de transferência em IOPS, B/s, KB/s, MB/s e assim por diante.
+**** Se você não especificar o valor máximo da taxa de transferência, o sistema exibirá automaticamente "'Unlimited'" como o valor.
++
+Este valor é sensível a maiúsculas e minúsculas. A unidade especificada não afeta a taxa de transferência máxima.
+
+
+
++
+Se o grupo de políticas for atribuído a mais de um objeto, a taxa de transferência máxima especificada será compartilhada entre os objetos.
+
+
+
+|===
+
+
+. Na guia *proteção*, execute as seguintes etapas:
++
+.. Especifique se deseja ativar *proteção por volume*.
++
+Um volume que não seja FabricPool FlexGroup pode ser protegido com um volume FabricPool FlexGroup.
+
++
+Um volume FabricPool FlexGroup pode ser protegido com um volume que não seja FabricPool FlexGroup.
+
+.. Selecione o tipo *Replication*:
+
+
++
+|===
+| Se você selecionou o tipo de replicação como... | Faça isso... 
+
+
+ a| 
+Assíncrono
+ a| 
+.. *Opcional:* se você não souber o tipo de replicação e o tipo de relacionamento, clique em *Ajude-me a escolher*, especifique os valores e clique em *aplicar*.
+.. Selecione o tipo de relacionamento.
++
+O tipo de relacionamento pode ser espelho, cofre ou espelho e cofre.
+
+.. Selecione um cluster e um SVM para o volume de destino.
++
+Se o cluster selecionado estiver executando uma versão do software ONTAP anterior ao ONTAP 9.3, então somente SVMs peered serão listadas. Se o cluster selecionado estiver executando o ONTAP 9.3 ou posterior, os SVMs peered e os SVMs permitidos serão listados.
+
+.. Modifique o sufixo do nome do volume, se necessário.
+
+
+
+
+ a| 
+Síncrono
+ a| 
+.. *Opcional:* se você não souber o tipo de replicação e o tipo de relacionamento, clique em *Ajude-me a escolher*, especifique os valores e clique em *aplicar*.
+.. Selecione a política de sincronização.
++
+A política de sincronização pode ser StrictSync ou Sync.
+
+.. Selecione um cluster e um SVM para o volume de destino.
++
+Se o cluster selecionado estiver executando uma versão do software ONTAP anterior ao ONTAP 9.3, então somente SVMs peered serão listadas. Se o cluster selecionado estiver executando o ONTAP 9.3 ou posterior, os SVMs peered e os SVMs permitidos serão listados.
+
+.. Modifique o sufixo do nome do volume, se necessário.
+
+
+|===
+. Clique em *criar*.
+. Verifique se o volume que você criou está incluído na lista de volumes na janela *volume*.
++
+O volume é criado com segurança estilo UNIX e permissões de "execução de gravação" do UNIX 700 para o proprietário.
+
+
+
+*Informações relacionadas*
+
+xref:reference_volumes_window.adoc[Janela volumes]

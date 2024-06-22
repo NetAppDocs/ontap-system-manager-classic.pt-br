@@ -1,0 +1,39 @@
+---
+permalink: online-help-96-97/task_breaking_snapmirror_relationships.html 
+sidebar: sidebar 
+keywords: snapmirror, break, relationship, dp, rw, online, help 
+summary: Você deve quebrar um relacionamento do SnapMirror se uma fonte do SnapMirror ficar indisponível e quiser que os aplicativos clientes possam acessar os dados do destino do espelhamento. 
+---
+= Quebre os relacionamentos do SnapMirror com o Gerenciador de sistemas - ONTAP 9 .7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para quebrar um relacionamento com o SnapMirror. Você deve quebrar um relacionamento do SnapMirror se uma fonte do SnapMirror ficar indisponível e quiser que os aplicativos clientes possam acessar os dados do destino do espelhamento. Depois que a relação SnapMirror é interrompida, o tipo de volume de destino muda de "proteção de dados" (DP) para "leitura/gravação" (RW).
+
+.Antes de começar
+* O destino SnapMirror deve estar no estado inativo ou inativo.
+* O volume de destino deve ser montado no namespace de máquina virtual de storage de destino (SVM).
+
+
+.Sobre esta tarefa
+* Você pode usar o volume de destino para fornecer dados enquanto você reparar ou substituir a origem, atualizar a origem e restabelecer a configuração original dos sistemas.
+* Você pode quebrar as relações do SnapMirror entre os sistemas ONTAP e os sistemas de storage da SolidFire.
+* Se você estiver quebrando uma relação de volume do FlexGroup, será necessário atualizar a página para exibir o status atualizado da relação.
+
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação de espelho que você deseja quebrar.
+. Clique em *operações* > *Break*.
+. Marque a caixa de seleção de confirmação e clique em *Break*.
+
+
+.Resultados
+A relação do SnapMirror de proteção de dados está quebrada. O tipo de volume de destino muda de proteção de dados (DP), somente leitura, para leitura/gravação (RW). O sistema armazena a cópia Snapshot de base para o relacionamento de espelhamento de proteção de dados para uso posterior.
+
+*Informações relacionadas*
+
+xref:reference_protection_window.adoc[Janela de proteção]

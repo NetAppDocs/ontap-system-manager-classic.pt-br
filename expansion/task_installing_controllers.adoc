@@ -1,0 +1,53 @@
+---
+permalink: expansion/task_installing_controllers.html 
+sidebar: sidebar 
+keywords: install, controller, exist, cluster, installation, setup, instruction, install the controllers 
+summary: Quando instalar controladores que serão adicionados a um cluster existente, tem de seguir os três primeiros passos das instruções de instalação e configuração adequadas. 
+---
+= Instale os controladores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando você instalar controladores que serão adicionados a um cluster existente, você deve seguir os três primeiros passos das instruções de instalação e configuração apropriadas_.
+
+[NOTE]
+.Sobre esta tarefa
+====
+A partir do ONTAP 9.0, o modo HA é ativado por padrão no novo hardware.
+
+====
+.Passos
+. Obtenha as _instruções de instalação e configuração_ para o número do modelo FAS do módulo do controlador que pretende adicionar ao cluster.
++
+** Para um novo módulo de controlador, o documento está disponível na caixa.
+** Para um módulo de controlador reutilizado, pode transferir o documento. https://mysupport.netapp.com/site/docs-and-kb["Documentação do NetApp"]
+
+
+. Siga a seção _preparar para instalação_ com as seguintes exceções:
++
+** Você pode ignorar quaisquer instruções sobre o download de software ou uma Planilha.
+** Você deve fornecer uma conexão de console serial, mesmo que não seja mencionada nas _instruções de instalação e configuração_.
++
+Você precisa de um console serial porque você deve usar a CLI nodeshell para configurar LIFs de gerenciamento de nó.
+
++
+Se a seção ONTAP não mencionar o console serial, você pode ver a seção 7-mode.
+
+
+
+. Siga a seção _Instalar hardware_.
+. Siga a seção _Cable storage_.
+. Ignore a maior parte da seção _Complete System Setup_ com as seguintes exceções:
++
+** Se instruído a fazê-lo, você deve ligar todos os compartimentos de disco e verificar as IDs.
+** Você deve fazer o cabo do console serial para que você possa acessar o nó.
++
+Se a seção ONTAP não mencionar o console serial, você pode ver a seção 7-mode.
+
+
+
+. Ignore a seção _complete Configuration_.
+

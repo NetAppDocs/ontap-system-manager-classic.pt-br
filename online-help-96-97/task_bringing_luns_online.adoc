@@ -1,0 +1,27 @@
+---
+permalink: online-help-96-97/task_bringing_luns_online.html 
+sidebar: sidebar 
+keywords: bring, lun, online, management, tab, online, help, system, manager 
+summary: Você pode usar a guia Gerenciamento de LUN no System Manager para colocar LUNs selecionados on-line e disponibilizá-los para o host. 
+---
+= Coloque LUNs online com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a guia *Gerenciamento de LUN* no ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para colocar LUNs selecionados online e disponibilizá-los para o host.
+
+.Antes de começar
+Qualquer aplicativo host que acesse o LUN deve ser desativado ou sincronizado.
+
+.Passos
+. Clique em *armazenamento* > *LUNs*.
+. Na guia *Gerenciamento de LUN*, selecione um ou mais LUNs que você deseja colocar online.
+. Clique em *Status* > *Online*.
+
+
+*Informações relacionadas*
+
+xref:reference_luns_window.adoc[Janela LUNs]

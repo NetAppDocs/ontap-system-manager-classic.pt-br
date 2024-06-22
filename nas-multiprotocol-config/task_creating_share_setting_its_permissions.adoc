@@ -1,0 +1,44 @@
+---
+permalink: nas-multiprotocol-config/task_creating_share_setting_its_permissions.html 
+sidebar: sidebar 
+keywords: windows, user, access, volume, create, cifs, restrict, access, modify, control, list, acl, share, create a share and set its permission 
+summary: 'Antes que os usuários do Windows possam acessar um volume, você deve criar um compartilhamento CIFS no volume e restringir o acesso ao compartilhamento modificando a lista de controle de acesso (ACL) para o compartilhamento.' 
+---
+= Crie um compartilhamento e defina suas permissões
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes que os usuários do Windows possam acessar um volume, você deve criar um compartilhamento CIFS no volume e restringir o acesso ao compartilhamento modificando a lista de controle de acesso (ACL) para o compartilhamento.
+
+.Sobre esta tarefa
+Para fins de teste, você deve permitir o acesso apenas aos administradores. Mais tarde, depois de ter verificado que o volume está acessível, você pode permitir o acesso a mais clientes.
+
+.Passos
+. Navegue até a janela *shares*.
+. Crie um compartilhamento para que os clientes SMB possam acessar o volume:
++
+.. Clique em *criar compartilhamento*.
+.. Na caixa de diálogo *criar compartilhamento*, clique em *Procurar*, expanda a hierarquia do namespace e selecione o volume que você criou anteriormente.
+.. Se pretender que o nome da partilha seja diferente do nome do volume, altere o nome da partilha.
+.. Clique em *criar*.
+
+
++
+O compartilhamento é criado com uma ACL padrão definida como Controle Total para o grupo todos.
+
+. Restringir o acesso ao compartilhamento modificando a ACL de compartilhamento:
++
+.. Selecione o compartilhamento e clique em *Editar*.
+.. Na guia *permissões*, selecione o grupo *todos* e clique em *Remover*.
+.. Clique em *Adicionar* e insira o nome de um grupo de administradores definido no domínio do ative Directory do Windows que inclui o SVM.
+.. Com o novo grupo de administradores selecionado, selecione todas as permissões para ele.
+.. Clique em *Salvar e fechar*.
+
+
++
+As permissões de acesso de compartilhamento atualizadas são listadas no painel Controle de acesso de compartilhamento.
+
+

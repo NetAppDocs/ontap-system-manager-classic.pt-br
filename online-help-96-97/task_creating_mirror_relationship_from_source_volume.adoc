@@ -1,0 +1,112 @@
+---
+permalink: online-help-96-97/task_creating_mirror_relationship_from_source_volume.html 
+sidebar: sidebar 
+keywords: create, mirror, relationship, source, lvm, system, manager, online, help 
+summary: 'Você pode usar o System Manager para criar uma relação de espelhamento a partir da máquina virtual de armazenamento de origem (SVM) e para atribuir uma política de espelhamento e uma programação à relação de espelhamento. A cópia espelhada permite a rápida disponibilidade de dados se os dados no volume de origem estiverem corrompidos ou perdidos.' 
+---
+= Crie uma relação espelhada a partir de uma fonte SVM com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para criar uma relação de espelhamento a partir da máquina virtual de armazenamento de origem (SVM) e para atribuir uma política de espelhamento e uma programação à relação de espelhamento. A cópia espelhada permite a rápida disponibilidade de dados se os dados no volume de origem estiverem corrompidos ou perdidos.
+
+.Antes de começar
+* A licença SnapMirror deve estar ativada no cluster de origem e no cluster de destino.
++
+[NOTE]
+====
+** Para algumas plataformas, não é obrigatório que o cluster de origem tenha a licença SnapMirror ativada se o cluster de destino tiver a licença SnapMirror e a licença de otimização de proteção de dados ativada.
+** Depois que a licença DPO estiver ativada no cluster de destino, tem de atualizar o browser do cluster de origem para ativar a `Protect` opção.
+
+
+====
+* Ao espelhar um volume SnapLock, a licença SnapMirror deve ser instalada no cluster de origem e no cluster de destino, e a licença SnapLock deve ser instalada no cluster de destino.
+* O cluster de origem e o cluster de destino, bem como o SVM de origem e destino devem estar em um relacionamento saudável com os pares.
+* O agregado de destino deve ter espaço disponível.
+* Os volumes do FlexVol devem estar online e do tipo leitura/gravação.
+* O tipo de agregado SnapLock deve ser o mesmo em ambos os clusters.
+* Um máximo de 25 volumes pode ser protegido em uma seleção.
+* Se você estiver se conetando de um cluster que executa o ONTAP 9.2 ou anterior a um cluster remoto no qual a autenticação SAML (Security Assertion Markup Language) está ativada, a autenticação baseada em senha deve ser habilitada no cluster remoto.
+
+
+.Sobre esta tarefa
+* O System Manager não oferece suporte a um relacionamento em cascata.
++
+Por exemplo, um volume de destino em uma relação não pode ser o volume de origem em outra relação.
+
+* Você pode criar uma relação de espelhamento entre volumes SnapLock do mesmo tipo somente.
++
+Por exemplo, se o volume de origem for um volume SnapLock Enterprise, o volume de destino também deve ser um volume SnapLock Enterprise.
+
+* Se a encriptação estiver ativada no volume de origem e o cluster de destino estiver a executar uma versão do software ONTAP anterior ao ONTAP 9.3, a encriptação é desativada por predefinição no volume de destino.
+* Os SVMs que são peered somente para aplicativos FlexCache e não têm permissões de peering para aplicativos SnapMirror não são mostrados na lista de SVMs nesta tarefa. Você pode usar o fluxo de trabalho de peering aprimorado do Gerenciador de sistema ONTAP 9,6 para dar permissão ou ponto a esses SVMs. Em seguida, você pode selecioná-los nesta tarefa para criar uma relação de proteção.
+
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. No menu suspenso no campo *SVM*, selecione *All SVMs*.
+. Selecione os volumes para os quais você deseja criar relações espelhadas e clique em *mais ações* > *proteger*.
++
+A opção *Protect* está disponível apenas para um volume de leitura/gravação.
+
+. Selecione o tipo *Replication*:
++
+|===
+| Se você selecionou o tipo de replicação como... | Faça isso... 
+
+
+ a| 
+Assíncrono
+ a| 
+.. *Opcional:* se você não souber o tipo de replicação e o tipo de relacionamento, clique em *Ajude-me a escolher*, especifique os valores e clique em *aplicar*.
+.. Selecione o tipo de relacionamento.
++
+O tipo de relacionamento pode ser espelho, cofre ou espelho e cofre.
+
+.. Selecione um cluster e um SVM.
++
+Se o cluster selecionado estiver executando uma versão do software ONTAP anterior ao ONTAP 9.3, então somente SVMs peered serão listadas. Se o cluster selecionado estiver executando o ONTAP 9.3 ou posterior, os SVMs peered e os SVMs permitidos serão listados.
+
+.. Modifique o sufixo do nome do volume, se necessário.
+
+
+
+
+ a| 
+Síncrono
+ a| 
+.. *Opcional:* se você não souber o tipo de replicação e o tipo de relacionamento, clique em *Ajude-me a escolher*, especifique os valores e clique em *aplicar*.
+.. Selecione a política de sincronização.
++
+A política de sincronização pode ser StrictSync ou Sync.
+
+.. Selecione um cluster e um SVM.
++
+Se o cluster selecionado estiver executando uma versão do software ONTAP anterior ao ONTAP 9.3, então somente SVMs peered serão listadas. Se o cluster selecionado estiver executando o ONTAP 9.3 ou posterior, os SVMs peered e os SVMs permitidos serão listados.
+
+.. Modifique o sufixo do nome do volume, se necessário.
+
+
+|===
+. Clique em *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]* *, atualize a política de proteção e a programação de proteção, selecione *agregado habilitado para FabricPool* e, em seguida, inicialize a relação de proteção.
+. Clique em *Salvar*.
+
+
+.Resultados
+Um novo volume de destino do tipo _dp_ é criado com as seguintes configurações padrão:
+
+* O crescimento automático está ativado.
+* A compressão está desativada.
+* O atributo de idioma é definido para corresponder ao atributo de idioma do volume de origem.
+
+
+Se o FlexVol volume de destino estiver em um SVM diferente do FlexVol volume de origem, então um relacionamento entre pares será criado entre os dois SVMs se o relacionamento ainda não existir.
+
+É criada uma relação de espelho entre o volume de origem e o volume de destino. A cópia Snapshot base é transferida para o volume de destino se você optou por inicializar o relacionamento.
+
+*Informações relacionadas*
+
+xref:reference_protection_window.adoc[Janela de proteção]

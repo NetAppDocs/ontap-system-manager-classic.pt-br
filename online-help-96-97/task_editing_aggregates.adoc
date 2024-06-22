@@ -1,0 +1,52 @@
+---
+permalink: online-help-96-97/task_editing_aggregates.html 
+sidebar: sidebar 
+keywords: online, help, edit, aggregates, raid, type, group, size, online, help 
+summary: Você pode usar o System Manager para alterar o nome do agregado, o tipo RAID e o tamanho do grupo RAID de um agregado existente, quando necessário. 
+---
+= Edite agregados com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para alterar o nome do agregado, o tipo RAID e o tamanho do grupo RAID de um agregado existente, quando necessário.
+
+.Antes de começar
+Para modificar o tipo RAID de um agregado de RAID4 para RAID-DP, o agregado deve conter discos sobressalentes compatíveis suficientes, excluindo os hot spares.
+
+.Sobre esta tarefa
+* Não é possível alterar o grupo RAID de sistemas ONTAP que suportam LUNs de matriz.
++
+RAID0 é a única opção disponível.
+
+* Não é possível alterar o tipo RAID de discos particionados.
++
+RAID-DP é a única opção disponível para discos particionados.
+
+* Não é possível renomear um agregado SnapLock Compliance.
+* Se o agregado consistir em SSDs com pool de armazenamento, você poderá modificar apenas o nome do agregado.
+* Se o tamanho do disco de paridade tripla for de 10 TB e os outros discos forem menores que 10 TB, você poderá selecionar RAID-DP ou RAID-TEC como o tipo RAID.
+* Se o tamanho do disco de paridade tripla for de 10 TB e se mesmo um dos outros discos for maior que 10 TB de tamanho, o RAID-TEC será a única opção disponível para o tipo RAID.
+
+
+.Passos
+. Escolha um dos seguintes métodos:
++
+** Clique em *aplicativos e camadas* > *camadas de armazenamento*.
+** Clique em *Storage* > *Aggregates & Disks* > *Aggregates*.
+
+
+. Selecione o agregado que deseja editar e clique em *Editar*.
+. Na caixa de diálogo *Editar agregado*, modifique o nome do agregado, o tipo RAID e o tamanho do grupo RAID, conforme necessário.
+. Clique em *Salvar*.
+
+
+*Informações relacionadas*
+
+xref:reference_aggregates_window.adoc[Janela agregados]
+
+xref:concept_what_compatible_spare_disks_are.adoc[Quais são os discos sobressalentes compatíveis]
+
+xref:reference_storage_tiers_window.adoc[Janela camadas de armazenamento]

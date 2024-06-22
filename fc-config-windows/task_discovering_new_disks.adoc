@@ -1,0 +1,46 @@
+---
+permalink: fc-config-windows/task_discovering_new_disks.html 
+sidebar: sidebar 
+keywords: lun, storage, virtual, machine, svm, appear, disk, windows, host, automatic, discover, manual, rescan, discover new disk 
+summary: 'As LUNs na sua máquina virtual de storage (SVM) aparecem como discos no host do Windows. Quaisquer novos discos para LUNs adicionados ao sistema não são detetados automaticamente pelo host. Você deve redigitalizar manualmente os discos para descobri-los.' 
+---
+= Descubra novos discos
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+As LUNs na sua máquina virtual de storage (SVM) aparecem como discos no host do Windows. Quaisquer novos discos para LUNs adicionados ao sistema não são detetados automaticamente pelo host. Você deve redigitalizar manualmente os discos para descobri-los.
+
+.Passos
+. Abra o utilitário Gerenciamento de computador do Windows:
++
+|===
+| Se você estiver usando... | Navegue até... 
+
+
+ a| 
+Windows Server 2012
+ a| 
+*Ferramentas* > *Gerenciamento de computador*
+
+
+
+ a| 
+Windows Server 2008
+ a| 
+*Iniciar* > *Ferramentas administrativas* > *Gerenciamento de computador*
+
+
+
+ a| 
+Windows Server 2016
+ a| 
+*Iniciar* *> Ferramentas administrativas* *> Gerenciamento de computadores*
+
+|===
+. Expanda o nó *Storage* na árvore de navegação.
+. Clique em *Disk Management*.
+. Clique em *Ação* > *Rescan Disks*.
+

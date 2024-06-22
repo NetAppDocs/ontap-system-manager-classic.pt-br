@@ -1,0 +1,22 @@
+---
+permalink: online-help-96-97/task_starting_svms.html 
+sidebar: sidebar 
+keywords: system, manager, data, access, start, svm, online, help, storage, virtual, machine 
+summary: 'Use o System Manager para fornecer acesso a dados a partir de uma máquina virtual de storage (SVM) iniciando o SVM.' 
+---
+= Inicie o SVMs com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para fornecer acesso a dados de uma máquina virtual de storage (SVM) iniciando o SVM.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM que você deseja iniciar e clique em *Iniciar*.
+
+
+.Resultados
+O SVM começa a fornecer dados aos clientes.

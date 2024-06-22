@@ -1,0 +1,29 @@
+---
+permalink: online-help-96-97/task_deleting_luns.html 
+sidebar: sidebar 
+keywords: delete, lun, system, manager, online, help, aggregate 
+summary: É possível usar o System Manager para excluir LUNs e retornar o espaço usado pelas LUNs aos agregados ou volumes que contêm. 
+---
+= Excluir LUNs com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para excluir LUNs e retornar o espaço usado pelas LUNs aos agregados ou volumes que contêm.
+
+.Antes de começar
+* O LUN deve estar offline.
+* O LUN deve ser não mapeado de todos os hosts do iniciador.
+
+
+.Passos
+. Clique em *armazenamento* > *LUNs*.
+. Na guia *Gerenciamento de LUN*, selecione um ou mais LUNs que você deseja excluir e clique em *Excluir*.
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
+
+
+*Informações relacionadas*
+
+xref:reference_luns_window.adoc[Janela LUNs]

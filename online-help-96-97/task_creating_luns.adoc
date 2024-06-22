@@ -1,0 +1,108 @@
+---
+permalink: online-help-96-97/task_creating_luns.html 
+sidebar: sidebar 
+keywords: create, lun, system, manager, qtree, online, help 
+summary: 'Você pode usar o System Manager para criar LUNs para um agregado, volume ou qtree existente quando houver espaço livre disponível. Você pode criar um LUN em um volume existente ou criar um novo FlexVol volume para o LUN. Também é possível habilitar a qualidade do serviço (QoS) de storage para gerenciar a performance do workload.' 
+---
+= Crie LUNs com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para criar LUNs para um agregado, volume ou qtree existente quando houver espaço livre disponível. Você pode criar um LUN em um volume existente ou criar um novo FlexVol volume para o LUN. Também é possível habilitar a qualidade do serviço (QoS) de storage para gerenciar a performance do workload.
+
+.Sobre esta tarefa
+Se você especificar a ID LUN, o System Manager verificará a validade da ID LUN antes de adicioná-la. Se você não especificar um ID LUN, o software ONTAP atribuirá automaticamente um.
+
+Ao selecionar o tipo de multiprotocolo LUN, você deve ter considerado as diretrizes para a utilização de cada tipo. O tipo de multiprotocolo LUN, ou tipo de sistema operacional, determina o layout dos dados no LUN e os tamanhos mínimo e máximo do LUN. Após a criação do LUN, não é possível modificar o tipo de sistema operacional do host LUN.
+
+Em uma configuração do MetroCluster, o Gerenciador de sistema exibe somente os seguintes agregados para a criação de volumes FlexVol para o LUN:
+
+* No modo normal, quando você cria volumes em SVMs de origem sincronizada ou SVMs de fornecimento de dados no site primário, apenas os agregados que pertencem ao cluster no site primário são exibidos.
+* No modo de comutação, quando você cria volumes em SVMs de destino sincronizado ou SVMs de fornecimento de dados no site sobrevivente, somente agregados comutados são exibidos.
+
+
+.Passos
+. Clique em *armazenamento* > *LUNs*.
+. Na guia *Gerenciamento de LUN*, clique em *criar*.
+. PESQUISE e selecione um SVM no qual você deseja criar os LUNs.
+. No *Assistente de criação de LUN*, especifique o nome, tamanho, tipo, descrição do LUN e selecione *reserva de espaço* e clique em *seguinte*.
+. Crie um novo FlexVol volume para o LUN ou selecione um volume ou qtree existente e, em seguida, clique em *seguinte*.
+. Adicione grupos de iniciadores se quiser controlar o acesso do host ao LUN e clique em *Avançar*.
+. Marque a caixa de seleção *Manage Storage Quality of Service* (Gerenciar qualidade do serviço de armazenamento*) se desejar gerenciar o desempenho da carga de trabalho do LUN.
+. Crie um novo grupo de políticas de QoS de storage ou selecione um grupo de políticas existente para controlar o desempenho de entrada/saída (e/S) do LUN:
++
+|===
+| Se você quiser... | Faça isso... 
+
+
+ a| 
+Crie um novo grupo de políticas
+ a| 
+.. Selecione *novo Grupo de políticas*
+.. Especifique o nome do grupo de políticas.
+.. Especifique o limite mínimo de taxa de transferência.
++
+*** No System Manager 9,5, você pode definir o limite mínimo de taxa de transferência apenas com uma personalidade otimizada para All Flash baseada em performance. No System Manager 9,6, você também pode definir o limite mínimo de taxa de transferência para sistemas ONTAP Select Premium.
+*** Não é possível definir o limite mínimo de taxa de transferência para volumes em um agregado habilitado para FabricPool.
+*** Se você não especificar o valor mínimo da taxa de transferência ou se o valor mínimo da taxa de transferência estiver definido como 0, o sistema exibirá automaticamente "'nenhum'" como o valor.
++
+Este valor é sensível a maiúsculas e minúsculas.
+
+
+
+.. Especifique o limite máximo de taxa de transferência para garantir que a carga de trabalho dos objetos no grupo de políticas não exceda o limite de taxa de transferência especificado.
++
+*** O limite mínimo de rendimento e o limite máximo de rendimento devem ser do mesmo tipo de unidade.
+*** Se você não especificar o limite mínimo de taxa de transferência, poderá definir o limite máximo de taxa de transferência em IOPS e B/s, KB/s, MB/s e assim por diante.
+*** Se você não especificar o valor máximo da taxa de transferência, o sistema exibirá automaticamente "'Unlimited'" como o valor e esse valor será sensível a maiúsculas e minúsculas.
++
+A unidade especificada não afeta a taxa de transferência máxima.
+
+
+
+
+
+
+
+ a| 
+Selecione um grupo de políticas existente
+ a| 
+.. Selecione *Grupo de políticas existente* e clique em *escolha* para selecionar um grupo de políticas existente na caixa de diálogo Selecionar Grupo de políticas.
+.. Especifique o limite mínimo de taxa de transferência.
++
+*** No System Manager 9,5, você pode definir o limite mínimo de taxa de transferência apenas com uma personalidade otimizada para All Flash baseada em performance. No System Manager 9,6, você também pode definir o limite mínimo de taxa de transferência para sistemas ONTAP Select Premium.
+*** Não é possível definir o limite mínimo de taxa de transferência para volumes em um agregado habilitado para FabricPool.
+*** Se você não especificar o valor mínimo da taxa de transferência ou se o valor mínimo da taxa de transferência estiver definido como 0, o sistema exibirá automaticamente "'nenhum'" como o valor.
++
+Este valor é sensível a maiúsculas e minúsculas.
+
+
+
+.. Especifique o limite máximo de taxa de transferência para garantir que a carga de trabalho dos objetos no grupo de políticas não exceda o limite de taxa de transferência especificado.
++
+*** O limite mínimo de rendimento e o limite máximo de rendimento devem ser do mesmo tipo de unidade.
+*** Se você não especificar o limite mínimo de taxa de transferência, poderá definir o limite máximo de taxa de transferência em IOPS e B/s, KB/s, MB/s e assim por diante.
+*** Se você não especificar o valor máximo da taxa de transferência, o sistema exibirá automaticamente "'Unlimited'" como o valor e esse valor será sensível a maiúsculas e minúsculas.
++
+A unidade especificada não afeta a taxa de transferência máxima.
+
+
+
++
+Se o grupo de políticas for atribuído a mais de um objeto, a taxa de transferência máxima especificada será compartilhada entre os objetos.
+
+
+
+|===
+. Reveja os detalhes especificados na janela *Resumo LUN* e, em seguida, clique em *seguinte*.
+. Confirme os detalhes e clique em *Finish* para concluir o assistente.
+
+
+*Informações relacionadas*
+
+xref:reference_luns_window.adoc[Janela LUNs]
+
+xref:concept_lun_multiprotocol_type_guidelines.adoc[Diretrizes para a utilização do tipo multiprotocolo LUN]

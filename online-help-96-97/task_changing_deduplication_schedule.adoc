@@ -1,0 +1,27 @@
+---
+permalink: online-help-96-97/task_changing_deduplication_schedule.html 
+sidebar: sidebar 
+keywords: change, deduplication, schedule, online, help, system, manager 
+summary: Você pode usar o System Manager para alterar o cronograma de deduplicação escolhendo executar a deduplicação manualmente, automaticamente ou em um cronograma especificado por você. 
+---
+= Altere o cronograma de deduplicação com o System Manager - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para alterar o cronograma de deduplicação escolhendo executar a deduplicação manualmente, automaticamente ou em um cronograma especificado.
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. No menu suspenso no campo *SVM*, selecione *All SVMs*.
+. Selecione o volume de leitura/gravação para o qual você deseja modificar o cronograma de deduplicação.
+. Clique em *Editar* e, em seguida, clique na guia *eficiência de armazenamento*.
+. Altere o cronograma de deduplicação conforme necessário.
+. Clique em *Salvar e fechar*.
+
+
+*Informações relacionadas*
+
+xref:reference_volumes_window.adoc[Janela volumes]

@@ -1,0 +1,104 @@
+---
+permalink: online-help-96-97/task_assigning_volumes_to_storage_qos.html 
+sidebar: sidebar 
+keywords: assign, volumes, storage, qos, online, help, flexgroup, online, help, quality, serice 
+summary: 'É possível limitar a taxa de transferência de volumes do FlexVol e volumes do FlexGroup atribuindo-os a grupos de políticas de qualidade do serviço (QoS) de storage. Você pode atribuir QoS de storage para novos volumes ou modificar os detalhes de QoS de storage dos volumes que já estão atribuídos a um grupo de políticas usando o System Manager.' 
+---
+= Atribua volumes à QoS de storage com o System Manager - ONTAP 9.7 e versões anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior ) para limitar a taxa de transferência de volumes FlexVol e volumes FlexGroup, atribuindo-os a grupos de políticas de qualidade do serviço (QoS) de storage. Você pode atribuir QoS de storage para novos volumes ou modificar os detalhes de QoS de storage dos volumes que já estão atribuídos a um grupo de políticas usando o System Manager.
+
+.Sobre esta tarefa
+* Você pode atribuir QoS de storage somente a volumes de leitura/gravação (RW) on-line.
+* Não é possível atribuir QoS de storage a um volume se os seguintes objetos de storage forem atribuídos a um grupo de políticas:
++
+** Máquina virtual de storage pai (SVM) do volume
+** LUNs filho do volume
+** Arquivos filhos do volume
+
+
+* Você pode atribuir QoS de storage ou modificar os detalhes de QoS para um máximo de 10 volumes simultaneamente.
+
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. No menu suspenso no campo *SVM*, selecione *All SVMs*.
+. Selecione um ou mais volumes para os quais deseja atribuir QoS de storage.
+. Clique em *mais ações* > *QoS de armazenamento*.
+. Na caixa de diálogo *Detalhes de qualidade do serviço*, marque a caixa de seleção *Gerenciar qualidade do serviço de armazenamento* se quiser gerenciar o desempenho da carga de trabalho do FlexVol volume.
++
+Se alguns dos volumes selecionados já estiverem atribuídos a um grupo de políticas, as alterações que você fizer poderão afetar o desempenho desses volumes.
+
+. Crie um novo grupo de políticas de QoS de storage ou selecione um grupo de políticas existente para controlar o desempenho de entrada/saída (e/S) do FlexVol volume:
++
+|===
+| Se você quiser... | Faça isso... 
+
+
+ a| 
+Crie um novo grupo de políticas
+ a| 
+.. Selecione *novo Grupo de políticas*.
+.. Especifique o nome do grupo de políticas.
+.. Especifique o limite mínimo de taxa de transferência.
++
+*** No System Manager 9,5, você pode definir o limite mínimo de taxa de transferência apenas com uma personalidade otimizada para All Flash baseada em performance. No System Manager 9,6, você também pode definir o limite mínimo de taxa de transferência para sistemas ONTAP Select Premium.
+*** Não é possível definir o limite mínimo de taxa de transferência para volumes em um agregado habilitado para FabricPool.
+*** Se você não especificar o valor mínimo da taxa de transferência ou se o valor mínimo da taxa de transferência estiver definido como 0, o sistema exibirá automaticamente "'nenhum'" como o valor.
++
+Este valor é sensível a maiúsculas e minúsculas.
+
+
+
+.. Especifique o limite máximo de taxa de transferência para impedir que a carga de trabalho dos objetos no grupo de políticas exceda o limite de taxa de transferência especificado.
++
+*** O limite mínimo de rendimento e o limite máximo de rendimento devem ser do mesmo tipo de unidade.
+*** Se você não especificar o limite mínimo de taxa de transferência, poderá definir o limite máximo de taxa de transferência em IOPS, B/s, KB/s, MB/s e assim por diante.
+*** Se você não especificar o valor máximo da taxa de transferência, o sistema exibirá automaticamente "'Unlimited'" como o valor.
++
+Este valor é sensível a maiúsculas e minúsculas. A unidade especificada não afeta a taxa de transferência máxima.
+
+
+
+
+
+
+
+ a| 
+Selecione um grupo de políticas existente
+ a| 
+.. Selecione *Grupo de políticas existente* e clique em *escolha* para selecionar um grupo de políticas existente na caixa de diálogo Selecionar Grupo de políticas.
+.. Especifique o limite mínimo de taxa de transferência.
++
+*** No System Manager 9,5, você pode definir o limite mínimo de taxa de transferência apenas com uma personalidade otimizada para All Flash baseada em performance. No System Manager 9,6, você também pode definir o limite mínimo de taxa de transferência para sistemas ONTAP Select Premium.
+*** Não é possível definir o limite mínimo de taxa de transferência para volumes em um agregado habilitado para FabricPool.
+*** Se você não especificar o valor mínimo da taxa de transferência ou se o valor mínimo da taxa de transferência estiver definido como 0, o sistema exibirá automaticamente "'nenhum'" como o valor.
++
+Este valor é sensível a maiúsculas e minúsculas.
+
+
+
+.. Especifique o limite máximo de taxa de transferência para impedir que a carga de trabalho dos objetos no grupo de políticas exceda o limite de taxa de transferência especificado.
++
+*** O limite mínimo de rendimento e o limite máximo de rendimento devem ser do mesmo tipo de unidade.
+*** Se você não especificar o limite mínimo de taxa de transferência, poderá definir o limite máximo de taxa de transferência em IOPS, B/s, KB/s, MB/s e assim por diante.
+*** Se você não especificar o valor máximo da taxa de transferência, o sistema exibirá automaticamente "'Unlimited'" como o valor. Este valor é sensível a maiúsculas e minúsculas. A unidade especificada não afeta a taxa de transferência máxima.
+
+
++
+Se o grupo de políticas for atribuído a mais de um objeto, a taxa de transferência máxima especificada será compartilhada entre os objetos.
+
+
+
+|===
+. *Opcional:* clique no link que especifica o número de volumes se você deseja revisar a lista de volumes selecionados e clique em *Discard* se quiser remover quaisquer volumes da lista.
++
+O link é exibido somente quando vários volumes são selecionados.
+
+. Clique em *OK*.
+

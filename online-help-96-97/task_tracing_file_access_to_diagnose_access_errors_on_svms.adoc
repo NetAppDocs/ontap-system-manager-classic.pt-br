@@ -1,0 +1,64 @@
+---
+permalink: online-help-96-97/task_tracing_file_access_to_diagnose_access_errors_on_svms.html 
+sidebar: sidebar 
+keywords: trace, file, access, diagnost, error, svm, system, manager, online, help 
+summary: 'A partir do System Manager 9,6, é possível diagnosticar erros de acesso a arquivos CIFS ou NFS em uma máquina virtual de storage (SVM).' 
+---
+= Trace acesso a arquivos para diagnosticar erros de acesso em SVMs com o System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do System Manager 9,6, é possível diagnosticar erros de acesso a arquivos CIFS ou NFS em uma máquina virtual de storage (SVM).
+
+.Sobre esta tarefa
+Problemas de acesso a arquivos, como um erro de "acesso negado", provavelmente ocorrerão quando houver problemas com uma configuração de compartilhamento, permissões ou mapeamento de usuários. Você pode usar o System Manager para ajudá-lo a resolver problemas de acesso a arquivos exibindo os resultados do rastreamento de acesso para o arquivo ou compartilhamento que um usuário deseja acessar. O System Manager mostra se o arquivo ou compartilhamento tem permissões de leitura, gravação ou execução eficazes e os motivos pelos quais o acesso é ou não eficaz.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM que contém os arquivos ou compartilhamentos para os quais foram recebidos erros de acesso ao arquivo.
+. Clique em *Trace File Access*.
++
+A janela Trace File Access (rastrear acesso ao arquivo) para o SVM selecionado mostra os pré-requisitos e as etapas necessárias para rastrear permissões de acesso ao arquivo.
+
+. Clique em *continuar* para iniciar o processo de rastreamento de arquivos.
+. Selecione o protocolo usado para acessar arquivos ou compartilhamentos no SVM selecionado.
+. No campo *Nome do usuário*, insira o nome do usuário que estava tentando acessar o arquivo ou compartilhar.
+. *Opcional:* clique image:../media/advanced_options.gif[""] para especificar mais detalhes para restringir o escopo do traçado.
++
+A janela de diálogo Opções avançadas permite especificar os seguintes detalhes:
+
++
+** *Endereço IP do cliente*: Especifique o endereço IP do cliente.
+** *File*: Especifique o nome do arquivo ou caminho do arquivo a ser rastreado.
+** *Mostrar resultados do Rastreamento*: Especifique se você deseja exibir somente entradas negadas de acesso ou todas as entradas. Clique em *Apply* para aplicar os detalhes especificados e retornar à janela Trace File Access (Acesso ao arquivo de rastreamento).
+
+
+. Clique em *Start Tracing*.
++
+O traçado é iniciado e é apresentada uma tabela de resultados. A tabela fica vazia até que os usuários recebam erros ao solicitar acesso a arquivos. A tabela de resultados é atualizada a cada 15 segundos e exibe mensagens em ordem cronológica inversa.
+
+. Notifique o usuário ou usuários afetados de que eles devem tentar acessar os arquivos nos próximos 60 minutos.
++
+Os detalhes das solicitações de acesso a arquivos negados são mostrados na tabela de resultados quando ocorrem erros para o nome de usuário especificado durante a duração do rastreamento. A coluna razões identifica os problemas que estão impedindo o usuário de acessar arquivos e razões pelas quais eles ocorreram.
+
+. *Opcional:* na coluna *razões* da tabela de resultados, clique em *Ver permissões* para visualizar as permissões do arquivo que o usuário está tentando acessar.
++
+** Quando o resultado do rastreamento mostra uma mensagem dizendo que o acesso não é concedido para "Sincronizar", "Controle de leitura", "atributos de leitura", "Executar", "ler EA", "escrever" ou "ler", a mensagem indica que o acesso desejado não foi concedido para o conjunto de permissões listadas. Para visualizar o status real das permissões, você precisa exibir as permissões usando o link fornecido.
+** Se você especificou o protocolo CIFS, a caixa de diálogo permissões efetivas de arquivo e compartilhamento será exibida, listando as permissões de arquivo e compartilhamento associadas ao compartilhamento e ao arquivo que o usuário está tentando acessar.
+** Se você especificou o protocolo NFS, a caixa de diálogo permissões de arquivo efetivas será exibida, listando as permissões de arquivo associadas ao arquivo que o usuário está tentando acessar. Uma marca de seleção indica que as permissões são concedidas e um "'X" indica que as permissões não são concedidas.
+
+
++
+Clique em *OK* para retornar à janela Trace File Access (Acesso ao arquivo de rastreamento).
+
+. *Opcional:* a tabela de resultados exibe dados somente leitura. Você pode executar as seguintes ações com os resultados do rastreamento:
++
+** Clique em *Copiar para a área de transferência* para copiar os resultados para a área de transferência.
+** Clique em *Exportar resultados do Rastreamento* para exportar os resultados para um arquivo CSV (Comma-separatedvalues).
+
+
+. Quando quiser terminar a operação de rastreamento, clique em *Parar Rastreamento*.
+

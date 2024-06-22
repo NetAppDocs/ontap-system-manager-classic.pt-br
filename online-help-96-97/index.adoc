@@ -1,0 +1,79 @@
+---
+permalink: online-help-96-97/index.html 
+sidebar: sidebar 
+keywords: system, manager, online, help, management, interface, understand, cluster 
+summary: 'O System Manager é uma interface gráfica de gerenciamento que permite gerenciar sistemas de storage e objetos de storage (como discos, volumes e agregados) e executar tarefas comuns de gerenciamento relacionadas a sistemas de storage usando um navegador da Web. Como administrador de cluster, você pode usar o System Manager para administrar todo o cluster e seus recursos.' 
+---
+= Gerenciamento de cluster usando o Gerenciador de sistema do OnCommand
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O System Manager é uma interface gráfica de gerenciamento baseada em HTML5 que permite gerenciar sistemas de storage e objetos de storage (como discos, volumes e agregados) e executar tarefas comuns de gerenciamento relacionadas a sistemas de storage a partir de um navegador da Web. O Gerenciador do sistema está incluído no software ONTAP como um serviço da Web, habilitado por padrão e acessível por meio de um navegador. Como administrador de cluster, você pode usar o System Manager para administrar todo o cluster e seus recursos.
+
+[NOTE]
+====
+O nome do System Manager foi alterado em relação às versões anteriores. As versões 9,5 e anteriores foram nomeadas OnCommand System Manager. As versões 9,6 e posteriores são agora chamadas de Gerenciador de sistema ONTAP.
+
+====
+O System Manager permite que você execute muitas tarefas comuns, como as seguintes:
+
+* Crie um cluster, configure uma rede e configure os detalhes de suporte para o cluster.
+* Configurar e gerenciar objetos de storage, como discos, agregados, volumes, qtrees e cotas.
+* Configurar protocolos como CIFS e NFS e provisionar o compartilhamento de arquivos.
+* Configurar protocolos como FC, FCoE, NVMe e iSCSI para acesso a bloco.
+* Crie e configure componentes de rede, como sub-redes, domínios de broadcast, interfaces de dados e gerenciamento e grupos de interfaces.
+* Configure e gerencie relacionamentos de espelhamento e cofre.
+* Realizar operações de gerenciamento de clusters, nós de storage e máquina virtual de storage (SVM).
+* Criar e configurar SVMs, além de gerenciar objetos de storage associados a SVMs e serviços.
+* Monitorar e gerenciar configurações de HA em um cluster.
+* Configure os processadores de serviço para fazer login, gerenciar, monitorar e administrar remotamente o nó, independentemente do estado do nó.
+
+
+
+
+== Ícones da janela do tablier
+
+Você pode ver os seguintes ícones ao visualizar o painel do sistema de armazenamento:
+
+|===
+| Ícone | Nome | Descrição 
+
+
+ a| 
+image:../media/statuswarning.gif["Imagem para aviso no painel do System Manager"]
+ a| 
+Aviso
+ a| 
+Há questões menores, mas nenhuma que exija atenção imediata.
+
+
+
+ a| 
+image:../media/statuserror.gif["Imagem para erro no painel do System Manager"]
+ a| 
+Erro
+ a| 
+Problemas que podem eventualmente resultar em tempo de inatividade e, portanto, exigem atenção.
+
+
+
+ a| 
+image:../media/statuscritical.gif["Imagem para crítica no painel do System Manager"]
+ a| 
+Crítico
+ a| 
+O sistema de storage não está fornecendo dados ou não pode ser contatado. Atenção imediata é necessária.
+
+
+
+ a| 
+image:../media/arrowright.gif["Imagem para navegação no painel do System Manager"]
+ a| 
+Seta de ligação
+ a| 
+Se isso for exibido ao lado de um item de linha em um painel de painel, clicar nele vincula outra página da qual você pode obter mais informações sobre o item de linha ou fazer alterações no item de linha.
+
+|===

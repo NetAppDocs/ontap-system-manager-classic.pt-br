@@ -1,0 +1,116 @@
+---
+permalink: online-help-96-97/concept_unix.html 
+sidebar: sidebar 
+keywords: system, manager, unix, svm, online, help, command, button, group, tab, storage, virtual, machine 
+summary: 'Você pode usar o System Manager para manter uma lista de usuários e grupos UNIX locais para cada máquina virtual de storage (SVM).' 
+---
+= Usuários e grupos UNIX locais com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para manter uma lista de usuários e grupos UNIX locais para cada máquina virtual de storage (SVM).
+
+
+
+== Janela UNIX
+
+Você pode usar a janela UNIX para manter uma lista de usuários e grupos UNIX locais para cada máquina virtual de armazenamento (SVM). Você pode usar usuários e grupos UNIX locais para autenticação e mapeamentos de nomes.
+
+
+
+=== Separador grupos
+
+Você pode usar a guia grupos para adicionar, editar ou excluir grupos UNIX locais a um SVM.
+
+
+
+== Botões de comando
+
+* *Adicionar grupo*
++
+Abre a caixa de diálogo Adicionar grupo, que permite criar grupos UNIX locais para SVMs. Grupos UNIX locais são usados com usuários UNIX locais.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar grupo, que permite editar uma ID de grupo.
+
+* *Excluir*
++
+Elimina o grupo selecionado.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de grupos
+
+* *Nome do grupo*
++
+Exibe o nome do grupo.
+
+* *ID do grupo*
++
+Exibe a ID do grupo.
+
+
+
+
+
+=== Separador utilizadores
+
+Você pode usar a guia *Users* para adicionar, editar e excluir usuários UNIX que são locais para SVMs.
+
+
+
+=== Botões de comando
+
+* *Adicionar usuário*
++
+Abre a caixa de diálogo Adicionar usuário, que permite criar usuários UNIX locais para SVMs.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar usuário, que permite editar o ID de usuário, o grupo UNIX ao qual o usuário pertence e o nome completo do usuário.
+
+* *Excluir*
++
+Elimina o utilizador selecionado.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de utilizadores
+
+* *Nome de usuário*
++
+Exibe o nome do usuário.
+
+* *ID de usuário*
++
+Exibe a ID do usuário.
+
+* *Nome completo*
++
+Exibe o nome completo do usuário.
+
+* *ID principal do grupo*
++
+Exibe a ID do grupo ao qual o usuário pertence.
+
+* *Nome do grupo principal*
++
+Exibe o nome do grupo ao qual o usuário pertence.
+
+

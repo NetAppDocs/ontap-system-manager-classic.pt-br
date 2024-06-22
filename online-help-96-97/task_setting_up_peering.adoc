@@ -1,0 +1,244 @@
+---
+permalink: online-help-96-97/task_setting_up_peering.html 
+sidebar: sidebar 
+keywords: set, up, peering, intercluster, logical, interfaces, lif, node, online, help, svm, prerequisites, cluster, connectivity, requirements, passphrases 
+summary: 'A configuração do peering envolve a criação de interfaces lógicas entre clusters (LIFs) em cada nó, a criação de peering de cluster e a criação de peering SVM.' 
+---
+= Configure o peering com o Gerenciador de sistema - ONTAP 9 .7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para configurar o peering. A configuração do peering envolve a criação de interfaces lógicas entre clusters (LIFs) em cada nó, a criação de peering de cluster e a criação de peering SVM.
+
+image::../media/peering_workflow.gif[fluxo de trabalho de peering]
+
+
+
+== [[Pré-requisitos-peering, pré-requisitos para peering de cluster]] pré-requisitos para peering de cluster
+
+Antes de configurar o peering de cluster, você deve confirmar se os requisitos de conetividade, porta, endereço IP, sub-rede, firewall e nomenclatura de cluster são atendidos.
+
+
+
+=== Requisitos de conetividade
+
+Cada LIF no cluster local deve ser capaz de se comunicar com cada LIF entre clusters no cluster remoto.
+
+Embora não seja necessário, geralmente é mais simples configurar os endereços IP usados para LIFs entre clusters na mesma sub-rede. Os endereços IP podem residir na mesma sub-rede que os LIFs de dados ou em uma sub-rede diferente. A sub-rede usada em cada cluster deve atender aos seguintes requisitos:
+
+* A sub-rede deve pertencer ao domínio de broadcast que contém as portas usadas para comunicação entre clusters.
+
+
+LIFs podem ter um endereço IPv4 ou um endereço IPv6 entre clusters.
+
+[NOTE]
+====
+O ONTAP 9 permite que você migre suas redes de peering de IPv4 para IPv6, permitindo opcionalmente que ambos os protocolos estejam presentes simultaneamente nas LIFs entre clusters. Em versões anteriores, todas as relações entre clusters para um cluster inteiro eram IPv4 ou IPv6. Isso significava que a mudança de protocolos era um evento potencialmente disruptivo.
+
+====
+
+
+=== Requisitos portuários
+
+Você pode usar portas dedicadas para comunicação entre clusters ou compartilhar portas usadas pela rede de dados. As portas devem atender aos seguintes requisitos:
+
+* Todas as portas usadas para se comunicar com um determinado cluster remoto devem estar no mesmo espaço IPspace.
++
+Você pode usar vários IPspaces para fazer pares com vários clusters. A conetividade de malha completa em pares é necessária apenas dentro de um espaço IPspace.
+
+* O domínio de broadcast usado para comunicação entre clusters deve incluir pelo menos duas portas por nó para que a comunicação entre clusters possa fazer failover de uma porta para outra porta.
++
+As portas adicionadas a um domínio de broadcast podem ser portas de rede físicas, VLANs ou grupos de interface (ifgrps).
+
+* Todas as portas devem ser cabeadas.
+* Todas as portas devem estar em um estado saudável.
+* As configurações de MTU das portas devem ser consistentes.
+
+
+
+
+=== Requisitos de firewall
+
+Os firewalls e a política de firewall entre clusters devem permitir os seguintes protocolos:
+
+* Serviço ICMP
+* TCP para os endereços IP de todos os LIFs entre clusters nas portas 10000, 11104 e 11105
+* HTTPS bidirecional entre os LIFs entre clusters
+
+
+A política de firewall predefinida `intercluster` permite o acesso através do protocolo HTTPS e de todos os endereços IP (0,0.0,0/0). Você pode modificar ou substituir a política, se necessário.
+
+
+
+== Crie LIFs entre clusters
+
+A criação de interfaces lógicas entre clusters (LIFs) permite que a rede do cluster se comunique com um nó. Você deve criar um LIF entre clusters dentro de cada IPspace que será usado para peering, em cada nó em cada cluster para o qual você deseja criar um relacionamento de pares.
+
+.Passos
+. Clique em *Configuração* > *Configuração avançada de cluster*.
+. Na janela *Setup Advanced Cluster Features*, clique em *Proceed* ao lado da opção *Cluster Peering*.
+. Selecione um espaço IPspace na lista *IPspace*.
+. Insira o endereço IP, a porta, a máscara de rede e os detalhes do gateway de cada nó.
+. Clique em *Enviar e continuar*.
+
+
+
+
+=== O que fazer a seguir
+
+Você deve inserir os detalhes do cluster na janela peering de cluster para continuar com o peering de cluster.
+
+
+
+== Crie relacionamentos de pares de cluster
+
+Você pode criar um relacionamento de peer de cluster autenticado para conetar clusters para que os clusters no relacionamento de mesmo nível possam se comunicar com segurança uns com os outros.
+
+.Antes de começar
+* Você deve ter revisado e completado os requisitos para executar esta tarefa.
++
+<<prerequisites-peering,Pré-requisitos para peering de cluster>>
+
+* Você deve ter criado interfaces lógicas entre clusters (LIFs).
+* Você deve estar ciente de qual versão do ONTAP cada cluster está sendo executado.
+
+
+.Sobre esta tarefa
+* Se você quiser criar um relacionamento de mesmo nível com um cluster que executa o Data ONTAP 8.2,2 ou anterior, use a CLI.
+* Você pode criar uma relação entre pares entre um cluster que executa o ONTAP 9.5 e um cluster que executa o ONTAP 9.6. No entanto, a criptografia não é suportada no ONTAP 9.5, portanto, o relacionamento de pares não pode ser criptografado.
+* Em uma configuração do MetroCluster, quando você cria uma relação de mesmo nível entre o cluster primário e um cluster externo, é uma prática recomendada criar uma relação de mesmo nível entre o cluster do site sobrevivente e o cluster externo também.
+* Você pode criar uma senha personalizada ou usar a senha gerada pelo sistema para autenticar o relacionamento de pares de cluster. No entanto, as senhas de ambos os clusters devem corresponder.
+
+
+.Passos
+. Clique em *Configuração* > *Configuração avançada de cluster*.
+. No campo *Target Cluster Intercluster LIF IP Addresses*, insira os endereços IP das LIFs de clusters remotos.
+. *Opcional:* se você estiver criando uma relação de pares entre um cluster executando o ONTAP 9.5 e um cluster executando o ONTAP 9.6, marque a caixa de seleção.
++
+O relacionamento de pares não será criptografado. Se você não selecionar a caixa de seleção, o relacionamento entre pares não será estabelecido.
+
+. No campo *Passphrase* (frase-passe), especifique uma frase-passe para a relação entre pares de cluster.
++
+Se criar uma frase-passe personalizada, a frase-passe será validada em relação à frase-passe do cluster com permissões para garantir uma relação de pares de cluster autenticada.
+
++
+Se os nomes do cluster local e do cluster remoto forem idênticos e se estiver a utilizar uma frase-passe personalizada, será criado um alias para o cluster remoto.
+
+. *Opcional:* para gerar uma senha do cluster remoto, insira o endereço IP de gerenciamento do cluster remoto.
+. Inicie o peering de cluster.
++
+|===
+| Se você quiser... | Faça isso... 
+
+
+ a| 
+Inicie o peering de cluster a partir do cluster de iniciadores
+ a| 
+Clique em *Iniciar peering de cluster*.
+
+
+
+ a| 
+Iniciar peering de cluster a partir do cluster remoto (aplicável se você criou uma senha personalizada)
+ a| 
+.. Introduza o endereço IP de gestão do cluster remoto.
+.. Clique no link *URL de gerenciamento* para acessar o cluster remoto.
+.. Clique em *criar peering de cluster*.
+.. Especifique os endereços IP de LIF entre clusters e a frase-passe do cluster de iniciadores.
+.. Clique em *Iniciar peering*.
+.. Acesse o cluster de iniciadores e clique em *Validar peering*.
+
+
+|===
+
+
+
+
+=== O que fazer a seguir
+
+Você deve especificar os detalhes do SVM na janela peering SVM para continuar com o processo de peering.
+
+
+
+== Criar colegas de SVM
+
+O peering SVM permite que você estabeleça um relacionamento entre duas máquinas virtuais de storage (SVMs) para proteção de dados.
+
+.Antes de começar
+Você precisa ter criado um relacionamento de mesmo nível entre os clusters nos quais os SVMs que você planeja peer residem.
+
+.Sobre esta tarefa
+* Os clusters que você pode selecionar como clusters de destino são listados quando você cria colegas SVM usando a janela *Configuration* > *SVM peers*.
+* Se o SVM de destino residir em um cluster em um sistema executando o ONTAP 9.2 ou anterior, o peering SVM não poderá ser aceito pelo System Manager.
++
+[NOTE]
+====
+Nesse cenário, você pode usar a interface de linha de comando (CLI) para aceitar peering SVM.
+
+====
+
+
+.Passos
+. Selecione o iniciador SVM.
+. Selecione o SVM de destino na lista de SVMs permitidas.
+. Especifique o nome do SVM de destino no campo *Digite um SVM*.
++
+[NOTE]
+====
+Se tiver navegado a partir da janela *Configuration* > *SVM peers*, deverá selecionar o SVM de destino na lista de clusters com peering.
+
+====
+. Inicie o peering SVM.
++
+|===
+| Se você quiser... | Faça isso... 
+
+
+ a| 
+Inicie o peering SVM a partir do cluster de iniciadores
+ a| 
+Clique em Iniciar peering SVM.
+
+
+
+ a| 
+Aceitar peering SVM do cluster remoto
+ a| 
+[NOTE]
+====
+Aplicável a SVMs não permitidas
+
+====
+.. Especifique o endereço de gerenciamento do cluster remoto.
+.. Clique no link *URL de gerenciamento* para acessar a janela SVM Peer do cluster remoto.
+.. No cluster remoto, aceite a solicitação *Pending SVM Peer*.
+.. Acesse o cluster de iniciadores e clique em *Validar peering*.
+
+
+|===
+. Clique em *continuar*.
+
+
+
+
+=== O que fazer a seguir
+
+Você pode visualizar os LIFs entre clusters, o relacionamento entre pares de cluster e o relacionamento entre pares SVM na janela Resumo.
+
+Quando você usa o System Manager para criar o relacionamento de pares, o status de criptografia é "'habilitado'" por padrão.
+
+
+
+== Quais são as senhas
+
+Você pode usar uma senha para autorizar solicitações de peering. Você pode usar uma senha personalizada ou uma senha gerada pelo sistema para peering de cluster.
+
+* Pode gerar uma frase-passe no cluster remoto.
+* O comprimento mínimo necessário para uma frase-passe é de oito carateres.
+* A frase-passe é gerada com base no espaço IPspace.
+* Se você estiver usando uma senha gerada pelo sistema para peering de cluster, depois de inserir a senha no cluster de iniciadores, o peering será autorizado automaticamente.
+* Se você estiver usando uma senha personalizada para peering de cluster, terá que navegar para o cluster remoto para concluir o processo de peering.
+

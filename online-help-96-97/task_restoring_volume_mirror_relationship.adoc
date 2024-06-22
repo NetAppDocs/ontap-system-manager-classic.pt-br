@@ -1,0 +1,82 @@
+---
+permalink: online-help-96-97/task_restoring_volume_mirror_relationship.html 
+sidebar: sidebar 
+keywords: restore, volume, mirror, relationship, snapmirror, online, help, system, manager 
+summary: Para uma relação de espelhamento independente de versão, você pode usar o System Manager para restaurar cópias Snapshot para um volume de origem ou para outros volumes, se os dados de origem estiverem corrompidos e não forem mais utilizáveis. Você pode substituir os dados originais pelas cópias Snapshot no volume de destino. 
+---
+= Restaure um volume em uma relação espelhada com o Gerenciador de sistemas - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Para uma relação de espelhamento independente de versão, você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e versões anteriores) para restaurar cópias Snapshot para um volume de origem ou para outros volumes, se os dados de origem estiverem corrompidos e não forem mais utilizáveis. Você pode substituir os dados originais pelas cópias Snapshot no volume de destino.
+
+.Antes de começar
+* A licença SnapMirror deve estar ativada no cluster de origem e no cluster de destino ou nos nós que contêm o volume de origem e o volume de destino.
+* O cluster de origem e o cluster de destino devem estar em um relacionamento de pares saudável.
+* O agregado de origem ou qualquer outro agregado selecionado para a operação de restauração deve ser um agregado de 64 bits.
+* Se você estiver se conetando de um cluster que executa o ONTAP 9.2 ou anterior a um cluster remoto no qual a autenticação SAML (Security Assertion Markup Language) está ativada, a autenticação baseada em senha também deve ser habilitada no cluster remoto.
+
+
+.Sobre esta tarefa
+* Você não pode restaurar um volume em uma relação espelhada entre uma máquina virtual de storage de origem (SVM) e um SVM de destino em uma configuração do MetroCluster.
+* Não é possível executar uma operação de restauração em volumes SnapLock.
+* Você pode restaurar uma relação de espelhamento entre SVMs de origem sincronizada em uma configuração do MetroCluster.
+* É possível restaurar uma relação de espelhamento de um volume em uma SVM de origem sincronizada para um SVM padrão.
+* É possível restaurar uma relação de espelhamento de um volume em um SVM padrão para um volume de DP em um SVM de origem sincronizada.
+
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação espelhada e clique em *operações* > *Restaurar*.
+. Na caixa de diálogo *Restore* (Restaurar), restaure os dados para o volume de origem na relação de espelhamento ou selecione qualquer outro volume:
++
+|===
+| Se você quiser restaurar os dados para... | Faça isso... 
+
+
+ a| 
+O volume de origem
+ a| 
+.. Selecione *volume da fonte*.
+.. Avance para o passo 7.
+
+
+
+
+ a| 
+Qualquer outro volume
+ a| 
+Selecione *outro volume* e selecione o cluster e SVM na lista.
+
+|===
+. Restaure os dados para um novo volume ou para um volume existente:
++
+|===
+| Se você quiser restaurar os dados para... | Faça isso... 
+
+
+ a| 
+Um novo volume
+ a| 
+Se você quiser alterar o nome padrão, exibido na restauração de formato `destination_SVM_name_destination_volume_name_`, especifique um novo nome e selecione o agregado contendo para o volume.
+
+
+
+ a| 
+Um volume existente
+ a| 
+Selecione a opção *Select volume*.
+
+Você deve selecionar um volume diferente do volume de origem ou um volume de leitura/gravação com alguns dados nele e com uma cópia Snapshot comum.
+
+Apenas os volumes com o mesmo atributo de idioma que o volume de origem são listados.
+
+|===
+. Selecione a cópia Snapshot mais recente ou a cópia Snapshot específica que você deseja restaurar.
+. Marque a caixa de seleção de confirmação para restaurar o volume da cópia Snapshot.
+. *Opcional:* Selecione a caixa de seleção *Ativar compressão de rede* para compactar os dados que estão sendo transferidos durante a operação de restauração.
+. Clique em *Restaurar*.
+

@@ -1,0 +1,14 @@
+---
+permalink: expansion/task_installing_new_nodes.html 
+sidebar: sidebar 
+keywords: cluster, install, controller, configure, node-management, run, ontap, repurpose, hardware-level, ha, address, maintenance, mode, join, install the new node 
+summary: Depois que o cluster estiver preparado, você deverá instalar os controladores e configurar as LIFs de gerenciamento de nós. 
+---
+= Instale os novos nós
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depois que o cluster estiver preparado, você deverá instalar os controladores e configurar as LIFs de gerenciamento de nós. Se os controladores não estiverem executando a mesma versão do ONTAP que o cluster existente ou forem reutilizados e não tiverem HA no nível de hardware, você deverá resolver esses problemas no modo Manutenção. Por fim, você pode unir os nós ao cluster.

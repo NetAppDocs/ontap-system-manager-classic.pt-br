@@ -1,0 +1,130 @@
+---
+permalink: online-help-96-97/concept_snapshot_policies.html 
+sidebar: sidebar 
+keywords: snapshot, manager, system, create, manage, policy, storage, online, help 
+summary: Você pode usar o System Manager para criar e gerenciar políticas de Snapshot em seu sistema de storage. 
+---
+= Gerencie políticas de snapshot com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e versões anteriores) para criar e gerenciar políticas de snapshot em seu sistema de storage.
+
+
+
+== Sobre as políticas do Snapshot
+
+Quando aplicada a um volume, uma política Snapshot especifica uma programação ou programações de acordo com as quais as cópias snapshot são criadas e especifica o número máximo de cópias snapshot que cada agendamento pode criar. Uma política Snapshot pode incluir até cinco programações.
+
+Para relacionamentos de Vault, o atributo rótulo SnapMirror é usado para selecionar cópias Snapshot nos volumes de origem. Somente cópias Snapshot com os rótulos configurados nas regras de política do Vault são replicadas nas operações do Vault de backup. A política Snapshot atribuída ao volume de origem deve incluir o atributo rótulo SnapMirror.
+
+
+
+== Criar políticas Snapshot
+
+Você pode criar uma política de snapshot no System Manager para especificar o número máximo de cópias snapshot que podem ser criadas automaticamente e a frequência de criação delas.
+
+.Passos
+. Clique em *proteção* > *políticas de instantâneos*.
+. Clique em *criar*.
+. Na caixa de diálogo *criar política de instantâneo*, especifique o nome da política.
+. Clique em *Adicionar* e, em seguida, especifique o nome da programação, o número máximo de cópias instantâneas que deseja manter e o nome da etiqueta SnapMirror.
++
+O número máximo de cópias Snapshot que pode ser retido pelos agendamentos especificados não deve exceder 254.
+
+. Clique em *OK* e, em seguida, clique em *criar*.
+
+
+
+
+== Editar políticas de instantâneos
+
+Você pode modificar os detalhes de uma política de snapshot existente, como o nome da programação, o rótulo SnapMirror ou o número máximo de cópias snapshot criadas, usando a caixa de diálogo Editar política de snapshot no Gerenciador de sistema.
+
+.Passos
+. Clique em *proteção* > *políticas de instantâneos*.
+. Na janela *políticas de instantâneos*, selecione a política de instantâneos que deseja modificar e clique em *Editar*.
+. Na caixa de diálogo *Editar política de instantâneos*, selecione a programação que deseja modificar e clique em *Editar*.
+. Clique em *OK*.
+. Verifique as alterações feitas na política de instantâneos selecionada na caixa de diálogo *Editar política de instantâneos* e clique em *Salvar*.
+
+
+
+
+== Eliminar políticas de instantâneos
+
+Você pode usar o System Manager para excluir políticas de snapshot. Se você excluir uma política de snapshot que está sendo usada por um ou mais volumes, as cópias snapshot do volume ou volumes não serão mais criadas de acordo com a política excluída.
+
+.Antes de começar
+Você precisa ter dissociado a política Snapshot de cada volume que a usa.
+
+.Passos
+. Clique em *proteção* > *políticas de instantâneos*.
+. Selecione a política Snapshot e clique em *Delete*.
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
+
+
+
+
+== Janela políticas de instantâneos
+
+Você pode usar a janela políticas de snapshot para gerenciar tarefas de política de snapshot, como adicionar, editar e excluir políticas de snapshot.
+
+
+
+=== Botões de comando
+
+* *Criar*
++
+Abre a caixa de diálogo criar política de instantâneo, que permite adicionar agendamentos de backup e especificar o número máximo de cópias snapshot a serem mantidas em uma política.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar política de instantâneo, que permite modificar a frequência com que as cópias snapshot devem ser criadas e o número máximo de cópias snapshot a serem mantidas.
+
+* *Excluir*
++
+Abre a caixa de diálogo Excluir, que permite excluir a política de captura instantânea selecionada.
+
+* *Ver como*
++
+Permite exibir as políticas de captura Instantânea como uma lista ou como uma árvore.
+
+* *Status*
++
+Abre o menu, que pode ser utilizado para ativar ou desativar a política de instantâneos selecionada.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de políticas de instantâneos
+
+* *Política/Nome do horário*
++
+Especifica o nome da política Snapshot e as programações da política.
+
+* *Storage Virtual Machine*
++
+Especifica o nome da máquina virtual de storage (SVM) à qual pertencem as cópias Snapshot.
+
+* *Status*
++
+Especifica o status da política Snapshot, que pode ser habilitada ou Desabilitada.
+
+* *Máximo de instantâneos a serem retidos*
++
+Especifica o número máximo de cópias snapshot a serem retidas.
+
+* *Etiqueta SnapMirror*
++
+Especifica o nome do atributo de rótulo SnapMirror da cópia Snapshot gerada pela programação de backup.
+
+

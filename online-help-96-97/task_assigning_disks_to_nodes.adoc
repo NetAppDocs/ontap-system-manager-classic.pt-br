@@ -1,0 +1,36 @@
+---
+permalink: online-help-96-97/task_assigning_disks_to_nodes.html 
+sidebar: sidebar 
+keywords: system, manager, assign, disk, node, online, help 
+summary: Você pode usar o System Manager para atribuir a propriedade de um disco não atribuído a um nó específico para aumentar a capacidade de um agregado ou pool de storage. 
+---
+= Atribua discos a nós com o Gerenciador de sistema - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para atribuir a propriedade de um disco não atribuído a um nó específico para aumentar a capacidade de um agregado ou pool de storage.
+
+.Sobre esta tarefa
+* Você pode atribuir discos se as seguintes condições forem verdadeiras:
++
+** O tipo de contentor dos discos selecionados deve ser ""não atribuído"".
+** Os discos devem ser conectados a nós de um par de HA.
+** Os discos devem estar visíveis para o nó.
+
+
+* Para configurações do MetroCluster, não é possível usar o Gerenciador do sistema para atribuir discos.
++
+Você deve usar a interface de linha de comando em vez disso.
+
+
+
+.Passos
+. Clique em *Storage* > *Aggregates & Disks* > *Disks*.
+. Na janela *Disks*, selecione a guia *Inventory*.
+. Selecione os discos que você deseja atribuir e clique em *Assign*.
+. Na caixa de diálogo *Assign Disks* (atribuir discos), selecione o nó ao qual deseja atribuir os discos.
+. Clique em *Assign*.
+

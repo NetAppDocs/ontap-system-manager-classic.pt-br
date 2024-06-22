@@ -1,0 +1,155 @@
+---
+permalink: online-help-96-97/concept_snmp.html 
+sidebar: sidebar 
+keywords: system, manager, configure, snmp, svm, cluster, online, help, test, trap, host, configuration, window, command, protocol, 
+summary: Você pode usar o System Manager para configurar o SNMP para monitorar SVMs no cluster. 
+---
+= Configure o SNMP com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para configurar o SNMP para monitorar SVMs no cluster.
+
+
+
+== Ativar ou desativar o SNMP
+
+Você pode ativar ou desativar o SNMP em seus clusters usando o System Manager. O SNMP permite que você monitore as máquinas virtuais de armazenamento (SVMs) em um cluster para evitar problemas antes que eles possam ocorrer e para evitar problemas.
+
+.Passos
+. Clique em *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. No painel *Setup* (Configuração), clique em *SNMP*.
+. Na janela *SNMP*, clique em *Enable* (Ativar) ou *Disable* (Desativar).
+
+
+
+
+== Editar informações SNMP
+
+Você pode usar a caixa de diálogo Editar configurações SNMP no System Manager para atualizar informações sobre a localização do sistema de armazenamento e o pessoal de Contato e especificar as comunidades SNMP do sistema.
+
+.Sobre esta tarefa
+O System Manager usa os protocolos SNMP SNMPv1 e SNMPv2c e uma comunidade SNMP para descobrir sistemas de armazenamento.
+
+.Passos
+. Clique em *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. No painel *Setup* (Configuração), clique em *SNMP*.
+. Clique em *Editar*.
+. Na guia *Geral*, especifique as informações do pessoal de Contato e as informações de localização para o sistema de armazenamento e as comunidades SNMP.
++
+O nome da comunidade pode ter 32 carateres e não deve conter os seguintes carateres especiais: , / : " ' |.
+
+. Na guia **SNMPv3**, faça o seguinte:
++
+.. Clique em *Add* para adicionar um usuário SNMPv3.
+.. Especifique o nome de usuário e modifique o ID do motor, se necessário.
+.. Selecione o *Authentication Protocol* (Protocolo de autenticação) e introduza as suas credenciais.
+.. Selecione o *Privacy Protocol* (Protocolo de privacidade) e introduza as suas credenciais.
+.. Clique em *OK* para salvar as alterações.
+
+
+. Clique em *OK*.
+. Verifique as alterações efetuadas nas definições SNMP na janela *SNMP*.
+
+
+
+
+== Ativar ou desativar traps SNMP
+
+Os traps SNMP permitem que você monitore a integridade e o estado dos vários componentes do seu sistema de armazenamento. Você pode usar a caixa de diálogo Editar configurações SNMP no System Manager para ativar ou desativar traps SNMP em seu sistema de armazenamento.
+
+.Sobre esta tarefa
+Embora o SNMP esteja ativado por padrão, as armadilhas SNMP são desativadas por padrão.
+
+.Passos
+. Clique em *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. No painel *Setup* (Configuração), clique em *SNMP*.
+. Na janela *SNMP*, clique em *Edit*.
+. Na caixa de diálogo *Editar configurações SNMP*, selecione a guia *Trap hosts* e marque ou desmarque a caixa de seleção *Enable traps* para ativar ou desativar traps SNMP, respetivamente.
+. Se você ativar traps SNMP, adicione o nome do host ou o endereço IP dos hosts aos quais os traps são enviados.
+. Clique em *OK*.
+
+
+
+
+== Teste a configuração do host do trap
+
+Você pode usar o System Manager para testar se configurou as configurações do host de intercetação corretamente.
+
+.Passos
+. Clique em *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. No painel *Setup* (Configuração), clique em *SNMP*.
+. Na janela *SNMP*, clique em *Test Trap Host*.
+. Clique em *OK*.
+
+
+
+
+== Janela SNMP
+
+A janela SNMP permite visualizar as definições SNMP atuais do seu sistema. Você também pode alterar as configurações SNMP do seu sistema, ativar protocolos SNMP e adicionar hosts de intercetação.
+
+
+
+=== Botões de comando
+
+* *Ativar/Desativar*
++
+Ativa ou desativa o SNMP.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar configurações SNMP, que permite especificar as comunidades SNMP para o seu sistema de armazenamento e ativar ou desativar traps.
+
+* * Test Trap Host*
++
+Envia um trap de teste a todos os hosts configurados para verificar se o trap de teste atinge todos os hosts e se as configurações para SNMP estão definidas corretamente.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Detalhes
+
+A área de detalhes exibe as seguintes informações sobre o servidor SNMP e os traps de host do seu sistema de armazenamento:
+
+* *SNMP*
++
+Exibe se o SNMP está ativado ou não.
+
+* * Armadilhas*
++
+Apresenta se as armadilhas SNMP estão ativadas ou não.
+
+* *Localização*
++
+Exibe o endereço do servidor SNMP.
+
+* *Contato*
++
+Apresenta os detalhes de contacto do servidor SNMP.
+
+* *Trap host IP Address*
++
+Exibe os endereços IP do host de intercetação.
+
+* *Nomes da comunidade*
++
+Exibe o nome da comunidade do servidor SNMP.
+
+* *Nomes de segurança*
++
+Apresenta o estilo de segurança do servidor SNMP.
+
+
+
+*Informações relacionadas*
+
+https://docs.netapp.com/us-en/ontap/networking/index.html["Gerenciamento de rede"]

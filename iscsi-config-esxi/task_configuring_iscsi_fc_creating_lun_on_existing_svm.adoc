@@ -1,0 +1,46 @@
+---
+permalink: iscsi-config-esxi/task_configuring_iscsi_fc_creating_lun_on_existing_svm.html 
+sidebar: sidebar 
+keywords: configure, iscsi, exist, storage, virtual, machine, svm, protocol, enable, configure iscsi on an existing svm 
+summary: 'Você pode configurar iSCSI em uma máquina virtual de armazenamento (SVM) existente. O protocolo iSCSI já deve estar ativado, mas não configurado no SVM. Esta informação destina-se a SVMs para as quais está a configurar vários protocolos, mas ainda não configurou iSCSI.' 
+---
+= Configurar iSCSI em uma SVM existente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode configurar iSCSI em uma máquina virtual de armazenamento (SVM) existente. O protocolo iSCSI já deve estar ativado, mas não configurado no SVM. Esta informação destina-se a SVMs para as quais está a configurar vários protocolos, mas ainda não configurou iSCSI.
+
+.Antes de começar
+Você deve ter endereços de rede suficientes disponíveis para criar duas LIFs para cada nó.
+
+.Passos
+. Navegue até a janela *SVMs*.
+. Selecione o SVM que você deseja configurar.
+. No painel SVM **Detalhes**, verifique se *iSCSI* é exibido com um fundo cinza, o que indica que o protocolo está ativado, mas não está totalmente configurado.
++
+Se *iSCSI* for exibido com um fundo verde, o SVM já estará configurado.
+
++
+image::../media/existing_svm_protocols_iscsi_esxi.gif[A imagem mostra a página de detalhes com todos os quatro protocolos com fundos cinzentos.]
+
+. Clique no link do protocolo *iSCSI* com o fundo cinza.
++
+É apresentada a janela Configurar protocolo iSCSI.
+
+. Configure o serviço iSCSI e LIFs na página *Configurar protocolo iSCSI*:
++
+.. Introduza um nome de alias de destino.
+.. Digite `*2*` o campo *LIFs por nó*.
++
+São necessárias duas LIFs para cada nó para garantir disponibilidade e mobilidade de dados.
+
+.. Atribua endereços IP para os LIFs com uma sub-rede ou sem uma sub-rede.
+.. Ignore a área opcional *provisione um LUN para armazenamento iSCSI*, porque o LUN é provisionado pelo Virtual Storage Console para VMware vSphere em uma etapa posterior.
+.. Clique em *Submit & Close* (Enviar e fechar).
+
+
+. Reveja a página *Summary*, registe as informações de LIF e, em seguida, clique em *OK*.
+

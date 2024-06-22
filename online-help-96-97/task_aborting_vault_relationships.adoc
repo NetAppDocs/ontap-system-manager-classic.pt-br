@@ -1,0 +1,29 @@
+---
+permalink: online-help-96-97/task_aborting_vault_relationships.html 
+sidebar: sidebar 
+keywords: abort, snapshot, copy, transfer, online, help, system, manager 
+summary: Você pode usar o Gerenciador do sistema para cancelar ou interromper uma transferência de dados que está em andamento no momento. 
+---
+= Abortar uma transferência de cópia Snapshot com o Gerenciador do sistema - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para cancelar ou interromper uma transferência de dados que está em andamento.
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação para a qual deseja interromper a transferência de dados e clique em *operações* > *Cancelar*.
+. Marque a caixa de seleção *Sim, quero cancelar a transferência* para confirmar a operação.
+. *Opcional:* Selecione a caixa de seleção *manter dados parcialmente transferidos* para reter os dados que já foram transferidos para o volume de destino.
+. Clique em *Cancelar*.
+
+
+.Resultados
+O estado da transferência é apresentado como ""Aborting"" até a operação estar concluída e ser apresentado como ""Idle""" após a conclusão da operação.
+
+*Informações relacionadas*
+
+xref:reference_protection_window.adoc[Janela de proteção]

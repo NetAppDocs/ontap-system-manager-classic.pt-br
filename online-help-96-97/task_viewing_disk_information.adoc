@@ -1,0 +1,24 @@
+---
+permalink: online-help-96-97/task_viewing_disk_information.html 
+sidebar: sidebar 
+keywords: view, disk, information, system, manager, name, online, help 
+summary: Você pode usar a janela discos no System Manager para exibir o nome, o tamanho e os detalhes do contentor dos discos, juntamente com informações gráficas sobre discos de capacidade e discos de cache. 
+---
+= Exibir informações de disco com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a janela discos no Gerenciador de sistema do ONTAP classic (disponível no ONTAP 9.7 e anterior) para exibir os detalhes do nome, tamanho e contentor dos discos, juntamente com informações gráficas sobre discos de capacidade e discos de cache.
+
+.Passos
+. Clique em *Storage* > *Aggregates & Disks* > *Disks*.
+. Selecione o disco sobre o qual deseja exibir informações na lista de discos exibida.
+. Reveja os detalhes do disco.
+
+
+*Informações relacionadas*
+
+xref:reference_disks_window.adoc[Janela Disks (discos)]

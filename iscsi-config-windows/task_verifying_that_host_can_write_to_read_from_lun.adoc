@@ -1,0 +1,36 @@
+---
+permalink: iscsi-config-windows/task_verifying_that_host_can_write_to_read_from_lun.html 
+sidebar: sidebar 
+keywords: lun, verify, host, write, data, verify that the host can write to and read from the lun 
+summary: Antes de usar o LUN, você deve verificar se o host pode gravar dados no LUN e lê-los de volta. 
+---
+= Verifique se o host pode gravar e ler a partir do LUN
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de usar o LUN, você deve verificar se o host pode gravar dados no LUN e lê-los de volta.
+
+.Antes de começar
+O LUN deve ser inicializado e formatado com um sistema de arquivos.
+
+.Sobre esta tarefa
+Se o nó do cluster de armazenamento no qual o LUN é criado puder ser repassado para o nó do parceiro, você deve verificar a leitura dos dados enquanto o nó é repassado. Este teste pode não ser possível se o cluster de armazenamento estiver em uso em produção.
+
+Se algum dos testes falhar, você deve verificar se o serviço iSCSI está sendo executado e verificar os caminhos iSCSI para o LUN.
+
+.Passos
+. No host, copie um ou mais arquivos para o LUN.
+. Copie os arquivos de volta para uma pasta diferente no disco original.
+. Compare os arquivos copiados com o original.
++
+Você pode usar o `comp` comando no prompt de comando do Windows para comparar dois arquivos.
+
+. *Opcional:* faz failover do nó do cluster de armazenamento que contém o LUN e verifica se ainda pode aceder aos ficheiros no LUN.
+. Utilize o DSM nativo para visualizar os caminhos para o LUN e verificar se tem o número esperado de caminhos.
++
+Você verá dois caminhos para o nó do cluster de storage no qual o LUN é criado e dois caminhos para o nó do parceiro.
+
+

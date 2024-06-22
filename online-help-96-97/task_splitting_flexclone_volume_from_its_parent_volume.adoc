@@ -1,0 +1,34 @@
+---
+permalink: online-help-96-97/task_splitting_flexclone_volume_from_its_parent_volume.html 
+sidebar: sidebar 
+keywords: split, flexclone, volume, parent, online, help, disk, space 
+summary: 'Você pode usar o System Manager classic (disponível no ONTAP 9.7 e anterior) para dividir um volume FlexClone de seu volume pai. Após a divisão, o volume FlexClone torna-se um FlexVol volume normal. Ele continua usando o espaço em disco de seu volume pai e a eficiência de storage é preservada.' 
+---
+= Divida um volume FlexClone do volume pai com o System Manager - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o System Manager classic (disponível no ONTAP 9.7 e anterior) para dividir um volume FlexClone de seu volume pai. Após a divisão, o volume FlexClone torna-se um FlexVol volume normal. Ele continua usando o espaço em disco de seu volume pai e a eficiência de storage é preservada.
+
+.Antes de começar
+O volume FlexClone deve estar online.
+
+.Sobre esta tarefa
+Para sistemas que são sistemas _não_ AFF, a operação de divisão de clones exclui todas as cópias Snapshot existentes do clone. As cópias Snapshot necessárias para atualizações do SnapMirror também são excluídas. Portanto, quaisquer atualizações subsequentes do SnapMirror podem falhar.
+
+Você pode pausar a operação de divisão de clones se tiver que executar qualquer outra operação no volume. Você pode retomar o processo de divisão de clones depois que a outra operação estiver concluída.
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. No menu suspenso no campo *SVM*, selecione *All SVMs*.
+. Selecione o volume FlexClone que deseja dividir do volume pai.
+. Clique em *mais ações* > *Clone* > *Split*.
+. Confirme os detalhes do volume do FlexClone para a operação de divisão de clones e clique em *Iniciar divisão* na caixa de diálogo de confirmação.
+
+
+*Informações relacionadas*
+
+xref:reference_volumes_window.adoc[Janela volumes]

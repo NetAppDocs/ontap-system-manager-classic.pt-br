@@ -1,0 +1,37 @@
+---
+permalink: nfs-config/task_configuring_verifying_client_access_add_vol_existing_nfs_svm.html 
+sidebar: sidebar 
+keywords: client, access, unix, file, permission, administration, host, add, export, system, manager, group, volume, configure and verify nfs client access, add an nfs volume to an nfs-enabled svm 
+summary: Quando estiver pronto, você pode dar aos clientes selecionados acesso ao compartilhamento definindo permissões de arquivo UNIX em um host de administração UNIX e adicionando uma regra de exportação no System Manager. Em seguida, você deve testar se os usuários ou grupos afetados podem acessar o volume. 
+---
+= Configurar e verificar o acesso do cliente NFS (Adicionar um volume NFS a um SVM habilitado para NFS)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando estiver pronto, você pode dar aos clientes selecionados acesso ao compartilhamento definindo permissões de arquivo UNIX em um host de administração UNIX e adicionando uma regra de exportação no System Manager. Em seguida, você deve testar se os usuários ou grupos afetados podem acessar o volume.
+
+.Passos
+. Decida quais clientes e usuários ou grupos terão acesso ao compartilhamento.
+. Em um host de administração UNIX, use o usuário raiz para definir a propriedade e as permissões do UNIX no volume.
+. No System Manager, adicione regras à política de exportação para permitir que clientes NFS acessem o compartilhamento.
++
+.. Selecione a máquina virtual de armazenamento (SVM) e clique em *SVM Settings*.
+.. No painel *políticas*, clique em *políticas de exportação*.
+.. Selecione a política de exportação com o mesmo nome do volume.
+.. Na guia *regras de exportação*, clique em *Adicionar* e especifique um conjunto de clientes.
+.. Selecione *2* para o *Rule Index* para que esta regra seja executada após a regra que permite o acesso ao host de administração.
+.. Selecione *NFSv3*.
+.. Especifique os detalhes de acesso desejados e clique em *OK.*
++
+Você pode dar acesso completo de leitura/gravação aos clientes digitando a sub-rede `10.1.1.0/24` como *especificação do cliente* e selecionando todas as caixas de seleção Access, exceto *permitir acesso ao superusuário*.
+
++
+image::../media/export_rule_for_clients_nfs_nfs.gif[Esta captura de tela é descrita pelo texto anterior.]
+
+
+
+. Em um cliente UNIX, faça login como um dos usuários que agora tem acesso ao volume e verifique se você pode montar o volume e criar um arquivo.
+

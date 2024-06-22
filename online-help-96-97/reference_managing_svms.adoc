@@ -1,0 +1,45 @@
+---
+permalink: online-help-96-97/reference_managing_svms.html 
+sidebar: sidebar 
+keywords: storage, virtual, machine, svm, administrator, system, manager, online, help 
+summary: 'Um administrador de máquina virtual de storage (SVM) pode administrar SVMs e seus recursos, como volumes, protocolos e serviços, dependendo das funcionalidades atribuídas pelo administrador do cluster. Um administrador da SVM não pode criar, modificar ou excluir SVMs.' 
+---
+= Gerencie SVMs com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+No ONTAP System Manager classic (disponível no ONTAP 9.7 e versões anteriores), um administrador de máquina virtual de storage (SVM) pode administrar SVMs e seus recursos, como volumes, protocolos e serviços, dependendo dos recursos atribuídos pelo administrador do cluster. Um administrador da SVM não pode criar, modificar ou excluir SVMs.
+
+[NOTE]
+====
+Os administradores do SVM não podem fazer login no System Manager.
+
+====
+Os administradores do SVM podem ter todos ou alguns dos seguintes recursos de administração:
+
+* Configuração do protocolo de acesso a dados
++
+Os administradores do SVM podem configurar protocolos de acesso a dados, como protocolo NFS, CIFS, iSCSI e Fibre Channel (FC) (Fibre Channel over Ethernet ou FCoE incluídos).
+
+* Configuração dos serviços
++
+Os administradores do SVM podem configurar serviços como LDAP, NIS e DNS.
+
+* Gerenciamento de storage
++
+Os administradores do SVM podem gerenciar volumes, cotas, qtrees e arquivos.
+
+* Gerenciamento de LUN em um ambiente SAN
+* Gerenciamento de cópias Snapshot do volume
+* Monitoramento SVM
++
+Os administradores do SVM podem monitorar tarefas, conexão de rede, interface de rede e integridade do SVM.
+
+
+
+*Informações relacionadas*
+
+https://docs.netapp.com/ontap-9/index.jsp["Centro de Documentação do ONTAP 9"]

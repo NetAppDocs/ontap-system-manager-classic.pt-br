@@ -1,0 +1,73 @@
+---
+permalink: online-help-96-97/concept_nfs_protocol.html 
+sidebar: sidebar 
+keywords: nfs, protocol, system, manager, authenticate, client, asses, data, svm, online, help 
+summary: Você pode usar o System Manager para autenticar clientes NFS para acessar dados no SVM. 
+---
+= Configure o protocolo NFS com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para autenticar clientes NFS para acessar dados no SVM.
+
+
+
+== Edite as configurações NFS
+
+Você pode usar o System Manager para editar as configurações NFS, como habilitar ou desabilitar NFSv3, NFSv4 e NFSv4,1, habilitar ou desabilitar delegações de leitura e gravação para clientes NFSv4 e habilitar ACLs NFSv4. Você também pode editar o usuário padrão do Windows.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Protocolos*, clique em *NFS*.
+. Na janela *NFS*, clique em *Edit*.
+. Na caixa de diálogo *Editar configurações NFS*, faça as alterações necessárias.
+. Clique em *Salvar e fechar*.
+
+
+
+
+== Janela NFS
+
+Você pode usar a janela NFS para exibir e configurar suas configurações NFS.
+
+* *Status do servidor*
++
+Exibe o status do serviço NFS. O serviço será ativado se o protocolo NFS estiver configurado na máquina virtual de storage (SVM).
+
++
+[NOTE]
+====
+Se você fez o upgrade para o ONTAP 8,3 ou posterior a partir de um sistema de storage habilitado para NFS que executa o Data ONTAP 8.1.x, o serviço NFS será habilitado no ONTAP 8,3 ou posterior. No entanto, você deve habilitar o suporte para NFSv3 ou NFSv4 porque o NFSv2 não é mais compatível.
+
+====
+
+
+
+
+=== Botões de comando
+
+* *Ativar*
++
+Ativa o serviço NFS.
+
+* *Desativar*
++
+Desativa o serviço NFS.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar configurações NFS, que permite editar configurações NFS.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+*Informações relacionadas*
+
+https://docs.netapp.com/us-en/ontap/nfs-admin/index.html["Gerenciamento de NFS"^]

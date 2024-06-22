@@ -1,0 +1,74 @@
+---
+indexpage:
+  title: Documentação clássica do ONTAP System Manager
+  summary: O Gerenciador de sistemas do ONTAP é um produto simples e versátil que
+    permite configurar e gerenciar clusters do ONTAP com facilidade. O System Manager
+    simplifica tarefas comuns de armazenamento, como a criação de volumes, LUNs, qtrees,
+    compartilhamentos e exportações, o que economiza tempo e ajuda a evitar erros.
+  keywords: ontap, netapp, documentation, system, manager
+  lead: A interface clássica do Gerenciador de sistema está disponível no ONTAP 9.7
+    e versões anteriores do ONTAP 9. A documentação está disponível neste site para
+    fluxos de trabalho de configuração usando o System Manager Classic, bem como a
+    ajuda on-line do System Manager Classic para o ONTAP 9.6 e 9,7.
+  tiles:
+  - title: Comece agora
+    links:
+    - title: Noções básicas sobre o System Manager Classic
+      url: "/online-help-96-97/index.html"
+    - title: Gerencie o ONTAP com o System Manager de próxima geração para o ONTAP
+        9.7 e posterior
+      url: https://docs.netapp.com/us-en/ontap/concept_administration_overview.html
+    - title: Gerencie o ONTAP com a CLI
+      url: https://docs.netapp.com/us-en/ontap/system-admin/index.html
+  - title: Provisionamento de storage NAS
+    links:
+    - title: Configuração NFS
+      url: "/nfs-config/index.html"
+    - title: Configuração NFS para ESXi usando VSC
+      url: "/nfs-config-esxi/index.html"
+    - title: Configuração de protocolo múltiplo SMB e NFS
+      url: "/nas-multiprotocol-config/index.html"
+    - title: Configuração SMB
+      url: "/smb-config/index.html"
+  - title: Provisionamento de storage SAN
+    links:
+    - title: Configuração FC para ESXi usando VSC
+      url: "/fc-config-esxi/index.html"
+    - title: Configuração de FC para Red Hat Enterprise Linux
+      url: "/fc-config-rhel/index.html"
+    - title: Configuração FC para Windows
+      url: "/fc-config-windows/index.html"
+    - title: Configuração iSCSI para ESXi usando VSC
+      url: "/iscsi-config-esxi/index.html"
+    - title: Configuração iSCSI para Red Hat Enterprise Linux
+      url: "/iscsi-config-rhel/index.html"
+    - title: Configuração iSCSI para Windows
+      url: "/iscsi-config-windows/index.html"
+  - title: Proteção de dados e recuperação de desastres
+    links:
+    - title: Configuração de peering de cluster e SVM
+      url: "/peering/index.html"
+    - title: Recuperação de desastre de volume
+      url: "/volume-disaster-recovery/index.html"
+    - title: Preparação para recuperação de desastres em volume
+      url: "/volume-disaster-prep/index.html"
+    - title: SnapVault de backup de volume
+      url: "/volume-backup-snapvault/index.html"
+    - title: Gerenciamento de restauração de volume usando o SnapVault
+      url: "/volume-restore-snapvault/index.html"
+  - title: Administração do cluster
+    links:
+    - title: Configuração de expansão de cluster
+      url: "/expansion/index.html"
+    - title: Gerenciamento de movimentação de volumes
+      url: "/volume-move/index.html"
+    - title: Configuração SNMP
+      url: "/snmp-config/index.html"
+    - title: Gerenciamento de clusters usando o System Manger 9,6 e 9,7
+      url: "/online-help-96-97/index.html"
+  - title: Mais recursos
+    links:
+    - title: Documentação do ONTAP 9
+      url: https://docs.netapp.com/us-en/ontap/
+    - title: Documentação de automação e API REST
+      url: https://docs.netapp.com/us-en/ontap-automation/index.html

@@ -1,0 +1,715 @@
+---
+permalink: online-help-96-97/reference_application_specific_lun_settings.html 
+sidebar: sidebar 
+keywords: system, manager, oracle, sql, lun, application, specific, online, help 
+summary: O System Manager oferece suporte a Oracle, SQL e outros tipos de aplicações, enquanto cria LUNs otimizados para FC SAN em um cluster AFF. As configurações de LUN, como o tamanho do LUN, são determinadas por regras específicas para o tipo de aplicativo. Para SQL e Oracle, as configurações de LUN são criadas automaticamente. 
+---
+= Configurações de LUN específicas do aplicativo com o Gerenciador do sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O ONTAP System Manager classic (disponível no ONTAP 9.7 e versões anteriores) é compatível com Oracle, SQL e outros tipos de aplicações, enquanto cria LUNs otimizados para SAN FC em um cluster AFF. As configurações de LUN, como o tamanho do LUN, são determinadas por regras específicas para o tipo de aplicativo. Para SQL e Oracle, as configurações de LUN são criadas automaticamente.
+
+Se o cluster contiver dois ou mais nós, o System Manager usará apenas os dois primeiros nós selecionados pela API para criar LUNs. Os agregados de dados já são criados em cada um dos dois nós. O tamanho de cada volume criado é igual à capacidade disponível do agregado. Os volumes são thin-provisionados e a reserva de espaço é desativada nos LUNs.
+
+A política de eficiência de storage é habilitada por padrão com o cronograma definido como "diário" e a qualidade do serviço (QoS) definida como "melhor_esforço". Por predefinição, a atualização do tempo de acesso (atime) está ativada no cluster. No entanto, as atualizações de tempo de acesso são desativadas pelo System Manager durante a criação de volumes e, portanto, sempre que um arquivo é lido ou escrito, o campo hora de acesso no diretório não é atualizado.
+
+[NOTE]
+====
+A ativação da atualização do tempo de acesso causa degradação do desempenho na funcionalidade de fornecimento de dados do cluster.
+
+====
+
+
+== Configurações de LUN para SQL
+
+Por padrão, LUNs e volumes são provisionados para uma única instância do servidor SQL com 2 bancos de dados de 1 TB cada e 24 núcleos físicos. O espaço é provisionado para LUNs e volumes de acordo com regras específicas para o servidor SQL. O balanceamento de carga é realizado para LUNs no par de HA. Você pode modificar o número de bancos de dados. Para cada banco de dados, são criados oito LUNs de dados e um LUN de log. Um LUN temporário é criado para cada instância SQL.
+
+A tabela a seguir fornece informações sobre como o espaço é provisionado para os valores padrão de SQL:
+
+|===
+| Nó | Agregado | Tipo de LUN | Nome do volume | Nome LUN | Fórmula para tamanho LUN | Tamanho de LUN (GB) 
+
+
+ a| 
+node1
+ a| 
+node1_aggr1
+ a| 
+dados
+ a| 
+db01_data01
+ a| 
+db01_data01
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+db01_data02
+ a| 
+db01_data02
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+db01_data03
+ a| 
+db01_data03
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+db01_data04
+ a| 
+db01_data04
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+db02_data01
+ a| 
+db02_data01
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+db02_data02
+ a| 
+db02_data02
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+db02_data03
+ a| 
+db02_data03
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+db02_data04
+ a| 
+db02_data04
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+registo
+ a| 
+db01_log
+ a| 
+db01_log
+ a| 
+Tamanho do banco de dados ÷ 20
+ a| 
+50
+
+
+
+ a| 
+ a| 
+ a| 
+temp
+ a| 
+sql_temp
+ a| 
+sql_temp
+ a| 
+Tamanho do banco de dados ÷ 3
+ a| 
+330
+
+
+
+ a| 
+node2
+ a| 
+node2_aggr1
+ a| 
+dados
+ a| 
+db01_data05
+ a| 
+db01_data05
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+db01_data06
+ a| 
+db01_data06
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+db01_data07
+ a| 
+db01_data07
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+db01_data08
+ a| 
+db01_data08
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+db02_data05
+ a| 
+db02_data05
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+db02_data06
+ a| 
+db02_data06
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+db02_data07
+ a| 
+db02_data07
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+db02_data08
+ a| 
+db02_data08
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+125
+
+
+
+ a| 
+ a| 
+ a| 
+registo
+ a| 
+db02_log
+ a| 
+db02_log
+ a| 
+Tamanho do banco de dados ÷ 20
+ a| 
+50
+
+|===
+
+
+== Configurações de LUN para Oracle
+
+Por padrão, LUNs e volumes são provisionados para um banco de dados de 2 TB. O espaço é provisionado para LUNs e volumes de acordo com regras específicas para Oracle. Por padrão, o Oracle Real Application clusters (RAC) não está selecionado.
+
+A tabela a seguir fornece informações sobre como o espaço é provisionado para os valores padrão do Oracle:
+
+|===
+| Nó | Agregado | Tipo de LUN | Nome do volume | Nome LUN | Fórmula para tamanho LUN | Tamanho de LUN (GB) 
+
+
+ a| 
+node1
+ a| 
+node1_aggr1
+ a| 
+dados
+ a| 
+ora_vol01
+ a| 
+ora_lundata01
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+ora_vol02
+ a| 
+ora_lundata02
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+ora_vol03
+ a| 
+ora_lundata03
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+ora_vol04
+ a| 
+ora_lundata04
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+registo
+ a| 
+ora_vol05
+ a| 
+ora_lunlog1
+ a| 
+Tamanho do banco de dados ÷ 40
+ a| 
+50
+
+
+
+ a| 
+ a| 
+ a| 
+binários
+ a| 
+ora_vol06
+ a| 
+ora_orabin1
+ a| 
+Tamanho do banco de dados ÷ 40
+ a| 
+50
+
+
+
+ a| 
+node2
+ a| 
+node2_aggr1
+ a| 
+dados
+ a| 
+ora_vol07
+ a| 
+ora_lundata05
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+ora_vol08
+ a| 
+ora_lundata06
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+ora_vol09
+ a| 
+ora_lundata07
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+ora_vol10
+ a| 
+ora_lundata08
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+registo
+ a| 
+ora_vol11
+ a| 
+ora_lunlog2
+ a| 
+Tamanho do banco de dados ÷ 40
+ a| 
+50
+
+|===
+Para o Oracle RAC, os LUNs são provisionados para arquivos de grade. Apenas dois nós RAC são suportados para o Oracle RAC.
+
+A tabela a seguir fornece informações sobre como o espaço é provisionado para os valores padrão do Oracle RAC:
+
+|===
+| Nó | Agregado | Tipo de LUN | Nome do volume | Nome LUN | Fórmula para tamanho LUN | Tamanho de LUN (GB) 
+
+
+ a| 
+node1
+ a| 
+node1_aggr1
+ a| 
+dados
+ a| 
+ora_vol01
+ a| 
+ora_lundata01
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+ora_vol02
+ a| 
+ora_lundata02
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+ora_vol03
+ a| 
+ora_lundata03
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+ora_vol04
+ a| 
+ora_lundata04
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+registo
+ a| 
+ora_vol05
+ a| 
+ora_lunlog1
+ a| 
+Tamanho do banco de dados ÷ 40
+ a| 
+50
+
+
+
+ a| 
+ a| 
+ a| 
+binários
+ a| 
+ora_vol06
+ a| 
+ora_orabin1
+ a| 
+Tamanho do banco de dados ÷ 40
+ a| 
+50
+
+
+
+ a| 
+ a| 
+ a| 
+grelha
+ a| 
+ora_vol07
+ a| 
+ora_lungrid1
+ a| 
+10 GB
+ a| 
+10
+
+
+
+ a| 
+node2
+ a| 
+node2_aggr1
+ a| 
+dados
+ a| 
+ora_vol08
+ a| 
+ora_lundata05
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+ora_vol09
+ a| 
+ora_lundata06
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+ora_vol10
+ a| 
+ora_lundata07
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+dados
+ a| 
+ora_vol11
+ a| 
+ora_lundata08
+ a| 
+Tamanho do banco de dados ÷ 8
+ a| 
+250
+
+
+
+ a| 
+ a| 
+ a| 
+registo
+ a| 
+ora_vol12
+ a| 
+ora_lunlog2
+ a| 
+Tamanho do banco de dados ÷ 40
+ a| 
+50
+
+
+
+ a| 
+ a| 
+ a| 
+binários
+ a| 
+ora_vol13
+ a| 
+ora_orabin2
+ a| 
+Tamanho do banco de dados ÷ 40
+ a| 
+50
+
+|===
+
+
+== Configurações de LUN para outro tipo de aplicativo
+
+Cada LUN é provisionado em um volume. O espaço é provisionado nos LUNs com base no tamanho especificado. O balanceamento de carga é realizado nos nós para todos os LUNs.

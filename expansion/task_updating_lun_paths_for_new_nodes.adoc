@@ -1,0 +1,70 @@
+---
+permalink: expansion/task_updating_lun_paths_for_new_nodes.html 
+sidebar: sidebar 
+keywords: cluster, configure, san, lif, add, update, path, lun, node, update lun paths for the new nodes 
+summary: Se o cluster estiver configurado para SAN, você deverá criar SAN LIFs nos nós recém-adicionados e atualizar caminhos. 
+---
+= Atualizar caminhos de LUN para os novos nós
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se o cluster estiver configurado para SAN, você deverá criar SAN LIFs nos nós recém-adicionados e atualizar caminhos.
+
+.Sobre esta tarefa
+Este procedimento só é necessário se o cluster contiver LUNs. Se o cluster contiver apenas ficheiros, pode ignorar este procedimento.
+
+.Passos
+. Para cada máquina virtual de storage (SVM) no cluster, crie novas LIFs nos nós recém-adicionados:
++
+.. Identifique os SVMs que usam protocolos FC ou iSCSI usando o `vserver show` comando com o `-fields allowed-protocols` parâmetro e revisando a saída.
++
+[listing]
+----
+cluster1::> vserver show -fields allowed-protocols
+vserver allowed-protocols
+------- -----------------
+vs1     cifs,ndmp
+vs2     fcp
+vs3     iscsi
+...
+----
+.. Para cada SVM que usa FC ou iSCSI, crie pelo menos duas LIFs de dados em cada um dos nós recém-adicionados usando o `network interface create` comando com o `-role data` parâmetro.
++
+[listing]
+----
+cluster1::> network interface create -vserver vs1 -lif lif5 -role data
+-data-protocol iscsi -home-node cluster1-3 -home-port e0b
+-address 192.168.2.72 -netmask 255.255.255.0
+----
+.. Para cada SVM, verifique se ele tem LIFs em todos os nós do cluster usando o `network interface show` comando com o `-vserver` parâmetro.
+
+
+. Atualizar portsets:
++
+.. Determine se existem portsets usando o `lun portset show` comando.
+.. Se você quiser tornar os novos LIFs visíveis aos hosts existentes, adicione cada novo LIF aos portsets usando o `lun portset add` comando--uma vez para cada LIF.
+
+
+. Se você usar FC ou FCoE, atualize o zoneamento:
++
+.. Verifique se o zoneamento está configurado corretamente para permitir que as portas do iniciador existentes no host se conetem às novas portas de destino nos novos nós.
+.. Atualize o zoneamento do switch para conetar os novos nós aos iniciadores existentes.
++
+A configuração de zoneamento varia dependendo do switch que você usa.
+
+.. Se você planeja mover LUNs para os novos nós, exponha os novos caminhos para os hosts usando o `lun mapping add-reporting-nodes` comando.
+
+
+. Em todos os sistemas operacionais host, refaça a varredura para descobrir os caminhos recém-adicionados.
+. Dependendo dos sistemas operacionais host, remova quaisquer caminhos obsoletos.
+. Adicione ou remova caminhos à configuração do MPIO.
+
+
+*Informações relacionadas*
+
+https://docs.netapp.com/us-en/ontap/san-config/index.html["Configuração SAN"^]
+
+https://docs.netapp.com/us-en/ontap/san-admin/index.html["Administração da SAN"^]

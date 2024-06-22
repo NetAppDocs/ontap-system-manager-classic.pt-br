@@ -1,0 +1,324 @@
+---
+permalink: online-help-96-97/task_editing_mirror_relationships.html 
+sidebar: sidebar 
+keywords: system, manager, edit, mirror, relationships, online, help 
+summary: Você pode usar o System Manager para editar um relacionamento espelhado selecionando uma política ou programação existente no cluster ou criando uma política ou agendamento. 
+---
+= Gerencie relações de espelhamento com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e versões anteriores) para gerenciar relacionamentos de espelhamento. Você pode atualizar, criar, quiesce, inicializar, restabelecer, excluir e editar relações de espelho, além de retomar relações de espelho quiesced.
+
+
+
+== Eliminar relações
+
+Você pode usar o System Manager para excluir uma relação espelhada e terminar permanentemente a relação espelhada entre os volumes de origem e destino. Quando um relacionamento de espelhamento é excluído, a cópia Snapshot base no volume de origem é excluída.
+
+.Sobre esta tarefa
+É uma prática recomendada quebrar o relacionamento espelhado antes de excluir o relacionamento.
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação espelhada que deseja excluir e clique em *Excluir*.
+. Marque as caixas de seleção de confirmação para excluir a relação de espelhamento e liberar as cópias Snapshot base e clique em *Excluir*.
+
+
+.Resultados
+A relação é excluída e a cópia Snapshot de base no volume de origem é excluída.
+
+
+
+== Ressincronizar relacionamentos
+
+Você pode usar o System Manager para restabelecer um relacionamento espelhado que foi quebrado anteriormente. É possível executar uma operação de ressincronização para recuperar de um desastre que desabilitou o volume de origem.
+
+.Antes de começar
+O cluster de origem e o cluster de destino e o SVM de origem e destino devem estar em relacionamentos de mesmo nível.
+
+.Sobre esta tarefa
+* Quando você executa uma operação de ressincronização, o conteúdo no destino do espelho é substituído pelo conteúdo no volume de origem.
++
+[NOTE]
+====
+** Para volumes SnapLock Compliance, todas as alterações de dados no sistema de arquivos ativo com referência à cópia Snapshot comum são preservadas em uma cópia Snapshot bloqueada até o tempo de expiração definido para o volume atual.
++
+Se o tempo de expiração do volume estiver no passado ou não tiver sido definido, a cópia Snapshot e a cópia Snapshot comum serão bloqueadas por uma duração de 30 dias. Todas as cópias Snapshot intermediárias entre a cópia Snapshot comum e a cópia Snapshot bloqueada mais recente são excluídas.
+
+** Para todos os volumes que não sejam volumes SnapLock Compliance, a operação de ressincronização pode causar a perda de dados mais recentes gravados no volume de destino após a criação da cópia Snapshot base.
+
+
+====
+* Se o campo último erro de transferência na janela proteção recomendar uma operação de ressincronização, você deve primeiro quebrar a relação e, em seguida, executar a operação de ressincronização.
+
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação espelhada que você deseja ressincronizar.
+. Clique em *Operations* > *Resync*.
+. Marque a caixa de seleção de confirmação e clique em *Resync*.
+
+
+
+
+== Retomar relacionamentos quiesced
+
+Você pode usar o System Manager para retomar uma relação de espelhamento quiesced. Quando retoma a relação, a transferência normal de dados para o destino do espelho é retomada e todas as atividades do espelho são reiniciadas.
+
+.Sobre esta tarefa
+Se você desativou uma relação de espelhamento quebrada da interface de linha de comando (CLI), não poderá retomar a relação do System Manager. Você deve usar a CLI para retomar o relacionamento.
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação de espelho que pretende retomar.
+. Clique em *operações* > *Resume*.
+. Marque a caixa de seleção de confirmação e clique em *Resume*.
+
+
+.Resultados
+A transferência de dados para o destino do espelho é retomada para a relação do espelho selecionado.
+
+
+
+== Atualizar relacionamentos
+
+Você pode usar o System Manager para iniciar uma atualização de espelhamento não programada do destino. Você pode ter que executar uma atualização manual para evitar a perda de dados devido a uma próxima interrupção de energia, manutenção programada ou migração de dados.
+
+.Antes de começar
+A relação de espelho deve estar em um estado Snapmirrored.
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação espelhada para a qual deseja atualizar os dados e clique em *operações* > *Atualização*.
+. Escolha uma das seguintes opções:
++
+** Selecione *sob demanda* para realizar uma transferência incremental da cópia Snapshot comum recente entre os volumes de origem e destino.
+** Selecione *Selecionar cópia Snapshot* e especifique a cópia Snapshot que deseja transferir.
+
+
+. *Opcional:* Selecione *Limit transfer bandwidth to* para limitar a largura de banda da rede usada para transferências e especificar a velocidade máxima de transferência.
+. Clique em *Atualizar*.
+. Verifique o status da transferência na guia *Detalhes*.
+
+
+
+
+== Quiesce relacionamentos
+
+Você pode usar o System Manager para silenciar um destino espelhado para estabilizá-lo antes de criar uma cópia Snapshot. A operação quiesce permite que as transferências ativas de espelhos sejam concluídas e desativa transferências futuras para a relação de espelhamento.
+
+.Sobre esta tarefa
+Você pode quiesce somente relações espelhadas que estão no estado Snapmirrored.
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação de espelho que você deseja silenciar.
+. Clique em *operações* > *quiesce*.
+. Marque a caixa de seleção de confirmação e clique em *quiesce*.
+
+
+
+
+== Inicialize relacionamentos
+
+Quando você inicia um relacionamento espelhado, você deve inicializar esse relacionamento. A inicialização de uma relação consiste em uma transferência completa de dados da linha de base do volume de origem para o destino. Você pode usar o System Manager para inicializar uma relação de espelho se você ainda não tiver inicializado a relação ao criá-la.
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação espelhada que deseja inicializar.
+. Clique em *operações* > *Inicializar*.
+. Marque a caixa de seleção de confirmação e clique em *Inicializar*.
+. Verifique o status da relação do espelho na janela *proteção*.
+
+
+.Resultados
+Uma cópia Snapshot é criada e transferida para o destino. Essa cópia Snapshot é usada como linha de base para cópias Snapshot incrementais subsequentes.
+
+
+
+== Editar relacionamentos
+
+Você pode usar o System Manager para editar um relacionamento espelhado selecionando uma política ou programação existente no cluster ou criando uma política ou agendamento.
+
+.Sobre esta tarefa
+* Não é possível editar uma relação de espelhamento criada entre um volume no Data ONTAP 8.2,1 e um volume no ONTAP 8,3 ou posterior.
+* Não é possível editar os parâmetros de uma política ou programação existente.
+* Você pode modificar o tipo de relacionamento de uma relação de espelho flexível de versão, relação de Vault ou relação de espelhamento e cofre modificando o tipo de diretiva.
+
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione o relacionamento espelhado para o qual você deseja modificar a política ou programação e clique em *Editar*.
+. Na caixa de diálogo *Editar relacionamento*, selecione uma política existente ou crie uma política:
++
+|===
+| Se você quiser... | Faça o seguinte... 
+
+
+ a| 
+Selecione uma política existente
+ a| 
+Clique em *Procurar* e selecione uma política existente.
+
+
+
+ a| 
+Crie uma política
+ a| 
+.. Clique em *criar política*.
+.. Especifique um nome para a política.
+.. Defina a prioridade para transferências agendadas.
++
+Baixa indica que a transferência tem a menor prioridade e geralmente é agendada após transferências de prioridade normal. Por padrão, a prioridade é definida como normal.
+
+.. Marque a caixa de seleção *Transferir todas as cópias snapshot de origem* para incluir a regra "'All_source_snapshots'" para a política de espelhamento, que permite fazer backup de todas as cópias snapshot do volume de origem.
+.. Marque a caixa de seleção *Ativar compressão de rede* para compactar os dados que estão sendo transferidos.
+.. Clique em *criar*.
+
+
+|===
+. Especifique uma agenda para a relação:
++
+|===
+| Se... | Faça o seguinte... 
+
+
+ a| 
+Você deseja atribuir uma programação existente
+ a| 
+Na lista de horários, selecione uma agenda existente.
+
+
+
+ a| 
+Você deseja criar uma agenda
+ a| 
+.. Clique em *Create Schedule*.
+.. Especifique um nome para a programação.
+.. Selecione *Basic* ou *Advanced*.
++
+*** Basic especifica apenas o dia da semana, a hora e o intervalo de transferência.
+*** Advanced cria um cronograma de estilo cron.
+
+
+.. Clique em *criar*.
+
+
+
+
+ a| 
+Não pretende atribuir uma agenda
+ a| 
+Selecione *nenhum*.
+
+|===
+. Clique em *OK* para salvar as alterações.
+
+
+
+
+== Crie relacionamentos espelhados a partir de um SVM de destino
+
+Você pode usar o System Manager para criar uma relação de espelhamento a partir da máquina virtual de armazenamento de destino (SVM) e para atribuir uma política e um agendamento à relação de espelhamento. A cópia espelhada permite a rápida disponibilidade de dados se os dados no volume de origem estiverem corrompidos ou perdidos.
+
+.Antes de começar
+* O cluster de origem deve estar executando o ONTAP 8.2.2 ou posterior.
+* A licença SnapMirror deve estar ativada no cluster de origem e no cluster de destino.
++
+[NOTE]
+====
+Para algumas plataformas, não é obrigatório que o cluster de origem tenha a licença SnapMirror ativada se o cluster de destino tiver a licença SnapMirror e a licença DPO (Data Protection Otimization) ativada.
+
+====
+* Ao espelhar um volume, se você selecionar um volume SnapLock como origem, a licença SnapMirror e a licença SnapLock deverão ser instaladas no cluster de destino.
+* O cluster de origem e o cluster de destino devem estar em um relacionamento de pares saudável.
+* O SVM de destino deve ter espaço disponível.
+* Um volume de origem do tipo leitura/gravação (RW) deve existir.
+* Os volumes do FlexVol devem estar online e devem ser do tipo leitura/gravação.
+* O tipo agregado SnapLock deve ser do mesmo tipo.
+* Se você estiver se conetando de um cluster que executa o ONTAP 9.2 ou anterior a um cluster remoto no qual a autenticação SAML (Security Assertion Markup Language) está ativada, a autenticação baseada em senha deve ser habilitada no cluster remoto.
+
+
+.Sobre esta tarefa
+* O System Manager não oferece suporte a um relacionamento em cascata.
++
+Por exemplo, um volume de destino em uma relação não pode ser o volume de origem em outra relação.
+
+* Você não pode criar uma relação de espelhamento entre uma SVM de origem sincronizada e um SVM de destino de sincronização em uma configuração do MetroCluster.
+* Você pode criar uma relação de espelhamento entre SVMs de origem sincronizada em uma configuração do MetroCluster.
+* Você pode criar uma relação espelhada de um volume em uma SVM de origem sincronizada a um volume em uma SVM que serve dados.
+* Você pode criar uma relação espelhada de um volume em uma SVM de fornecimento de dados a um volume de proteção de dados (DP) em uma fonte sincronizada SVM.
+* Você pode criar uma relação de espelhamento entre volumes SnapLock do mesmo tipo somente.
++
+Por exemplo, se o volume de origem for um volume SnapLock Enterprise, o volume de destino também deve ser um volume SnapLock Enterprise. Você precisa garantir que o SVM de destino tenha agregados do mesmo tipo de SnapLock disponíveis.
+
+* O volume de destino criado para uma relação de espelhamento não é thin Provisioning.
+* Um máximo de 25 volumes pode ser protegido em uma seleção.
+* Não é possível criar uma relação de espelhamento entre os volumes do SnapLock se o cluster de destino estiver executando uma versão do ONTAP anterior à versão do ONTAP em que o cluster de origem está sendo executado.
+
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Na janela *relacionamentos de volume*, clique em *criar*.
+. Na caixa de diálogo *Procurar SVM*, selecione um SVM para o volume de destino.
+. Na caixa de diálogo *criar relação de proteção*, selecione *Espelhar* na lista suspensa *tipo de relação*.
+. Especifique o cluster, o SVM e o volume de origem.
++
+Se o cluster especificado estiver executando uma versão do software ONTAP anterior ao ONTAP 9.3, então somente SVMs peered serão listadas. Se o cluster especificado estiver executando o ONTAP 9.3 ou posterior, os SVMs peered e os SVMs permitidos serão listados.
+
+. Para volumes FlexVol, especifique um sufixo de nome de volume.
++
+O sufixo do nome do volume é anexado aos nomes do volume de origem para gerar os nomes do volume de destino.
+
+. Clique em *Procurar* e, em seguida, altere a política de espelhamento.
+. Selecione uma agenda para a relação na lista de programações existentes.
+. Selecione *Initialize Relationship* para inicializar a relação de espelho.
+. Habilite agregados habilitados para FabricPool e selecione uma política de disposição em camadas apropriada.
+. Clique em *criar*.
+
+
+.Resultados
+Se você optar por criar um volume de destino, um volume de destino do tipo _dp_ será criado, com o atributo de idioma definido para corresponder ao atributo de idioma do volume de origem.
+
+É criada uma relação de espelho entre o volume de origem e o volume de destino. A cópia Snapshot base é transferida para o volume de destino se você optou por inicializar o relacionamento.
+
+
+
+== Reverter a ressincronização das relações de espelho
+
+Você pode usar o System Manager para restabelecer uma relação espelhada anteriormente quebrada. Em uma operação de ressincronização reversa, você inverta as funções do volume de origem e do volume de destino.
+
+.Antes de começar
+O volume de origem deve estar online.
+
+.Sobre esta tarefa
+* Você pode usar o volume de destino para servir dados enquanto você reparar ou substituir o volume de origem, atualizar o volume de origem e restabelecer a configuração original dos sistemas.
+* Quando você executa a ressincronização reversa, o conteúdo na fonte espelhada é substituído pelo conteúdo no volume de destino.
++
+[NOTE]
+====
+** Para volumes SnapLock Compliance, todas as alterações de dados no sistema de arquivos ativo com referência à cópia Snapshot comum são preservadas em uma cópia Snapshot bloqueada até o tempo de expiração definido para o volume atual.
++
+Se o tempo de expiração do volume estiver no passado ou não tiver sido definido, a cópia Snapshot e a cópia Snapshot comum serão bloqueadas por uma duração de 30 dias. Todas as cópias Snapshot intermediárias entre a cópia Snapshot comum e a cópia Snapshot bloqueada mais recente são excluídas.
+
+** Para todos os volumes que não sejam volumes SnapLock Compliance, a operação de ressincronização pode causar a perda de dados mais recentes gravados no volume de origem após a criação da cópia Snapshot base.
+
+
+====
+* Quando você executa a ressincronização reversa, a política de espelhamento do relacionamento é definida como DPDefat e o agendamento de espelhamento é definido como nenhum.
+
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação de espelho que pretende inverter.
+. Clique em *Operations* > *Reverse Resync*.
+. Marque a caixa de seleção de confirmação e clique em *Reverse Resync*.
+
+
+*Informações relacionadas*
+
+xref:reference_protection_window.adoc[Janela de proteção]

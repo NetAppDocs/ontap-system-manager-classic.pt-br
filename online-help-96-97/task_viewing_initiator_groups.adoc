@@ -1,0 +1,21 @@
+---
+permalink: online-help-96-97/task_viewing_initiator_groups.html 
+sidebar: sidebar 
+keywords: view, initiator, group, lun, system, manager, online, help 
+summary: Você pode usar a guia grupos de iniciadores no System Manager para exibir todos os grupos de iniciadores e os iniciadores mapeados para esses grupos de iniciadores e os LUNs e ID LUN mapeados para os grupos de iniciadores. 
+---
+= Exibir grupos de iniciadores com o Gerenciador do sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a guia *grupos de iniciadores* no ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para exibir todos os grupos de iniciadores e os iniciadores mapeados para esses grupos de iniciadores e os LUNs e ID LUN mapeados para os grupos de iniciadores.
+
+.Passos
+. Clique em *armazenamento* > *LUNs*.
+. Clique em *Initiator Groups* (grupos de iniciadores) e reveja os grupos de iniciadores listados no painel superior.
+. Selecione um grupo de iniciadores para exibir os iniciadores que pertencem a ele, que estão listados na guia *iniciadores* no painel inferior.
+. Selecione um grupo de iniciadores para visualizar os LUNs mapeados a ele, que estão listados no *LUNs mapeados* no painel inferior.
+

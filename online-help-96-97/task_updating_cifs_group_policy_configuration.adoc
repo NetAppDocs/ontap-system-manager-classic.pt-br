@@ -1,0 +1,53 @@
+---
+permalink: online-help-96-97/task_updating_cifs_group_policy_configuration.html 
+sidebar: sidebar 
+keywords: update, cifs, group, policy, configuration, online, help, enable, disable, modify, reload, set, up 
+summary: 'Você tem que atualizar a política de grupo depois que a configuração da política é alterada por meio da interface de linha de comando (CLI). Você pode usar a janela CIFS no System Manager para atualizar a política de grupo.' 
+---
+= Gerencie a configuração da política de grupo CIFS com o Gerenciador de sistema - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a janela CIFS no ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para atualizar e gerenciar a política de grupo.
+
+
+
+== Atualize a configuração da política de grupo CIFS
+
+Você tem que atualizar a política de grupo depois que a configuração da política é alterada por meio da interface de linha de comando (CLI).
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. Clique na guia *domínio*.
+. Na área *Diretiva de Grupo*, selecione a configuração da política de grupo que deseja atualizar e clique em *Atualizar*.
+
+
+
+
+== Ativar ou desativar uma configuração de política de grupo CIFS
+
+Você pode ativar ou desativar a configuração de diretiva de grupo CIFS na janela CIFS no System Manager.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. Clique na guia *domínio*.
+. Na área *Diretiva de Grupo*, selecione a configuração da política de grupo que deseja ativar ou desativar e clique em *Ativar* ou *Desativar*, conforme necessário.
+
+
+
+
+== Recarregue a política de grupo CIFS
+
+Você tem que recarregar uma política de grupo CIFS se o status da política for alterado. Você pode usar a janela CIFS no System Manager para recarregar a política de grupo.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. Clique na guia *domínio*.
+. Na área *Diretiva de Grupo*, selecione a configuração da política de grupo que deseja recarregar e clique em *recarregar*.
+

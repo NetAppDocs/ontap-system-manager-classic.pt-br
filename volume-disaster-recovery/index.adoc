@@ -1,0 +1,41 @@
+---
+permalink: volume-disaster-recovery/index.html 
+sidebar: sidebar 
+keywords: content, destination, activate, volume, disaster, reactivate, source, ontap, volume disaster recovery overview 
+summary: 'Você pode ativar rapidamente um volume de destino após um desastre e reativar o volume de origem no ONTAP usando a interface clássica do Gerenciador de sistema do ONTAP (ONTAP 9.7 e anterior).' 
+---
+= Visão geral da recuperação de desastres de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode ativar rapidamente um volume de destino após um desastre e reativar o volume de origem no ONTAP usando a interface clássica do Gerenciador de sistema do ONTAP (ONTAP 9.7 e anterior).
+
+Use este procedimento se quiser executar a recuperação de desastres no nível do volume da seguinte maneira:
+
+* Você está trabalhando com clusters que executam o ONTAP 9.
+* Você é um administrador de cluster.
+* Você configurou a relação SnapMirror a seguir xref:../volume-disaster-prep/index.html[Preparação para recuperação de desastres em volume]
+* O administrador do cluster do cluster de origem declarou que os dados no volume de origem não estão disponíveis devido a eventos como infeção por vírus que levam à corrupção de dados ou exclusão acidental de dados.
+* Você deseja usar o Gerenciador de sistema, não a interface de linha de comando ONTAP ou uma ferramenta de script automatizado.
+* Você deseja usar a interface clássica do Gerenciador de sistema para o ONTAP 9.7 e versões anteriores, não a interface do Gerenciador de sistema do ONTAP para o ONTAP 9.7 e versões posteriores.
+* Você quer usar as práticas recomendadas, não explorar todas as opções disponíveis.
+* Você não quer ler um monte de fundo conceitual.
+
+
+
+
+== Outras maneiras de fazer isso em ONTAP
+
+[cols="2"]
+|===
+| Para executar estas tarefas com... | Veja este conteúdo... 
+
+
+| O Gerenciador de sistema redesenhado (disponível com o ONTAP 9.7 e posterior) | link:https://docs.netapp.com/us-en/ontap/task_dp_serve_data_from_destination.html["Fornecer dados de um destino do SnapMirror"^] 
+
+
+| A interface da linha de comando ONTAP | link:https://docs.netapp.com/us-en/ontap/data-protection/make-destination-volume-writeable-task.html["Ative o volume de destino"^] 
+|===

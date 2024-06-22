@@ -1,0 +1,45 @@
+---
+permalink: fc-config-esxi/task_configuring_iscsi_fc_creating_lun_on_existing_svm.html 
+sidebar: sidebar 
+keywords: configure, fc, exist, storage, virtual, machine, svm, fc, protocol, enable, information, configure, configurin, configure fc on an existing svm 
+summary: Você pode configurar o FC em uma máquina virtual de armazenamento existente. O protocolo FC já deve estar ativado, mas não configurado no SVM. Essas informações destinam-se a SVMs para as quais você está configurando vários protocolos, mas ainda não configurou o FC. 
+---
+= Configurar o FC em uma SVM existente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode configurar o FC em uma máquina virtual de storage (SVM) existente. O protocolo FC já deve estar ativado, mas não configurado no SVM. Essas informações destinam-se a SVMs para as quais você está configurando vários protocolos, mas ainda não configurou o FC.
+
+.Antes de começar
+Sua malha FC precisa estar configurada e as portas físicas desejadas precisam ser conectadas à malha.
+
+.Passos
+. Navegue até a janela *SVMs*.
+. Selecione o SVM que você deseja configurar.
+. No painel SVM**Detalhes**, verifique se *FC/FCoE* é exibido com um fundo cinza, o que indica que o protocolo está habilitado, mas não está totalmente configurado.
++
+Se *FC/FCoE* for exibido com um fundo verde, o SVM já estará configurado.
+
++
+image::../media/existing_svm_protocols_fc_esxi.gif[A imagem mostra a página de detalhes com todos os quatro protocolos com fundos cinzentos.]
+
+. Clique no link do protocolo *FC/FCoE* com o fundo cinza.
++
+A janela Configurar protocolo FC/FCoE é exibida.
+
+. Configure o serviço FC e LIFs na página *Configurar protocolo FC/FCoE*:
++
+.. Marque a caixa de seleção *Configure Data LIFs for FC*.
+.. Digite `2` o campo *LIFs por nó*.
++
+São necessárias duas LIFs para cada nó, para garantir disponibilidade e mobilidade de dados.
+
+.. Ignore a área opcional *provisione um LUN para armazenamento FCP*, porque o LUN é provisionado pelo Virtual Storage Console para VMware vSphere em uma etapa posterior.
+.. Clique em *Submit & Close* (Enviar e fechar).
+
+
+. Reveja a página *Summary*, registe as informações de LIF e, em seguida, clique em *OK*.
+

@@ -1,0 +1,14 @@
+---
+permalink: peering/concept_creating_peer_relationships_93_later.html 
+sidebar: sidebar 
+keywords: peer, relationship, define, network, connection, enable, cluster, svm, exchange, data, secure, ontap, configure, configure peer relationships, Beginning with ontap 9.3 
+summary: 'Um relacionamento de pares define as conexões de rede que permitem que clusters e SVMs troquem dados com segurança. A partir do ONTAP 9.3, até o ONTAP 9.7, você pode usar a interface "classic" do Gerenciador de sistema do ONTAP para executar um método simplificado para configurar relacionamentos entre clusters e entre SVMs.' 
+---
+= Configurar relações entre pares (começando com ONTAP 9.3)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Um relacionamento de pares define as conexões de rede que permitem que clusters e SVMs troquem dados com segurança. A partir do ONTAP 9.3, até o ONTAP 9.7, você pode usar a interface _classic_ do Gerenciador de sistema do ONTAP para executar um método simplificado para configurar relações entre clusters e entre SVMs.

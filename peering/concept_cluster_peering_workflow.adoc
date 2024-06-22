@@ -1,0 +1,18 @@
+---
+permalink: peering/concept_cluster_peering_workflow.html 
+sidebar: sidebar 
+keywords: set, relationship, cluster, peer, creating, create, intercluster, logical, interface, lif, relationship, svm, cluster and svm peering workflow 
+summary: 'A configuração de um relacionamento de peering envolve a preparação de cada cluster para peering, a criação de interfaces lógicas (LIFs) entre clusters em cada nó de cada cluster, a configuração de um relacionamento de peer de cluster e, em seguida, a configuração de um relacionamento de peering SVM.' 
+---
+= Fluxo de trabalho de peering de cluster e SVM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode configurar um relacionamento de peering usando o Gerenciador de sistema do ONTAP com o ONTAP 9.7 ou anterior. A configuração de um relacionamento de peering envolve a preparação de cada cluster para peering, a criação de interfaces lógicas (LIFs) entre clusters em cada nó de cada cluster, a configuração de um relacionamento de peer de cluster e, em seguida, a configuração de um relacionamento de peering SVM.
+
+image::../media/cluster_peering_workflow.gif[A imagem é descrita no texto circundante]
+
+Se você estiver executando o ONTAP 9.2 ou anterior, crie uma relação de peering SVM enquanto cria uma relação de proteção de dados entre o volume de origem e o volume de destino.

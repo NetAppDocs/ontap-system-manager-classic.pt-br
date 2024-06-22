@@ -1,0 +1,36 @@
+---
+permalink: online-help-96-97/task_resizing_volumes.html 
+sidebar: sidebar 
+keywords: resize, volume, capacity, snapshot, copy, online, help 
+summary: Quando um volume atinge a capacidade quase total, você pode aumentar o tamanho do volume, excluir algumas cópias Snapshot ou ajustar a reserva Snapshot. Você pode usar o assistente Redimensionar volume no System Manager para fornecer mais espaço livre. 
+---
+= Redimensione volumes com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando um volume atinge a capacidade quase total, você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e versões anteriores) para aumentar o tamanho do volume, excluir algumas cópias snapshot ou ajustar a reserva de snapshot. Você pode usar o assistente Redimensionar volume no System Manager para fornecer mais espaço livre.
+
+.Sobre esta tarefa
+* Para um volume configurado para crescer automaticamente, você pode modificar o limite para o qual o volume pode crescer automaticamente com base no tamanho aumentado do volume.
+* Não é possível redimensionar um volume de proteção de dados se a relação de espelhamento estiver quebrada ou se uma operação de ressincronização reversa tiver sido executada no volume.
++
+Em vez disso, você deve usar a interface de linha de comando (CLI).
+
+
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. No menu suspenso no campo *SVM*, selecione *All SVMs*.
+. Selecione o volume que você deseja redimensionar.
+. Clique em *mais ações* > *Redimensionar*.
+. Digite ou selecione informações conforme solicitado pelo assistente.
+. Confirme os detalhes e clique em *Finish* para concluir o assistente.
+. Verifique as alterações feitas no espaço disponível e no espaço total do volume na janela *volumes*.
+
+
+*Informações relacionadas*
+
+xref:reference_volumes_window.adoc[Janela volumes]

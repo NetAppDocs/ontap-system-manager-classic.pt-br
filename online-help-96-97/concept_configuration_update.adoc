@@ -1,0 +1,142 @@
+---
+permalink: online-help-96-97/concept_configuration_update.html 
+sidebar: sidebar 
+keywords: configuration, update, system, manager, administration, detail, storage, virtual, machine, svm, online, help, window, tab, node, command, button 
+summary: 'Você pode usar o System Manager para configurar os detalhes de administração de máquinas virtuais de armazenamento (SVMs).' 
+---
+= Atualização de configuração com o Gerenciador do sistema - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para configurar os detalhes de administração das máquinas virtuais de armazenamento (SVMs).
+
+
+
+== Configure os detalhes de administração de um SVM
+
+Você pode usar o System Manager para configurar rapidamente os detalhes de administração da máquina virtual de armazenamento (SVM). Opcionalmente, você pode delegar a administração do SVM a administradores do SVM.
+
+.Sobre esta tarefa
+Como administrador da SVM, você não pode usar o System Manager para gerenciar SVMs delegadas. Você pode gerenciar o SVMssomente usando a interface de linha de comando (CLI).
+
+.Passos
+. Clique em *Configuração* > *Cluster* > *atualizações de configuração*.
+. Na guia *SVMs*, selecione o nó e clique em *Configurar Detalhes da administração*.
+. Na seção *Detalhes do administrador*, configure uma senha para a `vsadmin` conta de usuário.
+. Se você quiser um LIF dedicado para gerenciamento de SVM, selecione *criar um LIF para gerenciamento de SVM* e especifique os detalhes da rede.
++
+Um LIF de gerenciamento dedicado da SVM é necessário para protocolos SAN, em que os dados e os protocolos de gerenciamento não podem compartilhar o mesmo LIF. LIFs de gerenciamento de SVM só podem ser criadas em portas de dados.
+
+. Especifique os detalhes da rede:
++
+|===
+| Se você quiser... | Então... 
+
+
+ a| 
+Especifique o endereço IP usando uma sub-rede
+ a| 
+.. Selecione *usando uma sub-rede*.
+.. Na caixa de diálogo Adicionar detalhes, selecione a sub-rede a partir da qual o endereço IP deve ser atribuído.
++
+Para LIFs entre clusters, apenas as sub-redes associadas ao espaço IPspace selecionado são exibidas.
+
+.. Se quiser atribuir um endereço IP específico à interface, selecione *Use um endereço IP específico* e digite o endereço IP.
++
+O endereço IP especificado é adicionado à sub-rede se esse endereço IP ainda não estiver presente no intervalo de sub-rede.
+
+.. Clique em *OK*.
+
+
+
+
+ a| 
+Especifique o endereço IP manualmente sem usar uma sub-rede
+ a| 
+.. Selecione *sem uma sub-rede*.
+.. Na caixa de diálogo Adicionar detalhes, execute as seguintes etapas:
++
+... Especifique o endereço IP e a máscara ou prefixo da rede.
+... Opcional: Especifique o gateway.
++
+O campo de destino é preenchido com o valor padrão baseado na família do endereço IP.
+
+... Se você não quiser o valor padrão, especifique um novo valor de destino. Se uma rota não existir, uma nova rota é criada automaticamente com base no gateway e no destino.
+
+
+.. Clique em *OK*.
+
+
+|===
+. Especifique uma porta para criar um LIF de dados:
++
+.. Clique em *Procurar*.
+.. Na caixa de diálogo *Selecionar porta de rede ou adaptador*, selecione uma porta e clique em *OK*.
+
+
+
+
+
+
+== Janela de atualizações de configuração
+
+Você pode usar a janela atualizações de configuração para atualizar os detalhes de configuração do cluster, da máquina virtual de armazenamento (SVM) e dos nós.
+
+
+
+=== Separadores
+
+* * Nós*
++
+Permite configurar detalhes do nó.
+
+* *SVMs*
++
+Permite configurar detalhes do SVM.
+
+
+
+
+
+=== Guia nós
+
+
+
+=== Botões de comando
+
+* *Editar Nome do nó*
++
+Abre a caixa de diálogo Editar Nome do nó, que permite modificar o nome do nó.
+
+* * Criar LIF de gerenciamento de nó*
++
+Abre a caixa de diálogo criar LIF de gerenciamento de nó, que permite criar um LIF de gerenciamento de nó para gerenciar um nó específico.
+
+* *Editar AutoSupport*
++
+Abre a caixa de diálogo Editar configurações do AutoSupport, que permite especificar um endereço de e-mail a partir do qual as notificações de e-mail são enviadas e adicionar vários endereços de e-mail dos nomes de host.
+
+
+
+
+
+=== Separador SVMs
+
+
+
+=== Botão de comando
+
+* *Configurar detalhes da administração*
++
+Abre a caixa de diálogo Configurar Detalhes da administração, que permite configurar os detalhes de administração do SVM.
+
+
+
+*Informações relacionadas*
+
+xref:task_creating_cluster.adoc[Criando um cluster]
+
+xref:task_setting_up_network_when_ip_address_range_is_disabled.adoc[Configurar uma rede quando um intervalo de endereços IP está desativado]

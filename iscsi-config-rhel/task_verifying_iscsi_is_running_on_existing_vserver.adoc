@@ -1,0 +1,36 @@
+---
+permalink: iscsi-config-rhel/task_verifying_iscsi_is_running_on_existing_vserver.html 
+sidebar: sidebar 
+keywords: exist, storage, virtual, machine, svm, verify, iscsi, run, verify that the iscsi service is running on an existing svm 
+summary: 'Se você optar por usar uma máquina virtual de storage (SVM) existente, verifique se o serviço iSCSI está sendo executado no SVM.' 
+---
+= Verifique se o serviço iSCSI está em execução em um SVM existente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você optar por usar uma máquina virtual de storage (SVM) existente, verifique se o serviço iSCSI está sendo executado no SVM.
+
+.Antes de começar
+Você precisa ter selecionado uma SVM existente no qual pretende criar um novo LUN.
+
+.Passos
+. Navegue até a janela *SVMs*.
+. Clique na guia *Configurações da SVM*.
+. No painel *Protocolos*, clique em *iSCSI*.
+. Verifique se o serviço iSCSI está em execução.
++
+image::../media/vserver_service_iscsi_running_iscsi_rhel.gif[A ilustração mostra a página do protocolo iSCSI com um ícone verde e o texto Serviço iSCSI está em execução.]
+
+. Registre as interfaces iSCSI listadas para o SVM.
+
+
+
+
+== O que fazer a seguir
+
+Se o serviço iSCSI não estiver em execução, inicie o serviço iSCSI ou crie um novo SVM.
+
+Se houver menos de duas interfaces iSCSI por nó, atualize a configuração iSCSI no SVM ou crie um novo SVM para iSCSI.

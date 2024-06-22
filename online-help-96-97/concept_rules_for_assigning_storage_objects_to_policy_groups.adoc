@@ -1,0 +1,65 @@
+---
+permalink: online-help-96-97/concept_rules_for_assigning_storage_objects_to_policy_groups.html 
+sidebar: sidebar 
+keywords: rulw, assign, storage, object, policy, group, svm, nested, online, help 
+summary: Você deve estar ciente de regras que ditam como pode atribuir objetos de storage a grupos de políticas de QoS de storage. 
+---
+= Regras para atribuir objetos de armazenamento a grupos de políticas
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve estar ciente de regras que ditam como pode atribuir objetos de storage a grupos de políticas de QoS de storage.
+
+
+
+== Os objetos de storage e os grupos de políticas precisam pertencer ao mesmo SVM
+
+Um objeto de storage deve estar contido pelo SVM a que o grupo de políticas pertence. Você especifica o SVM ao qual o grupo de políticas pertence ao criar o grupo de políticas. Vários grupos de políticas podem pertencer ao mesmo SVM.
+
+Na ilustração a seguir, o grupo de políticas PG1 pertence ao SVM VS1. Não é possível atribuir volumes vol2 ou vol3 ao grupo de políticas PG1 porque esses volumes estão contidos em uma SVM diferente.
+
+image::../media/qos_rule_same_vserver.gif[Este gráfico é descrito pelo texto circundante.]
+
+
+
+== Os objetos de armazenamento aninhados não podem pertencer a grupos de políticas
+
+Não é possível atribuir um objeto de armazenamento a um grupo de políticas se o objeto que contém ou os objetos filho pertencerem a um grupo de políticas. A tabela a seguir lista as restrições.
+
+|===
+| Se você atribuir... | Então você não pode atribuir... 
+
+
+ a| 
+SVM em um grupo de políticas
+ a| 
+Quaisquer objetos de storage contidos pelo SVM em um grupo de políticas
+
+
+
+ a| 
+Volume para um grupo de políticas
+ a| 
+Volume contendo SVM ou LUNs filho, em um grupo de políticas
+
+
+
+ a| 
+LUN para um grupo de políticas
+ a| 
+LUN que contêm volume ou SVM em um grupo de políticas
+
+
+
+ a| 
+Arquivo para um grupo de políticas
+ a| 
+Os arquivos contêm volume ou SVM em um grupo de políticas
+
+|===
+Na ilustração a seguir, o SVM VS3 é atribuído ao grupo de políticas PG2. Não é possível atribuir volumes vol4 ou vol5 a um grupo de políticas porque um objeto na hierarquia de storage (SVM VS3) está atribuído a um grupo de políticas.
+
+image::../media/qos_rule_one_object.gif[Este gráfico é descrito pelo texto circundante.]

@@ -1,0 +1,39 @@
+---
+permalink: online-help-96-97/task_cloning_luns.html 
+sidebar: sidebar 
+keywords: clone, lun, create, multiple, copy, system, manager, online, help 
+summary: Os clones de LUN permitem que você crie várias cópias legíveis e graváveis de um LUN. Você pode usar o System Manager para criar uma cópia temporária de um LUN para teste ou para disponibilizar uma cópia de seus dados a usuários adicionais sem fornecer acesso aos dados de produção. 
+---
+= Clone LUNs com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para criar uma cópia temporária de um LUN para teste ou para disponibilizar uma cópia de seus dados a usuários adicionais sem fornecer acesso aos dados de produção. Os clones de LUN permitem que você crie várias cópias legíveis e graváveis de um LUN.
+
+.Antes de começar
+* Você deve ter instalado a licença FlexClone no sistema de storage.
+* Quando a reserva de espaço é desativada em um LUN, o volume que contém o LUN deve ter espaço suficiente para acomodar alterações no clone.
+
+
+.Sobre esta tarefa
+* Quando você cria um clone LUN, a exclusão automática do clone LUN é ativada por padrão no System Manager.
++
+O clone LUN é excluído quando o ONTAP aciona a exclusão automática para economizar espaço.
+
+* Não é possível clonar LUNs que estejam em volumes do SnapLock.
+
+
+.Passos
+. Clique em *armazenamento* > *LUNs*.
+. Na guia *Gerenciamento de LUN*, selecione o LUN que deseja clonar e clique em *Clone*.
+. Se você quiser alterar o nome padrão, especifique um novo nome para o clone LUN.
+. Clique em *Clone*.
+. Verifique se o clone LUN que você criou está listado na janela *LUNs*.
+
+
+*Informações relacionadas*
+
+xref:reference_luns_window.adoc[Janela LUNs]

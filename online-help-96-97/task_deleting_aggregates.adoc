@@ -1,0 +1,36 @@
+---
+permalink: online-help-96-97/task_deleting_aggregates.html 
+sidebar: sidebar 
+keywords: delete, aggregates, system, manager, online, help, root 
+summary: Você pode usar o System Manager para excluir agregados quando não precisar mais dos dados nos agregados. No entanto, não é possível excluir o agregado raiz porque ele contém o volume raiz, que contém as informações de configuração do sistema. 
+---
+= Excluir agregados com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para excluir agregados quando não precisar mais dos dados nos agregados. No entanto, não é possível excluir o agregado raiz porque ele contém o volume raiz, que contém as informações de configuração do sistema.
+
+.Antes de começar
+* Todos os volumes do FlexVol e as máquinas virtuais de storage (SVMs) associadas contidas pelo agregado devem ser excluídos.
+* O agregado deve estar offline.
+
+
+.Passos
+. Escolha um dos seguintes métodos:
++
+** Clique em *aplicativos e camadas* > *camadas de armazenamento*.
+** Clique em *Storage* > *Aggregates & Disks* > *Aggregates*.
+
+
+. Selecione um ou mais agregados que você deseja excluir e clique em *Excluir*.
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
+
+
+*Informações relacionadas*
+
+xref:reference_aggregates_window.adoc[Janela agregados]
+
+xref:reference_storage_tiers_window.adoc[Janela camadas de armazenamento]

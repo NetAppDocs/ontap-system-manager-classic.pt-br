@@ -1,0 +1,57 @@
+---
+permalink: peering/index.html 
+sidebar: sidebar 
+keywords: cluster, administrator, create, authenticated, peer, relationship, svm, enable, communicate, replicate, data 
+summary: Os administradores de cluster podem criar relacionamentos de pares autenticados entre clusters e SVMs para permitir que os clusters se comuniquem entre si para que os dados sejam replicados entre volumes em clusters diferentes. 
+---
+= Visão geral do peering de cluster e SVM
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os administradores de cluster podem criar relacionamentos de pares autenticados entre clusters e SVMs para permitir que os clusters se comuniquem entre si para que os dados sejam replicados entre volumes em clusters diferentes. Você pode executar os procedimentos usando a interface _classic_ do Gerenciador de sistema do ONTAP, que está disponível com o ONTAP 9.7 e versões anteriores do ONTAP 9.
+
+Use a interface _classic_ do Gerenciador de sistema do ONTAP para criar relacionamentos de pares de cluster e relacionamentos de pares SVM se o seguinte se aplicar:
+
+* Você está trabalhando com clusters executando o ONTAP 9.7 ou versões anteriores do ONTAP 9.
+* Você deseja que as relações de peering de cluster sejam autenticadas.
+* Você quer usar as práticas recomendadas, não explorar todas as opções disponíveis.
+* Você deseja usar o Gerenciador de sistema, não a interface de linha de comando (CLI) do ONTAP ou uma ferramenta de script automatizado.
+
+
+
+
+== Outras maneiras de fazer isso em ONTAP
+
+O Gerenciador de sistemas do ONTAP no ONTAP 9.3 simplifica a maneira como você configura relacionamentos entre clusters e entre SVMs. O procedimento de peering de cluster e o procedimento de peering SVM podem ser usados para todas as versões do ONTAP 9. Você deve usar o procedimento apropriado para sua versão do ONTAP.
+
+|===
+
+
+| Para executar estas tarefas com... | Consulte... 
+
+
+ a| 
+O Gerenciador de sistema redesenhado (disponível com o ONTAP 9.7 e posterior)
+ a| 
+* https://docs.netapp.com/us-en/ontap/concept_administration_overview.html["Gerenciamento de clusters com o System Manager"^]
+
+
+
+
+ a| 
+A interface de linha de comando (CLI) do ONTAP
+ a| 
+* https://docs.netapp.com/us-en/ontap/peering/index.html["Visão geral do peering de cluster e SVM com a CLI"^]
++
+Use a interface de linha de comando para configurar relacionamentos de peering de cluster e relacionamentos de peering SVM.
+
+* https://docs.netapp.com/us-en/ontap/networking/index.html["Gerenciamento de rede"^]
++
+Use a interface de linha de comando para configurar sub-redes, LIFs entre clusters, rotas, políticas de firewall e outros componentes de rede
+
+
+
+|===

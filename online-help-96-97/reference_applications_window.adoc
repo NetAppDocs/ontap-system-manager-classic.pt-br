@@ -1,0 +1,143 @@
+---
+permalink: online-help-96-97/reference_applications_window.html 
+sidebar: sidebar 
+keywords: applications, window, svm, online, help, storage, virtual, machine, online, help, action, icon, tab, column 
+summary: 'Você pode usar o System Manager para exibir uma lista de aplicativos em uma máquina virtual de storage (SVM). A lista inclui informações detalhadas sobre cada aplicação.' 
+---
+= Janela aplicativos no Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para exibir uma lista de aplicativos em uma máquina virtual de storage (SVM). A lista inclui informações detalhadas sobre cada aplicação.
+
+
+
+== Separadores
+
+Dependendo da configuração do cluster, o System Manager exibe informações sobre aplicativos usando um dos seguintes métodos:
+
+* *Sem guias*
++
+Informações detalhadas sobre o aplicativo, incluindo o nome, o tipo, o uso do armazenamento, o desempenho e informações relacionadas.
+
+* *Duas abas*
++
+O visor fornece dois separadores de informações sobre a aplicação.
+
++
+** *Avançado*
++
+Informações detalhadas sobre o aplicativo, incluindo o nome, o tipo, o uso do armazenamento, o desempenho e informações relacionadas.
+
+** *Básico*
++
+Informações básicas sobre o aplicativo.
+
+
+
+
+
+
+
+== Lista de aplicações
+
+Os aplicativos para o SVM selecionado são exibidos na guia *Enhanced* em uma lista das seguintes maneiras:
+
+* Para o System Manager 9,5 e anteriores, até um máximo de 32 aplicativos são exibidos na lista.
+* Para o System Manager 9,6, as primeiras 25 aplicações são apresentadas na lista. À medida que você se desloca até o final da lista, outros aplicativos 25 são adicionados à lista. Quando você continuar a rolar, você pode continuar adicionando 25 aplicativos de cada vez para expandir a lista até um máximo de 1000 aplicativos.
+
+
+
+
+== Listar colunas
+
+As informações sobre cada aplicativo são listadas na guia *Enhanced* nas colunas a seguir.
+
+* * Expandir / recolher seta image:../media/arrow_expand_collapse_white_background.gif[""]*
++
+Contém uma seta que pode clicar para expandir as informações para uma visualização detalhada ou para recolher as informações de volta para a vista de resumo.
+
+* *Nome*
++
+O nome da aplicação.
+
+* *Tipo*
++
+O tipo de aplicação.
+
+* *Componente*
++
+O componente da aplicação.
+
+* *Nível de Serviço ONTAP*
++
+O nível do serviço ONTAP para o aplicativo.
+
+* *Uso*
++
+Uma barra gráfica que mostra a porcentagem de uso.
+
+* *Usado*
++
+A quantidade de espaço de armazenamento utilizado pela aplicação.
+
+* *Disponível*
++
+A quantidade de espaço de armazenamento ainda disponível para o aplicativo.
+
+* *Tamanho*
++
+O tamanho da aplicação.
+
+* *IOPs*
++
+O número de operações de entrada e saída por segundo (IOPs) para a aplicação.
+
+* *Latência*
++
+A quantidade de latência do aplicativo.
+
+
+
+
+
+== Campos de entrada
+
+Os seguintes campos podem ser usados para modificar a exibição de informações:
+
+* *SVM*
++
+Permite exibir uma lista suspensa de SVMs a partir da qual você pode selecionar o SVM que contém os aplicativos que deseja exibir.
+
+* *Campo de pesquisa*
++
+Permite que você digite todo ou parte do nome de um aplicativo para iniciar uma pesquisa com base nos critérios que você digita. Apenas as aplicações com nomes que correspondem aos critérios são apresentadas na lista.
+
+* *Ordenar por campo*
++
+Permite ordenar a lista de aplicações com base no nome, tamanho ou tipo.
+
+
+
+
+
+== Ícones de ação
+
+Os seguintes ícones na guia *Enhanced* podem ser usados para iniciar ações:
+
+* * Adicionar ícone image:../media/add_plus_sign.gif[""]*
++
+Permite adicionar uma aplicação ao SVM selecionado.
+
+* * Ícone de filtro image:../media/filter_icon_white_background.gif[""]*
++
+Permite especificar o tipo de aplicação que pretende apresentar nos resultados da pesquisa.
+
+* * Ícone de exibição image:../media/display_icon.gif[""]*
++
+Permite alternar entre uma vista de lista e uma vista de cartão das informações da aplicação.
+
+

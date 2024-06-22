@@ -1,0 +1,16 @@
+---
+permalink: nfs-config-esxi/task_nfs_client_configuration_for_esxi_workflow.html 
+sidebar: sidebar 
+keywords: nfs, client, configuration, esxi, workflow, nfs client configuration for esxi workflow 
+summary: Ao disponibilizar storage para um host ESXi usando NFS, você provisiona um volume no usando para e, em seguida, se conecta à exportação NFS do host ESXi. 
+---
+= Configuração do cliente NFS para fluxo de trabalho ESXi
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ao disponibilizar storage para um host ESXi usando NFS, você provisiona um volume no usando para e, em seguida, se conecta à exportação NFS do host ESXi.
+
+image::../media/nfs_client_configuration_with_vaai_workflow.gif[Configuração do cliente NFS com VAAI para ESX]

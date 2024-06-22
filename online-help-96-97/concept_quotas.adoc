@@ -1,0 +1,348 @@
+---
+permalink: online-help-96-97/concept_quotas.html 
+sidebar: sidebar 
+keywords: system, manager, quota, online, help, view, activate, deactivate, information, types, targets, default, limits, space, files, manage, tree, group 
+summary: Você pode usar o System Manager para criar, editar e excluir cotas. 
+---
+= Gerencie cotas com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para criar, editar e excluir cotas.
+
+
+
+== Crie cotas
+
+As cotas permitem restringir ou rastrear o espaço em disco e o número de arquivos usados por um usuário, grupo ou qtree. Você pode usar o assistente Adicionar cota no System Manager para criar uma cota e aplicar a cota a um volume ou qtree específico.
+
+.Sobre esta tarefa
+Usando o System Manager, o valor mínimo que você pode especificar para o limite rígido e limite flexível no número de arquivos que a cota pode possuir é 1000. Se você quiser especificar um valor inferior a 1000, use a interface de linha de comando (CLI).
+
+.Passos
+. Clique em *armazenamento* > *cotas*.
+. No menu suspenso no campo *SVM*, selecione a máquina virtual de armazenamento (SVM) na qual você deseja criar uma cota.
+. Na guia *cotas definidas pelo usuário*, clique em *criar*.
++
+É apresentado o Assistente para criar quota.
+
+. Digite ou selecione informações conforme solicitado pelo assistente.
+. Confirme os detalhes e clique em *Finish* para concluir o assistente.
+
+
+
+
+=== O que fazer a seguir
+
+Você pode usar o nome de usuário local ou RID para criar cotas de usuário. Se você criar a cota de usuário ou a cota de grupo usando o nome de usuário ou o nome do grupo, o ``/etc/passwd``arquivo e o``/etc/group``arquivo devem ser atualizados, respetivamente.
+
+
+
+== Eliminar quotas
+
+Você pode usar o System Manager para excluir uma ou mais cotas quando seus usuários e seus requisitos e limitações de armazenamento mudarem.
+
+.Passos
+. Clique em *armazenamento* > *cotas*.
+. No menu suspenso no campo *SVM*, selecione a máquina virtual de armazenamento (SVM) na qual as cotas que você deseja excluir residem.
+. Selecione uma ou mais cotas que você deseja excluir e clique em *Excluir*.
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
+
+
+
+
+== Editar limites de cota
+
+Você pode usar o System Manager para editar o limite de espaço em disco, o limite rígido e o limite flexível na quantidade de espaço em disco que o destino de cota pode usar, e o limite rígido e o limite flexível no número de arquivos que o destino de cota pode possuir.
+
+.Passos
+. Clique em *armazenamento* > *cotas*.
+. No menu suspenso no campo *SVM*, selecione a máquina virtual de armazenamento (SVM) na qual reside a cota que você deseja editar.
+. Selecione a cota que deseja editar e clique em *Editar limites*.
+. Na caixa de diálogo *Editar limites*, edite as configurações de cota conforme necessário.
++
+Cem (100) é o valor mínimo que você pode especificar para o limite rígido e limite suave no número de arquivos que a cota pode possuir. Se você quiser especificar um valor inferior a 100, use a interface de linha de comando (CLI).
+
+. Clique em *Salvar e fechar*.
+. Verifique as alterações feitas na cota selecionada na guia *cotas definidas pelo usuário*.
+
+
+
+
+== Ative ou desative cotas
+
+Você pode usar o System Manager para ativar ou desativar cotas em um ou mais volumes selecionados no sistema de armazenamento. Você pode ativar ou desativar cotas quando os usuários e seus requisitos de armazenamento e limitações mudarem.
+
+.Passos
+. Clique em *armazenamento* > *cotas*.
+. No menu suspenso no campo SVM, selecione a máquina virtual de storage (SVM) na qual residem as cotas que você deseja ativar ou desativar.
+. Na guia *Status da cota em volumes*, selecione um ou mais volumes para os quais deseja ativar ou desativar cotas.
+. Clique em *Activate* (Ativar) ou *Deactivate* (Desativar), conforme necessário.
+. Se você estiver desativando uma cota, marque a caixa de seleção confirmação e clique em *OK*.
+. Verifique o status da cota nos volumes na coluna *Status*.
+
+
+
+
+== Redimensionar cotas
+
+Você pode usar a caixa de diálogo Redimensionar cota no System Manager para ajustar as cotas ativas no volume especificado para que elas reflitam as alterações feitas em uma cota.
+
+.Antes de começar
+As cotas devem estar habilitadas para os volumes para os quais você deseja redimensionar cotas.
+
+.Passos
+. Clique em *armazenamento* > *cotas*.
+. Na guia *Status da cota em volumes* da janela *cotas*, selecione um ou mais volumes para os quais você deseja redimensionar as cotas.
+. Clique em *Redimensionar*.
+
+
+
+
+== Exibir informações de cota
+
+Você pode usar a janela cotas no System Manager para exibir detalhes da cota, como o volume e qtrees aos quais a cota é aplicada, o tipo de cota, o usuário ou grupo ao qual a cota é aplicada e o espaço e o uso do arquivo.
+
+.Passos
+. Clique em *armazenamento* > *cotas*.
+. No menu suspenso no campo *SVM*, selecione a máquina virtual de armazenamento (SVM) na qual reside a cota sobre a qual você deseja exibir informações.
+. Execute a ação apropriada:
++
+[cols="1a,1a"]
+|===
+| Se... | Então... 
+
+
+ a| 
+Você quer ver detalhes de todas as cotas que você criou
+ a| 
+Clique na guia *cotas definidas pelo usuário*.
+
+
+
+ a| 
+Você deseja exibir detalhes das cotas que estão ativas no momento
+ a| 
+Clique na guia *Relatório de cotas*.
+
+|===
+. Selecione a cota sobre a qual deseja exibir informações na lista de cotas exibida.
+. Reveja os detalhes da quota.
+
+
+
+
+== Tipos de quotas
+
+As quotas podem ser classificadas com base nos objetivos a que são aplicadas.
+
+A seguir estão os tipos de quotas com base nos objetivos a que são aplicadas:
+
+* *Cota de usuário*
++
+O alvo é um usuário.
+
++
+O usuário pode ser representado por um nome de usuário UNIX, UNIX UID, Windows SID, um arquivo ou diretório cujo UID corresponde ao usuário, nome de usuário do Windows no formato anterior ao Windows 2000 e um arquivo ou diretório com uma ACL de propriedade do SID do usuário. Você pode aplicá-lo a um volume ou a uma qtree.
+
+* *Cota de grupo*
++
+O alvo é um grupo.
+
++
+O grupo é representado por um nome de grupo UNIX, um GID ou um arquivo ou diretório cujo GID corresponde ao grupo. O ONTAP não aplica cotas de grupo com base em um ID do Windows. Você pode aplicar uma cota a um volume ou a uma qtree.
+
+* *Cota Qtree*
++
+O destino é uma qtree, especificada pelo nome do caminho para a qtree.
+
++
+Você pode determinar o tamanho da qtree de destino.
+
+* *Cota padrão*
++
+Aplica automaticamente um limite de quota a um grande conjunto de alvos de quota sem criar quotas separadas para cada alvo.
+
++
+As cotas padrão podem ser aplicadas a todos os três tipos de destino de cota (usuários, grupos e qtrees). O tipo de cota é determinado pelo valor do campo tipo.
+
+
+
+
+
+== Limites de cota
+
+Você pode aplicar um limite de espaço em disco ou limitar o número de arquivos para cada tipo de cota. Se você não especificar um limite para uma cota, nenhum será aplicado.
+
+As quotas podem ser suaves ou difíceis. As cotas flexíveis fazem com que o Data ONTAP envie uma notificação quando os limites especificados forem excedidos e as cotas rígidas impedem que uma operação de gravação seja bem-sucedida quando os limites especificados forem excedidos.
+
+As cotas rígidas impõem um limite rígido aos recursos do sistema; qualquer operação que resultaria em exceder o limite falha. As seguintes configurações criam cotas rígidas:
+
+* Parâmetro de limite do disco
+* Parâmetro limit ficheiros
+
+
+As cotas flexíveis enviam uma mensagem de aviso quando o uso de recursos atinge um determinado nível, mas não afetam as operações de acesso a dados, para que você possa tomar as medidas apropriadas antes que a cota seja excedida. As configurações a seguir criam cotas flexíveis:
+
+* Limite para o parâmetro limite do disco
+* Parâmetro de limite do disco flexível
+* Parâmetro de limite de arquivos macios
+
+
+As cotas de limite e disco flexível permitem que os administradores recebam mais de uma notificação sobre uma cota. Normalmente, os administradores definem o limite de disco para um valor que é apenas ligeiramente menor do que o limite de disco, de modo que o limite forneça um "aviso final" antes de as gravações começarem a falhar.
+
+* *Limite rígido de espaço em disco*
++
+Limite de espaço em disco aplicado a cotas rígidas.
+
+* *Limite de espaço em disco*
++
+Limite de espaço em disco aplicado a cotas flexíveis.
+
+* *Limite de limite*
++
+Limite de espaço em disco aplicado às cotas de limite.
+
+* * Arquivos de limite rígido*
++
+O número máximo de arquivos em uma cota de disco rígido.
+
+* *Limite de arquivos*
++
+O número máximo de arquivos em uma cota de software.
+
+
+
+
+
+== Gerenciamento de cota
+
+O System Manager inclui vários recursos que ajudam a criar, editar ou excluir cotas. Você pode criar uma cota de usuário, grupo ou árvore e pode especificar limites de cota nos níveis de disco e arquivo. Todas as quotas são estabelecidas numa base por volume.
+
+Depois de criar uma cota, você pode executar as seguintes tarefas:
+
+* Ativar e desativar cotas
+* Redimensionar cotas
+
+
+
+
+== Janela cotas
+
+Você pode usar a janela cotas para criar, exibir e gerenciar informações sobre cotas.
+
+
+
+=== Separadores
+
+* *Cotas definidas pelo usuário*
++
+Você pode usar a guia *cotas definidas pelo usuário* para exibir detalhes das cotas criadas e criar, editar ou excluir cotas.
+
+* *Relatório de cotas*
++
+Você pode usar a guia Relatório de cotas para exibir o espaço e o uso do arquivo e editar os limites de espaço e arquivo das cotas ativas.
+
+* *Status da cota em volumes*
++
+Você pode usar a guia Status da cota em volumes para exibir o status de uma cota e ativar ou desativar cotas e redimensionar cotas.
+
+
+
+
+
+=== Botões de comando
+
+* *Criar*
++
+Abre o assistente criar cota, que permite criar cotas.
+
+* *Editar limites*
++
+Abre a caixa de diálogo Editar limites, que permite editar as definições da quota selecionada.
+
+* *Excluir*
++
+Exclui a cota selecionada da lista cotas.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de cotas definidas pelo usuário
+
+A lista cotas exibe o nome e as informações de armazenamento de cada cota.
+
+* *Volume*
++
+Especifica o volume ao qual a cota é aplicada.
+
+* *Qtree*
++
+Especifica a qtree associado à cota. "Todos os Qtrees" indica que a cota está associada a todos os qtrees.
+
+* *Tipo*
++
+Especifica o tipo de cota: Usuário, grupo ou árvore.
+
+* *Usuário/Grupo*
++
+Especifica um usuário ou um grupo associado à cota. "Todos os usuários" indica que a cota está associada a todos os usuários. "Todos os grupos" indica que a cota está associada a todos os grupos.
+
+* *Quota alvo*
++
+Especifica o tipo de destino ao qual a cota é atribuída. O destino pode ser qtree, usuário ou grupo.
+
+* *Limite rígido do espaço*
++
+Especifica o limite de espaço em disco aplicado às cotas de disco rígido.
+
++
+Este campo está oculto por padrão.
+
+* *Limite de espaço suave*
++
+Especifica o limite de espaço em disco aplicado às cotas de software.
+
++
+Este campo está oculto por padrão.
+
+* *Limite*
++
+Especifica o limite de espaço em disco aplicado às cotas de limite.
+
++
+Este campo está oculto por padrão.
+
+* *Limite rígido do arquivo*
++
+Especifica o número máximo de arquivos em uma cota de disco rígido.
+
++
+Este campo está oculto por padrão.
+
+* *Limite de software de arquivo*
++
+Especifica o número máximo de arquivos em uma cota de software.
+
++
+Este campo está oculto por padrão.
+
+
+
+
+
+=== Área de detalhes
+
+A área abaixo da lista de cotas exibe detalhes de cota, como erro de cota, uso e limites de espaço, uso e limites de arquivos.
+
+*Informações relacionadas*
+
+https://docs.netapp.com/us-en/ontap/volumes/index.html["Gerenciamento de storage lógico"^]

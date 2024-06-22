@@ -1,0 +1,49 @@
+---
+permalink: volume-disaster-prep/task_setting_up_destination_svm_for_data_access.html 
+sidebar: sidebar 
+keywords: minimize, data, access, disruption, activating, activate, destination, volume, configuration, cifs, policies, policy, nas, environment, initiator, group, svm, set up the destination svm for data access 
+summary: Você pode minimizar a interrupção do acesso aos dados ao ativar o volume de destino configurando as configurações necessárias, como LIFs, compartilhamentos CIFS e políticas de exportação para o ambiente nas, e LIFs e grupos de iniciadores para o ambiente SAN na SVM que contém o volume de destino. 
+---
+= Configure o SVM de destino para acesso aos dados
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode minimizar a interrupção do acesso aos dados ao ativar o volume de destino configurando as configurações necessárias, como LIFs, compartilhamentos CIFS e políticas de exportação para o ambiente nas, e LIFs e grupos de iniciadores para o ambiente SAN na SVM que contém o volume de destino.
+
+.Sobre esta tarefa
+Você deve executar essa tarefa no cluster *destino* para o SVM que contém o volume de destino.
+
+
+
+== Procedimento
+
+* Ambiente nas:
++
+.. Crie LIFs nas.
+.. Crie compartilhamentos CIFS com os mesmos nomes de compartilhamento que foram usados na origem.
+.. Criar políticas de exportação de NFS apropriadas.
+.. Crie regras de cota apropriadas.
+
+
+* AMBIENTE SAN:
++
+.. Crie SAN LIFs.
+.. *Opcional:* Configurar portsets.
+.. Configurar grupos de iniciadores.
+.. Para FC, defina a zona dos switches FC para permitir que os clientes SAN acessem os LIFs.
+
+
+
+
+
+
+== O que fazer a seguir
+
+Se alguma alteração tiver sido feita no SVM que contém o volume de origem, você precisará replicar as alterações manualmente no SVM que contém o volume de destino.
+
+*Informações relacionadas*
+
+https://docs.netapp.com/ontap-9/index.jsp["Centro de Documentação do ONTAP 9"]

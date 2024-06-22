@@ -1,0 +1,26 @@
+---
+permalink: online-help-96-97/concept_using_space_reservation_with_flexvol_volumes.html 
+sidebar: sidebar 
+keywords: space, reservation, flexvol, volume, online, help 
+summary: Com a reserva de espaço, você pode provisionar volumes FlexVol. O thin Provisioning parece fornecer mais storage do que o realmente disponível em um determinado agregado, contanto que nem todo esse storage esteja sendo usado no momento. 
+---
+= Use reservas de espaço com o FlexVol volumes com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+No ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior), você pode usar a reserva de espaço para provisionar volumes FlexVol. O thin Provisioning parece fornecer mais storage do que o realmente disponível em um determinado agregado, contanto que nem todo esse storage esteja sendo usado no momento.
+
+O provisionamento espesso reserva armazenamento suficiente do agregado para garantir que qualquer bloco no volume possa ser gravado a qualquer momento.
+
+Agregados podem fornecer storage para volumes contidos em mais de uma máquina virtual de storage (SVM). Se você estiver usando o thin Provisioning e precisar manter uma separação estrita entre os SVMs (por exemplo, se você estiver fornecendo storage em um ambiente de alocação a vários clientes), use volumes totalmente alocados (provisionamento espesso) ou verifique se seus agregados não são compartilhados entre locatários.
+
+Quando a reserva de espaço é definida como ""padrão"", as configurações de reserva de espaço do ONTAP se aplicam aos volumes.
+
+*Informações relacionadas*
+
+http://www.netapp.com/us/media/tr-3563.pdf["Relatório técnico da NetApp 3563: O provisionamento de thin Provisioning da NetApp aumenta a utilização do storage com alocação sob demanda"^]
+
+http://www.netapp.com/us/media/tr-3483.pdf["Relatório técnico da NetApp 3483: Provisionamento reduzido em um ambiente empresarial SAN NetApp ou SAN IP"^]

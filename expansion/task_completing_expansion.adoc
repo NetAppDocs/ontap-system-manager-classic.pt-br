@@ -1,0 +1,14 @@
+---
+permalink: expansion/task_completing_expansion.html 
+sidebar: sidebar 
+keywords: node, cluster, configuring, configure, autosupport, network, expansion, lun, path, complete, complete the expansion 
+summary: Depois que ambos os nós forem Unidos ao cluster, você deverá concluir a configuração dos nós recém-adicionados configurando o AutoSupport e completando a rede SP. 
+---
+= Conclua a expansão
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depois que ambos os nós forem Unidos ao cluster, você deverá concluir a configuração dos nós recém-adicionados configurando o AutoSupport e completando a rede SP. Em seguida, você valida o cluster expandido e gera uma mensagem AutoSupport para concluir a expansão. Se o cluster usar SAN, você deve atualizar caminhos LUN.

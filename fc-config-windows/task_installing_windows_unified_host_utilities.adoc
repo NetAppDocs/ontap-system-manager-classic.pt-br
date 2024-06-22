@@ -1,0 +1,55 @@
+---
+permalink: fc-config-windows/task_installing_windows_unified_host_utilities.html 
+sidebar: sidebar 
+keywords: windows, unified, host, utilities, installation, program, set, registry, hba, parameter, netapp, ontap, e-series, platform, install windows unified host utilities 
+summary: Os Utilitários unificados de host do Windows incluem um programa de instalação que define os parâmetros necessários do Registro do Windows e do HBA para que o host do Windows manipule corretamente os comportamentos do sistema de storage para plataformas NetApp ONTAP e e-Series. 
+---
+= Instale os Utilitários do Windows Unified Host
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Os Utilitários unificados de host do Windows incluem um programa de instalação que define os parâmetros necessários do Registro do Windows e do HBA para que o host do Windows manipule corretamente os comportamentos do sistema de storage para plataformas NetApp ONTAP e e-Series.
+
+.Antes de começar
+Você deve ter concluído as seguintes tarefas:
+
+* Verifique a configuração suportada na Matriz de interoperabilidade
++
+https://mysupport.netapp.com/matrix["Ferramenta de Matriz de interoperabilidade do NetApp"]
+
+* Identificou quaisquer hotfixes do Windows necessários a partir da Matriz de interoperabilidade
++
+https://mysupport.netapp.com/matrix["Ferramenta de Matriz de interoperabilidade do NetApp"]
+
+* Adicione a licença FCP e inicie o serviço de destino
+* Verifique o cabeamento
++
+Consulte _Configuração de SAN_ para a sua versão do ONTAP ou _cabeamento de hardware_ para o seu sistema de armazenamento e-Series no site de suporte da NetApp para obter informações detalhadas sobre cabeamento e configuração.
+
+
+
+.Sobre esta tarefa
+Você deve especificar se deve incluir suporte multipathing ao instalar o pacote de software Windows Unified Host Utilities. Escolha MPIO se você tiver mais de um caminho do host do Windows ou da máquina virtual para o sistema de armazenamento. Escolha nenhum MPIO somente se você estiver usando um único caminho para o sistema de armazenamento.
+
+[NOTE]
+====
+A seleção MPIO não está disponível para sistemas Windows XP e Windows Vista; a e/S multipath não é suportada nesses sistemas operacionais convidados.
+
+====
+Para convidados do Hyper-V, os discos brutos (pass-through) não aparecem no SO convidado se você escolher suporte para multipathing. Você pode usar discos brutos ou usar MPIO, mas não pode usar ambos no SO convidado.
+
+Informações detalhadas sobre a instalação estão disponíveis em link:https://docs.netapp.com/us-en/ontap-sanhost/hu_wuhu_71.html#installing-the-host-utilities["Instalação do Windows Unified Host"].
+
+https://mysupport.netapp.com/site/global/dashboard["Suporte à NetApp"]
+
+.Passos
+. Baixe a versão apropriada dos Utilitários de host unificado do Windows no site de suporte da NetApp.
++
+https://mysupport.netapp.com/site/global/dashboard["Suporte à NetApp"]
+
+. Execute o arquivo executável e siga as instruções na tela.
+. Reinicie o host do Windows quando solicitado.
+

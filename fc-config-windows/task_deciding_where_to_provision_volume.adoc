@@ -1,0 +1,43 @@
+---
+permalink: fc-config-windows/task_deciding_where_to_provision_volume.html 
+sidebar: sidebar 
+keywords: provision, volume, contain, lun, exist, storage, virtual, machine, svm, exist, decide where to provision the volume 
+summary: Antes de provisionar um volume para conter LUNs, você precisa decidir se deseja adicionar o volume a uma máquina virtual de storage existente ou criar um novo SVM para o volume. Talvez você também precise configurar o FC em uma SVM existente. 
+---
+= Decidir onde provisionar o volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de provisionar um volume para conter LUNs, você precisa decidir se deseja adicionar o volume a uma máquina virtual de storage (SVM) existente ou criar um novo SVM para o volume. Talvez você também precise configurar o FC em uma SVM existente.
+
+.Sobre esta tarefa
+Se um SVM existente já estiver configurado com os protocolos necessários e tiver LIFs que podem ser acessados do host, será mais fácil usar o SVM existente.
+
+É possível criar um novo SVM para separar dados ou administração de outros usuários do cluster de storage. Não há vantagem de usar SVMs separadas apenas para separar protocolos diferentes.
+
+
+
+== Procedimento
+
+* Se você quiser provisionar volumes em uma SVM que já esteja configurada para FC, verifique se o serviço FC está em execução e, em seguida, crie um LUN na SVM.
++
+link:task_verifying_that_fc_service_is_running_on_existing_svm.html["Verificar se o serviço FC está em execução em um SVM existente"]
+
++
+link:task_creating_lun_its_containing_volume.html["Criando um LUN"]
+
+* Se você quiser provisionar volumes em uma SVM existente que tenha FC habilitado, mas não configurado, configure iSCSI na SVM existente.
++
+link:task_configuring_iscsi_fc_creating_lun_on_existing_svm.html["Configuração do FC em uma SVM existente"]
+
++
+Esse é o caso em que você não seguiu o procedimento para criar o SVM ao configurar um protocolo diferente.
+
+* Se você quiser provisionar volumes em uma nova SVM, crie o SVM.
++
+link:task_creating_svm.html["Criando um novo SVM"]
+
+

@@ -1,0 +1,16 @@
+---
+permalink: online-help-96-97/concept_setting_up_your_cluster_environment.html 
+sidebar: sidebar 
+keywords: set, up, cluster, environment, system, manager, cli, command, line, interface, cluster, ip, address 
+summary: 'Você pode criar um cluster usando o System Manager ou a interface de linha de comando (CLI). Para criar um cluster usando o System Manager, você deve configurar o endereço IP de gerenciamento de nó em qualquer nó da rede do cluster. Se você criou um cluster usando a CLI, pode configurar o cluster usando o System Manager.' 
+---
+= Configurar o ambiente de cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode criar um cluster usando o System Manager ou a interface de linha de comando (CLI). Para criar um cluster usando o System Manager, você deve configurar o endereço IP de gerenciamento de nó em qualquer nó da rede do cluster. Se você criou um cluster usando a CLI, pode configurar o cluster usando o System Manager.
+
+image::../media/guided_cluster_setup.gif[configuração do cluster orientado]

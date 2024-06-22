@@ -1,0 +1,45 @@
+---
+permalink: online-help-96-97/task_performing_switchback.html 
+sidebar: sidebar 
+keywords: metrocluster, perform, switchback, system, manager, online, help 
+summary: 'A partir do System Manager 9,6, você pode executar uma operação de switchback que restaura o controle para o local original do MetroCluster (local B) depois que o sistema concluir uma operação de switchover bem-sucedida.' 
+---
+= Executando um switchback
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do System Manager 9,6, você pode executar uma operação de switchback que restaura o controle para o local original do MetroCluster (local B) depois que o sistema concluir uma operação de switchover bem-sucedida.
+
+.Antes de começar
+Antes de executar uma operação de switchback, você deve concluir as seguintes tarefas:
+
+* Você deve preparar os sites do MetroCluster por xref:task_performing_negotiated_planned_switchover.adoc[Realização de um switchover negociado (planejado)] ou xref:task_performing_unplanned_switchover.adoc[Executar um switchover não planejado].
+* Se ocorrerem erros durante a operação de recuperação, você deve seguir as instruções exibidas para corrigi-los.
+* Se o estado do local remoto for exibido como ""preparando-se para o switchback"", os agregados ainda estarão ressincronizando. Você deve esperar até que o status do local remoto indique que ele está pronto para switchback.
+
+
+.Sobre esta tarefa
+Se uma operação de comutação for bem-sucedida, a janela MetroCluster switchover e Switchback Operations (operações de comutação) é exibida. A janela mostra o status de ambos os sites e fornece uma mensagem que informa que a operação foi bem-sucedida.
+
+.Passos
+. Clique em *Switchback do local A para o local B* para iniciar a operação de switchback.
++
+Uma mensagem de aviso informa que a operação de switchback está retornando o controle do MetroCluster ao local B e que o processo pode levar algum tempo.
+
+. Se pretender continuar, clique em *Yes*.
+. Execute uma das seguintes subetapas quando o processo de switchback estiver concluído:
++
+** Se a operação de switchback for bem-sucedida, clique em *Done* para confirmar a conclusão das operações do MetroCluster.
++
+[NOTE]
+====
+Até que você reconheça a conclusão da operação de switchback, o System Manager continua a exibir uma mensagem informando que a operação foi concluída. Você não pode iniciar outra operação ou monitorar operações subsequentes de comutação ou switchback até que você reconheça a conclusão da operação de switchback.
+
+====
+** Se a operação de switchback não for bem-sucedida, as mensagens de erro são exibidas na parte superior da área de status. Faça correções, se necessário, e clique em *Switchback do local A para o local B* para tentar novamente o processo.
+
+
+

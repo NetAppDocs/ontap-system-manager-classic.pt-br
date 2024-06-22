@@ -1,0 +1,38 @@
+---
+permalink: nfs-config/task_deciding_where_to_provision_new_volume.html 
+sidebar: sidebar 
+keywords: create, nfs, volume, exist, storage, virtual, machine, svm, configuration, workflow, decide where to provision the new volume 
+summary: 'Antes de criar um novo volume NFS, você precisa decidir se deve colocá-lo em uma máquina virtual de storage (SVM) existente e, em caso afirmativo, em quanta configuração o SVM precisa. Esta decisão determina o seu fluxo de trabalho.' 
+---
+= Decidir onde provisionar o novo volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de criar um novo volume NFS, você precisa decidir se deve colocá-lo em uma máquina virtual de storage (SVM) existente e, em caso afirmativo, em quanta configuração o SVM precisa. Esta decisão determina o seu fluxo de trabalho.
+
+
+
+== Procedimento
+
+* Se você quiser provisionar um volume em uma nova SVM, crie um novo SVM habilitado para NFS.
++
+link:task_creating_protocol_enabled_svm.html["Criação de um novo SVM habilitado para NFS"]
+
++
+Você deve escolher essa opção se o NFS não estiver habilitado em uma SVM existente.
+
+* Se você quiser provisionar um volume em uma SVM existente no qual o NFS esteja ativado, mas não configurado, configure o acesso NFS no SVM atual.
++
+link:task_configuring_access_to_existing_svm.html["Configuração do acesso ao NFS em uma SVM existente"]
+
++
+Esse é o caso se você não seguir esse procedimento para criar o SVM ao configurar um protocolo diferente.
+
+* Se você quiser provisionar um volume em uma SVM atual totalmente configurada para acesso NFS, adicione um volume NFS ao SVM habilitado para NFS.
++
+link:concept_adding_protocol_volume_to_protocol_enabled_svm.html["Adição de um volume NFS a uma SVM habilitada para NFS"]
+
+

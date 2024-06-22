@@ -1,0 +1,56 @@
+---
+permalink: peering/task_creating_cluster_peer_relationship_starting_with_ontap_9_3.html 
+sidebar: sidebar 
+keywords: create, cluster, peer, relationship, cluster, system-generated, passphrase, ip, address, intercluster, lif, remote, create a cluster peer relationship, Beginning with ontap 9.3 
+summary: Você pode criar um relacionamento de peer de cluster entre dois clusters fornecendo uma senha gerada pelo sistema e os endereços IP das LIFs entre clusters do cluster remoto. 
+---
+= Criar um relacionamento de cluster peer (começando com ONTAP 9.3)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do ONTAP 9.3, até o ONTAP 9.7, você pode usar a interface _classic_ do Gerenciador de sistema do ONTAP criar uma relação de cluster entre dois clusters fornecendo uma senha gerada pelo sistema e os endereços IP das LIFs entre clusters do cluster remoto.
+
+.Sobre esta tarefa
+A partir do ONTAP 9.6, a criptografia de peering de cluster é ativada por padrão em todas as relações de peering de cluster recém-criadas. A criptografia de peering de cluster deve ser ativada manualmente para o relacionamento de peering criado antes da atualização para o ONTAP 9.6. A criptografia de peering de cluster não está disponível para clusters que executam o ONTAP 9.5 ou anterior. Portanto, ambos os clusters no relacionamento de peering devem estar executando o ONTAP 9.6 para habilitar a criptografia de peering de cluster.
+
+A criptografia de peering de cluster usa a camada de segurança de transporte (TLS) para proteger as comunicações de peering entre clusters para recursos do ONTAP, como SnapMirror e FlexCache.
+
+.Passos
+. No campo *Target Cluster Intercluster LIF IP Addresses*, insira os endereços IP das LIFs entre clusters do cluster remoto.
+. [[step2-passphrase]]gere uma frase-passe a partir do cluster remoto.
++
+.. Especifique o endereço de gerenciamento do cluster remoto.
+.. Clique em *URL de gerenciamento* para iniciar o Gerenciador de sistema ONTAP no cluster remoto.
+.. Inicie sessão no cluster remoto.
+.. Na janela *Cluster Peers*, clique em *Generate Peering Passphrase* (gerar frase-passe de peering).
+.. Selecione o espaço IPspace, a validade da senha e as permissões SVM.
++
+Você pode permitir que todos os SVMs ou SVMs selecionadas para peering. Quando uma solicitação de peer SVM é gerada, os SVMs permitidos são automaticamente colocados em Contato com os SVMs de origem sem exigir que você aceite o relacionamento de mesmo nível dos SVMs remotos.
+
+.. Clique em *Generate*.
++
+É apresentada a informação de frase-passe.
+
++
+image::../media/generate_passphrase.gif[Esta imagem é explicada pelo texto circundante.]
+
+.. Clique em *Copiar detalhes da senha* ou *Detalhes da senha de e-mail*.
+.. Clique em *Concluído*.
+
+
+. No cluster de origem, introduza a frase-passe gerada que obteve no <<step2-passphrase,Passo 2>>.
+. Clique em *Iniciar peering de cluster*.
++
+A relação de peer de cluster foi criada com sucesso.
+
+. Clique em *continuar*.
+
+
+
+
+== O que fazer a seguir
+
+Você deve especificar os detalhes do SVM na janela peering SVM para continuar com o processo de peering.

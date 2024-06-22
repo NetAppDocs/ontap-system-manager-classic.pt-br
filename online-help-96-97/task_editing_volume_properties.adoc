@@ -1,0 +1,118 @@
+---
+permalink: online-help-96-97/task_editing_volume_properties.html 
+sidebar: sidebar 
+keywords: edit, volume, properties, online, help, deduplication, system, manager 
+summary: 'Você pode modificar propriedades de volume, como nome do volume, estilo de segurança, reserva fracionária e garantia de espaço, usando o System Manager. Você pode modificar as configurações de eficiência de storage (cronograma de deduplicação, política de deduplicação e compactação) e as configurações de recuperação de espaço.' 
+---
+= Edite as propriedades do volume com o Gerenciador do sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para modificar propriedades de volume, como nome do volume, estilo de segurança, reserva fracionária e garantia de espaço. Você pode modificar as configurações de eficiência de storage (cronograma de deduplicação, política de deduplicação e compactação) e as configurações de recuperação de espaço.
+
+.Antes de começar
+Para ativar a criptografia de volume, você deve ter instalado a licença de criptografia de volume usando o System Manager e você deve ter ativado a ""configuração do gerenciador de chaves"" usando a interface de linha de comando (CLI). Você deve atualizar seu navegador da Web depois de ativar a configuração do gerenciador de chaves.
+
+.Sobre esta tarefa
+* Você pode definir a reserva fracionária para zero por cento ou 100 por cento.
+* A compressão de dados não é suportada em volumes de 32 bits.
+* Para clusters do Data ONTAP 8.3,1, é possível habilitar a compactação in-line e a compactação em segundo plano do Cloud Volumes ONTAP para AWS (AWS).
++
+A compactação não é suportada para o Data ONTAP Edge.
+
+* Não é possível renomear um volume SnapLock Compliance.
+
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. No menu suspenso no campo *SVM*, selecione a máquina virtual de armazenamento (SVM) na qual reside o volume que você deseja editar.
+. Selecione o volume que deseja modificar e clique em *Editar*.
++
+A caixa de diálogo Editar volume é exibida.
+
+. Na guia *Geral*, modifique as seguintes propriedades conforme necessário:
++
+** Altere o nome do volume
+** Ativar a encriptação de volume
++
+Esta opção só está disponível se tiver ativado a licença de encriptação de volume e se a plataforma correspondente suportar encriptação. Você pode configurar o gerenciador de chaves a partir da CLI.
+
+** Altere o estilo de segurança do volume
+** Ative ou desative o provisionamento de thin Provisioning
+
+
+. Clique na guia *eficiência de armazenamento* e habilite a eficiência de armazenamento configurando as seguintes propriedades:
++
+** Deduplicação
+** Você não pode habilitar a compressão em segundo plano para um volume contido por um agregado com personalidade otimizada para All Flash. Você só pode ativar a compactação in-line para esses volumes.
+
+
++
+Você pode habilitar a deduplicação in-line apenas em um volume contido por um agregado com personalidade otimizada All Flash ou em um volume em um agregado de Flash Pool.
+
+. Para volumes SnapLock, clique na guia *SnapLock* e execute as seguintes etapas:
++
+.. Especifique o período de confirmação automática.
++
+O período de confirmação automática determina por quanto tempo um arquivo no volume deve permanecer inalterado antes que o arquivo seja comprometido com o estado WORM.
+
+.. Especifique o período de retenção mínimo e o período de retenção máximo.
++
+Os valores devem estar na faixa de 1 dia a 70 anos ou Infinito.
+
+.. Selecione o período de retenção padrão.
++
+O período de retenção padrão deve estar dentro do período de retenção mínimo especificado e do período de retenção máximo.
+
+
+
+. Clique na guia *Avançado* e ative as seguintes propriedades:
++
+** Se você quiser que o volume cresça automaticamente quando o espaço usado no volume estiver acima do limite de crescimento, selecione *Grow*.
+** Se você quiser que o volume cresça ou diminua em tamanho em resposta à quantidade de espaço usado, selecione *Grow or Shrink*.
++
+... Especifique o tamanho máximo para o qual o volume pode crescer.
+
+
+** Para habilitar a exclusão automática de cópias Snapshot mais antigas, escolha uma das seguintes opções:
++
+*** Tente
++
+Exclui as cópias Snapshot que não estão bloqueadas por nenhum outro subsistema.
+
+*** Destruir
++
+Exclui as cópias Snapshot bloqueadas pela funcionalidade de backup de dados.
+
+*** Interromper
++
+Exclui as cópias Snapshot que podem interromper a transferência de dados.
+
+
+
+** Selecione a política de armazenamento em cache que você deseja atribuir ao volume.
++
+Essa opção está disponível apenas para volumes FlexVol em um agregado de pool flash.
+
+** Selecione a prioridade de retenção para dados em cache no volume.
++
+Essa opção está disponível apenas para volumes FlexVol em um agregado de pool flash.
+
+** Especifique a reserva fracionária que você deseja definir para o volume.
+** Atualize o tempo de acesso para a leitura do ficheiro.
++
+Esta opção está desativada para volumes SnapLock.
+
+
+
+. Clique em *Salvar e fechar*.
+
+
+*Informações relacionadas*
+
+xref:reference_volumes_window.adoc[Janela volumes]
+
+xref:task_setting_up_cifs.adoc[Configurar o CIFS]

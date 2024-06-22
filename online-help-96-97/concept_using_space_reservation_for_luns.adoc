@@ -1,0 +1,22 @@
+---
+permalink: online-help-96-97/concept_using_space_reservation_for_luns.html 
+sidebar: sidebar 
+keywords: understand, space, reservation, lun, volume, guarantee, online, help 
+summary: 'Entender como a configuração de reserva de espaço (combinada com a garantia de volume) afeta a forma como o espaço é reservado para LUNs ajuda você a entender as ramificações da desativação de reservas de espaço e por que certas combinações de configurações de LUN e volume não são úteis.' 
+---
+= Entendendo as reservas de espaço para LUNs no Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Entender como a configuração de reserva de espaço (combinada com a garantia de volume) no ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) afeta a forma como o espaço é reservado para LUNs ajuda você a entender as ramificações da desativação de reservas de espaço. Ele também ajuda você a entender por que certas combinações de configurações de LUN e volume não são úteis.
+
+Quando um LUN tem reservas de espaço ativadas (um LUN reservado a espaço), e seu volume contendo tem uma garantia de volume, o espaço livre do volume é reservado para o LUN no momento da criação; o tamanho desse espaço reservado é regido pelo tamanho do LUN. Outros objetos de storage no volume (outros LUNs, arquivos, cópias Snapshot etc.) são impedidos de usar esse espaço.
+
+Quando um LUN tem reservas de espaço desativadas (um LUN não reservado com espaço), nenhum espaço é reservado para esse LUN no momento da criação. O armazenamento exigido por qualquer operação de gravação no LUN é alocado a partir do volume quando necessário, desde que haja espaço livre suficiente disponível.
+
+Se um LUN com espaço reservado for criado em um volume sem garantia, o LUN se comportará da mesma forma que um LUN sem espaço reservado. Isso ocorre porque um volume sem garantia não tem espaço para alocar para o LUN; o volume em si só pode alocar espaço como está escrito, devido à sua nenhuma garantia. Portanto, não é recomendável criar um LUN com espaço reservado em um volume sem garantia; empregar essa combinação de configuração pode fornecer garantias de gravação que são de fato impossíveis.
+
+Quando a reserva de espaço é definida como ""padrão"", as configurações de reserva de espaço do ONTAP se aplicam aos LUNs. As configurações de reserva de espaço do ONTAP também se aplicam aos volumes de contêiner se novos volumes forem criados.

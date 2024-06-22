@@ -1,0 +1,27 @@
+---
+permalink: online-help-96-97/task_resetting_cifs_domain_controllers.html 
+sidebar: sidebar 
+keywords: reset, cifs, domain, controller, system, manager, online, help 
+summary: Você pode usar o System Manager para redefinir a conexão CIFS aos controladores de domínio para o domínio especificado. A falha ao redefinir as informações do controlador de domínio pode causar uma falha de conexão. 
+---
+= Redefinir controladores de domínio CIFS com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para redefinir a conexão CIFS para controladores de domínio para o domínio especificado. A falha ao redefinir as informações do controlador de domínio pode causar uma falha de conexão.
+
+.Sobre esta tarefa
+Você tem que atualizar as informações de descoberta do controlador de domínio disponível do sistema de armazenamento depois de adicionar ou excluir um domínio da lista de controladores de domínio preferenciais. Você pode atualizar as informações de descoberta de controlador de domínio disponíveis do sistema de armazenamento no ONTAP por meio da interface de linha de comando (CLI).
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. Na guia *domínio*, clique em *Redefinir*.
+
+
+*Informações relacionadas*
+
+xref:reference_cifs_window.adoc[Janela CIFS]

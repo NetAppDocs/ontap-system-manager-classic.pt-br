@@ -1,0 +1,40 @@
+---
+permalink: online-help-96-97/concept_flash_pool_statistics.html 
+sidebar: sidebar 
+keywords: flash, pool, statistics, system, manager, ssd, tier, read, write, workload, aggregate, online, help 
+summary: Você pode usar o System Manager para visualizar os workloads de leitura e gravação da camada SSD em tempo real para um agregado de Flash Pool selecionado. 
+---
+= Veja as estatísticas do Flash Pool com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior ) para visualizar as cargas de trabalho de leitura e gravação da camada SSD em tempo real para um agregado de Flash Pool selecionado.
+
+
+
+== Janela Estatísticas agregadas do Flash Pool
+
+Você pode visualizar os workloads de leitura e gravação da camada SSD em tempo real para um agregado de Flash Pool selecionado.
+
+Esta página não está disponível para um cluster que contenha nós com personalidade otimizada para All Flash.
+
+* *Exibindo estatísticas para o Flash Pool Aggregate*
++
+Na lista de agregados Flash Pool, você pode selecionar o agregado Flash Pool cujas estatísticas deseja exibir.
+
+
+
+
+
+=== Cache SSD Leia a carga de trabalho
+
+Exibe uma visualização gráfica do total de solicitações de leitura enviadas ao agregado do Flash Pool em comparação com as operações de leitura executadas pelo nível SSD.
+
+
+
+=== Carga de trabalho de gravação em cache SSD
+
+Exibe uma visualização gráfica do total de solicitações de gravação enviadas ao agregado Flash Pool em comparação com as operações de gravação executadas pelo nível SSD.

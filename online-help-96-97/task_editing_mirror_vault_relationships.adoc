@@ -1,0 +1,344 @@
+---
+permalink: online-help-96-97/task_editing_mirror_vault_relationships.html 
+sidebar: sidebar 
+keywords: edit, mirror, vault, relationship, system, manager, online, help 
+summary: Você pode usar o System Manager para editar uma relação de espelhamento e cofre, modificando a política ou programação selecionada. No entanto, não é possível editar os parâmetros de uma política ou programação existente. 
+---
+= Gerencie relações de espelhos e cofre com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e versões anteriores) para gerenciar relações de espelhamento e cofre. Você pode editar, excluir, inicializar, atualizar, quiesce, retomar e quebrar relações de espelhamento e cofre. Você também pode executar operações de ressincronização ou ressincronização reversa, além de criar relações de espelhamento e cofre a partir de um SVM de destino.
+
+
+
+== Editar relacionamentos
+
+Você pode usar o System Manager para editar uma relação de espelhamento e cofre, modificando a política ou programação selecionada. No entanto, não é possível editar os parâmetros de uma política ou programação existente.
+
+.Antes de começar
+Os clusters de origem e destino devem estar em um relacionamento de pares saudável.
+
+.Sobre esta tarefa
+Você pode modificar o tipo de relacionamento de uma relação de espelho flexível de versão, relação de Vault ou relação de espelhamento e cofre modificando o tipo de diretiva.
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação de espelho e cofre que você deseja modificar e clique em *Editar*.
+. Na caixa de diálogo *Editar relacionamento*, selecione a ação apropriada:
++
+|===
+| Se você quiser... | Faça o seguinte... 
+
+
+ a| 
+Selecione uma política existente
+ a| 
+Clique em *Procurar* e selecione uma política existente. Você pode selecionar uma política que tenha o número máximo de rótulos correspondentes com a política Snapshot anexada ao volume de origem.
+
+
+
+ a| 
+Crie uma nova política
+ a| 
+.. Clique em *criar política*.
+.. Especifique um nome para a política.
+.. Defina a prioridade para transferências agendadas.
++
+Baixa indica que a transferência tem a menor prioridade e geralmente é agendada após transferências de prioridade normal. Por padrão, a prioridade é definida como normal.
+
+.. Marque a caixa de seleção *Ativar compressão de rede* para compactar os dados que estão sendo transferidos.
+.. Especifique um rótulo SnapMirror e uma contagem de retenção de destino para a política de Vault.
++
+Você deve garantir que uma cópia Snapshot com o mesmo rótulo seja criada no volume de origem para que a nova etiqueta SnapMirror seja efetiva.
+
+.. Clique em *criar*.
+
+
+|===
+. Especifique uma agenda para a relação:
++
+|===
+| Se... | Faça o seguinte... 
+
+
+ a| 
+Você deseja atribuir uma programação existente
+ a| 
+Clique em *Procurar* e selecione uma agenda existente.
+
+
+
+ a| 
+Você deseja criar uma nova agenda
+ a| 
+.. Clique em *Create Schedule*.
+.. Especifique um nome para a programação.
+.. Selecione uma das seguintes opções:
++
+*** *Básico*
++
+Pode selecionar esta opção para especificar apenas o dia da semana, a hora e o intervalo de transferência.
+
+*** *Avançado*
++
+Você pode selecionar essa opção para especificar um cronograma de estilo cron.
+
+
+
+.. Clique em *criar*.
+
+
+
+
+ a| 
+Não pretende atribuir uma agenda
+ a| 
+Selecione *nenhum*.
+
+|===
+. Clique em *OK*.
+
+
+
+
+== Atualizar relacionamentos manualmente
+
+Você pode usar o System Manager para iniciar manualmente uma atualização incremental não programada. Você pode precisar de uma atualização manual para evitar a perda de dados devido a uma próxima interrupção de energia, manutenção programada ou migração de dados.
+
+.Antes de começar
+A relação de espelhamento e cofre deve ser inicializada e em um estado Snapmirrored.
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação espelhada para a qual deseja atualizar os dados e clique em *operações* > *Atualização*.
+. Escolha uma das seguintes opções:
++
+** Selecione *de acordo com a política* para realizar uma transferência incremental da cópia Snapshot comum recente entre os volumes de origem e destino.
+** Selecione *Selecionar cópia Snapshot* e especifique a cópia Snapshot que deseja transferir.
+
+
+. Selecione *Limit transfer bandwidth to* para limitar a largura de banda da rede usada para transferências e especifique a velocidade máxima de transferência.
+. Clique em *Atualizar*.
+. Verifique o status da transferência na guia *Detalhes*.
+
+
+
+
+== Inicialize relacionamentos
+
+Você pode usar o System Manager para inicializar uma relação de espelhamento e cofre se ainda não tiver inicializado a relação ao criá-la. Quando você inicializar um relacionamento, uma transferência completa de dados da linha de base é realizada do volume de origem para o destino.
+
+.Antes de começar
+Os clusters de origem e destino devem estar em um relacionamento de pares saudável.
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione o relacionamento mirror e Vault que pretende inicializar e, em seguida, clique em *Operations* > *Initialize*.
+. Marque a caixa de seleção de confirmação e clique em *Inicializar*.
+. Verifique o status da relação na janela *proteção*.
+
+
+.Resultados
+Uma cópia Snapshot é criada e transferida para o destino.
+
+Essa cópia Snapshot é usada como linha de base para cópias Snapshot incrementais subsequentes.
+
+
+
+== Criar um relacionamento a partir de um SVM de destino
+
+Você pode usar o System Manager para criar uma relação de espelhamento e cofre a partir da máquina virtual de storage de destino (SVM). A criação dessa relação permite que você proteja melhor seus dados transferindo dados periodicamente do volume de origem para o volume de destino. Ele também permite que você retenha dados por longos períodos, criando backups do volume de origem.
+
+.Antes de começar
+* O cluster de destino deve estar executando o ONTAP 8.3.2 ou posterior.
+* A licença SnapMirror deve estar ativada no cluster de origem e no cluster de destino.
++
+[NOTE]
+====
+Para algumas plataformas, não é obrigatório que o cluster de origem tenha a licença SnapMirror ativada se o cluster de destino tiver a licença SnapMirror e a licença DPO (Data Protection Otimization) ativada.
+
+====
+* O cluster de origem e o cluster de destino devem estar em um relacionamento de pares saudável.
+* O SVM de destino deve ter espaço disponível.
+* O agregado de origem e o agregado de destino devem ser agregados de 64 bits.
+* Um volume de origem do tipo leitura/gravação (RW) já deve existir.
+* O tipo de agregado SnapLock deve ser o mesmo.
+* Se você estiver se conetando de um cluster que executa o ONTAP 9.2 ou anterior a um cluster remoto no qual a autenticação SAML está ativada, a autenticação baseada em senha deve ser habilitada no cluster remoto.
+
+
+.Sobre esta tarefa
+* O System Manager não oferece suporte a um relacionamento em cascata.
++
+Por exemplo, um volume de destino em uma relação não pode ser o volume de origem em outra relação.
+
+* Você não pode criar uma relação de espelhamento e cofre entre uma fonte de sincronização SVM e um SVM de destino de sincronização em uma configuração do MetroCluster.
+* Você pode criar uma relação de espelhamento e cofre entre SVMs de origem sincronizada em uma configuração do MetroCluster.
+* Você pode criar uma relação de espelhamento e cofre de um volume em uma SVM de origem sincronizada até um volume de SVM que serve dados.
+* Você pode criar uma relação de espelhamento e cofre de um volume em um SVM de fornecimento de dados a um volume de DP em uma fonte sincronizada SVM.
+* Um máximo de 25 volumes pode ser protegido em uma seleção.
+
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Na janela *relacionamentos*, clique em *criar*.
+. Na caixa de diálogo *Procurar SVM*, selecione um SVM para o volume de destino.
+. Na caixa de diálogo *criar relação de proteção*, selecione *Espelhar e Vault* na lista suspensa *tipo de relação*.
+. Especifique o cluster, o SVM e o volume de origem.
++
+Se o cluster especificado estiver executando uma versão do software ONTAP anterior ao ONTAP 9.3, então somente SVMs peered serão listadas. Se o cluster especificado estiver executando o ONTAP 9.3 ou posterior, os SVMs peered e os SVMs permitidos serão listados.
+
+. Introduza um sufixo do nome do volume.
++
+O sufixo do nome do volume é anexado aos nomes do volume de origem para gerar os nomes do volume de destino.
+
+. *Opcional:* clique em *Procurar* e, em seguida, altere a política de espelho e cofre.
++
+Você pode selecionar a política que tem o número máximo de rótulos correspondentes com a política Snapshot anexada ao volume de origem.
+
+. Selecione uma agenda para a relação na lista de programações existentes.
+. *Opcional:* Selecione *Inicializar relacionamento* para inicializar o relacionamento.
+. Habilite agregados habilitados para FabricPool e selecione uma política de disposição em camadas apropriada.
+. Clique em *Validar* para verificar se os volumes selecionados têm rótulos correspondentes.
+. Clique em *criar*.
+
+
+
+
+== Ressincronizar relacionamentos
+
+Você pode usar o System Manager para restabelecer um relacionamento de espelhamento e cofre que foi quebrado anteriormente. É possível executar uma operação de ressincronização para recuperar de um desastre que desabilitou o volume de origem.
+
+.Antes de começar
+Os clusters de origem e destino e as máquinas virtuais de armazenamento de origem e destino (SVMs) devem estar em relacionamentos entre pares.
+
+.Sobre esta tarefa
+Você deve estar ciente do seguinte antes de executar uma operação de ressincronização:
+
+* Quando você executa uma operação de ressincronização, o conteúdo no volume de destino é substituído pelo conteúdo na origem.
++
+[NOTE]
+====
+A operação de ressincronização pode causar a perda de dados mais recentes gravados no volume de destino após a criação da cópia Snapshot base.
+
+====
+* Se o campo último erro de transferência na janela proteção recomendar uma operação de ressincronização, você deve primeiro quebrar a relação e, em seguida, executar a operação de ressincronização.
+
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação de espelhamento e cofre que você deseja ressincronizar e clique em *Operations* > *Resync*.
+. Marque a caixa de seleção de confirmação e clique em *Resync*.
+
+
+
+
+== Reverta a ressincronizar relacionamentos
+
+Você pode usar o System Manager para restabelecer um relacionamento de espelhamento e cofre que foi quebrado anteriormente. Em uma operação de ressincronização reversa, as funções dos volumes de origem e destino são invertidas. Você pode usar o volume de destino para fornecer dados enquanto você reparar ou substituir a origem, atualizar a origem e restabelecer a configuração original dos sistemas.
+
+.Antes de começar
+O volume de origem deve estar online.
+
+.Sobre esta tarefa
+* Quando você executa a ressincronização reversa, o conteúdo no volume de origem é substituído pelo conteúdo no volume de destino.
++
+[NOTE]
+====
+A operação de ressincronização reversa pode causar perda de dados no volume de origem.
+
+====
+* Quando você executa a ressincronização reversa, a política da relação é definida como MirrorAndVault e a programação é definida como nenhum.
+
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação de espelhamento e cofre que você deseja reverter e clique em *operações* > *Reverse Resync*.
+. Marque a caixa de seleção de confirmação e clique em *Reverse Resync*.
+
+
+
+
+== Quebre relacionamentos
+
+Você pode usar o System Manager para quebrar uma relação de espelhamento e cofre se um volume de origem ficar indisponível e quiser que os aplicativos cliente acessem os dados do volume de destino. Você pode usar o volume de destino para servir dados enquanto você reparar ou substituir o volume de origem, atualizar o volume de origem e restabelecer a configuração original dos sistemas.
+
+.Antes de começar
+* A relação do espelho e do cofre deve estar no estado quiesced ou inativo.
+* O volume de destino deve ser montado no namespace de máquina virtual de storage de destino (SVM).
+
+
+.Sobre esta tarefa
+Você pode quebrar relações espelhadas entre os sistemas ONTAP e os sistemas de storage SolidFire.
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação de espelho e cofre que você deseja quebrar e clique em *operações* > *quebrar*.
+. Marque a caixa de seleção de confirmação e clique em *Break*.
+
+
+.Resultados
+O relacionamento do espelho e do cofre está quebrado. O tipo de volume de destino muda de proteção de dados (DP) somente leitura para leitura/gravação. O sistema armazena a cópia Snapshot base para o relacionamento de espelhamento e cofre para uso posterior.
+
+
+
+== Retomar relacionamentos
+
+Se você tiver uma relação de espelhamento e cofre quiesced, você pode usar o System Manager para retomar a relação. Quando retoma a relação, a transferência normal de dados para o volume de destino é retomada e todas as atividades de proteção são reiniciadas.
+
+.Sobre esta tarefa
+Se você tiver silenciado um relacionamento de espelhamento e cofre quebrado a partir da interface de linha de comando (CLI), não será possível retomar o relacionamento do System Manager. Você deve usar a CLI para retomar o relacionamento.
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação de espelho e cofre que você deseja retomar e clique em *operações* > *Resume*.
+. Marque a caixa de seleção de confirmação e clique em *Resume*.
+
+
+.Resultados
+As transferências de dados normais são retomadas. Se houver uma transferência agendada para o relacionamento, a transferência será iniciada a partir do próximo horário.
+
+
+
+== Eliminar relações
+
+Você pode usar o System Manager para encerrar uma relação de espelhamento e cofre entre um volume de origem e destino e liberar as cópias Snapshot do volume de origem.
+
+.Sobre esta tarefa
+* É uma prática recomendada quebrar o relacionamento do espelho e do cofre antes de excluir o relacionamento.
+* Para recriar o relacionamento, você deve executar a operação de ressincronização a partir do volume de origem usando a interface de linha de comando (CLI).
+
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação de espelho e cofre que você deseja excluir e clique em *Excluir*.
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
++
+Você também pode selecionar a caixa de seleção cópias Snapshot da base de liberação para excluir as cópias Snapshot da base usadas pelo relacionamento de espelhamento e cofre no volume de origem.
+
++
+Se a relação não for lançada, use a CLI para executar a operação de liberação no cluster de origem para excluir as cópias Snapshot base criadas para a relação de espelhamento e cofre do volume de origem.
+
+
+
+.Resultados
+A relação é excluída e as cópias Snapshot básicas no volume de origem são excluídas permanentemente.
+
+
+
+== Quiesce relacionamentos
+
+Você pode usar o System Manager para ativar um volume de destino para estabilizar o destino antes de criar uma cópia Snapshot. A operação quiesce permite que as transferências de dados ativas terminem e desabilitam futuras transferências para a relação de espelhamento e cofre.
+
+.Antes de começar
+A relação de espelhamento e cofre deve estar em um estado Snapmirrored.
+
+.Passos
+. Clique em *proteção* > *relacionamentos de volume*.
+. Selecione a relação de espelho e cofre que você deseja quiesce e clique em *Operations* > *quiesce*.
+. Marque a caixa de seleção de confirmação e clique em *quiesce*.
+
+
+.Resultados
+Se não houver transferência em andamento, o status da transferência será exibido como `Quiesced`. Se uma transferência estiver em andamento, a transferência não será afetada e o status da transferência será exibido como `Quiescing` até que a transferência esteja concluída.

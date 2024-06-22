@@ -1,0 +1,40 @@
+---
+permalink: online-help-96-97/task_changing_raid_configuration_when_creating_aggregate.html 
+sidebar: sidebar 
+keywords: system, manager, raid, configuration, aggregate, online, help 
+summary: Ao criar um agregado, você pode modificar os valores padrão das opções de tipo RAID e tamanho do grupo RAID do agregado usando o System Manager. 
+---
+= Altere a configuração RAID ao criar um agregado com o System Manager - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Durante a criação de um agregado, você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para modificar os valores padrão das opções de tipo RAID e tamanho do grupo RAID do agregado.
+
+.Sobre esta tarefa
+Se o tipo de disco dos discos agregados for FSAS ou MSATA e o tamanho do disco for igual ou maior que 10 TB, o RAID-TEC será o único tipo de RAID disponível.
+
+.Passos
+. Escolha um dos seguintes métodos:
++
+** Clique em *aplicativos e camadas* > *camadas de armazenamento*.
+** Clique em *Storage* > *Aggregates & Disks* > *Aggregates*.
+
+
+. Na janela *camadas de armazenamento*, clique em *Adicionar agregado*.
+. Na caixa de diálogo *criar agregado*, execute as seguintes etapas:
++
+.. Clique em *alterar*.
+.. Na caixa de diálogo *alterar configuração de RAID*, especifique o tipo de RAID e o tamanho do grupo RAID.
++
+Os discos compartilhados suportam dois tipos de RAID: RAID DP e RAID-TEC.
+
++
+O tamanho do grupo RAID recomendado é de 12 discos a 20 discos para HDDs e 20 discos a 28 discos para SSDs.
+
+.. Clique em *Salvar*.
+
+
+

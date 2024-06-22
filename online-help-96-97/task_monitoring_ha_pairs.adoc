@@ -1,0 +1,26 @@
+---
+permalink: online-help-96-97/task_monitoring_ha_pairs.html 
+sidebar: sidebar 
+keywords: system, manager, ha, availability, monitor, ha, pair 
+summary: 'Você pode usar o System Manager para monitorar o status do nó e o status da interconexão de todos os pares de alta disponibilidade (HA) em um cluster. Você também pode verificar se a aquisição ou a giveback está ativada ou ocorreu e ver os motivos pelos quais a aquisição ou a giveback não é possível no momento.' 
+---
+= Monitore pares de HA com o gerente do sistema - ONTAP 9.7 e versões anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para monitorar o status do nó e o status de interconexão de todos os pares de alta disponibilidade (HA) em um cluster. Você também pode verificar se a aquisição ou a giveback está ativada ou ocorreu e ver os motivos pelos quais a aquisição ou a giveback não é possível no momento.
+
+.Passos
+. Clique em *Configuração* > *Cluster* > *alta disponibilidade*.
+. Na janela *alta disponibilidade*, clique na imagem de par de HA para exibir detalhes como o status de HA do cluster, o status do nó, o status da interconexão e o modelo de hardware de cada nó.
++
+Se o LIF de gerenciamento de cluster ou as LIFs de dados de um nó não estiverem em seu nó inicial, uma mensagem de aviso será exibida indicando que o nó tem algumas LIFs que não estão no nó inicial.
+
+
+
+*Informações relacionadas*
+
+xref:reference_high_availability.adoc[Janela de alta disponibilidade]

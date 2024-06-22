@@ -1,0 +1,36 @@
+---
+permalink: peering/task_creating_intercluster_lifs.html 
+sidebar: sidebar 
+keywords: creating, create, intercluster, logical, interface, lif, enable, network, communicate, ipspace, peer, relationship, create intercluster lif, Beginning with ontap 9.3 
+summary: 'A partir do ONTAP 9.3, até o ONTAP 9.7, você pode usar a interface "classic" do Gerenciador de sistema do ONTAP para criar interfaces lógicas entre clusters (LIFs), que permitem que a rede de cluster se comunique com um nó. Você deve criar um LIF entre clusters dentro de cada IPspace que será usado para peering, em cada nó em cada cluster para o qual você deseja criar um relacionamento de pares.' 
+---
+= Criar LIFs entre clusters (começando com ONTAP 9.3)
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do ONTAP 9.3, até o ONTAP 9.7, você pode usar a interface _classic_ do Gerenciador de sistema do ONTAP para criar interfaces lógicas entre clusters (LIFs), que permitem que a rede do cluster se comunique com um nó. Você deve criar um LIF entre clusters dentro de cada IPspace que será usado para peering, em cada nó em cada cluster para o qual você deseja criar um relacionamento de pares.
+
+.Sobre esta tarefa
+Por exemplo, se você tiver um cluster de quatro nós que deseja fazer peer com o cluster X sobre o IPspace A e peer com o cluster Y sobre o IPspace Y, precisará de um total de oito LIFs entre clusters; quatro em IPspace A (um por nó) e quatro em IPspace Y (um por nó).
+
+Você deve executar esse procedimento em ambos os clusters para os quais você deseja criar um relacionamento de pares.
+
+.Passos
+. Clique em *Configuração* > *Configuração avançada de cluster*.
+. Na janela *Setup Advanced Cluster Features*, clique em *Proceed* ao lado da opção *Cluster Peering*.
+. Selecione um espaço IPspace na lista *IPspace*.
+. Insira o endereço IP, a porta, a máscara de rede e os detalhes do gateway de cada nó.
++
+image::../media/intercluster_lif_creation_93.gif[Esta imagem é explicada pelo texto circundante.]
+
+. Clique em *Enviar e continuar*.
+
+
+
+
+== O que fazer a seguir
+
+Você deve inserir os detalhes do cluster na janela peering de cluster para continuar com o peering de cluster.

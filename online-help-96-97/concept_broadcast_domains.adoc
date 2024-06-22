@@ -1,0 +1,64 @@
+---
+permalink: online-help-96-97/concept_broadcast_domains.html 
+sidebar: sidebar 
+keywords: system, manager, create, manage, broadcast, domain, online, help, edit, settings, port, delete 
+summary: Você pode usar o System Manager para criar e gerenciar domínios de broadcast. 
+---
+= Gerencie domínios de broadcast com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para criar e gerenciar domínios de broadcast.
+
+
+
+== Editar definições de domínio de difusão
+
+Você pode usar o System Manager para modificar os atributos de um domínio de broadcast, como o nome, o tamanho da MTU e as portas associadas ao domínio de broadcast.
+
+.Sobre esta tarefa
+* Você não deve modificar o tamanho da MTU do domínio de broadcast ao qual a porta de gerenciamento e0M é atribuída.
+* Não é possível usar o System Manager para editar domínios de broadcast no IPspace do cluster.
++
+Você deve usar a interface de linha de comando (CLI) em vez disso.
+
+
+
+.Passos
+. Clique em *Network* > *Broadcast Domains*.
+. Selecione o domínio de broadcast que deseja modificar e clique em *Editar*.
+. Na caixa de diálogo *Edit Broadcast Domain* (Editar domínio de transmissão), modifique os atributos do domínio de difusão conforme necessário.
+. Clique em *Salvar e fechar*.
+
+
+
+
+== Excluir domínios de broadcast
+
+Você pode excluir um domínio de broadcast usando o System Manager quando não precisar mais do domínio de broadcast.
+
+.Antes de começar
+Nenhuma sub-rede deve estar associada ao domínio de broadcast que você deseja excluir.
+
+.Sobre esta tarefa
+* Quando você exclui um domínio de broadcast, as portas associadas ao domínio de broadcast são atribuídas ao IPspace padrão e as configurações de MTU das portas não são alteradas.
+* Não é possível usar o System Manager para excluir domínios de broadcast que estão no IPspace do cluster.
++
+Você deve usar a interface de linha de comando (CLI) em vez disso.
+
+
+
+.Passos
+. Clique em *Network* > *Broadcast Domains*.
+. Selecione o domínio de broadcast que deseja excluir e clique em *Excluir*.
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
+
+
+*Informações relacionadas*
+
+xref:reference_network_window.adoc[Janela de rede]
+
+https://docs.netapp.com/us-en/ontap/networking/index.html["Gerenciamento de rede"]

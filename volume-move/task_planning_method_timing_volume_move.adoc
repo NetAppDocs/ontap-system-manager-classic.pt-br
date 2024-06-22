@@ -1,0 +1,67 @@
+---
+permalink: volume-move/task_planning_method_timing_volume_move.html 
+sidebar: sidebar 
+keywords: system, manager, volume, manual, cutover, lun, report, node, advance, procedure, command-line, interface, cli, plan, plan the method and timing of a volume move 
+summary: 'Você pode usar a interface "clássica" do Gerenciador de sistema do ONTAP com o ONTAP 9.7 ou anterior para mover um volume e decidir se deseja fazer uma transição manual. Se você precisar atualizar os nós de relatórios LUN, siga um procedimento avançado na interface de linha de comando (CLI). Opcionalmente, você também pode Planejar o tempo de uma movimentação de volume.' 
+---
+= Planeje o método e o tempo de um movimento de volume
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a interface _classic_ do Gerenciador de sistema do ONTAP com o ONTAP 9.7 ou anterior para mover um volume e decidir se deve ter uma transição manual. Se você precisar atualizar os nós de relatórios LUN, siga um procedimento avançado na interface de linha de comando (CLI). Opcionalmente, você também pode Planejar o tempo de uma movimentação de volume.
+
+.Sobre esta tarefa
+O volume de origem de uma relação SnapMirror ou SnapVault pode ser movido enquanto o volume está sendo espelhado. Os serviços SnapMirror encontram uma breve pausa durante a fase de transição da tarefa de movimentação de volume.
+
+O volume de destino também pode ser movido. Na fase iterativa, as atualizações do SnapMirror ou do SnapVault e as operações de movimentação de volume são executadas simultaneamente. Ao avaliar se uma transição é possível na fase de transição, a prioridade entre a transição e as atualizações do SnapMirror ou do SnapVault é determinada por ordem de chegada. Até a primeira operação terminar, outras operações são bloqueadas.
+
+.Passos
+. Decida se você precisa de uma transição manual.
++
+_Transição_ é o momento em que a operação de movimentação termina e o ONTAP começa a fornecer dados do volume no novo agregado. A transição pode ocorrer automaticamente ou você pode acionar a transição manualmente.
+
++
+Se a prática padrão da sua empresa exigir que você controle quando ocorrem alterações no sistema de storage, você poderá realizar manualmente a transição final da operação de movimentação durante uma janela de manutenção.
+
++
+Uma transição não requer uma interrupção, mas você pode usar uma janela de manutenção para controlar _quando_ ocorre.
+
++
+[NOTE]
+====
+A operação de movimentação de volume não causa interrupções, independentemente de você escolher a transição automática ou manual.
+
+====
+. Se o volume contiver LUNs e o cluster contiver quatro ou mais nós, use a CLI para atualizar os nós de relatórios de LUN se o volume for movido para um par de HA diferente.
++
+Se o volume não contiver LUNs ou se o cluster contiver apenas dois nós, pode ignorar esta etapa.
+
+. *Opcional:* Planeje uma hora usando as seguintes considerações:
++
+** Uma operação de movimentação de volume pode levar mais tempo do que o esperado, porque as mudanças são projetadas para ocorrer sem interrupções em segundo plano de uma maneira que preserva o acesso do cliente e o desempenho geral do sistema.
++
+Por exemplo, o ONTAP mantém os recursos disponíveis para a operação de movimentação de volume.
+
+** Se quiser que a migração ocorra o mais rápido possível, selecione um horário com menos atividade do cluster, especialmente as seguintes atividades:
++
+*** Operações de e/S no volume
+*** Trabalhos que usam recursos em segundo plano, por exemplo, quando o uso da CPU do controlador é inferior a 50%
+*** Trabalhos que utilizam a interconexão de cluster
+
+
+** Não é possível iniciar uma movimentação enquanto o volume é afetado pelas seguintes operações: Volume off-line, restringir ou destruir; ressincronização, quebra ou restauração do SnapMirror e restauração do Snapshot.
++
+Você deve esperar que qualquer uma dessas operações específicas termine antes que você possa iniciar o movimento.
+
+** Enquanto a operação de movimentação de volume ocorre, um switchback MetroCluster não pode ocorrer, embora possa ocorrer um switchover.
+** Os switchbacks do MetroCluster são bloqueados quando as operações de movimentação de volume estão em andamento para volumes pertencentes ao local comutado. Os switchbacks não são bloqueados quando as operações de movimentação de volume estão em andamento para volumes locais para o local sobrevivente.
+** Switchovers forçados de MetroCluster podem ocorrer quando as operações de movimentação de volume estão em andamento.
+
+
+
+
+.Informações relacionadas
+link:task_verifying_lun_reporting_nodes_after_moving_volume.html["Verificando os nós de relatórios de LUN após mover um volume"]

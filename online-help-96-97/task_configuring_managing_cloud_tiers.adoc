@@ -1,0 +1,293 @@
+---
+permalink: online-help-96-97/task_configuring_managing_cloud_tiers.html 
+sidebar: sidebar 
+keywords: configure, manage, cloud, tier, online, help, fabricpool, aggregate, storage, system, add, ssd, provision, storage, fabricpool, aggregate, manually, tiering, policy 
+summary: Armazenar dados em camadas pode aumentar a eficiência do seu sistema de storage. Gerencie camadas de storage com agregados habilitados para FabricPool. As camadas de nuvem armazenam dados em um nível com base se eles são acessados com frequência. 
+---
+= Configure e gerencie camadas de nuvem com o System Manager - ONTAP 9.7 e versões anteriores
+:allow-uri-read: 
+
+
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para configurar e gerenciar camadas de nuvem. Armazenar dados em camadas pode aumentar a eficiência do seu sistema de storage. Gerencie camadas de storage com agregados habilitados para FabricPool. As camadas de nuvem armazenam dados em um nível com base se eles são acessados com frequência.
+
+.Antes de começar
+* Você deve estar executando o ONTAP 9.2 ou posterior.
+* Você precisa ter agregados all-flash (todas as SSD)
+
+
+image::../media/fabricpool_workflow.gif[fluxo de trabalho do FabricPool]
+
+
+
+= Adicionar uma camada de nuvem
+
+[role="lead"]
+Você pode usar o System Manager para adicionar uma camada de nuvem a um agregado SSD ou a um agregado de disco de máquina virtual (VMDK). As camadas de nuvem fornecem storage para dados pouco usados.
+
+.Antes de começar
+* Você deve ter o ID da chave de acesso e a chave secreta para se conetar ao armazenamento de objetos.
+* Você deve ter criado um bucket dentro do armazenamento de objetos.
+* A conetividade de rede deve existir entre o cluster e a camada de nuvem.
+* Se a comunicação entre a camada de nuvem e o cluster for criptografada usando SSL ou TLS, os certificados necessários devem ser instalados.
+
+
+.Sobre esta tarefa
+Os seguintes armazenamentos de objetos podem ser usados como camadas de nuvem:
+
+* StorageGRID
+* Alibaba Cloud (a partir do System Manager 9,6)
+* Amazon Web Services (AWS) Simple Storage Service (S3)
+* Serviço de nuvem comercial da Amazon Web Services (AWS) (C2S)
+* Storage Microsoft Azure Blob
+* Nuvem da IBM
+* Google Cloud
+
+
+[NOTE]
+====
+* O Azure Stack, que é um serviço Azure no local, não é compatível.
+* Se você quiser usar qualquer armazenamento de objetos como uma categoria de nuvem, além do StorageGRID, você precisa ter a licença de capacidade do FabricPool. Você pode adicionar a licença clicando em *Adicionar licença*.
+* Se você quiser usar um ambiente IBM Cloud Object Storage (como o Cleversafe), com o FabricPool, especifique um certificado de autoridade de certificação (CA). Você pode especificar o certificado da CA movendo o botão de alternância *Object Store Certificate* e especificando as credenciais do certificado.
+
+
+====
+.Passos
+. Clique em *armazenamento* > *agregados e discos* > *nível de nuvem*.
+. Clique em *Add*.
++
+É exibida uma caixa de diálogo que lista todos os provedores de armazenamento de objetos suportados.
+
+. Na lista, selecione o provedor de armazenamento de objetos que você deseja designar como o nível de nuvem.
++
+A janela Adicionar nível de nuvem é exibida.
+
+. Selecione uma região na lista suspensa no campo *região*.
++
+Com base na sua seleção, o campo *Nome do serviço (FQDN)* é preenchido automaticamente com o endpoint do servidor.
+
+. Especifique o ID da chave de acesso do nível de nuvem, a chave secreta do nível de nuvem e o nome do contêiner.
++
+Se você selecionou o AWS Commercial Cloud Service (C2S) como o tipo, especifique o URL DO CAP, os certificados de CA do servidor e os certificados de cliente.
+
+. Se você quiser modificar qualquer uma das seguintes configurações, clique no ícone Opções avançadas image:../media/advanced_options.gif[""]para exibir a janela de diálogo *Opções avançadas*, onde você pode fazer as alterações:
++
+** O número da porta usado para acessar o nível de nuvem
+** Ative ou desative a opção *SSL* que permite transferir dados de forma segura para o nível de nuvem
+
+
+. *Opcional:* se você quiser adicionar um nível de nuvem para o StorageGRID ou usar o ambiente de armazenamento de objetos em nuvem IBM (como o Cleversafe) com o FabricPool, você deve especificar um certificado de CA. Especifique o certificado da CA movendo o botão de alternância *Object Store Certificate* e copiando o conteúdo do certificado. Em seguida, cole o conteúdo do certificado na certificação assinada.
+. Na lista *IPspace*, selecione o IPspace usado para se conetar ao nível de nuvem.
+. Clique em *Salvar* para salvar o nível de nuvem.
+. Clique em *Salvar e anexar agregados* para salvar a camada de nuvem e anexar agregados à camada de nuvem.
+
+
+
+
+== Anexar um agregado a uma categoria de nuvem
+
+Você pode usar o System Manager para anexar um agregado all-flash a uma categoria de nuvem. É possível armazenar dados usados com pouca frequência em camadas de nuvem.
+
+.Antes de começar
+Você precisa ter adicionado uma categoria de nuvem ao cluster.
+
+.Passos
+. Clique em *armazenamento* > *agregados e discos* > *nível de nuvem*.
+. Na coluna *usado em agregados*, clique em *Anexar agregados*.
++
+A janela Anexar agregados é exibida.
+
+. Selecione o agregado que você deseja anexar ao nível de nuvem.
+. Clique em *Salvar*.
+
+
+
+
+== Provisionar o storage criando um agregado habilitado para FabricPool manualmente
+
+Você pode usar o Gerenciador do sistema para criar um agregado habilitado para FabricPool para anexar uma camada de nuvem ao agregado SSD.
+
+.Antes de começar
+* Você precisa criar uma camada de nuvem e conectá-la ao cluster no qual o agregado SSD reside.
+* Uma categoria de nuvem no local precisa ter sido criada.
+* Uma conexão de rede dedicada deve existir entre a camada de nuvem e o agregado.
+
+
+.Sobre esta tarefa
+Os seguintes armazenamentos de objetos podem ser usados como camadas de nuvem:
+
+* StorageGRID
+* Alibaba Cloud (a partir do System Manager 9,6)
+* Amazon Web Services (AWS) Simple Storage Service (S3)
+* Serviço de nuvem comercial da Amazon Web Services (AWS) (C2S)
+* Storage Microsoft Azure Blob
+* Nuvem da IBM
+* Google Cloud
+
+
+[NOTE]
+====
+* O Azure Stack, que é um serviço Azure no local, não é compatível.
+* Se você quiser usar qualquer armazenamento de objetos como uma categoria de nuvem, além do StorageGRID, você precisa ter a licença de capacidade do FabricPool.
+
+
+====
+.Passos
+. Crie um agregado habilitado para FabricPool usando um dos seguintes métodos:
++
+** Clique em *aplicativos e camadas* > *camadas de armazenamento* > *Adicionar agregado*.
+** Clique em *Storage* > *Aggregate & Disks* > *Aggregates* > *Create*.
+
+
+. Ative a opção *criar agregado manualmente* para criar um agregado.
+. Criar um agregado habilitado para FabricPool:
++
+.. Especifique o nome do agregado, o tipo de disco e o número de discos ou partições a incluir no agregado.
++
+[NOTE]
+====
+Apenas agregados all-flash (todas as SSD) são compatíveis com agregados habilitados para FabricPool.
+
+====
++
+A regra de hot spare mínima é aplicada ao grupo de discos que tem o maior tamanho de disco.
+
+.. *Opcional:* Modificar a configuração RAID do agregado:
++
+... Clique em *alterar*.
+... Na caixa de diálogo alterar configuração RAID, especifique o tipo RAID e o tamanho do grupo RAID.
++
+Os discos compartilhados suportam dois tipos de RAID: RAID-DP e RAID-TEC.
+
+... Clique em *Salvar*.
+
+
+
+
+. Marque a caixa de seleção *FabricPool* e selecione um nível de nuvem na lista.
+. Clique em *criar*.
+
+
+
+
+== Alterar a política de disposição em camadas de um volume
+
+Você pode usar o System Manager para alterar a política de disposição em categorias padrão de um volume para controlar se os dados do volume são movidos para a categoria de nuvem quando os dados ficam inativos.
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. No menu suspenso no campo *SVM*, selecione *All SVMs*.
+. Selecione o volume para o qual você deseja alterar a política de disposição em camadas e clique em *mais ações* > *alterar política de disposição em camadas*.
+. Selecione a política de disposição em camadas necessária na lista *Política de disposição em categorias* e clique em *Salvar*.
+
+
+
+
+== Editar um nível de nuvem
+
+Você pode usar o System Manager para modificar as informações de configuração do nível de nuvem. Os detalhes de configuração que você pode editar incluem o nome, o nome de domínio totalmente qualificado (FQDN), a porta, o ID da chave de acesso, a chave secreta e o certificado de armazenamento de objetos.
+
+.Passos
+. Clique em *armazenamento* > *agregados e discos* > *nível de nuvem*.
+. Selecione o nível de nuvem que você deseja editar e clique em *Editar*.
+. Na janela *Editar nível da nuvem*, modifique o nome do nível da nuvem, FQDN, porta, ID da chave de acesso, chave secreta e certificado de armazenamento de objetos, conforme necessário.
++
+Se você tiver selecionado a camada de nuvem do AWS Commercial Cloud Service (C2S), poderá modificar os certificados de CA do servidor e os certificados de cliente.
+
+. Clique em *Salvar*.
+
+
+
+
+== Excluir um nível de nuvem
+
+Você pode usar o System Manager para excluir um nível de nuvem que não precisa mais.
+
+.Antes de começar
+Você precisa ter excluído o agregado habilitado para FabricPool associado à camada de nuvem.
+
+.Passos
+. Clique em *armazenamento* > *agregados e discos* > *nível de nuvem*.
+. Selecione o nível de nuvem que você deseja excluir e clique em *Excluir*.
+
+
+
+
+== Quais são as categorias de nuvem e as políticas de disposição em camadas
+
+As camadas de nuvem fornecem storage para dados que não são acessados com frequência. É possível anexar um agregado all-flash (all-SSD) a uma camada de nuvem para armazenar dados usados com pouca frequência. Você pode usar políticas de disposição em categorias para decidir se os dados devem ser movidos para uma categoria de nuvem.
+
+Você pode definir uma das seguintes políticas de disposição em categorias em um volume:
+
+* *Somente snapshot*
++
+Move as cópias Snapshot de apenas os volumes que não estão sendo referenciados no sistema de arquivos ativo. A política somente snapshot é a política de disposição em camadas padrão.
+
+* *Auto*
++
+Move os dados inativos (frios) e as cópias Snapshot do sistema de arquivos ativo para a camada de nuvem.
+
+* *Backup (para System Manager 9,5)*
++
+Move os dados recém-transferidos de um volume de proteção de dados (DP) para a camada de nuvem.
+
+* *Todos (começando com System Manager 9,6)*
++
+Move todos os dados para a camada de nuvem.
+
+* *Nenhuma*
++
+Impede que os dados no volume sejam movidos para uma categoria de nuvem.
+
+
+
+
+
+== Quais são os dados inativos (frios)
+
+Os dados acessados com pouca frequência em um nível de performance são conhecidos como dados inativos. Por padrão, os dados que não são acessados por um período de 31 dias ficam inativos.
+
+Os dados inativos são exibidos no nível agregado, no nível do cluster e no nível do volume. Os dados inativos de um agregado ou cluster são exibidos somente se a digitalização inativa estiver concluída nesse agregado ou cluster. Por padrão, os dados inativos são exibidos para agregados habilitados para FabricPool e agregados SSD. Os dados inativos não são apresentados para FlexGroups.
+
+
+
+== Janela de nível de nuvem
+
+Use o System Manager para adicionar, editar e excluir camadas de nuvem e para exibir detalhes de categorias de nuvem.
+
+A janela nível da nuvem exibe o número total de camadas de nuvem licenciadas no cluster, o espaço licenciado usado no cluster e o espaço licenciado disponível no cluster. A janela Cloud Tier também exibe a capacidade de nuvem não licenciada usada.
+
+
+
+=== Botões de comando
+
+* *Adicionar*
++
+Permite adicionar uma camada de nuvem.
+
+* *Anexar agregados*
++
+Permite anexar agregados a uma camada de nuvem.
+
+* *Excluir*
++
+Permite excluir um nível de nuvem selecionado.
+
+* *Editar*
++
+Permite modificar as propriedades de um nível de nuvem selecionado.
+
+
+
+
+
+=== Área de detalhes
+
+É possível visualizar informações detalhadas sobre categorias de nuvem, como a lista de categorias de nuvem, os detalhes dos armazenamentos de objetos, os agregados usados e a capacidade usada.
+
+Se você criar uma categoria de nuvem diferente do Alibaba Cloud, Amazon AWS S3, AWS Commercial Cloud Service (C2S), Google Cloud, IBM Cloud, storage Microsoft Azure Blob ou StorageGRID usando a interface de linha de comando (CLI), essa categoria de nuvem será exibida como outras no System Manager. Depois, é possível anexar agregados a essa camada de nuvem.
+
+*Informações relacionadas*
+
+xref:task_installing_ca_certificate_if_you_use_storagegrid_webscale.adoc[Instalando um certificado de CA se você usar o StorageGRID]
+
+xref:reference_storage_tiers_window.adoc[Janela camadas de armazenamento]

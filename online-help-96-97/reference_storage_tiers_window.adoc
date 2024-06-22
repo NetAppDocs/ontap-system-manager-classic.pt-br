@@ -1,0 +1,121 @@
+---
+permalink: online-help-96-97/reference_storage_tiers_window.html 
+sidebar: sidebar 
+keywords: online, help, storage, tier, window, command, button 
+summary: Você pode usar a janela camadas de armazenamento para exibir detalhes de espaço em todo o cluster e para adicionar e exibir detalhes de agregados. 
+---
+= Janela camadas de armazenamento no Gerenciador do sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a janela camadas de armazenamento no ONTAP System Manager classic (disponível no ONTAP 9.7 e earier) para exibir detalhes de espaço em todo o cluster e para adicionar e exibir detalhes de agregados.
+
+O painel camada interna ou o painel camada de desempenho se o cluster tiver agregados all-flash (All SSD), exibe detalhes de espaço em todo o cluster, como a soma dos tamanhos totais de todos os agregados, o espaço usado pelos agregados no cluster e o espaço disponível no cluster.
+
+O painel nível da nuvem exibe o total de camadas de nuvem licenciadas no cluster, o espaço licenciado usado no cluster e o espaço licenciado disponível no cluster. O painel Cloud Tier também exibe a capacidade de nuvem não licenciada usada.
+
+Os agregados são agrupados por tipo e o painel agregado exibe detalhes sobre o espaço agregado total, o espaço usado e o espaço disponível. Se os dados inativos (frios) estiverem disponíveis em um agregado de unidade de estado sólido (SSD) ou All Flash FAS, a quantidade de espaço que ele usa também será exibida. Você pode selecionar o agregado e executar qualquer uma das ações relacionadas a agregados.
+
+
+
+== Botões de comando
+
+* *Adicionar agregado*
++
+Permite criar um agregado.
+
+* *Ações*
++
+Fornece as seguintes opções:
+
++
+** *Altere o status para*
++
+Altera o estado do agregado selecionado para um dos seguintes Estados:
+
++
+*** *Online*
++
+O acesso de leitura e gravação aos volumes contidos neste agregado é permitido.
+
+*** *Offline*
++
+Acesso de leitura e gravação não é permitido.
+
+*** * Restringir*
++
+Algumas operações, como reconstrução de paridade, são permitidas, mas o acesso aos dados não é permitido.
+
+
+
+** *Adicionar capacidade*
++
+Permite adicionar capacidade (HDDs ou SSDs) a agregados existentes.
+
+** *Adicionar Cache*
++
+Permite adicionar discos de cache (SSDs) a agregados HDD existentes ou agregados Flash Pool.
+
++
+Não é possível adicionar discos de cache a agregados habilitados para FabricPool.
+
++
+Essa opção não está disponível para um cluster que contenha nós com personalidade otimizada para All Flash.
+
+** *Espelho*
++
+Permite espelhar os agregados.
+
+** *Movimentação de volume*
++
+Permite mover um FlexVol volume.
+
+
+
+
+
+
+
+== Área de detalhes
+
+Você pode clicar no nome agregado para exibir informações detalhadas sobre o agregado.
+
+* *Guia Visão geral*
++
+Exibe informações detalhadas sobre o agregado selecionado e exibe uma representação pictórica da alocação de espaço do agregado, a economia de espaço do agregado e o desempenho do agregado.
+
+* *Separador informações do disco*
++
+Exibe as informações de layout de disco para o agregado selecionado.
+
+* *Separador volumes*
++
+Exibe detalhes sobre o número total de volumes no agregado, o espaço agregado total e o espaço comprometido com o agregado.
+
+* *Separador desempenho*
++
+Exibe gráficos que mostram as métricas de desempenho dos agregados, incluindo taxa de transferência e IOPS. Os dados de métricas de performance para transferências de leitura, gravação e total são exibidos para taxa de transferência e IOPS, e os dados para SSDs e HDDs são registrados separadamente.
+
++
+Alterar o fuso horário do cliente ou o fuso horário do cluster afeta os gráficos de métricas de desempenho. Se você alterar o fuso horário do cliente ou o fuso horário do cluster, atualize o navegador para exibir os gráficos atualizados.
+
+
+
+*Informações relacionadas*
+
+xref:task_adding_cloud_tier.adoc[Adição de uma camada de nuvem]
+
+xref:task_attaching_aggregate_to_cloud_tier.adoc[Inclusão de um agregado a uma categoria de nuvem]
+
+xref:task_deleting_cloud_tier.adoc[Exclusão de um nível de nuvem]
+
+xref:task_editing_cloud_tier.adoc[Editando uma camada de nuvem]
+
+xref:task_provisioning_storage_through_aggregates.adoc[Provisionamento de storage por meio de agregados]
+
+xref:task_deleting_aggregates.adoc[Eliminar agregados]
+
+xref:task_editing_aggregates.adoc[Edição de agregados]

@@ -1,0 +1,52 @@
+---
+permalink: snmp-config/task_adding_snmpv3_security_user.html 
+sidebar: sidebar 
+keywords: snmpv3, offer, advance, security, passphrase, encryption, system, manager, cluster, level, snmp, utilities, utility, traphost, authentication, privacy, setting, add an snmpv3 security user 
+summary: 'Você pode usar a interface "classic" do Gerenciador de sistema do ONTAP com o ONTAP 9.7 ou anterior para adicionar um usuário do SNMPv3 no nível do cluster.' 
+---
+= Adicione um usuário de segurança SNMPv3
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a interface _classic_ do Gerenciador de sistema do ONTAP com o ONTAP 9.7 ou anterior para adicionar um usuário do SNMPv3 no nível do cluster.
+
+O usuário SNMPv3 pode executar utilitários SNMP do traphost (gerenciador SNMP) usando as configurações de autenticação e privacidade especificadas. O SNMPv3 oferece segurança avançada usando senhas e criptografia.
+
+.Sobre esta tarefa
+Quando você adiciona um usuário SNMPv3 no nível do cluster, esse usuário pode acessar o cluster através de todos os LIFs que têm a política de firewall "mgmt" aplicada.
+
+.Passos
+. Na janela SNMP, clique em *Editar* para abrir a caixa de diálogo *Editar configurações SNMP*.
+. Na guia *SNMPv3*, clique em *Add* para abrir a caixa de diálogo *Add SNMPv3 User*.
+. Introduza os seguintes valores:
++
+.. Introduza um nome de utilizador SNMPv3.
++
+Um nome de usuário de segurança não deve exceder 31 carateres e não deve conter os seguintes carateres especiais:
+
++
+`, / : " ' |`
+
+.. Para ID do motor, selecione o valor padrão `Local Engine ID` .
++
+O Engine ID é usado para gerar chaves de autenticação e criptografia para mensagens SNMPv3.
+
+.. Selecione um protocolo de autenticação e introduza uma palavra-passe de autenticação.
++
+Uma senha deve conter no mínimo oito carateres.
+
+.. Opcional: Selecione um protocolo de privacidade e insira uma senha para ele.
+
+
++
+image::../media/snmp_cfg_v3user_step3.gif[Esta imagem mostra a caixa Add SNMP3 User diaglg (Adicionar diagrama de utilizador) dentro da caixa de diálogo Edit SNMP Settings (Editar definições SNMP),in which the example user name "snmpv3user" is entered,the Engine ID is "LocalEngineID"]
+
+. Clique em *OK* na caixa de diálogo *Add SNMPv3 User*.
++
+Você pode adicionar vários nomes de usuário de segurança, clicando em *OK* após cada adição. Por exemplo, se você usar SNMP para monitorar diferentes aplicativos que exigem Privileges diferentes, talvez seja necessário adicionar um usuário SNMPv3 para cada função de monitoramento ou gerenciamento.
+
+. Quando terminar de adicionar nomes de usuário, clique em *OK* na caixa de diálogo *Editar configurações SNMP*.
+

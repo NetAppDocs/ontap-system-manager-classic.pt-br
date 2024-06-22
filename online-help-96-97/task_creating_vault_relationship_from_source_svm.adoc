@@ -1,0 +1,100 @@
+---
+permalink: online-help-96-97/task_creating_vault_relationship_from_source_svm.html 
+sidebar: sidebar 
+keywords: system, manager, online, help, vault, policy, relationship, create, source 
+summary: 'Você pode usar o System Manager para criar uma relação de Vault a partir da máquina virtual de armazenamento de origem (SVM) e atribuir uma política de Vault à relação de Vault para criar um cofre de backup. Em caso de perda ou corrupção de dados em um sistema, os dados de backup podem ser restaurados a partir do destino do cofre de backup.' 
+---
+= Crie uma relação de cofre a partir de uma fonte SVM com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para criar uma relação de Vault a partir da máquina virtual de armazenamento de origem (SVM) e atribuir uma política de Vault à relação de Vault para criar um cofre de backup. Em caso de perda ou corrupção de dados em um sistema, os dados de backup podem ser restaurados a partir do destino do cofre de backup.
+
+.Antes de começar
+* A licença SnapVault ou a licença SnapMirror devem estar ativadas no cluster de origem e no cluster de destino.
++
+[NOTE]
+====
+** Para algumas plataformas, não é obrigatório que o cluster de origem tenha a licença SnapVault ou a licença SnapMirror ativada se o cluster de destino tiver a licença SnapVault ou a licença SnapMirror e a licença de Otimização de proteção de dados (DPO) ativada.
+** Depois que a licença DPO estiver ativada no cluster de destino, tem de atualizar o browser do cluster de origem para ativar a `Protect` opção.
+
+
+====
+* O cluster de origem e o cluster de destino, bem como o SVM de origem e destino devem estar em um relacionamento saudável com os pares.
+* O agregado de destino deve ter espaço disponível.
+* O agregado de origem e o agregado de destino devem ser agregados de 64 bits.
+* Uma política de Vault (XDP) deve existir.
++
+Se uma política de Vault não existir, você deve criar uma política de Vault ou aceitar a política de Vault padrão (chamada XDPDefault) que é atribuída automaticamente.
+
+* Os volumes do FlexVol devem estar online e do tipo leitura/gravação.
+* O tipo de agregado SnapLock deve ser o mesmo.
+* Um máximo de 25 volumes pode ser protegido em uma seleção.
+* Se você estiver se conetando de um cluster que executa o ONTAP 9.2 ou anterior a um cluster remoto no qual a autenticação SAML (Security Assertion Markup Language) está ativada, a autenticação baseada em senha deve ser habilitada no cluster remoto.
+
+
+.Sobre esta tarefa
+* O System Manager não oferece suporte a um relacionamento em cascata.
++
+Por exemplo, um volume de destino em uma relação não pode ser o volume de origem em outra relação.
+
+* Você pode criar uma relação de bloqueio de cofre apenas entre um volume não SnapLock (primário) e um volume de destino SnapLock (secundário).
+* Se a encriptação estiver ativada no volume de origem e o cluster de destino estiver a executar uma versão do software ONTAP anterior ao ONTAP 9.3, a encriptação é desativada por predefinição no volume de destino.
+
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. No menu suspenso no campo *SVM*, selecione *All SVMs*.
+. Selecione os volumes para os quais você deseja criar relacionamentos de cofre e clique em *mais ações* > *proteger*.
++
+A opção *Protect* está disponível apenas para um volume de leitura/gravação.
+
+. Selecione o tipo *Replication*:
++
+|===
+| Se você selecionou o tipo de replicação como... | Faça isso... 
+
+
+ a| 
+Assíncrono
+ a| 
+.. *Opcional:* se você não souber o tipo de replicação e o tipo de relacionamento, clique em *Ajude-me a escolher*, especifique os valores e clique em *aplicar*.
+.. Selecione o tipo de relacionamento.
++
+O tipo de relacionamento pode ser espelho, cofre ou espelho e cofre.
+
+.. Selecione um cluster e um SVM.
++
+Se o cluster selecionado estiver executando uma versão do software ONTAP anterior ao ONTAP 9.3, então somente SVMs peered serão listadas. Se o cluster selecionado estiver executando o ONTAP 9.3 ou posterior, os SVMs peered e os SVMs permitidos serão listados.
+
+.. Modifique o sufixo do nome do volume, se necessário.
+
+
+
+
+ a| 
+Síncrono
+ a| 
+.. *Opcional:* se você não souber o tipo de replicação e o tipo de relacionamento, clique em *Ajude-me a escolher*, especifique os valores e clique em *aplicar*.
+.. Selecione a política de sincronização.
++
+A política de sincronização pode ser StrictSync ou Sync.
+
+.. Selecione um cluster e um SVM.
++
+Se o cluster selecionado estiver executando uma versão do software ONTAP anterior ao ONTAP 9.3, então somente SVMs peered serão listadas. Se o cluster selecionado estiver executando o ONTAP 9.3 ou posterior, os SVMs peered e os SVMs permitidos serão listados.
+
+.. Modifique o sufixo do nome do volume, se necessário.
+
+
+|===
+. Clique em *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]* *, atualize a política de proteção e a programação de proteção, ative as propriedades do SnapLock no volume de destino, selecione um agregado habilitado para FabricPool e, em seguida, inicialize a relação de proteção.
+. Clique em *Salvar*.
+
+
+*Informações relacionadas*
+
+xref:reference_protection_window.adoc[Janela de proteção]

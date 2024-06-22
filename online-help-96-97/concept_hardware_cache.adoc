@@ -1,0 +1,88 @@
+---
+permalink: online-help-96-97/concept_hardware_cache.html 
+sidebar: sidebar 
+keywords: hardware, cache, system, manager, manage, online, help, flash, 
+summary: Você pode usar o System Manager para gerenciar módulos de cache de hardware. 
+---
+= Gerencie o cache de hardware com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e versões anteriores) para gerenciar módulos de cache de hardware.
+
+[NOTE]
+====
+O Flash Cache é conhecido como hardware Cache no System Manager.
+
+====
+
+
+== Ative ou desative os módulos Flash Cache
+
+Você pode ativar ou desativar a funcionalidade de cache externo para um sistema de armazenamento que tenha um módulo Flash Cache instalado usando o System Manager. Você pode ativar os módulos Flash Cache com base nos requisitos de workload do sistema de storage.
+
+.Passos
+. Clique em *Configuração* > *Cache de hardware*
+. Se quiser modificar um módulo ou módulos, mova o botão deslizante para ativar ou desativar cada módulo, conforme necessário.
+
+
+
+
+== Como os módulos Flash Cache funcionam
+
+O uso de módulos Flash Cache melhora o desempenho de um sistema de armazenamento. O impactos do uso de módulos Flash Cache é exibido na janela hardware Cache.
+
+Você pode configurar os módulos e discos Flash Cache com base nos requisitos de workload de um sistema de storage. Ao determinar a carga de trabalho de leitura (número de operações de leitura) servida por módulos e discos Flash Cache, você pode analisar o desempenho do sistema de storage.
+
+Os módulos Flash Cache não contêm dados durante a inicialização do sistema de storage ou quando o controle é retornado ao sistema de storage após um evento de takeover. Portanto, os discos atendem a todas as solicitações de leitura de dados do sistema de storage.
+
+O módulo Flash Cache é preenchido lentamente com dados quando as solicitações de leitura de dados são atendidas. Como as solicitações de leitura de dados atendidas pelos módulos Flash Cache são mais rápidas do que as atendidas pelos discos, o desempenho do sistema de armazenamento melhora.
+
+As solicitações de leitura de dados servidas pelo módulo Flash Cache substituem as solicitações de leitura de dados servidas pelos discos e, portanto, a melhoria de desempenho no sistema de armazenamento está diretamente relacionada às leituras de disco que são substituídas. Para entender o impactos dos módulos Flash Cache no desempenho do sistema de armazenamento, você deve exibir o gráfico de carga de trabalho de leitura na janela hardware Cache quando o módulo Flash Cache contiver dados.
+
+
+
+== Janela Cache de hardware
+
+Você pode usar a janela hardware Cache para ativar ou desativar módulos Flash Cache para um sistema de armazenamento que tenha um módulo Flash Cache instalado. Você também pode visualizar as estatísticas da carga de trabalho de leitura.
+
+
+
+=== Informações do módulo
+
+* *Nome do sistema de armazenamento*
++
+O nome do sistema de armazenamento que tem um módulo Flash Cache instalado é exibido sob o gráfico.
+
+* * Ativar/Desativar botão de alternância*
++
+Mova o botão de alternância para ativar ou desativar o módulo.
+
+* *Tamanho*
++
+O tamanho do módulo em gigabytes. Se houver várias placas de módulo Flash Cache, o tamanho total do cache de todas as placas será exibido.
+
++
+[NOTE]
+====
+O tamanho do módulo Flash Cache que é exibido difere do tamanho real pelos seguintes motivos: - O Gerenciador de sistema informa somente a capacidade utilizável fornecida pelo ONTAP. - Uma parte da capacidade total é reservada para o armazenamento de metadados.
+
+====
+* *Nomes de modelo*
++
+Os nomes dos modelos dos módulos.
+
+* *Latência de leitura do sistema*
++
+Exibe a latência média de leitura em milissegundos.
+
+
+
+
+
+=== Cache Leia carga de trabalho
+
+Indica o desempenho do sistema de armazenamento exibindo um gráfico especificando a taxa da carga de trabalho de leitura que é servida pelos discos e pelo módulo Flash Cache.

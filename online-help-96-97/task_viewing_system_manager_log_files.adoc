@@ -1,0 +1,56 @@
+---
+permalink: online-help-96-97/task_viewing_system_manager_log_files.html 
+sidebar: sidebar 
+keywords: view, ontap, system, manager, log, file, online, help 
+summary: Se você encontrar algum problema ao usar o System Manager, você pode enviar os arquivos de log para o suporte técnico para ajudar a solucionar os problemas. Os ficheiros de registo do Gestor do sistema estão localizados no diretório mlog juntamente com os ficheiros de registo do ONTAP. 
+---
+= Veja os arquivos de log do Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Se você encontrar algum problema ao usar o Gerenciador de sistema do ONTAP classic (disponível no ONTAP 9.7 e anterior), você poderá enviar os arquivos de log para ajudar a solucionar os problemas se for direcionado pelo suporte da NetApp. Os ficheiros de registo do Gestor do sistema estão localizados no `mlog` diretório juntamente com os ficheiros de registo do ONTAP.
+
+.Passos
+. Identificar o nó que hospeda o LIF de gerenciamento de cluster.
+. Insira o seguinte URL em um navegador da Web: `+https://cluster-mgmt-LIF/spi+`
++
+`cluster-mgmt-LIF` É o endereço IP do LIF de gerenciamento de cluster.
+
+. Digite suas credenciais de administrador de cluster e clique em *OK*.
+. Na janela *Data ONTAP - Root volume File Access*, clique no link *logs* para o nó que hospeda o LIF de gerenciamento de cluster.
+. Navegue até o `mlog` diretório para acessar os arquivos de log do System Manager.
++
+Você pode precisar dos seguintes arquivos de log, dependendo do tipo de problema encontrado:
+
++
+** `sysmgr.log`
++
+Este ficheiro contém os registos mais recentes do System Manager.
+
+** `mgwd.log`
+** `php.log`
+** `apache_access.log`
+** `messages.log`
+
+
+
+
+
+
+== Como funciona o registo do sistema
+
+O Registro do sistema é uma ferramenta essencial para a solução de problemas de aplicativos. Você deve habilitar o Registro do sistema para que, se houver um problema com um aplicativo, o problema possa ser localizado. Você pode ativar o log do System Manager em tempo de execução sem modificar o binário do aplicativo.
+
+A saída de log pode ser volumosa e, portanto, pode se tornar difícil de gerenciar. O System Manager permite que você refine a saída de log selecionando o tipo de declarações de log que são produzidas. Por predefinição, o registo do sistema está definido para INFO. Você pode escolher um dos seguintes níveis de log:
+
+* DESLIGADO
+* ERRO
+* AVISAR
+* INFORMAÇÕES
+* DEPURAR
+
+
+Estes níveis funcionam hierarquicamente. Um nível de log definido como OFF indica que não há Registro de mensagens.

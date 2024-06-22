@@ -1,0 +1,36 @@
+---
+permalink: snmp-config/task_adding_snmp_traphost.html 
+sidebar: sidebar 
+keywords: system, manager, add, traphost, snmp, notification, trap, protocol, generate, cluster, data, host, add an snmp traphost 
+summary: 'Você pode usar a interface "classic" do Gerenciador de sistema do ONTAP com o ONTAP 9.7 ou anterior para adicionar um traphost (gerenciador SNMP) para receber notificações SNMP (unidades de dados do protocolo SNMP trap) quando as armadilhas são geradas no cluster.' 
+---
+= Adicione um traphost SNMP
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a interface _classic_ do Gerenciador de sistema do ONTAP com o ONTAP 9.7 ou anterior para adicionar um traphost (gerenciador SNMP) para receber notificações SNMP (unidades de dados do protocolo SNMP trap) quando as armadilhas são geradas no cluster.
+
+.Antes de começar
+IPv6 deve ser ativado no cluster se você configurar os hosts SNMP que têm endereços IPv6.
+
+.Sobre esta tarefa
+As traps SNMP e SNMP estão ativadas por predefinição. O Relatório Técnico TR-4220 da NetApp no suporte SNMP contém listas de todos os eventos padrão suportados por traps SNMP.
+
+http://www.netapp.com/us/media/tr-4220.pdf["Relatório técnico da NetApp 4220: Suporte SNMP no Data ONTAP"^]
+
+.Passos
+. Na janela SNMP, clique em *Edit* para abrir a caixa de diálogo *Edit SNMP Settings* (Editar definições SNMP).
+. [[step2-Verify-enable-traps]]no separador *Trap hosts*, verifique se a caixa de verificação *Enable traps* está selecionada e clique em *Add*.
+. [[step3-Enter-traphost-IP]]Introduza o endereço IP do traphost e, em seguida, clique em *OK* no painel *Trap hosts*.
++
+O endereço IP de um traphost SNMP pode ser IPv4 ou IPv6.
+
++
+image::../media/snmp_add_traphost.gif[Esta imagem mostra a caixa de diálogo Editar definições SNMP,Traphosts tab,in which the traphost status "enabled" is checked and the example traphost IP address "192.0.2.0" is entered.]
+
+. Para adicionar outro traphost, repita <<step2-verify-enable-traps,Passo 2>> e <<step3-enter-traphost-ip,Passo 3>>.
+. Quando você terminar de adicionar os traphosts, clique em *OK* na caixa de diálogo *Editar configurações SNMP*.
+

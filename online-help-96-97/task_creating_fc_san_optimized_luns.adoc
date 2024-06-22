@@ -1,0 +1,101 @@
+---
+permalink: online-help-96-97/task_creating_fc_san_optimized_luns.html 
+sidebar: sidebar 
+keywords: create, fc, san, optimized, lun, system, manager, online, help 
+summary: Você pode usar o System Manager para criar uma ou mais LUNs otimizados para SAN FC durante a configuração inicial de um cluster em uma plataforma AFF. 
+---
+= Crie LUNs otimizados para SAN FC com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para criar um ou mais LUNs otimizados para SAN FC durante a configuração inicial de um cluster em uma plataforma AFF.
+
+.Antes de começar
+* Você deve garantir que apenas uma máquina virtual de storage (SVM) tenha sido criada com o nome AFF_SAN_DEFAULT_SVM e que essa SVM não contenha LUNs.
+* Você deve ter verificado se a configuração de hardware foi concluída com sucesso.
++
+https://docs.netapp.com/ontap-9/index.jsp["Centro de Documentação do ONTAP 9"]
+
+
+
+.Sobre esta tarefa
+* Este método está disponível apenas durante a configuração inicial de um cluster com dois ou mais nós.
++
+O System Manager usa apenas os dois primeiros nós para criar LUNs.
+
+* Cada LUN é criado em um volume separado.
+* Os volumes são thin Provisioning.
+* A reserva de espaço está desativada nos LUNs criados.
+* A maioria das configurações de cluster já foi concluída na fábrica e é otimizada para eficiência de storage e performance ideais.
++
+Você não deve modificar essas configurações.
+
+
+
+.Passos
+. Faça login no System Manager usando as credenciais de administrador de cluster.
++
+Depois de criar LUNs usando esse método, você não poderá usar esse método novamente.
+
++
+Se fechar a caixa de diálogo sem criar LUNs, terá de navegar para a guia LUNs e clicar em *criar* para aceder novamente à caixa de diálogo.
+
+. Na área *Detalhes do LUN* da caixa de diálogo *criar LUNs*, especifique o tipo de aplicativo:
++
+|===
+| Se o tipo de aplicação for... | Então... 
+
+
+ a| 
+Oracle
+ a| 
+.. Especifique o nome e o tamanho do banco de dados.
+.. Se você implantou o Oracle Real Application clusters (RAC), marque a caixa de seleção *Oracle RAC*.
++
+Apenas dois nós RAC são suportados. Você deve garantir que o Oracle RAC tenha um mínimo de dois iniciadores adicionados ao grupo de iniciadores.
+
+
+
+
+
+ a| 
+SQL
+ a| 
+Especifique o número de bancos de dados e o tamanho de cada banco de dados.
+
+
+
+ a| 
+Outros
+ a| 
+.. Especifique o nome e o tamanho de cada LUN.
+.. Se quiser criar mais LUNs, clique em *Adicionar mais LUNs* e especifique o nome e o tamanho de cada LUN.
+
+
+|===
++
+Dados, log, binários e LUNs temporários são criados com base no tipo de aplicativo selecionado.
+
+. Na área *Map to these initiators*, execute estas etapas:
++
+.. Especifique o nome do grupo de iniciadores e o tipo de sistema operacional.
+.. Adicione o iniciador do host WWPN selecionando-o na lista suspensa ou digitando o iniciador na caixa de texto.
+.. Adicione o alias para o iniciador.
+
+
++
+Apenas um grupo de iniciadores é criado.
+
+. Clique em *criar*.
++
+Uma tabela de resumo é exibida com os LUNs criados.
+
+. Clique em *Fechar*.
+
+
+*Informações relacionadas*
+
+https://docs.netapp.com/ontap-9/index.jsp["Centro de Documentação do ONTAP 9"]

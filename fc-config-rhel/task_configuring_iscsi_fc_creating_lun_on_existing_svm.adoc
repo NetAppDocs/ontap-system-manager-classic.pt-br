@@ -1,0 +1,47 @@
+---
+permalink: fc-config-rhel/task_configuring_iscsi_fc_creating_lun_on_existing_svm.html 
+sidebar: sidebar 
+keywords: configure, fc, exist, storage, virtual, machine, svm, lun, contain, volume, wizard, procotol, enable, configure fc on an existing svm 
+summary: 'Você pode configurar o FC em uma máquina virtual de storage (SVM) existente e criar um LUN e seu volume contendo com um único assistente. O protocolo FC já deve estar ativado, mas não configurado no SVM. Essas informações destinam-se a SVMs para as quais você está configurando vários protocolos, mas ainda não configurou o FC.' 
+---
+= Configurar o FC em uma SVM existente
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode configurar o FC em uma máquina virtual de storage (SVM) existente e criar um LUN e seu volume contendo com um único assistente. O protocolo FC já deve estar ativado, mas não configurado no SVM. Essas informações destinam-se a SVMs para as quais você está configurando vários protocolos, mas ainda não configurou o FC.
+
+.Antes de começar
+Sua malha FC precisa estar configurada e as portas físicas desejadas precisam ser conectadas à malha.
+
+.Passos
+. Navegue até a janela *SVMs*.
+. Selecione o SVM que você deseja configurar.
+. No painel SVM**Detalhes**, verifique se *FC/FCoE* é exibido com um fundo cinza, o que indica que o protocolo está habilitado, mas não está totalmente configurado.
++
+Se *FC/FCoE* for exibido com um fundo verde, o SVM já estará configurado.
+
++
+image::../media/existing_svm_protocols_fc_rhel.gif[A imagem mostra a página de detalhes com todos os quatro protocolos com fundos cinzentos.]
+
+. Selecione o link do protocolo *FC/FCoE* com o fundo cinza.
++
+A janela Configurar protocolo FC/FCoE é exibida.
+
+. Configure o serviço FC e LIFs na página *Configurar protocolo FC/FCoE*:
++
+.. Marque a caixa de seleção *Configure Data LIFs for FC*.
+.. Digite `2` o campo *LIFs por nó*.
++
+São necessárias duas LIFs para cada nó, para garantir disponibilidade e mobilidade de dados.
+
+.. Selecione *Submit & Close* (Enviar e fechar).
+
+
++
+image::../media/svm_wizard_fc_details_linux.gif[A ilustração mostra a etapa 4 do assistente de configuração do SVM: Preenchendo os detalhes do FC.]
+
+. Revise a página *Summary*, Registre as informações de LIF e selecione *OK*.
+

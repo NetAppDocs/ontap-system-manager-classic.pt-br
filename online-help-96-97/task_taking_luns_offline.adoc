@@ -1,0 +1,27 @@
+---
+permalink: online-help-96-97/task_taking_luns_offline.html 
+sidebar: sidebar 
+keywords: take, lun, offline, online, help, management, system, manager 
+summary: Você pode usar a guia Gerenciamento LUN no System Manager para colocar LUNs selecionados offline e torná-los indisponíveis para bloquear o acesso ao protocolo. 
+---
+= Tire LUNs off-line com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a guia *Gerenciamento de LUN* no ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para colocar LUNs selecionados offline e torná-los indisponíveis para o acesso ao protocolo de bloqueio.
+
+.Antes de começar
+Qualquer aplicativo host que acesse o LUN deve ser desativado ou sincronizado.
+
+.Passos
+. Clique em *armazenamento* > *LUNs*.
+. Na guia *Gerenciamento de LUN*, selecione um ou mais LUNs que você deseja colocar offline.
+. Clique em *Status* > *Offline*.
+
+
+*Informações relacionadas*
+
+xref:reference_luns_window.adoc[Janela LUNs]

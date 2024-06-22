@@ -1,0 +1,34 @@
+---
+permalink: online-help-96-97/task_changing_status_volume.html 
+sidebar: sidebar 
+keywords: flexvol, change, status, volume, online, help, system, manager 
+summary: Você pode usar o Gerenciador de sistema para alterar o status de um FlexVol volume quando quiser colocar um volume off-line, colocar um volume de volta on-line ou restringir o acesso a um volume. 
+---
+= Altere o status de um volume com o Gerenciador do sistema - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para alterar o status de um FlexVol volume quando quiser colocar um volume off-line, colocar um volume de volta on-line ou restringir o acesso a um volume.
+
+.Antes de começar
+* Se você quiser que um volume seja o destino de uma operação de cópia de volume ou de uma operação de replicação do SnapMirror, o volume deve estar no estado restrito.
+* Se você quiser colocar um volume nas off-line, o volume nas deve ser desmontado.
+
+
+.Sobre esta tarefa
+Você pode colocar um volume off-line para executar a manutenção no volume, mover o volume ou destruir o volume. Quando um volume está off-line, o volume não está disponível para acesso de leitura ou gravação por clientes. Você não pode colocar um volume raiz off-line.
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. No menu suspenso no campo *SVM*, selecione *All SVMs*.
+. Selecione o volume para o qual deseja modificar o status.
+. No menu *mais ações* > *alterar status para*, selecione o status do volume necessário.
+. Clique em *OK* na caixa de diálogo de confirmação para alterar o status do volume.
+
+
+*Informações relacionadas*
+
+xref:reference_volumes_window.adoc[Janela volumes]

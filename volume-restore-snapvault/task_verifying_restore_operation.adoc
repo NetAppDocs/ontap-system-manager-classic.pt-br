@@ -1,0 +1,33 @@
+---
+permalink: volume-restore-snapvault/task_verifying_restore_operation.html 
+sidebar: sidebar 
+keywords: perform, restore, operation, snapvault, backup, destination, volume, verify, source cluster, verify the restore operation 
+summary: Depois de executar a operação de restauração a partir do volume de destino do backup do SnapVault, você deve verificar o status da operação de restauração no cluster de origem. 
+---
+= Verifique a operação de restauração
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depois de executar a operação de restauração a partir do volume de destino do backup do SnapVault, você deve verificar o status da operação de restauração no cluster de origem.
+
+.Sobre esta tarefa
+Você deve executar esta tarefa a partir do cluster *source*.
+
+.Passos
+. Navegue até a janela *volumes*.
+. Selecione o volume de origem na lista volumes e execute uma das seguintes ações, dependendo da versão do ONTAP:
++
+** Começando com ONTAP 9.3: Clique duas vezes no volume de origem para visualizar os detalhes e clique em *PROTECTION* para identificar o volume de destino na relação SnapMirror e o nome do SVM que contém o volume.
+** ONTAP 9.2 ou anterior: Clique na guia inferior *proteção de dados* para identificar o volume de destino na relação SnapMirror e o nome da SVM que contém o volume. O campo tipo é exibido `Restore` temporariamente. Após a conclusão da operação de restauração, o campo `Vault` exibe .
++
+Você deve solucionar qualquer problema nas relações do SnapVault. Os procedimentos de solução de problemas para relacionamentos SnapMirror também são aplicáveis a relacionamentos SnapVault.
+
++
+http://www.netapp.com/us/media/tr-4015.pdf["Relatório técnico da NetApp 4015: Configuração do SnapMirror e melhores práticas para o ONTAP 9.1, 9,2"^]
+
+
+
+

@@ -1,0 +1,68 @@
+---
+permalink: expansion/task_adding_nodes_to_cluster_using_system_manager.html 
+sidebar: sidebar 
+keywords: system, manager, increase, size, capabilities, capability, storage, node, automatic, ontap, add nodes to a cluster using system manager 
+summary: Você pode usar o System Manager para aumentar o tamanho e as funcionalidades do seu sistema de storage adicionando nós a um cluster existente. Esse recurso é ativado automaticamente no Gerenciador de sistema quando a versão efetiva do cluster é ONTAP 9.2. 
+---
+= Adicione nós a um cluster usando o System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o System Manager para aumentar o tamanho e as funcionalidades do seu sistema de storage adicionando nós a um cluster existente. Esse recurso é ativado automaticamente no Gerenciador de sistema quando a versão efetiva do cluster é ONTAP 9.2.
+
+.Antes de começar
+* Novos nós compatíveis devem ser cabeados para o cluster.
++
+Somente as portas que estão no domínio de broadcast padrão serão listadas na janela rede.
+
+* Todos os nós no cluster precisam estar ativos e em execução.
+* Todos os nós devem ter a mesma versão.
+
+
+.Passo
+. Adicione os novos nós compatíveis ao cluster:
++
+[cols="1,3"]
+|===
+
+
+| Se você é... | Faça isso... 
+
+
+ a| 
+Não tem sessão iniciada no System Manager
+ a| 
+.. Inicie sessão no System Manager.
++
+[NOTE]
+====
+Os novos nós compatíveis são detetados automaticamente pelo System Manager no início de sessão. O System Manager solicita que você adicione os novos nós compatíveis ao cluster.
+
+====
+.. Clique em *Add Nodes to Cluster*.
+.. Modifique o nome dos nós.
+.. Especifique as licenças do nó.
+.. Clique em *Enviar e prosseguir*.
+
+
+
+
+ a| 
+Iniciou sessão no System Manager
+ a| 
+.. Dependendo da versão do System Manager que você está executando, execute uma das seguintes etapas:
++
+*** ONTAP 9.4 ou anterior: Clique em *Configuração* > *expansão de cluster*.
+*** A partir de ONTAP 9.5: Clique em *Configuração* > *Cluster* > *expansão* o Gerenciador de sistema busca por nós recém-adicionados. Se forem apresentados quaisquer avisos, tem de os corrigir antes de prosseguir. Se forem descobertos novos nós compatíveis, avance para o passo seguinte.
+
+
+.. Modifique o nome dos nós.
+.. Especifique as licenças do nó.
+.. Clique em *Enviar e prosseguir*.
+
+
+|===
+

@@ -1,0 +1,18 @@
+---
+permalink: online-help-96-97/concept_rules_for_mixing_disk_types_disk_rpms.html 
+sidebar: sidebar 
+keywords: rule, online, help, create, aggregate, add, capacity, disk, rpm 
+summary: Ao criar um agregado e adicionar discos de capacidade a um agregado, você deve entender as regras que se aplicam quando os tipos de disco e RPM de disco são exibidos. 
+---
+= Regras para exibir tipos de disco e RPM de disco no Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Ao criar um agregado e adicionar discos de capacidade a um agregado, você deve entender as regras que se aplicam quando os tipos de disco e RPM de disco são exibidos no ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior).
+
+Quando a mistura do tipo de disco e as opções de mistura de RPM do disco não estão ativadas, o tipo de disco real e as RPM reais do disco são exibidos.
+
+Quando essas opções de mistura estão ativadas, o tipo de disco efetivo e as RPM efetivas do disco são exibidos em vez do tipo de disco real e das RPM reais do disco. Por exemplo, quando a opção de mixagem de disco está ativada, o System Manager exibe os discos BSAS como FSAS. Da mesma forma, quando a opção de mistura de RPM do disco estiver ativada, se as RPM dos discos forem 10K e 15K, o System Manager exibirá as RPM efetivas como 10K.

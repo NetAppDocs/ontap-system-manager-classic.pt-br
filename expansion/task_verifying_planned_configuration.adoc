@@ -1,0 +1,92 @@
+---
+permalink: expansion/task_verifying_planned_configuration.html 
+sidebar: sidebar 
+keywords: expand, cluster, ensure, follow, plan, configuration, support, require, license, exist, ontap, verify, verify the planned configuration 
+summary: 'Antes de expandir um cluster, você deve garantir o seguinte: A configuração planejada é suportada, as licenças necessárias existem, o site está pronto, os switches de cluster suportam a expansão e os nós existentes estão usando a mesma versão do ONTAP 9.' 
+---
+= Verifique a configuração planejada
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de expandir um cluster, você deve garantir o seguinte: A configuração planejada é suportada, as licenças necessárias existem, o site está pronto, os switches de cluster suportam a expansão e os nós existentes estão usando a mesma versão do ONTAP 9.
+
+.Antes de começar
+Você deve ter dois conjuntos de credenciais: O nome de usuário e a senha necessários para fazer login no cluster como administrador e o nome de usuário e a senha necessários para fazer login no site de suporte da NetApp.
+
+.Passos
+. Verifique a configuração planejada:
++
+.. Verifique se a plataforma dos novos controladores pode ser misturada com os controladores existentes do cluster.
+.. Verifique se o cluster expandido não excede os limites do sistema para as plataformas.
++
+https://hwu.netapp.com["NetApp Hardware Universe"^]
+
+.. Se o cluster estiver configurado para SAN, verifique se o cluster expandido não excede os limites de configuração para FC, FCoE e iSCSI.
++
+https://docs.netapp.com/us-en/ontap/san-config/index.html["Configuração SAN"^]
+
+
+
++
+Se esses requisitos não forem atendidos, não será possível prosseguir com a expansão.
+
+. Certifique-se de que as licenças abrangem os novos nós:
++
+.. No cluster existente, visualize as licenças usando o `system license show` comando.
++
+[listing]
+----
+cluster1::> system license show
+
+Serial Number: 9-99-999999
+Owner: cluster1
+Package           Type    Description           Expiration
+----------------- ------- --------------------- --------------------
+Base              site    Cluster Base License  -
+NFS               license NFS License           -
+CIFS              license CIFS License          -
+...
+----
+.. Revise a saída para identificar as licenças de nó bloqueado (identificadas pelo tipo `license`) que serão necessárias para os nós adicionais.
+.. Certifique-se de que as licenças incluídas nos nós adicionais sejam consistentes com as licenças de bloqueio de nó existentes do cluster.
++
+http://mysupport.netapp.com/licenses["Pesquisa de licença de software NetApp"^]
+
+
+
++
+Se você não tiver as licenças necessárias para os nós adicionais, você deve comprar licenças adicionais antes de prosseguir.
+
+. Verifique se o local está pronto para todo o novo equipamento.
++
+https://hwu.netapp.com["NetApp Hardware Universe"^]
+
++
+Se o site não estiver pronto, você deve preparar o site antes de continuar com a expansão.
+
+. Verifique se os switches existentes suportam os controladores adicionais.
++
+https://hwu.netapp.com["NetApp Hardware Universe"^]
+
++
+Se o cluster for sem switch ou se os switches existentes não suportarem os nós adicionais, você deverá obter switches de cluster, que poderão ser instalados posteriormente no processo de expansão.
+
+. Verifique se todos os nós no cluster existente estão executando a mesma versão do ONTAP 9 - incluindo a mesma versão menor e patch, se aplicável - usando o `cluster image show` comando.
++
+[listing]
+----
+cluster1::> cluster image show
+                 Current                 Installation
+Node             Version                 Date
+---------------- ----------------------- ------------
+cluster1-1       8.3RC1                  12/15/2014 17:37:26
+cluster1-2       8.3RC1                  12/15/2014 17:37:42
+2 entries were displayed.
+----
++
+Você deve anotar a versão do software ONTAP para referência mais adiante neste fluxo de trabalho.
+
+

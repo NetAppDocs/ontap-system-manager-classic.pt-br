@@ -1,0 +1,67 @@
+---
+permalink: nas-multiprotocol-config/task_verifying_nfs_access_from_unix_administration_host.html 
+sidebar: sidebar 
+keywords: configure, nfs, access, storage, virtual, machine, svm, configuration, administration, host, read, data, verify, verify nfs access from a unix administration host 
+summary: 'Depois de configurar o acesso NFS à máquina virtual de storage (SVM), você deverá verificar a configuração fazendo login em um host de administração NFS, lendo e gravando dados no SVM.' 
+---
+= Verificar o acesso NFS a partir de um host de administração UNIX
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depois de configurar o acesso NFS à máquina virtual de storage (SVM), você deverá verificar a configuração fazendo login em um host de administração NFS, lendo e gravando dados no SVM.
+
+.Antes de começar
+* O sistema cliente deve ter um endereço IP permitido pela regra de exportação especificada anteriormente.
+* Você deve ter as informações de login para o usuário root.
+
+
+.Passos
+. Faça login como usuário raiz no sistema cliente.
+. Introduza `cd /mnt/` para alterar o diretório para a pasta de montagem.
+. Crie e monte uma nova pasta usando o endereço IP do SVM:
++
+.. Digite `mkdir /mnt/folder` para criar uma nova pasta.
+.. Introduza `mount -t nfs -o nfsvers=3,hard IPAddress:/volume_name /mnt/folder` para montar o volume neste novo diretório.
+.. Introduza `cd folder` para alterar o diretório para a nova pasta.
++
+Os comandos a seguir criam uma pasta chamada test1, montam o volume vol1 no endereço IP 192.0.2.130 na pasta de montagem test1 e mudam para o novo diretório test1:
+
++
+[listing]
+----
+host# mkdir /mnt/test1
+host# mount -t nfs -o nfsvers=3,hard 192.0.2.130:/vol1 /mnt/test1
+host# cd /mnt/test1
+----
+
+
+. Crie um novo arquivo, verifique se ele existe e escreva texto nele:
++
+.. Digite `touch filename` para criar um arquivo de teste.
+.. Digite `ls -l filename` para verificar se o arquivo existe.
+..  `cat >filename`Digite um texto e pressione Ctrl e D para escrever texto no arquivo de teste.
+.. Introduza `cat filename` para apresentar o conteúdo do ficheiro de teste.
+.. Introduza `rm filename` para remover o ficheiro de teste.
+.. Digite `cd ..` para retornar ao diretório pai.
+
+
++
+[listing]
+----
+host# touch myfile1
+host# ls -l myfile1
+-rw-r--r-- 1 root root 0 Sep 18 15:58 myfile1
+host# cat >myfile1
+This text inside the first file
+host# cat myfile1
+This text inside the first file
+host# rm -r myfile1
+host# cd ..
+----
+
+
+.Resultados
+Você confirmou que ativou o acesso NFS ao SVM.

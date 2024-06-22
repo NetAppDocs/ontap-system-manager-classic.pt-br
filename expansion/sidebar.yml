@@ -1,0 +1,61 @@
+---
+section: expansion
+title: Administração do cluster
+entries:
+- title: Administração de expansão de cluster
+  entries:
+  - title: Visão geral
+    url: "/expansion/index.html"
+  - title: Fluxo de trabalho de expansão de cluster
+    url: "/expansion/concept_cluster_expansion_workflow.html"
+    entries:
+    - title: Verifique se o cluster está pronto para expansão
+      url: "/expansion/task_verifying_cluster_is_ready_for_expansion.html"
+      entries:
+      - title: Verifique a configuração planejada
+        url: "/expansion/task_verifying_planned_configuration.html"
+      - title: Reúna as informações de rede necessárias
+        url: "/expansion/task_gathering_required_information.html"
+      - title: Adicione ou substitua os interrutores
+        url: "/expansion/task_adding_or_replacing_switches.html"
+    - title: Prepare o cluster para expansão
+      url: "/expansion/task_preparing_cluster_for_expansion.html"
+      entries:
+      - title: Adicione licenças com bloqueio de nó
+        url: "/expansion/task_adding_node_locked_licenses.html"
+      - title: Verifique a integridade do sistema
+        url: "/expansion/task_verifying_health_system.html"
+      - title: Faça backup da configuração do cluster
+        url: "/expansion/task_backing_up_cluster_configuration.html"
+      - title: Gere uma mensagem AutoSupport sobre como iniciar a expansão
+        url: "/expansion/task_generating_autosupport_message_about_starting_expansion.html"
+    - title: Instale os novos nós
+      url: "/expansion/task_installing_new_nodes.html"
+      entries:
+      - title: Instale os controladores
+        url: "/expansion/task_installing_controllers.html"
+      - title: Configurar LIFs de gerenciamento de nós
+        url: "/expansion/concept_configuring_node_management_lifs.html"
+      - title: Atualizar ou fazer downgrade dos nós
+        url: "/expansion/task_upgrading_or_downgrading_nodes.html"
+      - title: Certifique-se de que a HA no nível de hardware está ativada
+        url: "/expansion/task_ensuring_hardware_level_ha_is_enabled.html"
+      - title: Adicione nós a um cluster usando o System Manager
+        url: "/expansion/task_adding_nodes_to_cluster_using_system_manager.html"
+      - title: Junte nós ao cluster usando a CLI
+        url: "/expansion/concept_joining_nodes_to_cluster_using_cli.html"
+    - title: Conclua a expansão
+      url: "/expansion/task_completing_expansion.html"
+      entries:
+      - title: Configure os detalhes do nó no System Manager
+        url: "/expansion/task_configuring_node_details_system_manager.html"
+      - title: Configure o AutoSupport nos novos nós
+        url: "/expansion/task_configuring_autosupport_on_new_nodes_using_cli.html"
+      - title: Configure a rede do processador de serviço
+        url: "/expansion/task_configuring_service_processor_network_cli.html"
+      - title: Valide a configuração do cluster expandido
+        url: "/expansion/task_validating_configuration_expanded_cluster.html"
+      - title: Gerar uma mensagem AutoSupport sobre como concluir a expansão
+        url: "/expansion/task_generating_autosupport_message_about_completing_expansion.html"
+      - title: Atualizar caminhos de LUN para os novos nós
+        url: "/expansion/task_updating_lun_paths_for_new_nodes.html"

@@ -1,0 +1,537 @@
+---
+permalink: online-help-96-97/task_editing_local_windows_group_properties.html 
+sidebar: sidebar 
+keywords: online, help, edit, local, windows, group, properties, active, directory 
+summary: Você pode gerenciar associações a grupos locais adicionando e removendo um usuário local, um usuário do ative Directory ou um grupo do ative Directory usando o System Manager. É possível modificar os Privileges atribuídos a um grupo e a descrição de um grupo para identificar facilmente o grupo. 
+---
+= Gerencie grupos locais do Windows com o Gerenciador do sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para gerenciar grupos locais do Windows. Você pode modificar propriedades de grupo, associações, contas e atribuir Privileges específicos a grupos.
+
+
+
+== Edite as propriedades locais do grupo do Windows
+
+Você pode gerenciar associações a grupos locais adicionando e removendo um usuário local, um usuário do ative Directory ou um grupo do ative Directory usando o System Manager. É possível modificar os Privileges atribuídos a um grupo e a descrição de um grupo para identificar facilmente o grupo.
+
+.Sobre esta tarefa
+Você deve ter em mente o seguinte ao adicionar membros ou remover membros de um grupo local do Windows:
+
+* Você não pode adicionar usuários ou remover usuários do grupo especial _todos_.
+* Não é possível adicionar um grupo local do Windows a outro grupo local do Windows.
+
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Host Users and Groups*, clique em *Windows*.
+. Na guia *Groups*, clique em *Edit*.
+. Especifique um nome para o grupo e uma descrição para identificar o novo grupo.
+. Atribua um conjunto de Privileges ao grupo.
++
+Pode selecionar o Privileges a partir do conjunto predefinido de Privileges suportados.
+
+. Clique em *Add* para adicionar usuários ao grupo.
+. Na janela *Adicionar Membros*, execute uma das seguintes ações:
++
+** Especifique o usuário do ative Directory ou o grupo do ative Directory a ser adicionado a um determinado grupo local.
+** Selecione os usuários na lista de usuários locais disponíveis na máquina virtual de armazenamento (SVM).
+
+
+. Clique em *Editar*.
+
+
+.Resultados
+As configurações de grupo local do Windows são modificadas e as alterações são exibidas na guia *grupos*.
+
+
+
+== Crie um grupo local do Windows
+
+Você pode usar o System Manager para criar grupos locais do Windows que podem ser usados para autorizar o acesso aos dados contidos na máquina virtual de armazenamento (SVM) em uma conexão SMB. Você também pode atribuir o Privileges que define os direitos de usuário ou os recursos que um membro do grupo tem ao executar atividades administrativas.
+
+.Antes de começar
+O servidor CIFS precisa ser configurado para a SVM.
+
+.Sobre esta tarefa
+* Você pode especificar um nome de grupo com ou sem o nome de domínio local.
++
+O domínio local é o nome do servidor CIFS para o SVM. Por exemplo, se o nome do servidor CIFS do SVM for "'CIFS_SERVER'" e você quiser criar um grupo "'Engineering'", você pode especificar "'Engineering'" ou "'CIFS_Server'" como o nome do grupo.
+
++
+As regras a seguir se aplicam ao usar um domínio local como parte do nome do grupo:
+
++
+** Você pode especificar apenas o nome de domínio local para o SVM ao qual o grupo é aplicado.
++
+Por exemplo, se o nome do servidor CIFS local for "'CIFS_SERVER'", você não poderá especificar "'CORP_Server' group1" como o nome do grupo.
+
+** Você não pode usar "'BUILTIN'" como um domínio local no nome do grupo.
++
+Por exemplo, você não pode criar um grupo com "'BUILTIN' group1" como o nome.
+
+** Não é possível usar um domínio do ative Directory como um domínio local no nome do grupo.
++
+Por exemplo, você não pode criar um grupo chamado "AD_Dom" group1, onde "'AD_Dom" é o nome de um domínio do ative Directory.
+
+
+
+* Não é possível usar um nome de grupo que já existe.
+* O nome do grupo especificado deve atender aos seguintes requisitos:
++
+** Não deve exceder 256 carateres
+** Não deve terminar em um período
+** Não deve incluir vírgulas
+** Não deve incluir nenhum dos seguintes carateres imprimíveis: "/ * A.
+** Não deve incluir carateres no intervalo ASCII de 1 a 31, que não são imprimíveis
+
+
+
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Host Users and Groups*, clique em *Windows*.
+. Na guia *Groups*, clique em *Create*.
+. Na caixa de diálogo *criar grupo*, especifique um nome para o grupo e uma descrição que o ajude a identificar o novo grupo.
+. Atribua um conjunto de Privileges ao grupo.
++
+Pode selecionar o Privileges a partir do conjunto predefinido de Privileges suportados.
+
+. Clique em *Add* para adicionar usuários ao grupo.
+. Na caixa de diálogo *Adicionar membros ao grupo*, execute uma das seguintes ações:
++
+** Especifique o usuário do ative Directory ou o grupo do ative Directory a ser adicionado a um determinado grupo local.
+** Selecione os usuários na lista de usuários locais disponíveis no SVM.
+** Clique em *OK*.
+
+
+. Clique em *criar*.
+
+
+.Resultados
+O grupo local do Windows é criado e é listado na janela grupos.
+
+
+
+== Adicione contas de usuário a um grupo local do Windows
+
+Você pode adicionar um usuário local, um usuário do ative Directory ou um grupo do ative Directory (se quiser que os usuários tenham o Privileges associado a esse grupo) a um grupo local do Windows usando o Gerenciador de sistema.
+
+.Antes de começar
+* O grupo deve existir antes de poder adicionar um utilizador ao grupo.
+* O utilizador tem de existir antes de poder adicionar o utilizador a um grupo.
+
+
+.Sobre esta tarefa
+Você deve ter em mente o seguinte ao adicionar membros a um grupo local do Windows:
+
+* Você não pode adicionar usuários ao grupo especial _todos_.
+* Não é possível adicionar um grupo local do Windows a outro grupo local do Windows.
+* Não é possível adicionar uma conta de usuário que contenha um espaço no nome de usuário usando o System Manager.
++
+Você pode renomear a conta de usuário ou adicionar a conta de usuário usando a interface de linha de comando (CLI).
+
+
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Host Users and Groups*, clique em *Windows*.
+. Na guia *Groups*, selecione o grupo ao qual deseja adicionar um usuário e clique em *Add Members*.
+. Na janela *Adicionar Membros*, execute uma das seguintes ações:
++
+** Especifique o usuário do ative Directory ou o grupo do ative Directory a ser adicionado a um determinado grupo local.
+** Selecione os usuários na lista de usuários locais disponíveis na máquina virtual de armazenamento (SVM).
+
+
+. Clique em *OK*.
+
+
+.Resultados
+O usuário que você adicionou está listado na tabela Userstab da guia *Groups*.
+
+
+
+== Renomeie um grupo local do Windows
+
+Você pode usar o Gerenciador de sistema para renomear um grupo Windows local para identificar o grupo com mais facilidade.
+
+.Sobre esta tarefa
+* O novo nome do grupo deve ser criado no mesmo domínio que o nome do grupo antigo.
+* O nome do grupo deve atender aos seguintes requisitos:
++
+** Não deve exceder 256 carateres
+** Não deve terminar em um período
+** Não deve incluir vírgulas
+** Não deve incluir nenhum dos seguintes carateres imprimíveis: "/ * A.
+** Não deve incluir carateres no intervalo ASCII de 1 a 31, que não são imprimíveis
+
+
+
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Host Users and Groups*, clique em *Windows*.
+. Na guia *Groups*, selecione o grupo que deseja renomear e clique em *Renomear*.
+. Na janela *Renomear grupo*, especifique um novo nome para o grupo.
+
+
+.Resultados
+O nome do grupo local é alterado e o grupo é listado com o novo nome na janela grupos.
+
+
+
+== Excluir um grupo local do Windows
+
+Você pode usar o Gerenciador do sistema para excluir um grupo local do Windows de uma máquina virtual de storage (SVM) se o grupo não for mais necessário para determinar direitos de acesso aos dados contidos no SVM ou para atribuir direitos de usuário (Privileges) da SVM aos membros do grupo.
+
+.Sobre esta tarefa
+* Remover um grupo local remove os Registros de associação do grupo.
+* O sistema de ficheiros não foi alterado.
++
+Os descritores de segurança do Windows em arquivos e diretórios que se referem a esse grupo não são ajustados.
+
+* O grupo especial "todos" não pode ser suprimido.
+* Grupos internos como BUILTIN/Administradores e BUILTIN/usuários não podem ser excluídos.
+
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Host Users and Groups*, clique em *Windows*.
+. Na guia *Groups*, selecione o grupo que deseja excluir e clique em *Delete*.
+. Clique em *Excluir*.
+
+
+.Resultados
+O grupo local é excluído juntamente com seus Registros de associação.
+
+
+
+== Crie uma conta de usuário local do Windows
+
+Você pode usar o System Manager para criar uma conta de usuário local do Windows que pode ser usada para autorizar o acesso aos dados contidos na máquina virtual de armazenamento (SVM) em uma conexão SMB. Você também pode usar contas de usuário locais do Windows para autenticação ao criar uma sessão CIFS.
+
+.Antes de começar
+* O servidor CIFS precisa ser configurado para o SVM.
+
+
+.Sobre esta tarefa
+Um nome de usuário local do Windows deve atender aos seguintes requisitos:
+
+* Não deve exceder 20 carateres
+* Não deve terminar em um período
+* Não deve incluir vírgulas
+* Não deve incluir nenhum dos seguintes carateres imprimíveis: "/ * A.
+* Não deve incluir carateres no intervalo ASCII de 1 a 31, que não são imprimíveis
+
+
+A senha deve atender aos seguintes critérios:
+
+* Deve ter pelo menos seis carateres de comprimento
+* Não deve conter o nome da conta de utilizador
+* Deve conter carateres de pelo menos três das quatro categorias seguintes:
++
+** Carateres maiúsculos em inglês (A a Z)
+** Carateres minúsculos em inglês (a a z)
+** Base 10 dígitos (0 a 9)
+** Carateres especiais: 0 e * _ - ( ) [ ] : ; " > , . ? /
+
+
+
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Host Users and Groups*, clique em *Windows*.
+. Na guia *usuários*, clique em *criar*.
+. Especifique um nome para o usuário local.
+. Especifique o nome completo do usuário local e uma descrição que o ajude a identificar esse novo usuário.
+. Introduza uma palavra-passe para o utilizador local e confirme a palavra-passe.
++
+A senha deve atender aos requisitos de senha.
+
+. Clique em *Adicionar* para atribuir associações de grupo ao usuário.
+. Na janela *Adicionar grupos*, selecione os grupos na lista de grupos disponíveis no SVM.
+. Selecione *Desativar esta conta* para desativar esta conta após a criação do usuário.
+. Clique em *criar*.
+
+
+.Resultados
+A conta de usuário local do Windows é criada e é atribuída a associação aos grupos selecionados. A conta de usuário está listada na guia *usuários*.
+
+
+
+== Edite as propriedades locais do usuário do Windows
+
+Você pode usar o System Manager para modificar uma conta de usuário local do Windows se quiser alterar o nome completo ou a descrição de um usuário existente ou se quiser ativar ou desativar a conta de usuário. Você também pode modificar as associações de grupo atribuídas à conta de usuário.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Host Users and Groups*, clique em *Windows*.
+. Na guia *usuários*, clique em *Editar*.
+. Na janela *Modificar usuário*, faça as alterações necessárias.
+. Clique em *Modificar*.
+
+
+.Resultados
+Os atributos da conta de usuário local do Windows são modificados e são exibidos na guia *usuários*.
+
+
+
+== Atribua associações a grupos a uma conta de usuário
+
+Você pode usar o Gerenciador do sistema para atribuir a associação de grupo a uma conta de usuário se quiser que um usuário tenha os Privileges associados a um determinado grupo.
+
+.Antes de começar
+* O grupo deve existir antes de poder adicionar um utilizador ao grupo.
+* O utilizador tem de existir antes de poder adicionar o utilizador a um grupo.
+
+
+.Sobre esta tarefa
+Você não pode adicionar usuários ao grupo especial _todos_.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Host Users and Groups*, clique em *Windows*.
+. Na guia *usuários*, selecione a conta de usuário à qual você deseja atribuir associações a grupos e clique em *Adicionar ao grupo*.
+. Na janela *Adicionar grupos*, selecione os grupos aos quais deseja adicionar a conta de usuário.
+. Clique em *OK*.
+
+
+.Resultados
+A conta de usuário é atribuída a associação a todos os grupos selecionados e o usuário tem os Privileges associados a esses grupos.
+
+
+
+== Renomeie um usuário local do Windows
+
+Você pode usar o System Manager para renomear uma conta de usuário local do Windows para identificar o usuário local com mais facilidade.
+
+.Sobre esta tarefa
+* O novo nome de usuário deve ser criado no mesmo domínio que o nome de usuário anterior.
+* O nome de usuário especificado deve atender aos seguintes requisitos:
++
+** Não deve exceder 20 carateres
+** Não deve terminar em um período
+** Não deve incluir vírgulas
+** Não deve incluir nenhum dos seguintes carateres imprimíveis: "/ * A.
+** Não deve incluir carateres no intervalo ASCII de 1 a 31, que não são imprimíveis
+
+
+
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Host Users and Groups*, clique em *Windows*.
+. Na guia *usuários*, selecione o usuário que deseja renomear e clique em *Renomear*.
+. Na janela *Renomear usuário*, especifique um novo nome para o usuário.
+. Confirme o novo nome e clique em *Renomear*.
+
+
+.Resultados
+O nome de usuário é alterado e o novo nome é listado na guia *usuários*.
+
+
+
+== Redefina a senha de um usuário local do Windows
+
+Pode utilizar o Gestor do sistema para repor a palavra-passe de um utilizador local do Windows. Por exemplo, você pode querer redefinir a senha se a senha atual for comprometida ou se o usuário Esqueceu a senha.
+
+.Sobre esta tarefa
+A senha definida deve atender aos seguintes critérios:
+
+* Deve ter pelo menos seis carateres de comprimento
+* Não deve conter o nome da conta de utilizador
+* Deve conter carateres de pelo menos três das quatro categorias seguintes:
++
+** Carateres maiúsculos em inglês (A a Z)
+** Carateres minúsculos em inglês (a a z)
+** Base 10 dígitos (0 a 9)
+** Carateres especiais: 0 e * _ - ( ) [ ] : ; " > , . ? /
+
+
+
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Host Users and Groups*, clique em *Windows*.
+. Na guia *usuários*, selecione o usuário cuja senha deseja redefinir e clique em *Definir senha*.
+. Na caixa de diálogo *Redefinir senha*, defina uma nova senha para o usuário.
+. Confirme a nova senha e clique em *Redefinir*.
+
+
+
+
+== Excluir uma conta de usuário local do Windows
+
+Você pode usar o System Manager para excluir uma conta de usuário local do Windows de uma máquina virtual de storage (SVM) se a conta de usuário não for mais necessária para autenticação CIFS local para o servidor CIFS do SVM ou para determinar direitos de acesso aos dados contidos no SVM.
+
+.Sobre esta tarefa
+* Usuários padrão, como Administrador, não podem ser excluídos.
+* O ONTAP remove as referências ao usuário local excluído do banco de dados de grupo local, da associação de usuário local e do banco de dados de direitos de usuário.
+
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Host Users and Groups*, clique em *Windows*.
+. Na guia *usuários*, selecione a conta de usuário que deseja excluir e clique em *Excluir*.
+. Clique em *Excluir*.
+
+
+.Resultados
+A conta de usuário local é excluída juntamente com suas entradas de associação de grupo.
+
+
+
+== A janela do Windows
+
+Você pode usar o System Manager para usar a janela do Windows. A janela do Windows ajuda você a manter uma lista de usuários e grupos locais do Windows para cada máquina virtual de storage (SVM) no cluster. Você pode usar usuários e grupos locais do Windows para autenticação e mapeamentos de nomes.
+
+
+
+=== Separador utilizadores
+
+Você pode usar a guia usuários para exibir os usuários do Windows locais em um SVM.
+
+
+
+=== Botões de comando
+
+* *Criar*
++
+Abre a caixa de diálogo criar usuário, que permite criar uma conta de usuário local do Windows que pode ser usada para autorizar o acesso aos dados contidos no SVM em uma conexão SMB.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar usuário, que permite editar propriedades de usuário locais do Windows, como associações a grupos e o nome completo. Também pode ativar ou desativar a conta de utilizador.
+
+* *Excluir*
++
+Abre a caixa de diálogo Excluir usuário, que permite excluir uma conta de usuário local do Windows de um SVM se ela não for mais necessária.
+
+* *Adicionar ao grupo*
++
+Abre a caixa de diálogo Adicionar grupos, que permite atribuir associação de grupo a uma conta de usuário se desejar que o usuário tenha o Privileges associado a esse grupo.
+
+* *Definir senha*
++
+Abre a caixa de diálogo Redefinir senha, que permite redefinir a senha de um usuário local do Windows. Por exemplo, você pode querer redefinir a senha se a senha estiver comprometida ou se o usuário tiver esquecido a senha.
+
+* *Renomear*
++
+Abre a caixa de diálogo Renomear usuário, que permite renomear uma conta de usuário local do Windows para identificá-la com mais facilidade.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de utilizadores
+
+* *Nome*
++
+Exibe o nome do usuário local.
+
+* *Nome completo*
++
+Exibe o nome completo do usuário local.
+
+* *Conta desativada*
++
+Mostra se a conta de utilizador local está ativada ou desativada.
+
+* *Descrição*
++
+Apresenta a descrição deste utilizador local.
+
+
+
+
+
+=== Área de detalhes do usuário
+
+* *Grupo*
++
+Exibe a lista de grupos nos quais o usuário é membro.
+
+
+
+
+
+=== Separador grupos
+
+Você pode usar a guia grupos para adicionar, editar ou excluir grupos do Windows locais a um SVM.
+
+
+
+=== Botões de comando
+
+* *Criar*
++
+Abre a caixa de diálogo criar grupo, que permite criar grupos locais do Windows que podem ser usados para autorizar o acesso aos dados contidos em SVMs em uma conexão SMB.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar grupo, que permite editar as propriedades locais do grupo do Windows, como o Privileges atribuído ao grupo e a descrição do grupo.
+
+* *Excluir*
++
+Abre a caixa de diálogo Excluir grupo, que permite excluir um grupo Windows local de um SVM se não for mais necessário.
+
+* *Adicione membros*
++
+Abre a caixa de diálogo Adicionar membros, que permite adicionar usuários locais ou do ative Directory ou grupos do ative Directory ao grupo local do Windows.
+
+* *Renomear*
++
+Abre a caixa de diálogo Renomear grupo, que permite renomear um grupo Windows local para identificá-lo com mais facilidade.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de grupos
+
+* *Nome*
++
+Exibe o nome do grupo local.
+
+* *Descrição*
++
+Apresenta a descrição deste grupo local.
+
+
+
+
+
+=== Área de Detalhes dos grupos
+
+* *Privileges*
++
+Exibe a lista de Privileges associados ao grupo selecionado.
+
+* *Usuários*
++
+Exibe a lista de usuários locais associados ao grupo selecionado.
+
+

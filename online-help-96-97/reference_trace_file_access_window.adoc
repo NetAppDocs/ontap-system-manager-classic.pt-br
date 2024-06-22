@@ -1,0 +1,113 @@
+---
+permalink: online-help-96-97/reference_trace_file_access_window.html 
+sidebar: sidebar 
+keywords: system, manager, commnd, button, trace, file, access, window, online, help, cif, entry, list 
+summary: 'A partir do System Manager 9,6, você pode usar a janela Trace File Access (Acesso ao Trace File Access) para diagnosticar problemas quando tiver problemas ao acessar arquivos e compartilhamentos em uma SVM usando o protocolo CIFS ou NFS.' 
+---
+= Janela Trace File Access no System Manager
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do Gerenciador de sistemas do ONTAP 9,6, você pode usar a janela rastrear acesso a arquivos para diagnosticar problemas quando tiver problemas ao acessar arquivos e compartilhamentos em uma SVM usando o protocolo CIFS ou NFS.
+
+
+
+== Botões de comando
+
+* *Continuar*
++
+Inicia o processo de configuração e inicialização de um rastreamento de acesso de arquivo no SVM selecionado.
+
+* *Protocolos*
++
+Permite selecionar o protocolo usado para acessar arquivos e compartilhamentos na SVM selecionada, CIFS ou NFS.
+
+* *Ícone de opções avançadas*
++
+Permite especificar detalhes adicionais para restringir o escopo do traçado.
+
+* *Mostrar em resultados de Rastreamento*
++
+Permite especificar na caixa de diálogo Opções avançadas se deseja que os resultados do rastreamento exibam apenas solicitações de acesso a arquivos que foram negadas ou para exibir todas as solicitações de acesso a arquivos - aquelas que foram bem-sucedidas e as que foram negadas.
+
+* *Iniciar Rastreamento*
++
+Permite-lhe iniciar o traçado. Os resultados mostram problemas de acesso para solicitações de acesso a arquivos enviadas nos próximos 60 minutos.
+
+* *Parar Rastreamento*
++
+Permite-lhe parar o traçado.
+
+* *Ver permissões*
++
+Permite exibir permissões. Ao usar o protocolo CIFS, você pode exibir permissões efetivas de arquivo e compartilhamento. Ao usar o protocolo NFS, você pode exibir permissões de arquivo efetivas.
+
+* *Copiar para a área de transferência*
++
+Permite copiar a tabela de resultados para a área de transferência.
+
+* *Exportar resultados de Rastreamento*
++
+Permite exportar os resultados do rastreio para um ficheiro no formato de valores separados por vírgulas (.csv).
+
+
+
+
+
+== Campos de entrada
+
+* *Nome de usuário*
++
+Introduza o nome do utilizador que recebeu erros de pedido de acesso ao ficheiro que pretende rastrear.
+
+* *Resultados de rastreamento de pesquisa*
++
+Você insere informações específicas que deseja localizar nos resultados da pesquisa e, em seguida, clica em *Enter*.
+
+* *Endereço IP do cliente*
++
+Na caixa de diálogo Opções avançadas, você pode especificar o endereço IP do cliente como um detalhe adicional para restringir o escopo do rastreamento.
+
+* *Arquivo*
++
+Na caixa de diálogo Opções avançadas, você pode especificar o caminho do arquivo ou do arquivo que deseja acessar como um detalhe adicional para restringir o escopo do rastreamento.
+
+
+
+.Lista de resultados para rastreamento de protocolo CIFS
+Quando você especifica o protocolo CIFS, a lista de resultados exibe os seguintes dados para seu rastreamento com base nos parâmetros especificados. Os dados são apresentados em ordem cronológica inversa. Se você parar de rastrear, os resultados permanecerão na lista até que você inicie outro rastreamento.
+
+* Compartilhar: O nome do compartilhamento que o sistema tentou acessar, seja bem-sucedido ou não.
+* Caminho: O caminho do arquivo do arquivo que o sistema tentou acessar, seja bem-sucedido ou não.
+* Endereço IP do cliente: O endereço IP do cliente a partir do qual as solicitações de acesso foram iniciadas.
+* Razões: As razões pelas quais a tentativa de acessar o arquivo ou compartilhamento foi bem-sucedida ou não.
++
+[NOTE]
+====
+Quando o resultado do rastreamento mostra uma mensagem dizendo que o acesso não é concedido para "Sincronizar", "Controle de leitura", "atributos de leitura", "Executar", "ler EA", "escrever" ou "ler", a mensagem indica que o acesso desejado não foi concedido para o conjunto de permissões listadas. Para visualizar o status real das permissões, você precisa exibir as permissões usando o link fornecido.
+
+====
+
+
+.Lista de resultados para rastreamento de protocolos NFS
+Quando você especifica o protocolo NFS, a lista de resultados exibe os seguintes dados para seu rastreamento com base nos parâmetros especificados. Os dados são apresentados em ordem cronológica inversa. Se você parar de rastrear, os resultados permanecerão na lista até que você inicie outro rastreamento.
+
+* Caminho: O caminho do arquivo do arquivo que o sistema tentou acessar, seja bem-sucedido ou não.
+* Endereço IP do cliente: O endereço IP do cliente a partir do qual as solicitações de acesso foram iniciadas.
+* Razões: As razões pelas quais a tentativa de acessar o arquivo ou compartilhamento foi bem-sucedida ou não.
++
+[NOTE]
+====
+Quando o resultado do rastreamento mostra uma mensagem dizendo que o acesso não é concedido para "Sincronizar", "Controle de leitura", "atributos de leitura", "Executar", "ler EA", "escrever" ou "ler", a mensagem indica que o acesso desejado não foi concedido para o conjunto de permissões listadas. Para visualizar o status real das permissões, você precisa exibir as permissões usando o link fornecido.
+
+====
+
+
+*Informações relacionadas*
+
+https://docs.netapp.com/us-en/ontap/smb-admin/index.html["Gerenciamento de SMB/CIFS"]
+
+xref:../nas-multiprotocol-config/index.html[Configuração multiprotocolo SMB/CIFS e NFS]

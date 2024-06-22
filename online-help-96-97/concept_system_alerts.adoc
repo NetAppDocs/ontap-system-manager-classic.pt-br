@@ -1,0 +1,217 @@
+---
+permalink: online-help-96-97/concept_system_alerts.html 
+sidebar: sidebar 
+keywords: system, manager, monitor, cluster, health, alerts, delete, 
+summary: Você pode usar o System Manager para monitorar diferentes partes de um cluster. 
+---
+= Gerencie alertas de sistema com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager Classic (disponível no ONTAP 9.7 e anterior) para monitorar diferentes partes de um cluster.
+
+
+
+== Confirmar alertas de integridade do sistema
+
+Você pode usar o System Manager para reconhecer e responder a alertas de integridade do sistema para subsistemas. Você pode usar as informações exibidas para tomar a ação recomendada e corrigir o problema relatado pelo alerta.
+
+.Passos
+. Clique em *Eventos e trabalhos* > *Alertas do sistema*.
+. Na janela *Alertas do sistema*, clique no ícone de seta ao lado do nome do subsistema.
+. Selecione o alerta que deseja reconhecer e clique em *confirmar*.
+. Digite seu nome e clique em *confirmar*.
+
+
+
+
+== Suprimir alertas de integridade do sistema
+
+Você pode usar o System Manager para suprimir alertas de integridade do sistema que não exigem nenhuma intervenção de você.
+
+.Passos
+. Clique em *Eventos e trabalhos* > *Alertas do sistema*.
+. Na janela *Alertas do sistema*, clique no ícone de seta ao lado do nome do subsistema.
+. Selecione o alerta que pretende suprimir e, em seguida, clique em *suprimir*.
+. Digite seu nome e clique em *suprimir*.
+
+
+
+
+== Excluir alertas de integridade do sistema
+
+Você pode usar o System Manager para excluir alertas de integridade do sistema aos quais você já respondeu.
+
+.Passos
+. Clique em *Eventos e trabalhos* > *Alertas do sistema*.
+. Na janela *Alertas do sistema*, clique no ícone de seta ao lado do nome do subsistema.
+. Selecione o alerta que deseja excluir e clique em *Excluir*.
+. Clique em *OK*.
+
+
+
+
+== Monitores de integridade do cluster disponíveis
+
+Existem vários monitores de integridade que monitorizam diferentes partes de um cluster. Os monitores de integridade ajudam você a se recuperar de erros nos sistemas ONTAP detetando eventos, enviando alertas para você e excluindo eventos conforme eles forem claros.
+
+[cols="1a,1a,1a"]
+|===
+| Nome do monitor de integridade (identificador) | Nome do subsistema (identificador) | Finalidade 
+
+
+ a| 
+Interrutor do cluster (interrutor do cluster)
+ a| 
+Interrutor (estado do interrutor)
+ a| 
+Monitora os switches de rede de cluster e os switches de rede de gerenciamento para temperatura, utilização, configuração de interface, redundância (somente switches de rede de cluster) e operação de ventilador e fonte de alimentação. O monitor de integridade do comutador de cluster comunica com os comutadores através do SNMP. SNMPv2c é a configuração padrão.
+
+[NOTE]
+====
+A partir do ONTAP 9.2, este monitor pode detetar e reportar quando uma central de cluster foi reinicializada desde o último período de polling.
+
+====
+
+
+ a| 
+MetroCluster Fabric
+ a| 
+Interrutor
+ a| 
+Monitora a topologia da malha de back-end de configuração do MetroCluster e deteta configurações incorretas, como cabeamento e zoneamento incorretos e falhas de ISL.
+
+
+
+ a| 
+MetroCluster Saúde
+ a| 
+Interconexão, RAID e armazenamento
+ a| 
+Monitora os adaptadores FC-VI, os adaptadores iniciador FC, os discos e agregados esquerdos e as portas entre clusters
+
+
+
+ a| 
+Conetividade do nó (nó-conexão)
+ a| 
+Operações ininterruptas de CIFS (CIFS-NDO)
+ a| 
+Monitora conexões SMB para operações ininterruptas com aplicações Hyper-V.
+
+
+
+ a| 
+Storage (conexão SAS)
+ a| 
+Monitora compartimentos, discos e adaptadores no nível do nó para ver os caminhos e as conexões apropriados.
+
+
+
+ a| 
+Sistema
+ a| 
+não aplicável
+ a| 
+Agrega informações de outros monitores de saúde.
+
+
+
+ a| 
+Conetividade do sistema (conexão do sistema)
+ a| 
+Storage (conexão SAS)
+ a| 
+Monitora as gavetas no nível do cluster para ver os caminhos apropriados para dois nós em cluster de HA.
+
+|===
+
+
+== Maneiras de responder a alertas de integridade do sistema
+
+Quando um alerta de integridade do sistema ocorre, você pode reconhecê-lo, saber mais sobre ele, reparar a condição subjacente e impedir que ele ocorra novamente.
+
+Quando um monitor de saúde gera um alerta, você pode responder de qualquer uma das seguintes maneiras:
+
+* Obtenha informações sobre o alerta, que inclui o recurso afetado, a gravidade do alerta, a causa provável, o possível efeito e as ações corretivas.
+* Obtenha informações detalhadas sobre o alerta, como a hora em que o alerta foi gerado e se alguém já reconheceu o alerta.
+* Obtenha informações relacionadas à integridade sobre o estado do recurso ou subsistema afetado, como um compartimento ou disco específico.
+* Reconheça o alerta para indicar que alguém está trabalhando no problema e identifique-se como o ""reconhecimento"".
+* Resolva o problema tomando as ações corretivas fornecidas no alerta, como a fixação de cabeamento para resolver um problema de conetividade.
+* Exclua o alerta, se o sistema não o apagou automaticamente.
+* Suprimir um alerta para impedir que ele afete o status de integridade de um subsistema.
++
+Suprimir é útil quando você entende um problema. Depois de suprimir um alerta, ele ainda pode ocorrer, mas a integridade do subsistema é exibida como "'ok-with-suppressed.'" quando o alerta suprimido ocorre.
+
+
+
+
+
+== Janela Alertas do sistema
+
+Você pode usar a janela Alertas do sistema para saber mais sobre alertas de integridade do sistema. Você também pode reconhecer, excluir e suprimir alertas da janela.
+
+
+
+=== Botões de comando
+
+* *Reconhecimento*
++
+Permite que você reconheça o alerta selecionado para indicar que o problema está sendo resolvido e identifica a pessoa que clica no botão como o ""reconhecimento"".
+
+* *Suprimir*
++
+Permite-lhe suprimir o alerta selecionado para evitar que o sistema o notifique sobre o mesmo alerta novamente e identifica-o como ""supressor"".
+
+* *Excluir*
++
+Elimina o alerta selecionado.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de alertas
+
+* *Subsistema (no. De Alertas)*
++
+Exibe o nome do subsistema, como a conexão SAS, integridade do switch, CIFS NDO ou MetroCluster, para o qual o alerta é gerado.
+
+* *ID de alerta*
++
+Exibe a ID de alerta.
+
+* *Nó*
++
+Exibe o nome do nó para o qual o alerta é gerado.
+
+* *Gravidade*
++
+Exibe a gravidade do alerta como desconhecido, outro, Informação, degradado, menor, maior, crítico ou fatal.
+
+* *Recurso*
++
+Exibe o recurso que gerou o alerta, como um compartimento ou disco específico.
+
+* *Hora*
++
+Exibe a hora em que o alerta foi gerado.
+
+
+
+
+
+=== Área de detalhes
+
+A área de detalhes exibe informações detalhadas sobre o alerta, como a hora em que o alerta foi gerado e se o alerta foi reconhecido. A área também inclui informações sobre a causa provável e possível efeito da condição gerada pelo alerta, e as ações recomendadas para corrigir o problema relatado pelo alerta.
+
+*Informações relacionadas*
+
+https://docs.netapp.com/us-en/ontap/system-admin/index.html["Administração do sistema"]

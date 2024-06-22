@@ -1,0 +1,133 @@
+---
+permalink: nfs-config/task_creating_new_svm.html 
+sidebar: sidebar 
+keywords: wizard, process, creating, create, storage, virtual, machine, svm, configuring, configure, domain, name, system, dns, logical, interface, lif, enabling, enable, nis, export, volume, create a new svm with an nfs volume and export 
+summary: 'Você pode usar um assistente que orienta você pelo processo de criação da máquina virtual de armazenamento (SVM), configuração do sistema de nomes de domínio (DNS), criação de uma interface lógica de dados (LIF), ativação do NFS, configuração opcional do NIS e, em seguida, criação e exportação de um volume.' 
+---
+= Criar um novo SVM com um volume NFS e exportação
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar um assistente que orienta você pelo processo de criação da máquina virtual de armazenamento (SVM), configuração do sistema de nomes de domínio (DNS), criação de uma interface lógica de dados (LIF), ativação do NFS, configuração opcional do NIS e, em seguida, criação e exportação de um volume.
+
+.Antes de começar
+* Sua rede deve estar configurada e as portas físicas relevantes devem estar conetadas à rede.
+* Você deve saber quais dos seguintes componentes de rede o SVM usará:
++
+** O nó e a porta específica nesse nó onde a interface lógica de dados (LIF) será criada
+** A sub-rede a partir da qual o endereço IP do LIF de dados será provisionado ou, opcionalmente, o endereço IP específico que você deseja atribuir ao LIF de dados
+** Informações sobre NIS, se o seu site usar NIS para serviços de nome ou mapeamento de nomes
+
+
+* A sub-rede deve ser roteável para todos os servidores externos necessários para serviços como NIS (Network Information Service), LDAP (Lightweight Directory Access Protocol), AD (ative Directory) e DNS.
+* Quaisquer firewalls externos devem ser adequadamente configurados para permitir o acesso a serviços de rede.
+* O tempo nos controladores de domínio do AD, clientes e SVM deve ser sincronizado em até cinco minutos um do outro.
+
+
+.Passos
+. Navegue até a janela *SVMs*.
+. Clique em *criar.*
+. Na caixa de diálogo *Storage Virtual Machine (SVM) Setup*, crie o SVM:
++
+.. Especifique um nome exclusivo para o SVM.
++
+O nome deve ser um nome de domínio totalmente qualificado (FQDN) ou seguir outra convenção que garanta nomes exclusivos em um cluster.
+
+.. Selecione todos os protocolos para os quais você tem licenças e que você eventualmente usará no SVM, mesmo que você não queira configurar todos os protocolos imediatamente.
++
+Se o acesso CIFS for necessário eventualmente, você deve selecionar *CIFS* agora para que os clientes CIFS e NFS possam compartilhar o mesmo LIF de dados.
+
+.. Mantenha a predefinição de idioma, C.UTF-8.
++
+[NOTE]
+====
+Se você oferecer suporte à exibição de carateres internacionais em clientes NFS e SMB/CIFS, considere usar o código de idioma *UTF8MB4*, que está disponível a partir do ONTAP 9.5.
+
+====
++
+Esse idioma é herdado pelo volume que você cria mais tarde e o idioma de um volume não pode ser alterado.
+
+.. *Opcional*: Se você ativou o protocolo CIFS, altere o estilo de segurança para *UNIX*.
++
+Selecionar o protocolo CIFS define o estilo de segurança como NTFS por predefinição.
+
+.. *Opcional*: Selecione o agregado raiz para conter o volume raiz SVM.
++
+O agregado selecionado para o volume raiz não determina o local do volume de dados. O agregado para o volume de dados é selecionado automaticamente quando você provisiona o storage em uma etapa posterior.
+
++
+image::../media/svm_setup_details_unix_selected_nfs.gif[Este gráfico é explicado pelo texto circundante.]
+
+.. Na área *Configuração de DNS*, verifique se o domínio de pesquisa DNS padrão e os servidores de nomes são os que você deseja usar para este SVM.
++
+image::../media/svm_setup_details_dns_nfs.gif[Este gráfico é explicado pelo texto circundante.]
+
+.. Clique em *Enviar e continuar*.
+
+
++
+O SVM foi criado, mas os protocolos ainda não estão configurados.
+
+. Na seção *Configuração de LIF de dados* da página *Configurar protocolo CIFS/NFS*, especifique os detalhes do LIF que os clientes usarão para acessar dados:
++
+.. Atribua um endereço IP ao LIF automaticamente a partir de uma sub-rede especificada ou introduza manualmente o endereço.
+.. Clique em *Browse* e selecione um nó e uma porta que serão associados ao LIF.
++
+image::../media/svm_setup_cifs_nfs_page_lif_multi_nas_nfs.gif[Este gráfico é descrito pelo texto circundante.]
+
+
+
+. Se a área *NIS Configuration* estiver colapsada, expanda-a.
+. Se o seu site usar NIS para serviços de nomes ou mapeamento de nomes, especifique o domínio e os endereços IP dos servidores NIS.
++
+image::../media/svm_setup_cifs_nfs_page_nis_area_nfs.gif[Este gráfico é explicado pelo texto circundante.]
+
+. Criar e exportar um volume para o acesso NFS:
++
+.. Para *Nome da exportação*, digite um nome que será o nome da exportação e o início do nome do volume.
+.. Especifique um tamanho para o volume que conterá os arquivos.
++
+image::../media/svm_setup_cifs_nfs_page_nfs_export_nfs.gif[Captura de tela da área onde você configura a exportação NFS]
+
++
+Você não precisa especificar o agregado para o volume porque ele está localizado automaticamente no agregado com o espaço mais disponível.
+
+.. No campo *permissão*, clique em *alterar* e especifique uma regra de exportação que dê acesso NFSv3 a um host de administração UNIX, incluindo acesso a superusuário.
++
+image::../media/export_rule_for_admin_manual_nfs_nfs.gif[Esta imagem é explicada pelo texto circundante.]
+
+
+
++
+Você pode criar um volume de 10 GB chamado Eng, exportá-lo como Eng e adicionar uma regra que dá ao cliente "'admin_host'" acesso total à exportação, incluindo acesso ao superusuário.
+
+. Clique em *Enviar e continuar*.
++
+Os seguintes objetos são criados:
+
++
+** Um LIF de dados nomeado após o SVM com o sufixo "'_nfs_lif1"
+** Um servidor NFS
+** Um volume que está localizado no agregado com o espaço mais disponível e tem um nome que corresponde ao nome da exportação e termina no sufixo "'_NFS_volume'"
+** Uma exportação para o volume
+** Uma política de exportação com o mesmo nome que a exportação
+
+
+. Para todas as outras páginas de configuração de protocolo exibidas, clique em *Skip* e configure o protocolo mais tarde.
+. Quando a página *SVM Administration* for exibida, configure ou defenda a configuração de um administrador separado para este SVM:
++
+** Clique em *Skip* e configure um administrador mais tarde, se necessário.
+** Insira as informações solicitadas e clique em *Submit & Continue*.
+
+
+. Reveja a página *Summary*, registe qualquer informação que possa necessitar mais tarde e, em seguida, clique em *OK*.
++
+Os clientes NFS precisam saber o endereço IP do data LIF.
+
+
+
+.Resultados
+Um novo SVM é criado com um servidor NFS que contém um novo volume exportado para um administrador.

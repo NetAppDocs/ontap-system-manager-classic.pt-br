@@ -1,0 +1,33 @@
+---
+permalink: online-help-96-97/task_deleting_flexgroup_volumes.html 
+sidebar: sidebar 
+keywords: delete, flexgroup, volumes, online, help, system, manager 
+summary: Você pode usar o Gerenciador do sistema para excluir um volume FlexGroup quando não precisar mais do volume FlexGroup. 
+---
+= Exclua volumes do FlexGroup com o Gerenciador do sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para excluir um volume FlexGroup quando não precisar mais do volume FlexGroup.
+
+.Antes de começar
+* O caminho de junção do volume FlexGroup tem de ser desmontado.
+* O volume FlexGroup deve estar offline.
+
+
+.Sobre esta tarefa
+O Gerenciador do sistema não oferece suporte ao nível constituinte de gerenciamento para volumes FlexGroup.
+
+.Passos
+. Clique em *Storage* > *volumes*.
+. No menu suspenso no campo *SVM*, selecione *All SVMs*.
+. Selecione o volume FlexGroup que deseja excluir e clique em *Excluir*.
+. Marque a caixa de seleção de confirmação e clique em *OK*.
+
+
+*Informações relacionadas*
+
+xref:reference_volumes_window.adoc[Janela volumes]

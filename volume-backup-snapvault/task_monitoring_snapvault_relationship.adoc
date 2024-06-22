@@ -1,0 +1,51 @@
+---
+permalink: volume-backup-snapvault/task_monitoring_snapvault_relationship.html 
+sidebar: sidebar 
+keywords: periodically, monitor, status, snapvault, relationship, ensure, data, back, up, volume, schedule, monitor the snapvault relationship 
+summary: Você deve monitorar periodicamente o status das relações do SnapVault para garantir que os dados sejam copiados no volume de destino de acordo com a programação especificada. 
+---
+= Monitorar a relação do SnapVault
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você deve monitorar periodicamente o status das relações do SnapVault para garantir que os dados sejam copiados no volume de destino de acordo com a programação especificada.
+
+.Sobre esta tarefa
+Você deve executar esta tarefa a partir do cluster *Destination*.
+
+.Passos
+. Dependendo da versão do System Manager que você está executando, execute uma das seguintes etapas:
++
+** ONTAP 9.4 ou anterior: Clique em *proteção* > *relacionamentos*.
+** Começando com ONTAP 9.5: Clique em *proteção* > *relacionamentos de volume*.
+
+
+. Selecione a relação SnapVault entre os volumes de origem e destino e verifique o status na guia inferior *Detalhes*.
++
+O estado de funcionamento da relação SnapVault, quaisquer erros de transferência e o tempo de atraso são apresentados:
+
++
+** O campo está saudável deve exibir `Yes`.
++
+Para a maioria das falhas de transferência de dados, o campo `No` exibe . Em alguns casos de falha, no entanto, o campo continua a exibir `Yes`. Você deve verificar os erros de transferência na seção Detalhes para garantir que nenhuma falha de transferência de dados ocorreu.
+
+** O campo Estado da relação deve exibir `Snapmirrored`.
+** O tempo de atraso não deve ser superior ao intervalo de programação de transferência.
++
+Por exemplo, se o agendamento de transferência for diário, o tempo de atraso não deve ser superior a um dia.
+
++
+Você deve solucionar qualquer problema nas relações do SnapVault. Os procedimentos de solução de problemas para relacionamentos SnapMirror também são aplicáveis a relacionamentos SnapVault.
+
++
+http://www.netapp.com/us/media/tr-4015.pdf["Relatório técnico da NetApp 4015: Configuração do SnapMirror e melhores práticas para o ONTAP 9.1, 9,2"^]
+
++
+image::../media/monitor_sv.gif[monitor sv]
+
+
+
+

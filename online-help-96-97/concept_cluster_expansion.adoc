@@ -1,0 +1,112 @@
+---
+permalink: online-help-96-97/concept_cluster_expansion.html 
+sidebar: sidebar 
+keywords: cluster, expanision, system, manager, storage, size, capabilities, add, node, configure, network, online, help 
+summary: Você pode usar o System Manager para aumentar o tamanho e as capacidades do seu storage adicionando nós compatíveis ao cluster e configurando os detalhes da rede do nó. Você também pode exibir o resumo dos nós. 
+---
+= Expansão de cluster com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e versões anteriores) para aumentar o tamanho e as funcionalidades do seu storage adicionando nós compatíveis ao cluster e configurando os detalhes da rede do nó. Você também pode exibir o resumo dos nós.
+
+Quando você faz login no System Manager, o System Manager deteta automaticamente nós compatíveis que foram cabeados, mas não foram adicionados ao cluster e solicita que você adicione os nós. Você pode adicionar nós compatíveis quando o System Manager deteta os nós ou pode adicionar manualmente os nós posteriormente.
+
+
+
+== Adicionar nós a um cluster
+
+Você pode usar o System Manager para aumentar o tamanho e as funcionalidades do seu sistema de storage adicionando nós a um cluster existente.
+
+.Antes de começar
+* Novos nós compatíveis devem ser cabeados para o cluster.
++
+Somente as portas que estão no domínio de broadcast padrão serão listadas na janela rede.
+
+* Todos os nós no cluster precisam estar ativos e em execução.
+* Todos os nós devem ter a mesma versão.
+
+
+.Passos
+. Adicione os novos nós compatíveis ao cluster:
++
+|===
+| Se você é... | Faça isso... 
+
+
+ a| 
+Não tem sessão iniciada no System Manager
+ a| 
+.. Inicie sessão no System Manager.
++
+[NOTE]
+====
+Os novos nós compatíveis são detetados automaticamente pelo System Manager no início de sessão. O System Manager solicita que você adicione os novos nós compatíveis ao cluster.
+
+====
+.. Clique em *Add Nodes to Cluster*.
+.. Modifique o nome dos nós.
+.. Especifique as licenças do nó.
+.. Clique em *Enviar e prosseguir*.
+
+
+
+
+ a| 
+Iniciou sessão no System Manager
+ a| 
+.. Clique em *Configuração* > *Cluster* > *expansão*.
++
+O System Manager procura nós recém-adicionados. Se forem apresentados quaisquer avisos, tem de os corrigir antes de prosseguir. Se forem descobertos novos nós compatíveis, avance para o passo seguinte.
+
+.. Modifique o nome dos nós.
+.. Especifique as licenças do nó.
+.. Clique em *Enviar e prosseguir*.
+
+
+|===
+
+
+
+
+== Configure os detalhes da rede dos nós
+
+Você pode usar o System Manager para configurar as configurações de LIF de gerenciamento de nós e processador de serviço para os nós recém-adicionados.
+
+.Antes de começar
+* Número suficiente de portas deve estar presente no espaço IPspace padrão para a criação de LIF.
+* Todas as portas devem estar em funcionamento.
+
+
+.Passos
+. Configurar o gerenciamento de nós:
++
+.. Introduza o endereço IP no campo *Endereço IP*.
+.. Selecione a porta para gerenciamento de nós no campo *Port*.
+.. Introduza os detalhes da máscara de rede e do gateway.
+
+
+. Configurar as definições do processador de serviço:
++
+.. Marque a caixa de seleção *Substituir padrões* para substituir os valores padrão.
+.. Introduza o endereço IP, a máscara de rede e os detalhes do gateway.
+
+
+. Clique em *Enviar e continuar* para concluir a configuração de rede dos nós.
+. Verifique os detalhes dos nós na página *Summary*.
+
+
+
+
+=== O que fazer a seguir
+
+* Se o cluster estiver protegido, você deverá criar o número necessário de LIFs entre clusters nos nós recém-adicionados para evitar peering parcial e proteção pouco saudável.
+* Se os protocolos de dados SAN estiverem ativados no cluster, você deverá criar o número necessário de LIFs de dados SAN para fornecimento de dados.
+
+
+*Informações relacionadas*
+
+xref:task_creating_network_interfaces.adoc[Criando interfaces de rede]

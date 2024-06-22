@@ -1,0 +1,31 @@
+---
+permalink: online-help-96-97/task_configuring_system_manager_options.html 
+sidebar: sidebar 
+keywords: system, manager, configure, system, manager, option, online, help 
+summary: Pode ativar o registo e especificar o valor de tempo limite de inatividade para o Gestor do sistema. 
+---
+= Configure as opções do Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode ativar o log e especificar o valor de tempo limite de inatividade para o ONTAP System Manager Classic (disponível no ONTAP 9.7 ou anterior).
+
+.Sobre esta tarefa
+Pode configurar as opções a partir da janela de início de sessão do Gestor do sistema. No entanto, você deve fazer login no aplicativo para especificar o valor de tempo limite de inatividade.
+
+.Passos
+. Clique em *image:../media/nas_bridge_202_icon_settings_olh_96_97.gif[""]*.
+. No painel *Setup* (Configuração), clique em *General* (Geral).
+. Especifique um nível de log.
+. Especifique o valor de tempo limite de inatividade em minutos.
++
+[NOTE]
+====
+Essa opção não estará disponível se você tiver habilitado a autenticação SAML (Security Assertion Markup Language).
+
+====
+. Clique em *OK*.
+

@@ -1,0 +1,62 @@
+---
+permalink: iscsi-config-windows/task_starting_iscsi_sessions_with_target.html 
+sidebar: sidebar 
+keywords: windows, host, iscsi, connection, cluster, establish, sessions, initiator, properties, dialog, box, start iscsi sessions with the target 
+summary: O host do Windows deve ter uma conexão iSCSI para cada nó no cluster. Você estabelece as sessões do host usando a caixa de diálogo Propriedades do iniciador iSCSI no host. 
+---
+= Inicie sessões iSCSI com o alvo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O host do Windows deve ter uma conexão iSCSI para cada nó no cluster. Você estabelece as sessões do host usando a caixa de diálogo Propriedades do iniciador iSCSI no host.
+
+.Antes de começar
+Você deve saber o endereço IP de um iSCSI data LIF na máquina virtual de armazenamento (SVM) que contém o LUN que você está acessando.
+
+.Sobre esta tarefa
+No ONTAP, o host iSCSI deve ter caminhos para cada nó no cluster. O DSM nativo seleciona os melhores caminhos a utilizar. Se os caminhos falharem, o DSM nativo seleciona caminhos alternativos.
+
+Os botões e rótulos na caixa de diálogo Propriedades do iniciador iSCSI variam entre as versões do Windows. Algumas das etapas da tarefa incluem mais de um botão ou nome de rótulo; você deve escolher o nome que corresponde à versão do Windows que você está usando.
+
+.Passos
+. Abra a caixa de diálogo *iSCSI Initiator Properties*:
++
+|===
+| Para... | Clique em... 
+
+
+ a| 
+Windows Server 2012
+ a| 
+*Gestor de servidor* > *Painel* > *Ferramentas* > *Iniciador iSCSI*
+
+
+
+ a| 
+Windows Server 2008
+ a| 
+*Iniciar* > *Ferramentas administrativas* > *Iniciador iSCSI*
+
+|===
+. Na guia *Discovery*, clique em *Discover Portal* ou *Add Portal* e insira o endereço IP da porta de destino iSCSI.
+. Na guia *targets*, selecione o destino que você descobriu e clique em *Log on* ou *Connect*.
+. Selecione *Ativar multi-path*, selecione *Restaurar automaticamente esta ligação quando o computador iniciar* ou *Adicionar esta ligação à lista de destinos favoritos* e, em seguida, clique em *Avançado*.
+. Para *adaptador local*, selecione *Microsoft iSCSI Initiator*.
++
+O exemplo a seguir é do Windows Server 2008:
+
++
+image::../media/iscsi_login_for_windows.gif[A ilustração mostra a caixa de diálogo Configurações avançadas para login no Windows iSCSI Initiator com configurações que correspondem aos passos circundantes.]
+
+. Para *Source IP* ou *Initiator IP*, selecione o endereço IP de uma porta na mesma sub-rede ou VLAN que uma das LIFs de destino iSCSI.
+. Guarde os valores padrão para as caixas de seleção restantes e clique em *OK*.
+. Na guia *Targets*, selecione o mesmo alvo novamente e clique em *Log on* ou *Connect*.
+. Selecione *Ativar multi-path*, selecione *Restaurar automaticamente esta ligação quando o computador iniciar* ou *Adicionar esta ligação à lista de destinos favoritos* e, em seguida, clique em *Avançado*.
+. Para *IP de origem* ou *IP do iniciador*, selecione o endereço IP de uma porta diferente na sub-rede ou VLAN de um LIF de destino iSCSI diferente.
+. Para *Portal de destino*, selecione o endereço IP do LIF de destino iSCSI que corresponde à porta que você acabou de selecionar para *IP de origem*.
+. Guarde os valores padrão para as caixas de seleção restantes e clique em *OK*.
+. Repita os passos 8 a 12 para ligar a cada LIF de destino disponível.
+

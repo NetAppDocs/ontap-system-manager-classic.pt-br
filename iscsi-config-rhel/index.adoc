@@ -1,0 +1,48 @@
+---
+permalink: iscsi-config-rhel/index.html 
+sidebar: sidebar 
+keywords: iscsi, service, storage, virtual, machine, svm, lun, initiator, red, hat, enterprise, linux, server, configuration, san, provision, provisioning 
+summary: Esses procedimentos descrevem como configurar rapidamente o serviço iSCSI em uma máquina virtual de armazenamento, provisionar um LUN e disponibilizar o LUN usando um iniciador iSCSI em um servidor Red Hat Enterprise Linux. 
+---
+= Visão geral da configuração iSCSI para Red Hat Enterprise Linux
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Usando a interface clássica do ONTAP System Manager (ONTAP 9.7 e anterior), você pode configurar rapidamente o serviço iSCSI em uma máquina virtual de armazenamento (SVM), provisionar um LUN e disponibilizar o LUN em um servidor Red Hat Enterprise Linux.
+
+Estes procedimentos baseiam-se nas seguintes premissas:
+
+* Você está usando o iniciador de software iSCSI em um host Red Hat Enterprise Linux executando uma versão compatível do RHEL Series 6,4 ou superior.
+* Sua rede usa endereçamento IPv4.
+* Você deseja atribuir endereços a interfaces lógicas usando qualquer um dos seguintes métodos:
++
+** Automaticamente, a partir de uma sub-rede definida
+** Manualmente, usando um endereço selecionado de uma sub-rede existente
+** Manualmente, usando um endereço que será adicionado a uma sub-rede existente
+
+
+* Não está a configurar o arranque SAN iSCSI.
+
+
+Para obter mais informações sobre como configurar seu host específico com o ONTAP, https://docs.netapp.com/us-en/ontap-sanhost/index.html["Configuração do host SAN ONTAP"] consulte .
+
+Para obter mais detalhes sobre a administração de SAN, consulte a. https://docs.netapp.com/us-en/ontap/san-admin/index.html["Visão geral da administração de SAN ONTAP 9"]
+
+
+
+== Outras maneiras de fazer isso em ONTAP
+
+|===
+
+
+| Para concluir esta tarefa usando... | Consulte... 
+
+
+| O System Manager redesenhado (disponível com 9,7 e posterior) | https://docs.netapp.com/us-en/ontap/san-admin/provision-storage.html["Provisionamento de storage SAN"^] 
+
+
+| A interface de linha de comando (CLI) do ONTAP | https://docs.netapp.com/us-en/ontap/san-admin/lun-setup-workflow-concept.html["Fluxo de trabalho de configuração LUN com a CLI"^] 
+|===

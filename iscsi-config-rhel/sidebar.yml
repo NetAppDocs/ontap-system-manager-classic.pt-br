@@ -1,0 +1,46 @@
+---
+section: iscsi-config-rhel
+title: Configuração iSCSI para Red Hat Enterprise Linux
+entries:
+- title: Visão geral
+  url: "/iscsi-config-rhel/index.html"
+- title: Fluxo de trabalho de configuração e provisionamento iSCSI
+  url: "/iscsi-config-rhel/concept_iscsi_configuration_provisioning_workflow.html"
+  entries:
+  - title: Verifique se a configuração iSCSI é suportada
+    url: "/iscsi-config-rhel/task_verifying_that_iscsi_fc_configuration_is_supported.html"
+  - title: Conclua a folha de cálculo de configuração iSCSI
+    url: "/iscsi-config-rhel/reference_completing_iscsi_configuration_worksheet.html"
+  - title: Instale os utilitários do host unificado do Linux e otimize o desempenho
+      de e/S.
+    url: "/iscsi-config-rhel/task_installing_linux_unified_host_utilities_optimizing_i_o_performance.html"
+  - title: Registe o nome do nó iSCSI
+    url: "/iscsi-config-rhel/task_recording_iscsi_node_name.html"
+  - title: Defina o valor de tempo limite de substituição iSCSI
+    url: "/iscsi-config-rhel/task_setting_iscsi_replacement_timeout_value.html"
+  - title: Inicie o serviço iSCSI
+    url: "/iscsi-config-rhel/task_starting_iscsi_service.html"
+  - title: Configure DM-Multipath
+    url: "/iscsi-config-rhel/task_configuring_dm_multipath.html"
+  - title: Crie um agregado
+    url: "/iscsi-config-rhel/task_creating_aggregate.html"
+  - title: Decidir onde provisionar o volume
+    url: "/iscsi-config-rhel/task_deciding_where_to_provision_volume.html"
+    entries:
+    - title: Verifique se o serviço iSCSI está em execução em um SVM existente
+      url: "/iscsi-config-rhel/task_verifying_iscsi_is_running_on_existing_vserver.html"
+    - title: Crie um LUN
+      url: "/iscsi-config-rhel/task_creating_lun_its_containing_volume.html"
+    - title: Configurar iSCSI em uma SVM existente
+      url: "/iscsi-config-rhel/task_configuring_iscsi_fc_creating_lun_on_existing_svm.html"
+    - title: Criar um novo SVM
+      url: "/iscsi-config-rhel/task_creating_svm.html"
+  - title: Inicie as sessões iSCSI com o alvo
+    url: "/iscsi-config-rhel/task_starting_iscsi_sessions_with_target.html"
+  - title: Descubra novos dispositivos SCSI (LUNs) e dispositivos multipath
+    url: "/iscsi-config-rhel/task_discovering_new_scsi_devices_dm_multipath_devices.html"
+  - title: Configurar volumes lógicos em dispositivos multipath e criar um sistema
+      de arquivos
+    url: "/iscsi-config-rhel/task_configuring_logical_volumes_on_multipath_devices_creating_file_system.html"
+  - title: Verifique se o host pode gravar e ler em um dispositivo multipath
+    url: "/iscsi-config-rhel/task_verifying_that_host_can_write_to_read_fom_lun.html"

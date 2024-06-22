@@ -1,0 +1,42 @@
+---
+permalink: expansion/task_upgrading_or_downgrading_nodes.html 
+sidebar: sidebar 
+keywords: join, install, node, cluster, run, ontap, upgrade, downgrade 
+summary: Antes de unir os nós recém-instalados ao cluster, você deve garantir que eles estejam executando a mesma versão do ONTAP que o cluster está sendo executado. Se os nós estiverem executando uma versão diferente, você deverá atualizar ou fazer o downgrade dos nós para corresponder ao cluster. 
+---
+= Atualizar ou fazer downgrade dos nós
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Antes de unir os nós recém-instalados ao cluster, você deve garantir que eles estejam executando a mesma versão do ONTAP que o cluster está sendo executado. Se os nós estiverem executando uma versão diferente, você deverá atualizar ou fazer o downgrade dos nós para corresponder ao cluster.
+
+.Passos
+. Determine a versão do ONTAP instalada no cluster: `cluster image show`
+. Veja a versão atual do ONTAP nos nós:
++
+.. No primeiro nó, veja a versão do software: `system node image show`
++
+[listing]
+----
+::*> system node image show
+                 Is      Is                                Install
+Node     Image   Default Current Version                   Date
+-------- ------- ------- ------- ------------------------- -------------------
+localhost
+         image1  false   false   9.3                    MM/DD/YYYY TIMESTAMP
+         image1  true    true    9.3                    MM/DD/YYYY TIMESTAMP
+2 entries were displayed.
+----
+.. Repita o passo anterior para o segundo nó.
+
+
+. Compare as versões do ONTAP no cluster e nos nós e execute uma das seguintes ações:
++
+** Se as versões do ONTAP no cluster e os nós forem iguais, não será necessário fazer upgrade ou downgrade.
+** Se as versões do ONTAP no cluster e nos nós forem diferentes, você pode link:https://docs.netapp.com/us-en/ontap/upgrade/index.html["Atualize ONTAP"] em nós com versões anteriores ou em nós com versões link:https://docs.netapp.com/us-en/ontap/revert/index.html["Reverter ONTAP"]posteriores.
+
+
+

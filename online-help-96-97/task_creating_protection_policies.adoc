@@ -1,0 +1,31 @@
+---
+permalink: online-help-96-97/task_creating_protection_policies.html 
+sidebar: sidebar 
+keywords: create, protection, policies, online, help, system, manager 
+summary: Você pode usar o System Manager para criar políticas de espelhamento assíncrono, políticas de Vault ou políticas de espelhamento e cofre, e para aplicar essas políticas a um relacionamento de proteção de dados. 
+---
+= Criar políticas de proteção
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o System Manager para criar políticas de espelhamento assíncrono, políticas de Vault ou políticas de espelhamento e cofre, e para aplicar essas políticas a um relacionamento de proteção de dados.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione a máquina virtual de armazenamento (SVM) para a qual você deseja criar uma política de proteção e clique em *Configurações da SVM*.
+. No painel *políticas*, clique em *políticas de proteção*.
+. Clique em *criar*.
+. Na caixa de diálogo *criar política*, selecione o tipo de política que deseja criar.
+. Especifique o nome da política e a prioridade de transferência.
++
+Baixa indica que a transferência tem a menor prioridade e a transferência é normalmente agendada após transferências de prioridade normal. Por padrão, a prioridade é definida como normal.
+
+. Para uma política de tipo de espelho assíncrono, marque a caixa de seleção *Transferir todas as cópias snapshot de origem* para incluir a regra "'All_source_snapshots'" na política de espelhamento, que faz backup de todas as cópias Snapshot do volume de origem.
+. Marque a caixa de seleção *Ativar compressão de rede* para compactar os dados que estão sendo transferidos durante uma transferência de dados.
+. Clique em *Add Comments* (Adicionar comentários) para adicionar comentários adicionais à política.
+. Para uma política do tipo Vault ou cofre espelhado, especifique um rótulo SnapMirror e uma contagem de retenção de destino.
+. Clique em *criar*.
+

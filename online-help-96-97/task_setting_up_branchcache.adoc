@@ -1,0 +1,97 @@
+---
+permalink: online-help-96-97/task_setting_up_branchcache.html 
+sidebar: sidebar 
+keywords: cifs, svm, system, manager, online, help, branchcache, set, up, modify, settings, delete 
+summary: 'Você pode usar o System Manager para configurar o BranchCache em uma máquina virtual de armazenamento (SVM) habilitada para CIFS para habilitar o armazenamento em cache de conteúdo em computadores locais para os clientes solicitantes.' 
+---
+= Configure o BranchCache com o Gerenciador de sistema - ONTAP 9.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para configurar o BranchCache em uma máquina virtual de armazenamento (SVM) habilitada para CIFS para habilitar o armazenamento em cache de conteúdo em computadores locais para os clientes solicitantes.
+
+.Antes de começar
+* O CIFS deve ser licenciado e um servidor CIFS deve ser configurado.
+* Para BranchCache versão 1, o SMB 2,1 ou posterior deve estar ativado.
+* Para BranchCache versão 2, o SMB 3,0 deve estar habilitado e os clientes remotos do Windows devem suportar o BranchCache 2.
+
+
+.Sobre esta tarefa
+* Você pode configurar o BranchCache em SVMs.
+* Você pode criar uma configuração BranchCache de todos os compartilhamentos se quiser oferecer serviços de cache para todo o conteúdo contido em todos os compartilhamentos SMB no servidor CIFS.
+* Você pode criar uma configuração de BranchCache por compartilhamento se quiser oferecer serviços de cache para o conteúdo contido em compartilhamentos SMB selecionados no servidor CIFS.
+
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. Na guia *BranchCache*, clique em *Configurar*.
+. Na caixa de diálogo *BranchCache Setup*, insira as seguintes informações:
++
+.. Especifique o caminho para o armazenamento de hash.
++
+O caminho pode ser para um diretório existente onde você deseja que os dados de hash sejam armazenados. O caminho de destino deve ser gravável para leitura. Caminhos somente leitura, como diretórios Snapshot, não são permitidos.
+
+.. Especifique o tamanho máximo (em KB, MB, GB, TB ou PB) para um armazenamento de dados hash.
++
+Se os dados de hash excederem esse valor, os hashes mais antigos serão excluídos para fornecer espaço para hashes mais recentes. O tamanho padrão para um armazenamento de hash é de 1 GB.
+
+.. Especifique o modo de operação para a configuração BranchCache.
++
+O modo de funcionamento predefinido é definido para todas as partilhas.
+
+.. Especifique uma chave de servidor para impedir que os clientes personificem o servidor BranchCache.
++
+Você pode definir a chave do servidor para um valor específico para que, se vários servidores estiverem fornecendo dados do BranchCache para os mesmos arquivos, os clientes possam usar hashes de qualquer servidor usando essa mesma chave do servidor. Se a chave do servidor contiver espaços, você deverá inserir a chave do servidor entre aspas.
+
+.. Selecione a versão necessária do BranchCache.
++
+Por padrão, todas as versões que são suportadas pelo cliente são selecionadas.
+
+
+
+. Clique em *Configurar*.
+
+
+
+
+== Modifique as configurações do BranchCache
+
+Você pode usar a janela CIFS no System Manager para modificar as configurações do BranchCache configuradas para uma máquina virtual de storage (SVM) habilitada para CIFS. Você pode alterar o caminho do armazenamento de hash, o tamanho do armazenamento de hash, o modo operacional e as versões do BranchCache suportadas.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. Na guia *BranchCache*, clique em *Edit*.
+. Na caixa de diálogo *Modify BranchCache Settings*, modifique as informações necessárias:
++
+** Caminho de armazenamento de hash
++
+Se você modificar o caminho de armazenamento de hash, você receberá uma opção para reter os dados de hash armazenados em cache do armazenamento de hash anterior.
+
+** Tamanho de armazenamento de hash
+** Modo de funcionamento
+** Versão BranchCache
+
+
+. Clique em *Modificar*.
+
+
+
+
+== Exclua a configuração do BranchCache
+
+Você pode usar o System Manager para excluir a configuração BranchCache se não quiser mais oferecer serviços de armazenamento em cache na máquina virtual de armazenamento (SVM) configurada para BranchCache.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. Na guia *BranchCache*, clique em *Delete*.
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
++
+Você também pode remover hashes existentes do armazenamento de hash.
+
+

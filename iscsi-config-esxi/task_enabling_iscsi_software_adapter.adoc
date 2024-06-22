@@ -1,0 +1,25 @@
+---
+permalink: iscsi-config-esxi/task_enabling_iscsi_software_adapter.html 
+sidebar: sidebar 
+keywords: iscsi, software, adapter, create, connection, esx, host, operating, system, enable, enable the iscsi software adapter, esxi 
+summary: O adaptador de software iSCSI cria a conexão iSCSI no host ESX. Ele é integrado no sistema operacional, mas deve ser ativado antes que possa ser usado. 
+---
+= Ative o adaptador de software iSCSI
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+O adaptador de software iSCSI cria a conexão iSCSI no host ESXi. Ele é integrado no sistema operacional, mas deve ser ativado antes que possa ser usado.
+
+.Antes de começar
+Você deve ter um VMware vSphere Client instalado em sua estação de trabalho ou ter acesso a um vSphere Web Client.
+
+.Passos
+. Faça login no vSphere Client.
+. Selecione o host ESX no painel de inventário.
+. Clique em *Configuração* > *adaptadores de armazenamento*.
+. Selecione o adaptador de software iSCSI e clique em *Propriedades* > *Configurar*.
+. Selecione *Enabled* e clique em *OK*.
+

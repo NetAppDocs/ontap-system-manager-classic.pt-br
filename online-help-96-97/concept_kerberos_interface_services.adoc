@@ -1,0 +1,97 @@
+---
+permalink: online-help-96-97/concept_kerberos_interface_services.html 
+sidebar: sidebar 
+keywords: kerberos, interface, service, system, manager, manage, online, help, edit, configuration, buttons, command, window 
+summary: Você pode usar o System Manager para gerenciar os serviços de interface Kerberos. 
+---
+= Gerencie os serviços de interface Kerberos com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para gerenciar os serviços de interface Kerberos.
+
+
+
+== Edite a configuração Kerberos
+
+Você pode usar o System Manager para habilitar o Kerberos e editar uma configuração Kerberos associada a uma máquina virtual de armazenamento (SVM), que permite que o SVM use serviços de segurança Kerberos para NFS.
+
+.Antes de começar
+* Você deve ter pelo menos um realm Kerberos configurado no nível SVM.
+* Você precisa ter no mínimo dois LIFs de dados no SVM.
++
+Um LIF de dados é usado pelo Service Principal Name (SPN) para o tráfego Kerberos relacionado a UNIX e CIFS. O outro LIF de dados é usado para acessar tráfego não Kerberos.
+
++
+[NOTE]
+====
+Um servidor CIFS não é necessário para o acesso básico NFS Kerberos. Um servidor CIFS é necessário para acesso multiprotocolo ou ao usar o ative Directory como um servidor LDAP para fins de mapeamento de nomes.
+
+====
+
+
+.Sobre esta tarefa
+Se você estiver usando o Microsoft ative Directory Kerberos, os primeiros 15 carateres de qualquer SPNs que são usados no domínio devem ser exclusivos. O Microsoft ative Directory tem uma limitação para SPNs de no máximo 15 carateres e não permite SPNs duplicados.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *Serviços*, clique em *Interface Kerberos*.
+. Na janela *Interface Kerberos*, selecione a interface e clique em *Editar*.
+. Na caixa de diálogo *Editar Configuração do Kerberos*, faça as alterações necessárias e clique em *OK*.
+
+
+
+
+== Janela Interface Kerberos
+
+Você pode usar a janela Interface Kerberos para habilitar o Kerberos e editar a configuração Kerberos para máquinas virtuais de armazenamento (SVMs).
+
+
+
+=== Botões de comando
+
+* *Editar*
++
+Abre a caixa de diálogo Editar Configuração do Kerberos, que pode ser usada para ativar o Kerberos e editar a configuração Kerberos associada ao SVM.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de interface Kerberos
+
+Fornece detalhes sobre a configuração Kerberos.
+
+* *Nome da interface*
++
+Especifica as interfaces lógicas associadas à configuração Kerberos para SVMs.
+
+* *Nome principal do serviço*
++
+Especifica o nome principal do serviço (SPN) que corresponde à configuração Kerberos.
+
+* *Reino*
++
+Especifica o nome do realm Kerberos associado à configuração Kerberos.
+
+* *Status Kerberos*
++
+Especifica se o Kerberos está ativado.
+
+
+
+*Informações relacionadas*
+
+link:https://www.netapp.com/pdf.html?item=/media/10720-tr-4067.pdf["Relatório técnico da NetApp 4067: NFS em NetApp ONTAP"^]
+
+link:https://www.netapp.com/pdf.html?item=/media/19384-tr-4616.pdf["Relatório técnico do NetApp 4616: Kerberos NFS no ONTAP com o Microsoft ative Directory"^]
+
+link:https://www.netapp.com/pdf.html?item=/media/19423-tr-4835.pdf["Relatório técnico do NetApp 4835: Como configurar o LDAP no ONTAP"^]

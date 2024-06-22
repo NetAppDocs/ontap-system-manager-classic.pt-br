@@ -1,0 +1,16 @@
+---
+permalink: expansion/concept_cluster_expansion_workflow.html 
+sidebar: sidebar 
+keywords: cluster, expansion, workflow 
+summary: Fluxo de trabalho de expansão de cluster 
+---
+= Fluxo de trabalho de expansão de cluster
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Adicionar dois nós a um cluster existente envolve verificar se o cluster está pronto para expansão, preparar o cluster, instalar os novos nós e concluir a expansão.
+
+image::../media/cluster_expansion_workflow.gif[Esta imagem é explicada pelo texto circundante.]

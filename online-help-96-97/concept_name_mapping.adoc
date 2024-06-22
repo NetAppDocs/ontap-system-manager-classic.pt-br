@@ -1,0 +1,132 @@
+---
+permalink: online-help-96-97/concept_name_mapping.html 
+sidebar: sidebar 
+keywords: name, mapping, system, manager, specify, user, platform, online, help, command, button, rules 
+summary: Você pode usar o System Manager para especificar entradas de mapeamento de nomes para mapear usuários de diferentes plataformas. 
+---
+= Mapeamento de nomes com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para especificar entradas de mapeamento de nomes para mapear usuários de diferentes plataformas.
+
+
+
+== Regras de conversão de mapeamento de nomes
+
+Um sistema ONTAP mantém um conjunto de regras de conversão para cada SVM. Cada regra consiste em duas partes: Um _pattern_ e um _replacement_. As conversões começam no início da lista apropriada e executam uma substituição com base na primeira regra de correspondência. O padrão é uma expressão regular estilo UNIX. A substituição é uma cadeia de carateres contendo sequências de escape que representam subexpressões do padrão, como no programa UNIX `sed`.
+
+
+
+== Janela Mapeamento de nomes
+
+Você pode usar a janela Mapeamento de nomes para especificar as entradas de mapeamento de nomes para mapear usuários de diferentes plataformas.
+
+
+
+=== Mapeamentos de nomes
+
+Você pode criar e usar mapeamentos de nomes para mapear seus usuários UNIX para usuários do Windows, usuários do Windows para usuários UNIX ou usuários Kerberos para usuários UNIX.
+
+
+
+=== Botões de comando
+
+* *Adicionar*
++
+Abre a caixa de diálogo Adicionar entrada de mapeamento de nomes, que permite criar um mapeamento de nomes em máquinas virtuais de armazenamento (SVMs).
+
+* *Editar*
++
+Abre a caixa de diálogo Editar entrada de Mapeamento de nomes, que permite editar um mapeamento de nomes em SVMs.
+
+* *Excluir*
++
+Abre a caixa de diálogo Excluir entradas de mapeamento de nomes, que permite excluir uma entrada de mapeamento de nomes.
+
+* *Troca*
++
+Abre a caixa de diálogo Swap Name Mapping Entries (entradas de mapeamento de nomes de swap), que permite trocar posições das duas entradas de mapeamento de nomes selecionadas.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de mapeamentos de nomes
+
+* *Posição*
++
+Especifica a posição do mapeamento de nomes na lista de prioridades. Mapeamentos de nomes são aplicados na ordem em que ocorrem na lista de prioridades.
+
+* *Padrão*
++
+Especifica o padrão de nome de usuário que deve ser correspondido.
+
+* * Substituição*
++
+Especifica o padrão de substituição para o nome de usuário.
+
+* *Direção*
++
+Especifica a direção do mapeamento de nomes. Os valores possíveis são krb_unix para mapeamento de nomes Kerberos para UNIX, win_unix para mapeamento de nomes Windows para UNIX e UNIX_win para mapeamento de nomes UNIX para Windows.
+
+
+
+
+
+=== Botões de comando
+
+* *Adicionar*
++
+Abre a caixa de diálogo Adicionar entrada de mapeamento de grupo, que permite criar um mapeamento de grupo em SVMs.
+
+* *Editar*
++
+Abre a caixa de diálogo Editar entrada de mapeamento de grupo, que permite editar o mapeamento de grupo em SVMs.
+
+* *Excluir*
++
+Abre a caixa de diálogo Excluir entradas de mapeamento de grupo, que permite excluir uma entrada de mapeamento de grupo.
+
+* *Troca*
++
+Abre a caixa de diálogo Swap Group Mapping Entries, que permite trocar posições das duas entradas de mapeamento de grupo selecionadas.
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Lista de mapeamentos de grupo
+
+* *Posição*
++
+Especifica a posição do mapeamento de grupo na lista de prioridades. Mapeamentos de grupo são aplicados na ordem em que ocorrem na lista de prioridades.
+
+* *Padrão*
++
+Especifica o padrão de nome de usuário que deve ser correspondido.
+
+* * Substituição*
++
+Especifica o padrão de substituição para os nomes de usuário.
+
+* *Direção*
++
+Especifica a direção do mapeamento de grupo. Os valores possíveis são `krb_unix` para um mapeamento de grupo Kerberos para UNIX, `win_unix` para um mapeamento de grupo Windows para UNIX e `unix_win` para um mapeamento de grupo UNIX para Windows.
+
+
+
+*Informações relacionadas*
+
+https://docs.netapp.com/us-en/ontap/smb-admin/index.html["Gerenciamento de SMB/CIFS"]

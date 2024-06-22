@@ -1,0 +1,42 @@
+---
+permalink: peering/reference_where_to_find_additional_information.html 
+sidebar: sidebar 
+keywords: successful, create, cluster, peer, relationship, protect, availability, data, configure, protection, configuration, where to find additional information 
+summary: Depois de criar com êxito uma relação de peering de cluster, você estará pronto para proteger a disponibilidade de seus dados. 
+---
+= Onde encontrar informações adicionais
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Depois de criar com êxito uma relação de peering de cluster, você estará pronto para proteger a disponibilidade de seus dados.
+
+Você pode proteger seus dados usando as seguintes informações:
+
+* link:../volume-disaster-prep/index.html["Preparação para recuperação de desastres em volume"]
++
+Descreve como configurar e monitorar rapidamente as relações do SnapMirror entre volumes em clusters diferentes.
+
+* link:../volume-backup-snapvault/index.html["Backup de volume usando o SnapVault"]
++
+Descreve como configurar rapidamente uma relação entre clusters SnapVault.
+
+
+
+Mais informações estão disponíveis:
+
+* https://docs.netapp.com/us-en/ontap/data-protection/index.html["Proteção de dados"^]
++
+Descreve como evitar a perda de dados com o uso de cópias Snapshot e a replicação do SnapMirror para um sistema remoto
+
+* http://www.netapp.com/us/media/tr-4015.pdf["Relatório técnico da NetApp 4015: Configuração do SnapMirror e melhores práticas para o ONTAP 9.1, 9,2"^]
++
+Descreve informações e práticas recomendadas sobre a configuração da replicação, incluindo peering de cluster.
+
+* https://docs.netapp.com/us-en/ontap/concepts/index.html["Conceitos de ONTAP"^]
++
+Fornece informações conceituais sobre peering de cluster.
+
+

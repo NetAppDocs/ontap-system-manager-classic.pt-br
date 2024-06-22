@@ -1,0 +1,282 @@
+---
+permalink: online-help-96-97/concept_export_policies.html 
+sidebar: sidebar 
+keywords: system, manager, create, edit, manage, export, policy, online, help, volume, rules, svm, qtree, rename 
+summary: Você pode usar o System Manager para criar, editar e gerenciar políticas de exportação. 
+---
+= Gerencie políticas de exportação com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para criar, editar e gerenciar políticas de exportação.
+
+
+
+== Crie uma política de exportação
+
+Você pode usar o System Manager para criar uma política de exportação para que os clientes possam acessar volumes específicos.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *políticas*, clique em *políticas de exportação*.
+. Clique em *criar*.
+. Na caixa de diálogo *criar política de exportação*, especifique um nome para a política de exportação.
+. Se você quiser criar uma política de exportação copiando as regras de uma política de exportação existente, marque a caixa de seleção *Copiar regras de* e selecione a máquina virtual de armazenamento (SVM) e a política de exportação.
++
+Você não deve selecionar o SVM de destino para recuperação de desastres no menu suspenso para criar uma política de exportação.
+
+. Na área **Export Rules **(regras de exportação), clique em *Add* (Adicionar) para adicionar regras à política de exportação.
+. Clique em *criar*.
+. Verifique se a política de exportação que você criou é exibida na janela *Exportar políticas*.
+
+
+
+
+== Mudar o nome das políticas de exportação
+
+Você pode usar o System Managerto renomear uma política de exportação existente.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *políticas*, clique em *políticas de exportação*.
+. Selecione a política de exportação que deseja renomear e clique em *Renomear política*.
+. Na caixa de diálogo *Renomear política*, especifique um novo nome de política e clique em *Modificar*.
+. Verifique as alterações feitas na janela *Exportar políticas*.
+
+
+
+
+== Eliminar políticas de exportação
+
+Você pode usar o System Manager para excluir políticas de exportação que não são mais necessárias.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *políticas*, clique em *políticas de exportação*.
+. Selecione a política de exportação que deseja excluir e clique em *Excluir política*.
+. Marque a caixa de seleção de confirmação e clique em *Excluir*.
+
+
+
+
+== Adicione regras a uma política de exportação
+
+Você pode usar o System Manager para adicionar regras a uma política de exportação, o que permite definir o acesso do cliente aos dados.
+
+.Antes de começar
+Você deve ter criado a política de exportação à qual deseja adicionar as regras de exportação.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *políticas*, clique em *políticas de exportação*.
+. Selecione a política de exportação à qual deseja adicionar regras e, na guia *regras de exportação*, clique em *Adicionar*.
+. Na caixa de diálogo *criar regra de exportação*, execute as seguintes etapas:
++
+.. Especifique o cliente que requer acesso aos dados.
++
+Você pode especificar vários clientes como valores separados por vírgulas.
+
++
+Você pode especificar o cliente em qualquer um dos seguintes formatos:
+
++
+*** Como um nome de host; por exemplo, host1
+*** Como um endereço IPv4; por exemplo, 10.1.12.24
+*** Como um endereço IPv4 com uma máscara de rede; por exemplo, 10,1.16,0/255.255.255.0
+*** Como um endereço IPv6; por exemplo, FE80::0202:B3FF:FE1E:8329
+*** Como um endereço IPv6 com uma máscara de rede; por exemplo, 2001:db8::/32
+*** Como um netgroup, com o nome netgroup precedido por um símbolo AT (
+*** Como um nome de domínio precedido por um ponto (.); por exemplo, .example.com
+
+
++
+[NOTE]
+====
+Não deve introduzir um intervalo de endereços IP, como 10.1.12.10 a 10,1.12,70. As entradas neste formato são interpretadas como uma cadeia de texto e são tratadas como um nome de host.
+
+====
++
+Você pode inserir o endereço IPv4 `0.0.0.0/0` para fornecer acesso a todos os hosts.
+
+.. Se você quiser modificar o número do índice da regra, selecione o número do índice da regra apropriado.
+.. Selecione um ou mais protocolos de acesso.
++
+Se você não selecionar nenhum protocolo de acesso, o valor padrão "'any'" será atribuído à regra de exportação.
+
+.. Selecione um ou mais tipos de segurança e regras de acesso.
+
+
+. Clique em *OK*.
+. Verifique se a regra de exportação que você adicionou é exibida na guia *regras de exportação* para a política de exportação selecionada.
+
+
+
+
+== Modificar regras de política de exportação
+
+Você pode usar o System Manager para modificar o cliente especificado, os protocolos de acesso e as permissões de acesso de uma regra de política de exportação.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *políticas*, clique em *políticas de exportação*.
+. Na janela *políticas de exportação*, selecione a política de exportação para a qual deseja editar a regra de exportação e, na guia *regras de exportação*, selecione a regra que deseja editar e clique em *Editar*.
+. Modifique os seguintes parâmetros conforme necessário:
++
+** Especificação do cliente
+** Protocolos de acesso
+** Aceder aos detalhes
+
+
+. Clique em *OK*.
+. Verifique se as alterações atualizadas para a regra de exportação são exibidas na guia *regras de exportação*.
+
+
+
+
+== Excluir regras de política de exportação
+
+Você pode usar o System Manager para excluir regras de política de exportação que não são mais necessárias.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione o SVM e clique em *Configurações do SVM*.
+. No painel *políticas*, clique em *políticas de exportação*.
+. Selecione a política de exportação para a qual deseja excluir a regra de exportação.
+. Na guia *regras de exportação*, selecione a regra de exportação que deseja excluir e clique em *Excluir*.
+. Na caixa de confirmação, clique em *Excluir*.
+
+
+
+
+== Como as políticas de exportação controlam o acesso do cliente a volumes ou qtrees
+
+As políticas de exportação contêm uma ou mais _regras de exportação_ que processam cada solicitação de acesso de cliente. O resultado do processo determina se o cliente é negado ou concedido acesso e que nível de acesso. Uma política de exportação com regras de exportação deve existir na máquina virtual de storage (SVM) para que os clientes acessem os dados.
+
+Você associa exatamente uma política de exportação a cada volume ou qtree para configurar o acesso do cliente ao volume ou qtree. O SVM pode conter várias políticas de exportação. Isso permite que você faça o seguinte para SVMs com vários volumes ou qtrees:
+
+* Atribua diferentes políticas de exportação a cada volume ou qtree do SVM para controle de acesso de cliente individual a cada volume ou qtree no SVM.
+* Atribua a mesma política de exportação a vários volumes ou qtrees do SVM para controle de acesso de cliente idêntico sem ter que criar uma nova política de exportação para cada volume ou qtree.
+
+
+Se um cliente fizer uma solicitação de acesso que não é permitida pela política de exportação aplicável, a solicitação falhará com uma mensagem de permissão negada. Se um cliente não corresponder a nenhuma regra na política de exportação, o acesso será negado. Se uma política de exportação estiver vazia, todos os acessos serão implicitamente negados.
+
+Você pode modificar uma política de exportação dinamicamente em um sistema executando o ONTAP.
+
+
+
+== Janela de políticas de exportação
+
+Você pode usar a janela Exportar políticas para criar, exibir e gerenciar informações sobre políticas de exportação e suas regras de exportação relacionadas.
+
+
+
+=== Políticas de exportação
+
+A janela Exportar políticas permite exibir e gerenciar as políticas de exportação criadas para a máquina virtual de storage (SVM).
+
+* *Botões de comando*
++
+** Criar
++
+Abre a caixa de diálogo criar política de exportação, que permite criar uma política de exportação e adicionar regras de exportação. Você também pode copiar regras de exportação de um SVM existente.
+
+** Mudar o nome
++
+Abre a caixa de diálogo Renomear política, que permite renomear a política de exportação selecionada.
+
+** Eliminar
++
+Abre a caixa de diálogo Excluir política de exportação, que permite excluir a política de exportação selecionada.
+
+** Atualizar
++
+Atualiza as informações na janela.
+
+
+
+
+
+
+
+=== Separador regras de exportação
+
+A guia regras de exportação permite exibir informações sobre as regras de exportação criadas para uma política de exportação específica. Você também pode adicionar, editar e excluir regras.
+
+* *Botões de comando*
++
+** Adicionar
++
+Abre a caixa de diálogo criar regra de exportação, que permite adicionar uma regra de exportação à política de exportação selecionada.
+
+** Editar
++
+Abre a caixa de diálogo Modificar regra de exportação, que permite modificar os atributos da regra de exportação selecionada.
+
+** Eliminar
++
+Abre a caixa de diálogo Excluir regra de exportação, que permite excluir a regra de exportação selecionada.
+
+** Mova para cima
++
+Move para cima o índice de regras da regra de exportação selecionada.
+
+** Mover para baixo
++
+Move para baixo o índice de regras da regra de exportação selecionada.
+
+** Atualizar
++
+Atualiza as informações na janela.
+
+
+
+* *Lista de regras de exportação*
++
+** Índice de regras
++
+Especifica a prioridade com base na qual as regras de exportação são processadas. Você pode usar os botões mover para cima e mover para baixo para escolher a prioridade.
+
+** Cliente
++
+Especifica o cliente ao qual a regra se aplica.
+
+** Protocolos de acesso
++
+Exibe o protocolo de acesso especificado para a regra de exportação.
+
++
+Se você não tiver especificado nenhum protocolo de acesso, o valor padrão "'any'" será considerado.
+
+** Regra só de leitura
++
+Especifica um ou mais tipos de segurança para acesso somente leitura.
+
+** Ler/escrever regra
++
+Especifica um ou mais tipos de segurança para acesso de leitura/gravação.
+
+** Acesso ao superusuário
++
+Especifica o tipo ou tipos de segurança para o acesso do superusuário.
+
+
+
+
+
+
+
+=== Separador objetos atribuídos
+
+A guia objetos atribuídos permite exibir os volumes e qtrees atribuídos à política de exportação selecionada. Você também pode ver se o volume está criptografado ou não.
+
+*Informações relacionadas*
+
+xref:task_setting_up_cifs.adoc[Configurar o CIFS]

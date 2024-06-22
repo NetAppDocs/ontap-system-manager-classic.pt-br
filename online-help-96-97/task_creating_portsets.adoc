@@ -1,0 +1,57 @@
+---
+permalink: online-help-96-97/task_creating_portsets.html 
+sidebar: sidebar 
+keywords: system, manager, port, set, create, online, help, lun, delete, edit, manage 
+summary: Você pode usar o ONTAP System Manager Classic para criar, excluir e editar portsets. 
+---
+= Gerencie portsets com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para criar, excluir e editar portsets.
+
+
+
+== Criar portsets
+
+Você pode usar o ONTAP System Manager Classic para criar portsets para limitar o acesso aos LUNs.
+
+.Passos
+. Clique em *armazenamento* > *LUNs*.
+. Na guia *Portsets*, clique em *Create*.
+. Na caixa de diálogo *Create Portset*, selecione o tipo de protocolo.
+. Escolha a interface de rede que você deseja associar ao portset.
+. Clique em *criar*.
+
+
+
+
+== Eliminar portsets
+
+Você pode usar o System Manager para excluir um portset quando ele não for mais necessário.
+
+.Passos
+. Clique em *armazenamento* > *LUNs*.
+. Na guia *Portsets*, selecione um ou mais portsets e clique em *Delete*.
+. Confirme a exclusão clicando em *Excluir*.
+
+
+
+
+== Editar portsets
+
+Você pode usar a guia Portsets no System Manager para editar as configurações relacionadas aos portsets.
+
+.Passos
+. Clique em *armazenamento* > *LUNs*.
+. No separador *Portsets*, selecione o portset que pretende editar e clique em *Edit*.
+. Na caixa de diálogo *Editar conjunto de portas*, faça as alterações necessárias.
+. Clique em *Salvar e fechar*.
+
+
+*Informações relacionadas*
+
+xref:task_configuring_iscsi_protocol_on_svms.adoc[Configurando o protocolo iSCSI em SVMs]

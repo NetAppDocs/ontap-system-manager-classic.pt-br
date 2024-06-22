@@ -1,0 +1,200 @@
+---
+permalink: fc-config-esxi/reference_completing_iscsi_configuration_worksheet.html 
+sidebar: sidebar 
+keywords: require, fc, intiator, target, wwpn, storage, configuration, information, perform, fc, task, complete, svm, complete the fc configuration worksheet 
+summary: Você precisa do iniciador FC e das WWPNs de destino e das informações de configuração de storage para executar tarefas de configuração de FC. 
+---
+= Conclua a Planilha de configuração do FC
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você precisa do iniciador FC e das WWPNs de destino e das informações de configuração de storage para executar tarefas de configuração de FC.
+
+
+
+== WWPNs host FC
+
+|===
+| Porta | WWPN 
+
+
+ a| 
+Porta do iniciador (host) conetada ao switch FC 1
+ a| 
+
+
+
+ a| 
+Porta do iniciador (host) conetada ao switch FC 2
+ a| 
+
+|===
+
+
+== WWPNs alvo FC
+
+Você precisa de duas LIFs de dados FC para cada nó no cluster. As WWPNs são atribuídas pelo ONTAP quando você cria os LIFs como parte da criação da máquina virtual de armazenamento (SVM).
+
+image::../media/network_fc_or_iscsi_express_fc_esxi.gif[A figura mostra quatro nós,two switches,and a host. Each node has two LIFs]
+
+|===
+| LIF | WWPN 
+
+
+ a| 
+LIF do nó 1 com porta conetada ao switch FC 1
+ a| 
+
+
+
+ a| 
+LIF do nó 2 com porta conetada ao switch FC 1
+ a| 
+
+
+
+ a| 
+LIF do nó 3 com porta conetada ao switch FC 1
+ a| 
+
+
+
+ a| 
+LIF do nó 4 com porta conetada ao switch FC 1
+ a| 
+
+
+
+ a| 
+LIF do nó 1 com porta conetada ao switch FC 2
+ a| 
+
+
+
+ a| 
+LIF do nó 2 com porta conetada ao switch FC 2
+ a| 
+
+
+
+ a| 
+LIF do nó 3 com porta conetada ao switch FC 2
+ a| 
+
+
+
+ a| 
+LIF do nó 4 com porta conetada ao switch FC 2
+ a| 
+
+|===
+
+
+== Configuração de armazenamento
+
+Se o agregado e o SVM já estiverem criados, Registre seus nomes aqui; caso contrário, você poderá criá-los conforme necessário:
+
+|===
+| Nó para o próprio LUN 
+
+
+ a| 
+Nome agregado
+
+
+
+ a| 
+Nome do SVM
+
+|===
+
+
+== Informações LUN
+
+|===
+| Tamanho da LUN 
+
+
+ a| 
+Nome do LUN (opcional)
+
+
+
+ a| 
+Descrição LUN (opcional)
+
+|===
+
+
+== Informações sobre SVM
+
+Se você não estiver usando uma SVM existente, precisará das seguintes informações para criar uma nova:
+
+[cols="1a,1a"]
+|===
+2+| Nome do SVM 
+
+
+ a| 
+SVM IPspace
+
+
+
+ a| 
+Agregado para volume raiz da SVM
+
+
+
+ a| 
+Nome de usuário do SVM (opcional)
+
+
+
+ a| 
+Senha do SVM (opcional)
+
+
+
+ a| 
+LIF de gerenciamento de SVM (opcional)
+
+
+
+ a| 
+ a| 
+Sub-rede:
+
+
+
+ a| 
+ a| 
+Endereço IP:
+
+
+
+ a| 
+ a| 
+Máscara de rede:
+
+
+
+ a| 
+ a| 
+Gateway:
+
+
+
+ a| 
+ a| 
+Nó inicial:
+
+
+
+ a| 
+ a| 
+Porta inicial:
+
+|===

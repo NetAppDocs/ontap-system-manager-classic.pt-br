@@ -1,0 +1,51 @@
+---
+permalink: online-help-96-97/concept_guidelines_working_with_volumes_that_contain_luns.html 
+sidebar: sidebar 
+keywords: guidelines, flexvol, volume, lun, change, default, settings, snapshot, copy, simplify, administration 
+summary: Ao trabalhar com volumes do FlexVol que contêm LUNs, é necessário alterar as configurações padrão das cópias Snapshot. Você também pode otimizar o layout LUN para simplificar a administração. 
+---
+= Diretrizes para trabalhar com volumes FlexVol que contêm LUNs com o System Manager - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+No ONTAP System Manager classic (disponível no ONTAP 9.7 e versões anteriores), quando você trabalha com volumes FlexVol que contêm LUNs, é necessário alterar as configurações padrão para cópias Snapshot. Você também pode otimizar o layout LUN para simplificar a administração.
+
+As cópias snapshot são necessárias para muitos recursos opcionais, como SnapMirror, SyncMirror, despejo e restauração e ndmpcopy.
+
+Quando você cria um volume, o ONTAP executa automaticamente o seguinte:
+
+* Reserva 5% do espaço para cópias Snapshot
+* Agenda cópias Snapshot
+
+
+Como o mecanismo de agendamento interno para a criação de cópias Snapshot no ONTAP não garante que os dados em um LUN estejam em um estado consistente, você deve alterar essas configurações de cópia Snapshot executando as seguintes tarefas:
+
+* Desative o agendamento de cópia Snapshot automática.
+* Exclua todas as cópias Snapshot existentes.
+* Defina a porcentagem de espaço reservado para cópias Snapshot como zero.
+
+
+Use as diretrizes a seguir para criar volumes que contêm LUNs:
+
+* Não crie LUNs no volume raiz do sistema.
++
+O ONTAP usa esse volume para administrar o sistema de storage. O volume raiz padrão é /vol/vol0.
+
+* Você deve usar um volume SAN para conter o LUN.
+* Você deve garantir que não existem outros arquivos ou diretórios no volume que contém o LUN.
++
+Se isso não for possível e você estiver armazenando LUNs e arquivos no mesmo volume, use uma qtree separada para conter os LUNs.
+
+* Se vários hosts compartilharem o mesmo volume, você deverá criar uma qtree no volume para armazenar todos os LUNs para o mesmo host.
++
+Esta é uma prática recomendada que simplifica a administração e o rastreamento de LUN.
+
+* Para simplificar o gerenciamento, use convenções de nomenclatura para LUNs e volumes que reflitam a propriedade ou a maneira como são usados.
+
+
+*Informações relacionadas*
+
+https://docs.netapp.com/ontap-9/index.jsp["Centro de Documentação do ONTAP 9"]

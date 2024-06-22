@@ -1,0 +1,114 @@
+---
+permalink: online-help-96-97/concept_jobs.html 
+sidebar: sidebar 
+keywords: jobs, system, manager, job, task, display, information, progress, asynchronous, volume, operation, copy, move, mirror, data, queue, cluster, administrator, online, help 
+summary: Pode utilizar o Gestor do sistema para gerir tarefas de trabalho, tais como a apresentação de informações de trabalhos e a monitorização do progresso de um trabalho. 
+---
+= Gerenciar trabalhos com o Gerenciador de sistemas - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o ONTAP System Manager Classic (disponível no ONTAP 9.7 e anterior) para gerenciar tarefas de tarefa, como exibir informações de tarefa e monitorar o andamento de uma tarefa.
+
+
+
+== Trabalhos
+
+_Jobs_ são tarefas assíncronas e geralmente operações de volume de longa execução, como copiar, mover ou espelhar dados. Os trabalhos são colocados numa fila de trabalhos e são executados quando os recursos estão disponíveis. O administrador do cluster pode executar todas as tarefas relacionadas com a gestão de trabalhos.
+
+Um trabalho pode ser uma das seguintes categorias:
+
+* Uma tarefa _afiliada ao servidor_ é colocada na fila pela estrutura de gerenciamento para ser executada em um nó específico.
+* Um trabalho _filiado ao cluster_ é colocado na fila pela estrutura de gerenciamento para ser executado em qualquer nó no cluster.
+* Um job _private_ é específico para um nó e não usa o banco de dados replicado (RDB) ou qualquer outro mecanismo de cluster.
++
+Você precisa do nível de privilégio avançado ou superior para executar os comandos para gerenciar trabalhos privados.
+
+
+
+Pode gerir trabalhos das seguintes formas:
+
+* Exibindo informações do trabalho, incluindo o seguinte:
++
+** Trabalhos por nó
+** Empregos afiliados a cluster
+** Trabalhos concluídos
+** Histórico do trabalho
+
+
+* Monitorizar o progresso de um trabalho
+* Exibindo informações sobre o estado de inicialização para gerentes de trabalho.
+
+
+Você pode determinar o resultado de um trabalho concluído verificando o log de eventos.
+
+
+
+== Janela trabalho
+
+Pode utilizar a janela trabalho para gerir tarefas de trabalho, como a apresentação de informações de trabalhos e a monitorização do progresso de um trabalho.
+
+
+
+=== Botão de comando
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+
+
+
+
+=== Separadores
+
+* *Empregos atuais*
++
+Este separador apresenta informações sobre as tarefas de trabalho em curso.
+
+* *Histórico de vagas*
++
+Este separador apresenta informações sobre todos os trabalhos.
+
+
+
+
+
+=== Lista de trabalhos
+
+* *ID do trabalho*
++
+Apresenta a ID do trabalho.
+
+* *Hora de início*
++
+Apresenta a hora de início do trabalho.
+
+* *Nome do trabalho*
++
+Apresenta o nome do trabalho.
+
+* *Nó*
++
+Exibe o nome do nó.
+
+* *Estado*
++
+Apresenta o estado do trabalho.
+
+* *Descrição do trabalho*
++
+Apresenta a descrição do trabalho.
+
+* *Progresso*
++
+Apresenta o estado do trabalho.
+
+* *Nome da programação*
++
+Exibe o nome da programação.
+
+

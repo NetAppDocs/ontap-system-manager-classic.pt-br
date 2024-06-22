@@ -1,0 +1,117 @@
+---
+permalink: online-help-96-97/reference_cluster_update_window.html 
+sidebar: sidebar 
+keywords: online, help, cluster, update, window, tab, update, command, button, history, tab 
+summary: Você pode usar a janela Atualização de cluster para executar uma atualização automatizada de cluster sem interrupções ou atualizar clusters de nó único sem interrupções. 
+---
+= Janela de atualização de cluster com o Gerenciador do sistema - ONTAP 9 F.7 e anterior
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar a janela Atualização de cluster para executar uma atualização automatizada de cluster sem interrupções ou atualizar clusters de nó único sem interrupções com o ONTAP System Manager classic (disponível no ONTAP 9.7 e anteriores).
+
+
+
+== Separadores
+
+* *Atualização de cluster*
++
+Permite realizar uma atualização automatizada de cluster sem interrupções ou atualizar clusters de nó único sem interrupções.
+
+* *Histórico de atualizações*
++
+Exibe os detalhes das atualizações de cluster anteriores.
+
+
+
+
+
+== Guia Atualização de cluster
+
+A guia Atualização de cluster permite que você execute uma atualização automatizada de cluster sem interrupções ou atualize clusters de nó único sem interrupções.
+
+
+
+== Botões de comando
+
+* *Atualizar*
++
+Atualiza as informações na janela.
+
+* *Selecione*
++
+Pode selecionar a versão da imagem do software para a atualização.
+
++
+** Detalhes da versão do cluster: Exibe a versão atual do cluster em uso e os detalhes da versão dos nós ou pares de alta disponibilidade (HA).
+** Imagens de software disponíveis: Permite selecionar uma imagem de software existente para a atualização.
++
+Como alternativa, você pode baixar uma imagem de software do site de suporte da NetApp e adicionar a imagem para a atualização.
+
+
+
+* *Validar*
++
+Pode visualizar e validar o cluster em relação à versão de imagem de software para a atualização. Uma validação de pré-atualização verifica se o cluster está em um estado que está pronto para uma atualização. Se a validação for concluída com erros, uma tabela exibirá o status dos vários componentes e a ação corretiva necessária para os erros.
+
++
+Só pode efetuar a atualização quando a validação for concluída com êxito.
+
+* *Atualização*
++
+É possível atualizar todos os nós no cluster ou um par de HA no cluster para a versão selecionada da imagem de software. Enquanto a atualização estiver em andamento, você pode optar por pausar a atualização e, em seguida, cancelar ou retomar a atualização.
+
++
+Se ocorrer um erro, a atualização é pausada e uma mensagem de erro é exibida com as etapas corretivas. Você pode optar por retomar a atualização após executar as etapas corretivas ou cancelar a atualização. Você pode exibir a tabela com o nome do nó, o tempo de atividade, o estado e a versão do ONTAP quando a atualização for concluída com êxito.
+
+
+
+
+
+== Atualizar o separador Histórico
+
+Apresenta detalhes sobre o histórico de atualizações do cluster.
+
+
+
+== Atualizar lista Histórico
+
+* *Versão da imagem*
++
+Especifica a versão da imagem ONTAP para a qual o nó será atualizado.
+
+* *Atualizações de software instaladas em*
++
+Especifica o tipo de disco no qual as atualizações são instaladas.
+
+* *Status*
++
+Especifica o status da atualização de imagem de software (se a atualização for bem-sucedida ou cancelada).
+
+* *Hora de início*
++
+Especifica a hora em que a atualização foi iniciada.
+
+* *Tempo de conclusão*
++
+Especifica a hora em que a atualização foi concluída.
+
++
+Este campo está oculto por padrão.
+
+* *Tempo necessário para a atualização*
++
+Especifica o tempo necessário para a conclusão da atualização.
+
+* *Versão anterior*
++
+Especifica a versão ONTAP do nó antes da atualização.
+
+* *Versão atualizada*
++
+Especifica a versão ONTAP do nó após a atualização.
+
+

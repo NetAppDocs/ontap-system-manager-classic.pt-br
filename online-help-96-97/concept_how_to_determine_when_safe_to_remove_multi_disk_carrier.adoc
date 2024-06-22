@@ -1,0 +1,33 @@
+---
+permalink: online-help-96-97/concept_how_to_determine_when_safe_to_remove_multi_disk_carrier.html 
+sidebar: sidebar 
+keywords: remove, multidisk, carrier, system, manager, storage, disruption, raid 
+summary: A remoção de um transportador de vários discos antes de ser seguro fazê-lo pode resultar na degradação de um ou mais grupos RAID ou, possivelmente, até mesmo, na interrupção do armazenamento. O System Manager permite determinar quando é seguro remover um portador de vários discos. 
+---
+= Determine quando é seguro remover um portador de vários discos com o Gerenciador de sistema - ONTAP 9.7 e anteriores
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A remoção de um transportador de vários discos antes de ser seguro fazê-lo pode resultar na degradação de um ou mais grupos RAID ou, possivelmente, até mesmo, na interrupção do armazenamento. O ONTAP System Manager Classic (disponível no ONTAP 9.7 e versões anteriores) permite determinar quando é seguro remover uma operadora de vários discos.
+
+Quando um portador de vários discos tem de ser substituído, os seguintes eventos devem ter ocorrido antes de poder remover o transportador com segurança:
+
+* Uma mensagem AutoSupport deve ter sido registrada indicando que a operadora está pronta para ser removida.
+* Uma mensagem EMS deve ter sido registrada indicando que a operadora está pronta para ser removida.
+* O estado de ambos os discos na operadora deve ser exibido como `broken` na janela discos.
++
+Só tem de remover os discos depois de o companheiro de suporte de um disco com falha ser evacuado. Você pode clicar em Detalhes para exibir o status de evacuação do disco na guia Propriedades da janela discos.
+
+* O LED de avaria (âmbar) no suporte tem de estar aceso continuamente, indicando que está pronto para ser removido.
+* O LED de atividade (verde) tem de ser desligado, indicando que não existe atividade no disco.
+* O visor digital do compartimento mostra apenas o número de ID do compartimento.
+
+
+[NOTE]
+====
+Não é possível reutilizar o companheiro de portadora de um disco com falha. Quando você remove um portador de vários discos que contém um disco com falha, você deve substituí-lo por um novo portador.
+
+====

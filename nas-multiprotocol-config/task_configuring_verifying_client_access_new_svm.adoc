@@ -1,0 +1,66 @@
+---
+permalink: nas-multiprotocol-config/task_configuring_verifying_client_access_new_svm.html 
+sidebar: sidebar 
+keywords: configure, client, access, unix, ntfs, file, modify, share, acl, add, export, rule, volume, configure and verify cifs and nfs client access 
+summary: Quando estiver pronto, você pode configurar o acesso do cliente definindo permissões de arquivo UNIX ou NTFS, modificando a ACL de compartilhamento e adicionando uma regra de exportação. Em seguida, você deve testar se os usuários ou grupos afetados podem acessar o volume. 
+---
+= Configurar e verificar o acesso de clientes CIFS e NFS
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Quando estiver pronto, você pode configurar o acesso do cliente definindo permissões de arquivo UNIX ou NTFS, modificando a ACL de compartilhamento e adicionando uma regra de exportação. Em seguida, você deve testar se os usuários ou grupos afetados podem acessar o volume.
+
+.Passos
+. Decida quais clientes e usuários ou grupos terão acesso ao compartilhamento.
+. Defina permissões de arquivo usando um método que corresponde ao estilo de segurança do volume:
++
+|===
+| Se o estilo de segurança do volume for este... | Faça isso... 
+
+
+ a| 
+NTFS
+ a| 
+.. Faça login em um cliente Windows como administrador que tenha direitos administrativos suficientes para gerenciar permissões NTFS.
+.. No Windows Explorer, clique com o botão direito do Mouse na unidade e selecione *Propriedades*.
+.. Selecione a guia Segurança e ajuste as configurações de segurança para os grupos e usuários, conforme necessário.
+
+
+
+
+ a| 
+UNIX
+ a| 
+Em um host de administração UNIX, use o usuário raiz para definir a propriedade e as permissões do UNIX no volume.
+
+|===
+. No System Manager, modifique a ACL de compartilhamento para dar aos usuários ou grupos do Windows acesso ao compartilhamento.
++
+.. Navegue até a janela *shares*.
+.. Selecione o compartilhamento e clique em *Editar*.
+.. Selecione a guia *permissões* e dê aos usuários ou grupos acesso ao compartilhamento.
+
+
+. No System Manager, adicione regras à política de exportação para permitir que clientes NFS acessem o compartilhamento.
++
+.. Selecione a máquina virtual de armazenamento (SVM) e clique em *SVM Settings*.
+.. No painel *políticas*, clique em *políticas de exportação*.
+.. Selecione a política de exportação aplicada ao volume.
+.. Na guia *regras de exportação*, clique em *Adicionar* e especifique um conjunto de clientes.
+.. Selecione *2* para o *Rule Index* para que esta regra seja executada após a regra que permite o acesso ao host de administração.
+.. Selecione *CIFS* e *NFSv3*.
+.. Especifique os detalhes de acesso desejados e clique em *OK.*
++
+Você pode dar acesso completo de leitura/gravação aos clientes digitando a sub-rede `10.1.1.0/24` como *especificação do cliente* e selecionando todas as caixas de seleção Access, exceto *permitir acesso ao superusuário*.
+
++
+image::../media/export_rule_for_clients_nfs_nas_mp.gif[Esta captura de tela é descrita pelo texto anterior.]
+
+
+
+. Em um cliente Windows, faça login como um dos usuários que agora tem acesso ao compartilhamento e aos arquivos e verifique se você pode acessar o compartilhamento e criar um arquivo.
+. Em um cliente UNIX, faça login como um dos usuários que agora tem acesso ao volume e verifique se você pode montar o volume e criar um arquivo.
+

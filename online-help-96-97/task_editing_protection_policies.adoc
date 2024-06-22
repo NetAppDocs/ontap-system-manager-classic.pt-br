@@ -1,0 +1,31 @@
+---
+permalink: online-help-96-97/task_editing_protection_policies.html 
+sidebar: sidebar 
+keywords: edit, protection, policies, online, help, system, manager 
+summary: Você pode usar o System Manager para modificar uma política de proteção e aplicar a política a um relacionamento de proteção de dados. 
+---
+= Editar políticas de proteção
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Você pode usar o System Manager para modificar uma política de proteção e aplicar a política a um relacionamento de proteção de dados.
+
+.Sobre esta tarefa
+As políticas de proteção não são exibidas no nível do cluster.
+
+.Passos
+. Clique em *Storage* > *SVMs*.
+. Selecione a máquina virtual de armazenamento (SVM) e clique em *Configurações SVM*.
+. No painel *políticas*, clique em *políticas de proteção*.
+. Selecione a política de proteção que deseja editar e clique em *Editar*.
+. Modifique a prioridade de transferência e, em seguida, ative ou desative a compressão de rede.
+. Para uma política de espelhamento assíncrono, faça backup de todas as cópias Snapshot de origem.
+. Para uma política de Vault ou uma política de cofre espelhado, modifique a etiqueta SnapMirror e a contagem de retenção.
++
+Não é possível remover o rótulo SM_created para uma política de cofre de espelho.
+
+. Clique em *Salvar*.
+

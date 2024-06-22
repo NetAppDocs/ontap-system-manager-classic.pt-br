@@ -1,0 +1,54 @@
+---
+permalink: online-help-96-97/task_performing_negotiated_planned_switchover.html 
+sidebar: sidebar 
+keywords: online, help, perform, negotiated, switchover, system, help 
+summary: 'A partir do System Manager 9,6, você pode iniciar um switchover negociado (planejado) de um local de MetroCluster. Esta operação é útil quando você deseja executar testes de recuperação de desastres ou manutenção planejada no local.' 
+---
+= Realização de um switchover negociado
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+A partir do System Manager 9,6, você pode iniciar um switchover negociado (planejado) de um local de MetroCluster. Esta operação é útil quando você deseja executar testes de recuperação de desastres ou manutenção planejada no local.
+
+.Passos
+. [[step1]]no Gerenciador de sistemas, use as credenciais de administrador de cluster para fazer logon no site local da MetroCluster (Site A).
+. Clique em *Configuração* > *MetroCluster*
++
+A janela MetroCluster switchover/Switchback Operations é exibida.
+
+. Clique em *seguinte*.
++
+A janela MetroCluster switchover e Switchback operações exibe o status das operações e o Gerenciador de sistema verifica se um switchover negociado é possível.
+
+. Execute uma das seguintes subetapas quando o processo de validação for concluído:
++
+** Se a validação for bem-sucedida, avance para o passo link:#step5["5"].
+** Se a validação falhar, mas o local B estiver ativo, ocorreu um erro, como um problema com um subsistema ou espelhamento NVRAM não será sincronizado. Você pode executar um dos seguintes processos:
++
+*** Corrija o problema que está causando o erro, clique em *Fechar* e, em seguida, inicie novamente na Etapa link:#step1["1"].
+*** Interrompa os nós do local B, clique em *Fechar* e execute as etapas em xref:task_performing_unplanned_switchover.adoc[Executar um switchover não planejado].
+
+
+** Se a validação falhar e o local B estiver inativo, provavelmente há um problema de conexão. Verifique se o local B está realmente inativo e, em seguida, execute as etapas em xref:task_performing_unplanned_switchover.adoc[Executar um switchover não planejado].
+
+
+. [[step5]]clique em *mudança do local B para o local A* para iniciar o processo de mudança.
++
+Uma mensagem de aviso é exibida, avisando que a operação de comutação interrompe todos os SVMs de dados no local B e os reinicia no local A.
+
+. Se pretender continuar, clique em *Yes*.
++
+O processo de transição começa. Os estados do Site A e do Site B são exibidos acima das representações gráficas de suas configurações. Se a operação de comutação falhar, é apresentada uma mensagem de erro. Clique em *Fechar*. Corrija quaisquer erros e inicie novamente no passo link:#step1["1"]
+
+. Aguarde até que o System Manager mostre que a recuperação foi concluída.
++
+Quando a recuperação é concluída, o local B está operacional e os sistemas se preparam para o processo de switchback.
+
++
+Quando os preparativos para o processo de switchback estiverem concluídos, o botão *Switchback do local A para o local B* fica ativo na parte inferior da janela.
+
+. Para prosseguir com a operação de switchback, execute as etapas em xref:task_performing_switchback.adoc[Executando um switchback].
+
