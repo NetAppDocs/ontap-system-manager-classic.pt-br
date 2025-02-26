@@ -32,8 +32,6 @@ Estes são dispositivos que não são exibidos quando você digita o `sanlun lun
 
 +
 *** Se houver dispositivos SCSI que não sejam NetApp para excluir, insira o identificador mundial (WWID) para os dispositivos na seção blacklist `multipath.conf` do arquivo.
-
-
 +
 Para exibir o WWID de um dispositivo SCSI que não seja NetApp, digite o seguinte comando no dispositivo que você deseja excluir, onde `SCSI_device_name` está um dispositivo que você especifica:
 
@@ -62,7 +60,6 @@ blacklist {
             devnode     "^cciss.*"
 }
 ----
-+
 *** Se não houver dispositivos para excluir, remova a linha _wwid_ do `multipath.conf` arquivo.
 
 
