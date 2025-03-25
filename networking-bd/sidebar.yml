@@ -1,0 +1,21 @@
+---
+section: networking-bd
+title: Domínios de broadcast (ONTAP 9,7 ou anterior)
+entries:
+- title: Visão geral do domínio de broadcast (ONTAP 9 .7 e anteriores)
+  url: "/networking-bd/configure_broadcast_domains_97_overview.html"
+- title: Determinando quais portas podem ser usadas para um domínio de broadcast (ONTAP
+    9.7 e anteriores)
+  url: "/networking-bd/determine_which_ports_can_be_used_for_a_broadcast_domains.html"
+- title: Criar um domínio de broadcast (ONTAP 9.7 e anteriores)
+  url: "/networking-bd/create_a_broadcast_domain97.html"
+- title: Adicionar ou remover portas de um domínio de broadcast (ONTAP 9.7 e anterior)
+  url: "/networking-bd/add_or_remove_ports_from_a_broadcast_domain97.html"
+- title: Domínios de broadcast divididos (ONTAP 9,7 ou anterior)
+  url: "/networking-bd/split_broadcast_domains97.html"
+- title: Mesclar domínios de broadcast (ONTAP 9 .7 e anteriores)
+  url: "/networking-bd/merge_broadcast_domains97.html"
+- title: Alterar o valor MTU para portas em um domínio de broadcast (ONTAP 9.7 e anterior)
+  url: "/networking-bd/change_the_mtu_value_for_ports_in_a_broadcast_domain97.html"
+- title: Exibir domínios de broadcast (ONTAP 9.7 e anteriores)
+  url: "/networking-bd/display_broadcast_domains97.html"
