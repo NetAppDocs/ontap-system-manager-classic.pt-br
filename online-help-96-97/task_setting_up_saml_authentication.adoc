@@ -13,7 +13,7 @@ summary: 'Você pode configurar a autenticação SAML (Security Assertion Markup
 [role="lead"]
 Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para configurar a autenticação SAML (Security Assertion Markup Language). Os usuários remotos são autenticados por meio de um provedor de identidade seguro (IDP) antes de fazer login no System Manager.
 
-image::../media/mfa_workflow.gif[fluxo de trabalho de mfa]
+image::../media/mfa_workflow.gif[fluxo de trabalho para configurar a autenticação saml com o gerenciador de sistema]
 
 
 

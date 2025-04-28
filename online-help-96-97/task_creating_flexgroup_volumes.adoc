@@ -70,7 +70,7 @@ Impede que os dados no volume sejam movidos para uma categoria de nuvem.
 ** Se existirem apenas agregados FabricPool na SVM, o botão *FabricPool* será exibido na posição "habilitado" e não poderá ser alterado.
 
 
-. Se pretender especificar agregados específicos, clique image:../media/advanced_options.gif[""] em (opções avançadas).
+. Se pretender especificar agregados específicos, clique image:../media/advanced_options.gif["ícone de opções avançadas"] em (opções avançadas).
 +
 Os agregados associados ao volume FlexGroup que você está criando são selecionados por padrão, de acordo com as práticas recomendadas. Eles são exibidos ao lado da etiqueta *Admys*.
 

@@ -59,13 +59,13 @@ Não peered
 
 
 +
-image::../media/dest_vol_snapvault.gif[SnapVault]
+image::../media/dest_vol_snapvault.gif[separador volume de destino de configuração com a caixa de verificação ativar deduplicação]
 
 . Na seção *Detalhes da configuração*, `XDPDefault` selecione como a política de proteção.
 . Selecione um programa de proteção na lista de programações.
 . Certifique-se de que a caixa de verificação *Initialize Relationship* está selecionada para transferir a cópia Snapshot base e, em seguida, clique em *Create*
 +
-image::../media/config_details_snapvault.gif[config details SnapVault]
+image::../media/config_details_snapvault.gif[separador detalhes da configuração com caixa de verificação inicializar relação]
 
 +
 O assistente cria a relação com a política e a programação do Vault especificados. A relação é inicializada iniciando uma transferência de linha de base de dados do volume de origem para o volume de destino.
@@ -74,14 +74,14 @@ O assistente cria a relação com a política e a programação do Vault especif
 A secção Estado mostra o estado de cada trabalho.
 
 +
-image::../media/create_snapvault_success.gif[crie o sucesso do SnapVault]
+image::../media/create_snapvault_success.gif[criar a guia relação de proteção com a seção de status mostrando o status de cada trabalho]
 
 . Verifique se o status do relacionamento do SnapVault está no `Snapmirrored` estado.
 +
 .. Selecione o volume na lista volumes e clique em *proteção de dados*.
 .. Na guia inferior *proteção de dados*, verifique se a relação SnapMirror criada está listada e o estado da relação é `Snapmirrored` e tipo é `Vault`.
 +
-image::../media/data_protection_window_sv.gif[janela de proteção de dados sv]
+image::../media/data_protection_window_sv.gif[separador inferior da proteção de dados]
 
 
 

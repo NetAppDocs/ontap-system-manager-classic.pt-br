@@ -14,7 +14,7 @@ summary: A partir do Gerenciador de sistema 9,6, quando você edita um volume Fl
 A partir do Gerenciador de sistema 9,6, quando você edita um volume FlexCache, você pode especificar as opções avançadas que deseja associar ao volume FlexCache.
 
 .Passos
-. *Opcional:* na janela *Editar volume FlexCache*, clique image:../media/advanced_options.gif[""] para especificar as opções avançadas.
+. *Opcional:* na janela *Editar volume FlexCache*, clique image:../media/advanced_options.gif["ícone de opções avançadas"] para especificar as opções avançadas.
 +
 A janela Opções avançadas é exibida. Ele contém seções (os títulos na coluna esquerda), nas quais você pode especificar várias opções.
 

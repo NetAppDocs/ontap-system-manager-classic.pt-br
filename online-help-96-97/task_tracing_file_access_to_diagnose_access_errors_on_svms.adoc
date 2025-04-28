@@ -26,7 +26,7 @@ A janela Trace File Access (rastrear acesso ao arquivo) para o SVM selecionado m
 . Clique em *continuar* para iniciar o processo de rastreamento de arquivos.
 . Selecione o protocolo usado para acessar arquivos ou compartilhamentos no SVM selecionado.
 . No campo *Nome do usuário*, insira o nome do usuário que estava tentando acessar o arquivo ou compartilhar.
-. *Opcional:* clique image:../media/advanced_options.gif[""] para especificar mais detalhes para restringir o escopo do traçado.
+. *Opcional:* clique image:../media/advanced_options.gif["ícone de opções avançadas"] para especificar mais detalhes para restringir o escopo do traçado.
 +
 A janela de diálogo Opções avançadas permite especificar os seguintes detalhes:
 

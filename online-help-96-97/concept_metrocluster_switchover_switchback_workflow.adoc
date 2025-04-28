@@ -56,4 +56,4 @@ Na segunda fase, o local está pronto para o processo de switchback.
 
 O fluxograma a seguir ilustra as fases e os processos que ocorrem quando você inicia operações de comutação e switchback.
 
-image::../media/switchover_switchback_workflow.jpg[fluxo de trabalho comutativo de comutação]
+image::../media/switchover_switchback_workflow.jpg[fluxograma de trabalho de comutação MetroCluster e switchback]

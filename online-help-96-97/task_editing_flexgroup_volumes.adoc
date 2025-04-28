@@ -37,7 +37,7 @@ A partir do System Manager 9,6, você também pode renomear volumes FlexGroup DP
 Esta opção só está disponível se tiver ativado a licença de encriptação de volume e se a plataforma correspondente suportar encriptação.
 
 . Especifique a porcentagem da reserva de cópia Snapshot.
-. *Opcional:* clique image:../media/advanced_options.gif[""] para modificar as configurações de volume do FlexGroup. link:task_specifying_advanced_options_for_flexgroup_volume.html["Especificar opções avançadas para um volume FlexGroup"]Consulte a .
+. *Opcional:* clique image:../media/advanced_options.gif["ícone de opções avançadas"] para modificar as configurações de volume do FlexGroup. link:task_specifying_advanced_options_for_flexgroup_volume.html["Especificar opções avançadas para um volume FlexGroup"]Consulte a .
 . Especifique o tamanho para o qual você deseja redimensionar o volume FlexGroup.
 +
 Por padrão, os agregados existentes são usados para redimensionar o volume FlexGroup. O tamanho mínimo permitido para o volume é exibido ao lado dos campos tamanho.
@@ -45,7 +45,7 @@ Por padrão, os agregados existentes são usados para redimensionar o volume Fle
 +
 [NOTE]
 ====
-Se quiser expandir o volume FlexGroup adicionando novos recursos, clique image:../media/advanced_options.gif[""] em (opções avançadas). link:task_specifying_advanced_options_for_flexgroup_volume.html["Especificar opções avançadas para um volume FlexGroup"]Consulte a .
+Se quiser expandir o volume FlexGroup adicionando novos recursos, clique image:../media/advanced_options.gif["ícone de opções avançadas"] em (opções avançadas). link:task_specifying_advanced_options_for_flexgroup_volume.html["Especificar opções avançadas para um volume FlexGroup"]Consulte a .
 
 ====
 . Clique em *Salvar* para salvar as alterações.

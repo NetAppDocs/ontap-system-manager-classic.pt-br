@@ -32,7 +32,7 @@ No nível SVM, você pode adicionar um cliente LDAP somente para um SVM selecion
 . Clique em *Add*.
 . Digite o nome do cliente LDAP.
 . Adicione o domínio do ative Directory ou o servidor LDAP.
-. Clique image:../media/advanced_options.gif[""] em (opções avançadas), selecione *Esquema* e clique em *aplicar*.
+. Clique image:../media/advanced_options.gif["ícone de opções avançadas"] em (opções avançadas), selecione *Esquema* e clique em *aplicar*.
 . Especifique o *base DN* e a *porta TCP*.
 . Clique em *Binding* e especifique os detalhes de autenticação.
 . Clique em *Salvar e fechar*.

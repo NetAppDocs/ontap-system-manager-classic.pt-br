@@ -17,6 +17,4 @@ Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e vers�
 
 https://docs.netapp.com/us-en/ontap/disks-aggregates/index.html["Gerenciamento de disco e agregado"^]
 
-https://docs.netapp.com/ontap-9/topic/com.netapp.doc.vs-irrg/home.html["Referência e requisitos de instalação da virtualização do FlexArray"^]
-
 https://docs.netapp.com/us-en/ontap/concepts/index.html["Conceitos de ONTAP"^]

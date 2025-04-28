@@ -17,7 +17,6 @@ Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anter
 
 == Editar definições de sub-rede
 
-[role="lead"]
 Você pode usar o System Manager para modificar atributos de sub-rede, como nome, endereço de sub-rede, intervalo de endereços IP e endereço de gateway da sub-rede.
 
 .Sobre esta tarefa

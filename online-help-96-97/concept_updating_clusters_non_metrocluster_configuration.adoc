@@ -13,7 +13,7 @@ summary: 'Você pode usar o System Manager para atualizar um cluster ou os nós 
 [role="lead"]
 Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anterior) para atualizar um cluster ou os nós individuais em um par de alta disponibilidade (HA). Para executar uma atualização, você deve selecionar uma imagem ONTAP, validar se o cluster ou os nós individuais no par de HA estão prontos para a atualização e, em seguida, executar a atualização.
 
-image::../media/updating_cluster.gif[a atualizar cluster]
+image::../media/updating_cluster.gif[atualize clusters em uma configuração que não seja MetroCluster com o system manager]
 
 *Informações relacionadas*
 

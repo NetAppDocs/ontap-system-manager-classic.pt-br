@@ -23,7 +23,7 @@ Você deve executar esta tarefa a partir do cluster *source*.
 +
 ** Começando com ONTAP 9.3: Clique duas vezes no volume de origem para visualizar os detalhes e clique em *PROTECTION* para identificar o volume de destino na relação SnapMirror e o nome do SVM que contém o volume.
 +
-image::../media/snapmirror_destination_93.gif[destino SnapMirror 93]
+image::../media/snapmirror_destination_93.gif[imagem do separador de proteçãoão que mostra o volume de destino na relação SnapMirror]
 
 ** ONTAP 9.2 ou anterior: Clique na guia *proteção de dados* na parte inferior da página volumes para identificar o volume de destino na relação SnapMirror e o nome da SVM que contém o volume.
 +

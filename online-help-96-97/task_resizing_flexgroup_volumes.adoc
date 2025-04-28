@@ -29,7 +29,7 @@ Por padrão, os agregados existentes são usados para redimensionar o volume Fle
 +
 [NOTE]
 ====
-Se quiser expandir o volume FlexGroup adicionando novos recursos, clique image:../media/advanced_options.gif[""] em (opções avançadas).
+Se quiser expandir o volume FlexGroup adicionando novos recursos, clique image:../media/advanced_options.gif["ícone de opções avançadas"] em (opções avançadas).
 
 ====
 . Especifique a porcentagem da reserva de cópia Snapshot.

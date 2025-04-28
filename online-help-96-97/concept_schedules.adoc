@@ -100,7 +100,6 @@ Especifique as opções avançadas do cron em meses, dias, dias da semana (se ap
 
 == Eliminar agendas
 
-[role="lead"]
 Você pode usar o System Manager para excluir as programações que executam tarefas específicas de gerenciamento de armazenamento.
 
 .Passos

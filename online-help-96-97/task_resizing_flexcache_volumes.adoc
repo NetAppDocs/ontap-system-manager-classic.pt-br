@@ -29,7 +29,7 @@ Por padrão, os agregados existentes são usados para redimensionar o volume Fle
 +
 [NOTE]
 ====
-Se quiser expandir o volume FlexCache adicionando novos recursos, clique image:../media/advanced_options.gif[""] em (opções avançadas). link:https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/task_specifying_advanced_options_for_flexcache_volume.html["Especificando opções avançadas para volumes FlexCache"]Consulte a .
+Se quiser expandir o volume FlexCache adicionando novos recursos, clique image:../media/advanced_options.gif["ícone de opções avançadas"] em (opções avançadas). link:https://docs.netapp.com/us-en/ontap-sm-classic/online-help-96-97/task_specifying_advanced_options_for_flexcache_volume.html["Especificando opções avançadas para volumes FlexCache"]Consulte a .
 
 ====
 . Clique em *Salvar* para redimensionar o volume FlexCache.

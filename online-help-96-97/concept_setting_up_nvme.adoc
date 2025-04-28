@@ -17,4 +17,4 @@ A partir do ONTAP 9.5, é necessário configurar pelo menos um LIF NVMe para cad
 
 A ilustração a seguir mostra o fluxo de trabalho para configurar o NVMe:
 
-image::../media/nvme_setup_workflow.gif[fluxo de trabalho de configuração do nvme]
+image::../media/nvme_setup_workflow.gif[fluxo de trabalho para configurar o nvme]

@@ -17,7 +17,6 @@ Você pode usar o ONTAP System Manager classic (disponível no ONTAP 9.7 e anter
 
 == Janela de rede
 
-[role="lead"]
 Você pode usar a janela rede para exibir a lista de componentes de rede, como sub-redes, interfaces de rede, portas Ethernet, domínios de broadcast, adaptadores FC/FCoE e NVMe e IPspaces, além de criar, editar ou excluir esses componentes em seu sistema de storage.
 
 
